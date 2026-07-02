@@ -17,15 +17,48 @@ If API credits become available later, switch to running the `.py` scripts direc
 
 ## Project layout
 ```
-sources.yaml          # editorial source list — do not silently change
-harvest.py            # Layer 1 script (Anthropic API + web_search). Not runnable until credits available.
-signals.json          # Layer 1 output (produced by harvest, whether scripted or interactive)
-tagged_signals.json   # Layer 2 output (not yet built)
-brief_<category>.md   # Layer 3 output (not yet built)
-.venv/                # Python env: anthropic + PyYAML
+sources.yaml               # editorial source list — do not silently change
+harvest.py                 # Layer 1 script (Anthropic API + web_search). Not runnable until credits available.
+signals*.json              # Layer 1 output (raw harvest, one archived file per run)
+tagged_signals*.json       # Layer 2 output (need + metadata, one file per run)
+corpus.json                # merged/deduped corpus (build artifact) + int8 embeddings
+embed.py                   # int8 embedding pass (degrades per-signal when HF hosts unreachable)
+scout.py                   # CLI relevance search over the corpus
+brief_<category>.md        # Layer 3 output
+
+# --- front end (build chain: corpus -> site -> globe) ---
+build_corpus.py            # merge tagged runs -> corpus.json (also runs build_site.py at the end)
+build_site.py              # inline corpus into site/index.html (Search + Vital Signs); copies aux pages into site/
+build_geology.py           # bake the Explore globe's GEO from corpus.json -> site/discover-geology.html
+site/template.html         # SOURCE for Search + Vital Signs (edit this, NOT site/index.html)
+mockup_discover_geology.html   # SOURCE for the Explore geology globe (edit this, NOT site/discover-geology.html)
+mockup_discover_universe.html  # SOURCE for the "see the whole universe" constellation (copied to site/discover-universe.html)
+geology_codes.json         # curated semiotic codes for the globe (persist across rebuilds)
+vital_signs.json / provenance.json / receipts.json  # Vital Signs + provenance + methodology data
+site/                      # deployable build artifact (index.html + discover-geology.html + discover-universe.html)
+publish.sh                 # build_corpus.py + wrangler deploy site/ to Cloudflare Pages
+
+.venv/                     # Python env: anthropic + PyYAML
 requirements.txt
-CLAUDE.md             # this file
+README.md                  # newcomer orientation (points here)
+CLAUDE.md                  # this file
 ```
+
+## EXPLORE = GEOLOGY GLOBE, + "SEE THE WHOLE UNIVERSE" TOGGLE (2026-07-02)
+The Explore tab is no longer the suns-and-planets constellation by default. It is now a **geological cultural sphere** (a globe whose continents are the needs, width = need share). Both the globe and the recovered old constellation are reachable; the globe is the default.
+
+**Architecture (three views, one site):** `site/index.html` (built from `site/template.html`) hosts Search / Explore / Vital Signs. The Explore view is an `<iframe>` holding one of two pages:
+- **`site/discover-geology.html`** — the globe. SOURCE = `mockup_discover_geology.html`; **baked from corpus.json every build by `build_geology.py`** (per-need counts/pct + lexical clusters regenerate; taxonomy copy in `build_geology.py`'s NEED_META carried forward; curated semiotic codes persist in `geology_codes.json`, diffable for a future velocity card). This is the DEFAULT Explore view (`window.__initExplore` lazy-loads it).
+- **`site/discover-universe.html`** — the recovered constellation ("see the whole universe"). SOURCE = `mockup_discover_universe.html`; static, copied into `site/` by `build_site.py`.
+
+**GLOBE SEARCH-RECONSTITUTION (Task 3, done 2026-07-02).** Typing in the globe's `#geoq` box re-forms the sphere: matched signals are grouped into the SAME semantic themes the Search tab produces, each theme a territory tinted by its dominant need, clicking one opens the callout in `_cluster` mode ("Theme · X% of matches", look-&-feel hidden, real click-through article links). Key symbols in `mockup_discover_geology.html`: module-scope `addOcean`/`makeShard`/`makeBedrock` + generalized `layout(list, poleKey)` (lays out needs OR clusters; `unsettled` at the pole in needs mode, both poles neutral in query mode), `reconstitute(q)`, `restoreNeeds()`, `searchAPI()` (bridges to `window.parent.__scoreAll/__clusterSignals/DATA`), `dominantNeed()`, `setModeMeta()`. `buildLabels` clears `#labels` first; `buildLegend` builds from the live `territories` array; territory items are `t.item` (a need OR a cluster). Verified via `node --check` + `build_geology.py`; the WebGL render path itself was not runtime-verified (no browser in the Cowork build env).
+
+**"SEE THE WHOLE UNIVERSE" TOGGLE (Task 4, 2026-07-02).** A link under the globe masthead description → `window.parent.__enterUniverse()` (in `template.html`) swaps the geology iframe for the universe iframe (lazy `src`); `window.parent.__exitUniverse()` (and a "← Back to the sphere" link inside the universe page) returns. Each view keeps its OWN search (globe reconstitution vs the constellation's `#exq` query gravity), by design.
+- The old constellation code was NOT in git (the geology swap replaced `__initExplore` before the repo existed). It was **recovered from the pre-swap Cloudflare snapshot `https://0874143d.cultural-scout.pages.dev/#explore`** (its 3rd inline `<script>` = the module: `__initExplore`/`enterPlanet`/`buildInterior`/query-gravity/3D fly-in).
+- `mockup_discover_universe.html` is a **standalone iframe page**: it carries the snapshot's own Explore markup (`#view-explore`, `#panel`) + styles + the module verbatim, and a **shim mirrors the parent's globals** (`window.parent.DATA/NEEDS/NEED_LIGHT/RUNS/__scoreAll/__clusterSignals`) onto its own window so the module runs unmodified. A hidden `#q` covers the module's `#q` reads. So it always reflects the live corpus, no data duplication, no build injection.
+- **Recovery caveat for future work:** the Cowork browser tool's content scanner refuses to exfiltrate that module (flags it as query-string/base64 data), so the universe page had to be assembled in Claude Code (which can `curl` the snapshot). If it ever needs re-recovering, do it there.
+
+**GITHUB (Task 10, 2026-07-02).** Project is now a git repo pushed to a private GitHub `cultural-scout` (rollback point). `.emb_cache.npz` is intentionally tracked (expensive to regenerate on the firewalled build machine); `.venv/`, `__pycache__/`, `.wrangler/` are ignored. Normal flow now: `git add -A && git commit && git push`.
 
 ## Monthly run procedure
 When the user says something like "run the monthly cultural harvest" or "activate the cultural thought starter system":

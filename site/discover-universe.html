@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>See the whole universe — Cultural Scout</title>
+<style>
+  :root{
+    --ink:#141414; --mute:#6b665c; --line:#e6e3db; --card:#fcfbf9;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;color:var(--ink);background:#fff;transition:background .4s ease;
+  }
+  body.mode-explore{background:#05060a;color:#e9e7e2}
+
+  /* ---- tab nav ---- */
+  nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;
+    display:flex;gap:2px;padding:4px;border-radius:999px;background:rgba(0,0,0,.05);border:1px solid var(--line);backdrop-filter:blur(8px)}
+  body.mode-explore nav{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+  nav button{appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;font-size:13px;letter-spacing:.04em;
+    padding:8px 20px;border-radius:999px;color:var(--mute)}
+  body.mode-explore nav button{color:#aaa6a0}
+  nav button.on{background:var(--ink);color:#fff}
+  body.mode-explore nav button.on{background:#fff;color:#05060a}
+
+  .view{display:none}
+  .view.on{display:block}
+
+  /* ---- SEARCH VIEW ---- */
+  #view-search .wrap{max-width:860px;margin:0 auto;padding:92px 24px 120px}
+  header.s{margin-bottom:30px;border-bottom:1px solid var(--line);padding-bottom:26px}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:600;font-size:44px;line-height:1.04;margin:0 0 14px;letter-spacing:-.01em}
+  .lede{font-size:16px;color:#3a382f;margin:0;max-width:64ch}
+  .lede .label{color:var(--ink);font-weight:600}
+  .statline{display:block;margin-top:12px;font-size:13px;color:var(--mute);letter-spacing:.02em}
+
+  .search{position:sticky;top:0;background:#fff;padding:20px 0 14px;z-index:5;border-bottom:1px solid var(--line);margin-bottom:8px}
+  #q{width:100%;font-size:22px;font-family:Georgia,serif;padding:14px 16px;border:1.5px solid var(--ink);border-radius:2px;background:#fff;color:var(--ink)}
+  #q:focus{outline:none;box-shadow:0 0 0 3px rgba(20,20,20,.08)}
+  .subbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:11px;flex-wrap:wrap}
+  .hints{font-size:13px;color:var(--mute)}
+  .hints a{color:var(--mute);text-decoration:underline;text-underline-offset:2px;cursor:pointer;margin-right:14px}
+  .hints a:hover{color:var(--ink)}
+  .srcbtn{font-size:12px;letter-spacing:.04em;padding:7px 13px;border:1px solid var(--line);background:transparent;border-radius:2px;cursor:pointer;color:var(--ink);white-space:nowrap}
+  .srcbtn:hover{border-color:var(--ink)}
+
+  /* source-list modal */
+  .modal{position:fixed;inset:0;z-index:80;background:rgba(20,18,14,.42);display:none;align-items:flex-start;justify-content:center;padding:80px 20px 40px}
+  .modal.open{display:flex}
+  .modal-card{background:#fff;border:1px solid var(--line);border-radius:5px;max-width:680px;width:100%;max-height:80vh;overflow-y:auto;padding:26px 30px;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+  .modal-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .modal-head h2{font-family:Georgia,serif;font-size:24px;margin:0}
+  .mclose{cursor:pointer;color:var(--mute);font-size:26px;line-height:1}.mclose:hover{color:var(--ink)}
+  .modal-sub{font-size:13px;color:var(--mute);margin:6px 0 20px}
+  .src-group{margin-bottom:18px}
+  .src-group h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+  .src-item{display:flex;align-items:baseline;gap:8px;padding:3px 0;font-size:14px}
+  .src-item a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  .src-item a:hover{border-color:var(--ink)}
+  .src-item .off{font-size:11px;color:#b6b1a6;letter-spacing:.03em}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 2px 4px;flex-wrap:wrap}
+  .count{font-size:13px;color:var(--mute);letter-spacing:.02em}
+  .copy{font-size:12px;letter-spacing:.04em;padding:7px 12px;border:1px solid var(--ink);background:transparent;border-radius:2px;cursor:pointer;color:var(--ink)}
+  .copy:hover{background:var(--ink);color:#fff}
+  .copy:disabled{opacity:.35;cursor:default;border-color:var(--line)}
+
+  /* need-mix: the distribution of need tags across the current results, with a
+     filter-against-the-dominant-need dial. Pure client-side post-filter. */
+  .needmix{margin:12px 2px 2px}
+  .nm-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;background:var(--line);margin-bottom:9px}
+  .nm-bar span{height:100%;transition:width .2s}
+  .nm-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .nm-lab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-right:2px}
+  .nm-chip{font-size:11.5px;display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border:1px solid var(--line);border-radius:20px;cursor:pointer;color:var(--ink);background:transparent;user-select:none}
+  .nm-chip:hover{border-color:var(--ink)}
+  .nm-chip .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .nm-chip .pct{color:var(--mute)}
+  .nm-chip.ex{opacity:.5;text-decoration:line-through;border-style:dashed}
+  .nm-chip.ex .dot{filter:grayscale(1)}
+  .nm-act{font-size:11.5px;letter-spacing:.03em;padding:4px 11px;border:1px solid var(--ink);background:transparent;border-radius:20px;cursor:pointer;color:var(--ink)}
+  .nm-act:hover{background:var(--ink);color:#fff}
+
+  /* themes: emergent semantic clusters of the current search results, found
+     in-browser from the build-time embeddings (no model on the page). Labels
+     are keyword-extracted (TF-IDF of the cluster vs the rest of the matched
+     set); clicking a chip filters results to that cluster. */
+  .themes{margin:12px 2px 2px;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+  .th-lab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:5px 2px 0 0;white-space:nowrap}
+  .th-chip{font-size:12px;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border:1px solid var(--line);border-radius:6px;cursor:pointer;color:var(--ink);background:transparent;user-select:none;max-width:340px}
+  .th-chip b{font-weight:600}
+  .th-chip:hover{border-color:var(--ink)}
+  .th-chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .th-chip.on .th-n{color:#fff}
+  .th-chip .th-n{color:var(--mute);font-variant-numeric:tabular-nums}
+  .th-clear{font-size:11.5px;padding:5px 10px;border:1px dashed var(--line);border-radius:6px;cursor:pointer;color:var(--mute);background:transparent}
+  .th-clear:hover{border-color:var(--ink);color:var(--ink)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:3px;padding:16px 18px;margin:12px 0}
+  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--mute);margin-bottom:7px}
+  .sub{font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+  .badge{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:20px;border:1px solid var(--line)}
+  .badge.fwd{color:#2f6f6b;border-color:#bcd6d3}
+  .badge.runs{color:#7a5aa0;border-color:#d7cae6}
+  .card h3{font-family:Georgia,serif;font-size:19px;line-height:1.25;margin:2px 0 6px;font-weight:600}
+  .card h3 a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  .card h3 a:hover{border-color:var(--ink)}
+  .summary{margin:0;color:#33312c}
+  .more{font-size:13.5px;color:var(--mute);margin-top:10px;display:none}
+  .more.show{display:block}
+  .more p{margin:4px 0}.more b{color:var(--ink)}
+  .toggle{font-size:12px;color:var(--mute);cursor:pointer;margin-top:9px;display:inline-block;text-decoration:underline;text-underline-offset:2px}
+  .src{color:var(--mute);text-decoration:none}.src:hover{color:var(--ink)}
+
+  /* ---- VITAL SIGNS VIEW ---- */
+  #view-vitals .wrap{max-width:1080px;margin:0 auto;padding:92px 24px 120px}
+  .v-head{margin-bottom:22px;border-bottom:1px solid var(--line);padding-bottom:20px}
+  .v-head h1{font-size:38px}
+  .v-search{margin:18px 0 6px}
+  #vq{width:100%;max-width:560px;font-size:17px;font-family:Georgia,serif;padding:11px 14px;border:1.5px solid var(--ink);border-radius:2px;background:#fff;color:var(--ink)}
+  #vq:focus{outline:none;box-shadow:0 0 0 3px rgba(20,20,20,.08)}
+  .v-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 2px 10px;flex-wrap:wrap}
+  .v-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:14px 16px;cursor:pointer;transition:border-color .15s}
+  .tile:hover{border-color:var(--ink)}
+  .tile.sel{border-color:var(--ink);box-shadow:0 0 0 2px rgba(20,20,20,.07)}
+  .tile .t-name{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
+  .tile .t-value{font-family:Georgia,serif;font-size:18px;line-height:1.2;font-weight:600;margin-bottom:3px}
+  .tile .t-delta{font-size:11.5px;color:#3a382f;min-height:15px}
+  .tile .t-delta.up{color:#2f6f3e}.tile .t-delta.down{color:#a03d2e}
+  .tile .t-meta{display:flex;align-items:center;gap:7px;margin-top:8px;font-size:10px;color:var(--mute);flex-wrap:wrap}
+  .v-brief{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:3px;padding:16px 20px;margin:4px 0 22px}
+  .v-brief .b-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+  .v-brief p{margin:7px 0;font-size:14.5px;line-height:1.6;color:#2e2c26}
+  .t-chip{border:1px solid var(--line);border-radius:20px;padding:1px 7px;letter-spacing:.04em;text-transform:uppercase}
+  .t-chip.warn{color:#9a6b1a;border-color:#e2cb96}
+  .tile svg{display:block;margin-top:8px;width:100%;height:28px}
+  .tile polyline{fill:none;stroke:#8a8474;stroke-width:1.5}
+  .v-detail{background:#fff;border:1px solid var(--ink);border-radius:3px;padding:18px 20px;margin:14px 0;display:none}
+  .v-detail.show{display:block}
+  .v-detail h3{font-family:Georgia,serif;font-size:20px;margin:0 0 8px}
+  .v-detail p{margin:6px 0;font-size:14px;color:#33312c}
+  .v-detail .d-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+  .v-detail blockquote{margin:10px 0;padding:8px 14px;border-left:3px solid var(--line);font-style:italic;color:#4a473e;font-size:13.5px}
+  .v-detail .d-cite{font-size:13px;background:var(--card);border:1px solid var(--line);padding:8px 12px;border-radius:2px;margin:10px 0;font-family:ui-monospace,Menlo,monospace}
+  .fg-section{margin-top:44px}
+  .fg-section h2{font-family:Georgia,serif;font-size:24px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:6px}
+  .fg-sub{font-size:13px;color:var(--mute);margin:0 0 16px}
+  .fg-group h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:20px 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+  .fg-item{padding:9px 2px;border-bottom:1px solid #f0ede6;font-size:13.5px}
+  .fg-item a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line)}
+  .fg-item a:hover{border-color:var(--ink)}
+  .fg-item .fg-what{color:#33312c;margin:3px 0 1px}
+  .fg-item .fg-reach{color:var(--mute);font-size:12.5px}
+  .fg-chip{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);border-radius:20px;padding:1px 6px;color:var(--mute);margin-left:6px}
+
+  /* ---- PULSE (need distribution over time, Search tab headline) ---- */
+  .pulse{border:1px solid var(--line);border-radius:3px;background:var(--card);padding:18px 20px 12px;margin:24px 0 4px}
+  .pulse .p-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .pulse h2{font-family:Georgia,serif;font-size:17px;font-weight:600;margin:0}
+  .pulse .p-sub{font-size:11.5px;color:var(--mute)}
+  .pulse svg{display:block;width:100%;height:auto;margin-top:10px}
+  .pulse svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  .pulse .p-note{font-size:11px;color:var(--mute);margin:8px 0 2px;line-height:1.5}
+  .pulse .p-copy{font-size:11px;letter-spacing:.04em;padding:5px 10px;border:1px solid var(--line);background:transparent;border-radius:2px;cursor:pointer;color:var(--mute)}
+  .pulse .p-copy:hover{border-color:var(--ink);color:var(--ink)}
+
+  /* ---- RECEIPTS (Search-tab footer + modal) ---- */
+  .foot{margin-top:54px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--mute);line-height:1.6}
+  .foot a{color:var(--mute);text-decoration:underline;text-underline-offset:2px;cursor:pointer;white-space:nowrap}
+  .foot a:hover{color:var(--ink)}
+  .r-intro{font-size:14px;color:#33312c;line-height:1.6;border-left:3px solid var(--ink);padding:2px 0 2px 16px;margin:4px 0 20px}
+  .r-card{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:16px 20px;margin:12px 0}
+  .r-card h3{font-family:Georgia,serif;font-size:17px;margin:0 0 6px;font-weight:600}
+  .r-card p{margin:0;font-size:14px;color:#33312c;line-height:1.6}
+  .r-score{margin-top:40px}
+  .r-score h2{font-family:Georgia,serif;font-size:24px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px}
+  .r-method{font-size:13.5px;color:#4a473e;line-height:1.6;margin:0 0 16px}
+  .r-empty{background:var(--card);border:1px dashed var(--line);border-radius:3px;padding:14px 18px;font-size:13.5px;color:var(--mute)}
+  .r-entry{border:1px solid var(--line);border-left-width:3px;border-radius:3px;background:var(--card);padding:13px 16px;margin:10px 0;font-size:13.5px}
+  .r-entry .re-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+  .r-entry .re-title{font-family:Georgia,serif;font-weight:600;font-size:15px}
+  .r-verdict{font-size:10px;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line);border-radius:20px;padding:2px 8px;color:var(--mute)}
+  .r-verdict.matured{color:#2f6f3e;border-color:#bcd6c3}
+  .r-verdict.building{color:#3a5a9b;border-color:#b9c6e2}
+  .r-verdict.faded{color:#6b665c}
+  .r-verdict.wrong{color:#a03d2e;border-color:#e2b9ae}
+
+  /* ---- PROVENANCE (Field Guide, editorial intake breakdown) ---- */
+  .prov{border:1px solid var(--line);border-radius:3px;background:var(--card);padding:16px 20px;margin:4px 0 24px}
+  .prov h3{font-family:Georgia,serif;font-size:17px;font-weight:600;margin:0 0 2px}
+  .prov .prov-line{font-size:13px;color:#33312c;margin:6px 0 14px;line-height:1.55}
+  .prov .prov-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 28px}
+  .prov h4{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:0 0 6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+  .pv-row{display:flex;align-items:center;gap:8px;padding:2.5px 0;font-size:12px;color:#33312c}
+  .pv-name{flex:0 0 128px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pv-bar{flex:1;height:7px;background:#eeebe3;border-radius:2px;overflow:hidden}
+  .pv-bar i{display:block;height:100%;background:#8a8474}
+  .pv-n{flex:0 0 24px;text-align:right;color:var(--mute);font-size:11px}
+  .prov .prov-note{font-size:11px;color:var(--mute);margin:12px 0 0;line-height:1.5}
+
+  /* ---- EXPLORE VIEW ---- */
+  #view-explore{position:fixed;inset:0}
+  #cv{position:absolute;inset:0;display:block;cursor:grab}
+  #cv:active{cursor:grabbing}
+  .ex-title{position:absolute;top:74px;left:28px;z-index:10;pointer-events:none}
+  .ex-title h2{font-family:Georgia,serif;font-weight:600;font-size:22px;margin:0;color:#fff}
+  .ex-title p{margin:4px 0 0;font-size:12.5px;color:#8b8780;max-width:34ch}
+  .anchor-label{position:absolute;z-index:8;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+    transform:translate(-50%,-150%);pointer-events:none;text-shadow:0 0 12px rgba(0,0,0,.9);white-space:nowrap}
+  .sun-label{font-size:15px;color:#fff;letter-spacing:.18em;z-index:9;text-shadow:0 0 16px rgba(0,0,0,.95),0 0 8px rgba(0,0,0,.9)}
+  .cluster-label{font-size:10.5px;letter-spacing:.04em;text-transform:none;font-weight:600;z-index:9;text-shadow:0 0 12px rgba(0,0,0,.95),0 0 6px rgba(0,0,0,.9)}
+  .ex-search{position:absolute;top:70px;left:50%;transform:translateX(-50%);z-index:12;width:min(420px,72vw)}
+  .ex-search input{width:100%;font:15px Georgia,serif;padding:10px 14px;background:rgba(11,13,19,.78);
+    border:1px solid rgba(255,255,255,.25);border-radius:3px;color:#e9e7e2;backdrop-filter:blur(6px)}
+  .ex-search input::placeholder{color:#6f6b64}
+  .ex-search input:focus{outline:none;border-color:rgba(255,255,255,.55)}
+  .ex-count{margin-top:6px;font-size:12px;color:#8b8780;text-align:center;min-height:15px;text-shadow:0 0 6px #05060a}
+  .ex-actions{text-align:center;margin-top:5px;display:none}
+  .ex-actions.show{display:block}
+  .ex-actions button{font:11px/1 inherit;letter-spacing:.06em;padding:5px 11px;border:1px solid rgba(255,255,255,.22);
+    background:rgba(11,13,19,.6);border-radius:2px;color:#aaa6a0;cursor:pointer}
+  .ex-actions button:hover{border-color:rgba(255,255,255,.5);color:#e9e7e2}
+  .legend{position:absolute;left:28px;bottom:24px;z-index:10;font-size:12.5px;color:#cfccc6}
+  .legend .row{display:flex;align-items:center;gap:8px;margin:5px 0;cursor:pointer;opacity:.85}
+  .legend .row:hover{opacity:1}
+  .legend .dot{width:10px;height:10px;border-radius:50%;box-shadow:0 0 8px currentColor}
+  .hint-3d{position:absolute;right:28px;bottom:24px;z-index:10;font-size:12px;color:#6f6b64;text-align:right;line-height:1.7}
+  /* ---- planet interior (look & feel) ---- */
+  #warp{position:absolute;inset:0;z-index:34;pointer-events:none;opacity:0;transition:opacity .9s ease}
+  #planet-ui{position:absolute;top:74px;left:28px;z-index:11;display:none;max-width:340px}
+  #planet-ui h2{font-family:Georgia,serif;font-weight:600;font-size:22px;margin:0;color:#fff}
+  #planet-ui .sub{margin:6px 0 12px;font-size:12.5px;color:#8b8780;line-height:1.5}
+  #planet-back{font:11px/1 inherit;letter-spacing:.06em;padding:7px 12px;border:1px solid rgba(255,255,255,.22);background:rgba(11,13,19,.6);border-radius:2px;color:#aaa6a0;cursor:pointer}
+  #planet-back:hover{border-color:rgba(255,255,255,.5);color:#e9e7e2}
+  .code-label{text-transform:none;font-size:14px;letter-spacing:.05em;font-weight:600}
+  .code-label .cl-status{display:block;font-size:9px;letter-spacing:.14em;font-weight:500;opacity:.75;margin-top:2px}
+  #panel .stat2{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:2px 8px;margin-left:8px;vertical-align:middle}
+  #panel .swmini{display:flex;height:16px;border-radius:2px;overflow:hidden;margin:2px 0 12px;border:1px solid rgba(255,255,255,.12)}
+  #panel .swmini i{flex:1}
+  #panel .pcollage{display:flex;flex-wrap:wrap;gap:0;margin:4px 0 16px;border-radius:3px;overflow:hidden}
+  #panel .pcollage a{display:block;height:96px;overflow:hidden;background:rgba(255,255,255,.04)}
+  #panel .pcollage img{height:96px;width:auto;display:block}
+  #panel.wide .pcollage a,#panel.wide .pcollage img{height:118px}
+  #panel .chiprow{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 10px}
+  #panel .chip2{font-size:10.5px;border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:2px 9px;color:#c9c6c0}
+  #panel .plabel{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8b8780;margin:14px 0 4px}
+  #panel blockquote{margin:8px 0;padding:5px 12px;border-left:2px solid rgba(255,255,255,.25);font-family:Georgia,serif;font-style:italic;color:#d8d5cf;font-size:13px}
+  #panel blockquote a{font-style:normal;font-size:11px;color:#8b8780;text-decoration:none}
+  .node-label{position:absolute;transform:translate(-50%,-160%);font-size:10.5px;line-height:1;white-space:nowrap;pointer-events:none;
+    font-weight:500;letter-spacing:.01em;will-change:transform,opacity;text-shadow:0 0 5px #05060a,0 0 3px #05060a,0 1px 2px #05060a}
+  .node-label.hl{font-weight:700;font-size:12.5px;z-index:25;text-shadow:0 0 8px #000,0 0 4px #000}
+  #panel{position:fixed;top:0;right:0;height:100%;width:360px;max-width:88vw;z-index:40;background:#0b0d13;border-left:1px solid rgba(255,255,255,.12);
+    padding:74px 26px 26px;transform:translateX(100%);transition:transform .3s ease;overflow-y:auto}
+  #panel.open{transform:translateX(0)}
+  #panel.wide{width:50vw;max-width:none}        /* look & feel boards: half the screen, immersive */
+  @media(max-width:760px){#panel.wide{width:92vw}}
+  #panel .close{position:absolute;top:74px;right:22px;cursor:pointer;color:#8b8780;font-size:22px;line-height:1}
+  #panel .psub{font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+  #panel .pmeta{font-size:12px;color:#8b8780;margin:6px 0 12px}
+  #panel h3{font-family:Georgia,serif;font-size:21px;line-height:1.25;margin:0 0 12px;color:#fff}
+  #panel p{font-size:14px;color:#c9c6c0;margin:0 0 14px}
+  #panel .pnote{font-size:13px;color:#9a968f;border-top:1px solid rgba(255,255,255,.1);padding-top:12px;margin-top:4px}
+  #panel .pnote b{color:#d8d5cf}
+  #panel a.go{display:inline-block;font-size:13px;color:#fff;border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:3px;text-decoration:none;white-space:nowrap}
+  #panel a.go:hover{background:#fff;color:#0b0d13}
+  #panel .gobtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}  /* keep the two actions side by side, identical in both entry paths */
+  #loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#6f6b64;font-size:14px}
+
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 18px;border-radius:4px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:60}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  body.mode-explore .toast{background:#fff;color:#05060a}
+</style>
+<style>
+  html,body{margin:0;height:100%}
+  #view-explore{display:block!important}
+  #q{display:none!important}
+  #u-back{position:fixed;top:16px;left:18px;z-index:40;cursor:pointer;
+    font:600 12px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.02em;
+    color:#e8e0d2;background:rgba(20,17,13,.72);border:1px solid rgba(255,255,255,.16);
+    border-radius:999px;padding:8px 14px;backdrop-filter:blur(6px);text-decoration:none}
+  #u-back:hover{border-color:rgba(255,255,255,.4);color:#fff}
+</style>
+<!-- The recovered constellation module resolves three.js via bare-specifier
+     dynamic import(); it needs this importmap (verbatim from the snapshot),
+     NOT a global UMD build. -->
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+</head>
+<body class="mode-explore">
+<a id="u-back" href="#" title="Back to the sphere">← Back to the sphere</a>
+<section id="view-explore" class="view">
+  <canvas id="cv"></canvas>
+  <div class="ex-title">
+    <h2>The Signal Constellation</h2>
+  </div>
+  <div class="ex-search">
+    <input id="exq" type="search" autocomplete="off" spellcheck="false" placeholder="pull the universe toward a topic…">
+    <div class="ex-count" id="excount"></div>
+    <div class="ex-actions" id="exactions"><button id="exshare">Copy link to this view ⧉</button></div>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="hint-3d">drag to orbit · scroll to zoom<br>click a star to read it · hover a need to isolate</div>
+  <div id="loading" style="display:none">Building the universe…</div>
+</section>
+<div id="panel">
+  <span class="close" id="panel-close">×</span>
+  <div id="panel-body"></div>
+</div>
+<input id="q" type="hidden" value="">
+<div id="__nodata" style="display:none;position:fixed;inset:0;place-items:center;text-align:center;color:#8e887d;font-family:Helvetica,Arial,sans-serif;padding:40px">Open this from inside the Cultural Scout site — the universe reads the live corpus from the parent page.</div>
+<script>
+/* SHIM: mirror the corpus + scorer from the parent window so the recovered module runs unmodified */
+(function(){
+  var P=null; try{ if(window.parent&&window.parent!==window) P=window.parent; }catch(e){}
+  if(P){ window.DATA=P.DATA; window.NEEDS=P.NEEDS; window.NEED_LIGHT=P.NEED_LIGHT; window.NEED_DARK=P.NEED_DARK;
+    window.RUNS=P.RUNS; window.__scoreAll=P.__scoreAll; window.__clusterSignals=P.__clusterSignals; }
+  window.__initialHash="";
+})();
+</script>
+<script>
+/* ===== RECOVERED CONSTELLATION MODULE (verbatim from snapshot 0874143d.cultural-scout.pages.dev) ===== */
+
+let started=false;
+window.__initExplore=async function(){
+  if(started)return; started=true;
+  const loading=document.getElementById("loading"); loading.style.display="flex";
+  let THREE, OrbitControls;
+  try{
+    THREE=await import("three");
+    ({OrbitControls}=await import("three/addons/controls/OrbitControls.js"));
+  }catch(e){ loading.textContent="Couldn't load 3D engine (needs internet)."; return; }
+  loading.style.display="none";
+
+  const DATA=window.DATA, NEEDS=window.NEEDS, COL=window.NEED_DARK;
+  const cv=document.getElementById("cv");
+  const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x05060a,0.0016);
+  const camera=new THREE.PerspectiveCamera(58,1,0.1,2000);
+  camera.position.set(0,74,470);              // start deep — we ARRIVE into the universe
+  const ENTRANCE_TARGET=new THREE.Vector3(0,30,210);
+  let entrance=true;
+  const controls=new OrbitControls(camera,cv);
+  controls.enableDamping=true;controls.dampingFactor=.08;
+  controls.autoRotate=true;controls.autoRotateSpeed=0.22;  // idle drift: constant gentle parallax
+  controls.zoomToCursor=true;                 // scroll zooms toward whatever you point at
+  controls.minDistance=2.5;controls.maxDistance=760;
+  let idleT;
+  function poke(){entrance=false;controls.autoRotate=false;clearTimeout(idleT);
+    idleT=setTimeout(()=>controls.autoRotate=true,9000);}  // drift resumes after 9s of stillness
+  cv.addEventListener("pointerdown",poke);
+  cv.addEventListener("wheel",poke,{passive:true});
+
+  function size(){const w=window.innerWidth,h=window.innerHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();}
+  window.addEventListener("resize",size); size();
+
+  // anchors for the 8 suns (directions on a sphere). The CENTRE is kept free:
+  // it belongs to the search sun that emerges when a query is typed.
+  const R=64;
+  const DIRS={
+    "Certified Human":[.95,.2,.1],
+    "Kinship":[-.2,.9,.35],
+    "Settling Accounts":[-.95,.05,-.25],
+    "Self-Authorship":[.15,-.9,.4],
+    "Appetite":[.45,-.25,-.85],
+    "Ballast":[-.5,-.55,.65],
+    "Naming the Machine":[-.35,.5,-.8],
+    "unsettled":[.55,.62,-.5]
+  };
+  const anchors={};
+  for(const k in DIRS){const v=new THREE.Vector3(...DIRS[k]).normalize().multiplyScalar(R);anchors[k]=v;}
+
+  const mul=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+
+  // build signal points
+  const N=DATA.length;
+  const pos=new Float32Array(N*3), col=new Float32Array(N*3), base=new Float32Array(N*3);
+  const seed=new Float32Array(N);            // per-star phase for twinkle
+  const worldPos=[]; const subOf=[];
+  const c=new THREE.Color();
+  for(let i=0;i<N;i++){
+    const s=DATA[i]; const sub=NEEDS.includes(s.need)?s.need:"unsettled";
+    subOf.push(sub);
+    const a=anchors[sub]; const r=mul(i+7);
+    const spread=(sub==="unsettled")?26:21;
+    const g=()=>(r()+r()+r()-1.5)*spread;  // soft gaussian-ish
+    const p=new THREE.Vector3(a.x+g(),a.y+g(),a.z+g());
+    pos[i*3]=p.x;pos[i*3+1]=p.y;pos[i*3+2]=p.z; worldPos.push(p);
+    const lum=.84+.3*r();                  // natural brightness variance star to star
+    c.set(COL[sub]);
+    base[i*3]=Math.min(1,c.r*lum);base[i*3+1]=Math.min(1,c.g*lum);base[i*3+2]=Math.min(1,c.b*lum);
+    col[i*3]=base[i*3];col[i*3+1]=base[i*3+1];col[i*3+2]=base[i*3+2];
+    seed[i]=r();
+  }
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute("position",new THREE.BufferAttribute(pos,3));
+  geo.setAttribute("color",new THREE.BufferAttribute(col,3));
+  geo.setAttribute("aSeed",new THREE.BufferAttribute(seed,1));
+  const LATEST=window.RUNS&&window.RUNS.length?window.RUNS[window.RUNS.length-1]:"";
+  const fresh=new Float32Array(N);
+  for(let i=0;i<N;i++)fresh[i]=(DATA[i]._first_seen===LATEST)?1:0;
+  geo.setAttribute("aFresh",new THREE.BufferAttribute(fresh,1));
+  // soft round sprite
+  // procedural disc with built-in depth-of-field: a point is crisp at/near the
+  // focus distance and softens only as it recedes BEHIND focus. Near stuff stays sharp.
+  const dofMat=new THREE.ShaderMaterial({
+    uniforms:{scale:{value:540.0},sizeBase:{value:3.4},focusDist:{value:180.0},dofRange:{value:240.0},uTime:{value:0},uFade:{value:0}},
+    transparent:true,depthTest:true,depthWrite:true,blending:THREE.NormalBlending,
+    vertexShader:`attribute vec3 color;attribute float aSeed;attribute float aFresh;varying vec3 vColor;varying float vDist;
+      uniform float scale;uniform float sizeBase;uniform float uTime;
+      void main(){vColor=color;vec4 mv=modelViewMatrix*vec4(position,1.0);vDist=-mv.z;
+        float amp=0.16+0.13*aFresh;                       // latest-harvest stars shimmer a touch brighter
+        float tw=0.92+amp*sin(uTime*1.3+aSeed*6.2831);    // faint twinkle, each star on its own phase
+        gl_PointSize=sizeBase*tw*(scale/max(-mv.z,1.0));gl_Position=projectionMatrix*mv;}`,
+    fragmentShader:`varying vec3 vColor;varying float vDist;
+      uniform float focusDist;uniform float dofRange;uniform float uFade;
+      void main(){float d=length(gl_PointCoord-vec2(0.5));
+        float blur=clamp((vDist-focusDist)/dofRange,0.0,1.0);   // 0 near/at focus, 1 far behind
+        float inner=mix(0.46,0.22,blur);                        // crisp edge near, soft when far
+        float a=1.0-smoothstep(inner,0.5,d);
+        a*=mix(1.0,0.7,blur);                                   // far ones fade a touch
+        a*=uFade;                                               // stars resolve from black on first load
+        if(a<0.02) discard;
+        gl_FragColor=vec4(vColor,a);}`
+  });
+  const points=new THREE.Points(geo,dofMat); scene.add(points);
+
+  // three depth-layered starfields — orbiting the camera makes the layers
+  // slide against each other (parallax), which is what sells the 3D space
+  function starLayer(count,rMin,rMax,size,color,opacity,seedBase){
+    const arr=new Float32Array(count*3);
+    for(let i=0;i<count;i++){const rr=mul(seedBase+i*3);
+      const v=new THREE.Vector3(rr()-.5,rr()-.5,rr()-.5).normalize().multiplyScalar(rMin+rr()*(rMax-rMin));
+      arr[i*3]=v.x;arr[i*3+1]=v.y;arr[i*3+2]=v.z;}
+    const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(arr,3));
+    scene.add(new THREE.Points(g,new THREE.PointsMaterial({size:size,color:color,transparent:true,opacity:opacity,sizeAttenuation:true})));
+  }
+  starLayer(700, 420, 700, 2.0, 0x434a5c, .85, 11);   // near layer: bigger, brighter
+  starLayer(900, 650,1050, 1.3, 0x363c4b, .6, 17);    // mid
+  starLayer(1100, 950,1500, 0.9, 0x2a2f3c, .45, 29);  // deep: tiny, faint
+
+  // ---- suns: a glowing sphere at the heart of each need ----
+  function glowTexture(){const cnv=document.createElement("canvas");cnv.width=cnv.height=128;const g=cnv.getContext("2d");
+    const grd=g.createRadialGradient(64,64,0,64,64,64);
+    grd.addColorStop(0,"rgba(255,255,255,.95)");grd.addColorStop(.25,"rgba(255,255,255,.35)");grd.addColorStop(1,"rgba(255,255,255,0)");
+    g.fillStyle=grd;g.fillRect(0,0,128,128);return new THREE.CanvasTexture(cnv);}
+  const GLOWTEX=glowTexture();
+  function makeGlow(hex,size,opacity){const m=new THREE.SpriteMaterial({map:GLOWTEX,color:new THREE.Color(hex),transparent:true,opacity:opacity,blending:THREE.AdditiveBlending,depthWrite:false});
+    const s=new THREE.Sprite(m);s.scale.set(size,size,1);return s;}
+
+  // sun surface: limb-darkened orb with a hot core and a faint rim — reads as
+  // a three-dimensional ball of light rather than a flat disc
+  function sunMaterial(hex){
+    return new THREE.ShaderMaterial({
+      uniforms:{uColor:{value:new THREE.Color(hex)},uOpacity:{value:1}},
+      transparent:true,depthWrite:true,
+      vertexShader:`varying vec3 vN;varying vec3 vV;
+        void main(){vec4 mv=modelViewMatrix*vec4(position,1.0);
+          vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);
+          gl_Position=projectionMatrix*mv;}`,
+      fragmentShader:`uniform vec3 uColor;uniform float uOpacity;varying vec3 vN;varying vec3 vV;
+        void main(){float ndv=clamp(dot(normalize(vN),normalize(vV)),0.0,1.0);
+          float core=pow(ndv,1.5);                  // hot bright centre
+          float limb=pow(1.0-ndv,2.2);              // darkening toward the edge, with a rim tint
+          vec3 hot=mix(uColor,vec3(1.0),0.55);
+          vec3 col=mix(uColor*0.42,hot,core)+uColor*limb*0.4;
+          gl_FragColor=vec4(col,uOpacity);}`
+    });
+  }
+  const suns={},sunGlows={},glowBase={},glowPhase={};
+  {let gi=0;for(const k in anchors){
+    const r=k==="unsettled"?2.4:3.4;
+    const mesh=new THREE.Mesh(new THREE.SphereGeometry(r,24,16),sunMaterial(COL[k]));
+    mesh.position.copy(anchors[k]);
+    const glow=makeGlow(COL[k],r*9,.5);glow.position.copy(anchors[k]);
+    scene.add(mesh,glow);suns[k]=mesh;sunGlows[k]=glow;
+    glowBase[k]=r*9;glowPhase[k]=gi*1.7;gi++;        // each sun breathes on its own phase
+  }}
+  // faint nebula haze, far behind everything — atmosphere and depth
+  {for(let i=0;i<7;i++){const rr=mul(401+i*7);
+    const hex=window.NEED_DARK[NEEDS[i%NEEDS.length]];
+    const neb=makeGlow(hex,240+rr()*220,.05);
+    neb.position.set((rr()-.5)*2,(rr()-.5)*1.2,(rr()-.5)*2).normalize();
+    neb.position.multiplyScalar(300+rr()*260);
+    scene.add(neb);}}
+  // the search sun: born at the centre when a query exists, dies when cleared
+  const searchSun=new THREE.Mesh(new THREE.SphereGeometry(4.6,28,18),sunMaterial(0xfff4dd));
+  const searchGlow=makeGlow(0xffe9c4,52,.55);
+  searchSun.visible=false;searchGlow.visible=false;scene.add(searchSun,searchGlow);
+  let sunScale=0,sunScaleTarget=0;
+
+  // ---- cluster suns: when a query is active, the matched planets are grouped
+  // into the SAME emergent semantic themes the Search tab finds (build-time
+  // embeddings, no model on the page). Each theme gets its own small sun that
+  // its planets orbit, ringed around the central query sun, labeled with the
+  // theme's keyword label. A reusable pool keeps the constellation deterministic. */
+  const MAXCLUST=6, CLUSTER_R=36;
+  const clustSuns=[],clustGlows=[],clustLabels=[],clustAnchor=[],clustAxis=[],clustScale=[];
+  for(let c=0;c<MAXCLUST;c++){
+    const mesh=new THREE.Mesh(new THREE.SphereGeometry(1,20,14),sunMaterial(0xffffff));
+    const glow=makeGlow(0xffffff,22,.5);
+    mesh.visible=false;glow.visible=false;scene.add(mesh,glow);
+    clustSuns.push(mesh);clustGlows.push(glow);
+    const d=document.createElement("div");d.className="anchor-label cluster-label";d.style.display="none";
+    document.getElementById("view-explore").appendChild(d);clustLabels.push(d);
+    clustAnchor.push(new THREE.Vector3());
+    const rr=mul(211+c*17);clustAxis.push(new THREE.Vector3(rr()-.5,1.0,rr()-.5).normalize());
+    clustScale.push(0);
+  }
+  let activeClusters=0;
+  // map signal object → its index in DATA (clusterSignals returns the same
+  // object references, since both IIFEs share window.DATA)
+  const idxOf=new Map();DATA.forEach((s,i)=>idxOf.set(s,i));
+  // deterministic direction for the c-th of K cluster suns (fibonacci sphere)
+  function clusterDir(c,K){const ga=Math.PI*(3-Math.sqrt(5));
+    const y=K===1?0:1-2*((c+0.5)/K);const rxz=Math.sqrt(Math.max(0,1-y*y));const th=c*ga;
+    return new THREE.Vector3(Math.cos(th)*rxz,y,Math.sin(th)*rxz);}
+  // a cluster takes the colour of its dominant need, so theme colour still reads as meaning
+  function clusterColor(cl){const cnt={};
+    cl.members.forEach(s=>{const nd=NEEDS.includes(s.need)?s.need:"unsettled";cnt[nd]=(cnt[nd]||0)+1;});
+    let best=null,bc=-1;for(const k in cnt)if(cnt[k]>bc){bc=cnt[k];best=k;}
+    return best?COL[best]:"#fff4dd";}
+
+  // constellation lines: hair-thin rays from the focus sun to its orbiting
+  // signals, fading in like someone sketching a star chart
+  const MAXLINES=80;
+  const linePos=new Float32Array(MAXLINES*2*3);
+  const lineGeo=new THREE.BufferGeometry();lineGeo.setAttribute("position",new THREE.BufferAttribute(linePos,3));
+  const lineMat=new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false});
+  scene.add(new THREE.LineSegments(lineGeo,lineMat));
+  let lineIdx=[],lineOpTarget=0;
+
+  // birth pulse: one soft ring that expands and dissolves when a sun is born
+  const pulse=new THREE.Mesh(new THREE.RingGeometry(.96,1,56),
+    new THREE.MeshBasicMaterial({color:0xfff0d0,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+  pulse.visible=false;scene.add(pulse);
+  let pulseRequest=false,pulseStart=-10;
+
+  // click flash: a quick spark on the star you select
+  const flash=makeGlow(0xffffff,10,0);scene.add(flash);
+  let flashI=-1,flashRequest=false,flashStart=-10;
+
+  // atmosphere tint: fog + clear colour lean a few percent toward the focus colour
+  const bgBase=new THREE.Color(0x05060a),bgCur=new THREE.Color(0x05060a),bgTarget=new THREE.Color(0x05060a);
+  renderer.setClearColor(bgCur);
+
+  function setSearchSun(q){
+    const actions=document.getElementById("exactions");
+    if(q){sunLabel.textContent=q;
+      if(sunScale<0.1)pulseRequest=true;               // pulse only at birth, not on refinement
+      sunScaleTarget=1;lineOpTarget=.16;actions.classList.add("show");
+      for(const k in suns){suns[k].material.uniforms.uOpacity.value=.12;sunGlows[k].material.opacity=.1;}}
+    else{sunScaleTarget=0;lineOpTarget=0;lineIdx=[];actions.classList.remove("show");
+      bgTarget.copy(bgBase);
+      for(const k in suns){suns[k].material.uniforms.uOpacity.value=1;sunGlows[k].material.opacity=.5;}}
+  }
+
+  // anchor labels (HTML, projected each frame) — each sun's name floats above it
+  const labels={};
+  for(const k in anchors){const d=document.createElement("div");d.className="anchor-label";d.textContent=k==="unsettled"?"Unsettled":k;d.style.color=COL[k];document.getElementById("view-explore").appendChild(d);labels[k]=d;}
+  const sunLabel=document.createElement("div");
+  sunLabel.className="anchor-label sun-label";sunLabel.style.display="none";
+  document.getElementById("view-explore").appendChild(sunLabel);
+
+  // legend
+  const lg=document.getElementById("legend");lg.innerHTML="";
+  [...NEEDS].forEach(k=>{const row=document.createElement("div");row.className="row";row.innerHTML=`<span class="dot" style="background:${COL[k]};color:${COL[k]}"></span>${k}`;
+    row.onmouseenter=()=>highlight(k);row.onmouseleave=()=>highlight(null);
+    row.onclick=()=>{  // click a theme → focus animation + the theme's description panel, like clicking its sun
+      if(focusedTheme===k){release();panel.classList.remove("open");}
+      else{applyTheme(k);openThemePanel(k);}
+    };
+    lg.appendChild(row);});
+  let legendK=null;
+  function highlight(k){legendK=k;paintColors();}
+  function paintColors(){const a=geo.attributes.color.array;
+    for(let i=0;i<N;i++){
+      let f=1;
+      if(rel)f=rel[i]>0?(0.3+0.7*rel[i]):(0.04+0.3*(aff?aff[i]:0)); // matches glow; the ring glows faintly by adjacency; the unrelated go near-dark
+      if(legendK&&subOf[i]!==legendK)f*=0.08;             // legend hover isolates a need
+      a[i*3]=base[i*3]*f;a[i*3+1]=base[i*3+1]*f;a[i*3+2]=base[i*3+2]*f;}
+    geo.attributes.color.needsUpdate=true;}
+
+  // ---- query gravity: the existing search scorer reused as a spatial force.
+  // Matching stars pull toward the centre (strength = relevance), the rest
+  // drift out and dim. No LLM — same ranking as the Search tab.
+  const exq=document.getElementById("exq"),excount=document.getElementById("excount");
+  const basePos=worldPos.map(p=>p.clone());
+  let rel=null,aff=null;
+
+  // ---- orbital homes: every star is a planet orbiting a sun.
+  // home = {anchor, off, axis, speed}; rendered position = anchor + off
+  // rotated by (time * speed) around axis. Changing a star's home (e.g. to
+  // the search sun) makes it drift into a new orbit.
+  const ORIGIN=new THREE.Vector3(0,0,0), YAXIS=new THREE.Vector3(0,1,0);
+  const axes={},speeds={};
+  {let ai=0;for(const k in anchors){const rr=mul(101+ai*13);
+    axes[k]=new THREE.Vector3(rr()-.5,1.1,rr()-.5).normalize();
+    speeds[k]=.0085+.0075*rr();ai++;}}   // natural orbit speed: slowed 25% then a further 75% (2026-06-10)
+  const origHomes=[],homes=[];
+  for(let i=0;i<N;i++){
+    const k=subOf[i];
+    const h={anchor:anchors[k],off:worldPos[i].clone().sub(anchors[k]),axis:axes[k],speed:speeds[k]};
+    origHomes.push(h);homes.push(h);
+  }
+
+  // per-signal content-word sets + corpus document frequency (lazy, cached) —
+  // used to give NON-matching stars a graded adjacency to the query topic.
+  const wordCache=new Array(N);
+  function sigWords(i){
+    if(!wordCache[i]){const s=DATA[i];const set=new Set();
+      for(const f of ["title","summary","novelty_note","cross_substrate_notes"])
+        for(const w of (((s[f]||"")+"").toLowerCase().match(/[a-z]{4,}/g)||[]))set.add(w);
+      wordCache[i]=set;}
+    return wordCache[i];
+  }
+  let DF=null;
+  function ensureDF(){if(DF)return;DF={};for(let i=0;i<N;i++)for(const w of sigWords(i))DF[w]=(DF[w]||0)+1;}
+  let focusedTheme=null;
+  function release(msg){
+    rel=null;aff=null;focusedTheme=null;window.__focusedTheme=null;
+    activeClusters=0;                                   // dismiss any theme suns
+    excount.textContent=msg||"";
+    for(let i=0;i<N;i++)homes[i]=origHomes[i];          // planets return to their need-suns
+    setSearchSun(null);paintColors();
+  }
+  // Shared choreography for text queries AND theme clicks: a sun is born at
+  // the centre, ranked matches take up orbit around it (golden spiral,
+  // best-first), every other star re-sorts radially by lexical adjacency to
+  // the matched set (IDF-weighted word overlap — no LLM), need-suns dim.
+  function focusOn(idx,label,colorHex,countMsg,clusters){
+    const GA=Math.PI*(3-Math.sqrt(5));
+    const m=idx.length;
+    if(clusters&&clusters.length>=2){
+      // SEMANTIC CLUSTER LAYOUT: each theme gets its own sun ringed around the
+      // central query sun; its planets orbit that theme sun. Deterministic for a
+      // given query (cluster assignment + cluster order are stable).
+      const K=Math.min(clusters.length,MAXCLUST);
+      for(let c=0;c<K;c++){
+        const cl=clusters[c];
+        const aPos=clusterDir(c,K).multiplyScalar(CLUSTER_R);
+        clustAnchor[c].copy(aPos);
+        const members=cl.members.slice().sort((a,b)=>(rel[idxOf.get(b)]||0)-(rel[idxOf.get(a)]||0));
+        const mm=members.length;
+        members.forEach((s,kk)=>{
+          const i=idxOf.get(s);if(i==null)return;
+          const t=mm===1?0:kk/(mm-1);
+          const rad=5+12*Math.pow(t,0.7);        // central planet hugs the theme sun
+          const y=mm===1?0:1-2*((kk+0.5)/mm);
+          const rxz=Math.sqrt(Math.max(0,1-y*y));
+          const th=kk*GA;
+          homes[i]={anchor:clustAnchor[c],axis:clustAxis[c],speed:.03,
+            off:new THREE.Vector3(Math.cos(th)*rxz*rad,y*rad,Math.sin(th)*rxz*rad)};
+        });
+        const cc=clusterColor(cl);
+        clustSuns[c].material.uniforms.uColor.value.set(cc);
+        clustGlows[c].material.color.set(cc);
+        clustLabels[c].style.color=cc;
+        clustLabels[c].textContent=(cl.keywords||[]).filter(Boolean).join(" · ")||"theme";
+      }
+      activeClusters=K;
+    }else{
+      // single relevance golden-spiral (fallback: no vectors, or too few matches)
+      activeClusters=0;
+      for(let k=0;k<m;k++){
+        const i=idx[k];
+        const t=m===1?0:k/(m-1);
+        const rad=11+31*Math.pow(t,0.7);          // rank → orbit radius (innermost clears the sun)
+        const y=m===1?0:1-2*((k+0.5)/m);          // even spread top-to-bottom
+        const rxz=Math.sqrt(Math.max(0,1-y*y));
+        const th=k*GA;
+        homes[i]={anchor:ORIGIN,axis:YAXIS,speed:.045,
+          off:new THREE.Vector3(Math.cos(th)*rxz*rad,y*rad,Math.sin(th)*rxz*rad)};
+      }
+    }
+    aff=new Array(N).fill(0);
+    ensureDF();
+    const wgt={};
+    for(const i of idx)for(const w of sigWords(i))wgt[w]=(wgt[w]||0)+1;
+    for(const w in wgt)wgt[w]*=Math.log(N/DF[w]);
+    let amax=0;
+    for(let i=0;i<N;i++){
+      if(rel[i]>0){aff[i]=1;continue;}
+      let sum=0;for(const w of sigWords(i))if(wgt[w])sum+=wgt[w];
+      aff[i]=sum;if(sum>amax)amax=sum;
+    }
+    if(amax>0)for(let i=0;i<N;i++)if(rel[i]<=0)aff[i]=Math.pow(aff[i]/amax,2); // sharpen: only true neighbours hug the cluster
+    for(let i=0;i<N;i++)if(rel[i]<=0){
+      const off=basePos[i].clone().normalize().multiplyScalar(110-58*aff[i]);  // aff 1 → r52, aff 0 → r110
+      homes[i]={anchor:ORIGIN,axis:YAXIS,speed:.006,off:off};
+    }
+    searchSun.material.uniforms.uColor.value.set(colorHex);searchGlow.material.color.set(colorHex);
+    lineIdx=idx.slice(0,MAXLINES);lineMat.color.set(colorHex);
+    pulse.material.color.set(colorHex);
+    bgTarget.copy(bgBase).lerp(new THREE.Color(colorHex),0.07);  // the whole universe leans toward the focus
+    setSearchSun(label);
+    excount.textContent=countMsg;
+    paintColors();
+  }
+  function applyQuery(q){
+    const scores=window.__scoreAll?window.__scoreAll(q):null;
+    const m0=scores?scores.filter(s=>s>0).length:0;
+    if(!scores||!m0){release(scores?"nothing matched — try other words":"");return;}
+    let max=0;for(const s of scores)if(s>max)max=s;
+    rel=scores.map(s=>max?s/max:0);focusedTheme=null;window.__focusedTheme=null;
+    const idx=[];for(let i=0;i<N;i++)if(rel[i]>0)idx.push(i);
+    idx.sort((a,b)=>rel[b]-rel[a]);
+    // group the matched planets into the same emergent themes the Search tab finds
+    const clusters=window.__clusterSignals?window.__clusterSignals(idx.map(i=>DATA[i]),q):null;
+    const msg=(clusters&&clusters.length>=2)
+      ? idx.length+" signals in "+Math.min(clusters.length,MAXCLUST)+" themes orbiting your query · related ones form the ring"
+      : idx.length+" signal"+(idx.length!==1?"s":"")+" orbiting your query · related ones form the ring";
+    focusOn(idx,q,0xfff4dd,msg,clusters);
+  }
+  // Theme focus: same animation, but the new sun IS the theme — its members
+  // orbit ranked by tier/confidence, in the theme's own colour.
+  function applyTheme(k){
+    exq.value="";
+    const sq=document.getElementById("q");
+    if(sq.value){sq.value="";sq.dispatchEvent(new Event("input"));}
+    const idx=[];for(let i=0;i<N;i++)if(subOf[i]===k)idx.push(i);
+    if(!idx.length)return;
+    const fit=s=>(s.tier==="core"?4:0)+({high:2,medium:1}[s.fit_confidence]||0)+(s.forward_looking?.5:0);
+    idx.sort((a,b)=>fit(DATA[b])-fit(DATA[a]));
+    rel=new Array(N).fill(0);
+    const m=idx.length;
+    idx.forEach((i,kk)=>{rel[i]=m===1?1:1-0.65*(kk/(m-1));});
+    focusedTheme=k;window.__focusedTheme=k;
+    focusOn(idx,k==="unsettled"?"Unsettled":k,COL[k],
+      m+" "+(k==="unsettled"?"unsettled":k)+" signals in orbit · click the theme again to release");
+    try{history.replaceState(null,"","#explore&need="+encodeURIComponent(k));}catch(e){}
+  }
+  let exdeb;
+  exq.addEventListener("input",()=>{clearTimeout(exdeb);exdeb=setTimeout(()=>{
+    const q=exq.value.trim();
+    const sq=document.getElementById("q");
+    if(sq.value.trim()!==q){sq.value=q;sq.dispatchEvent(new Event("input"));} // keep Search + hash in sync
+    applyQuery(q);
+  },130);});
+  window.__exploreSync=function(){const q=document.getElementById("q").value.trim();
+    if(exq.value.trim()!==q){exq.value=q;applyQuery(q);}};
+  window.__exploreSync(); // carry any existing search query (or #explore&q=… deep link) into the constellation
+  { // …or a theme deep link: #explore&need=Kinship
+    const nm=((window.__initialHash||location.hash).match(/need=([^&]+)/));
+    if(nm){try{const k=decodeURIComponent(nm[1]);if(k in anchors)applyTheme(k);}catch(e){}}
+  }
+  { // …or a look & feel deep link: #explore&lookfeel=Certified%20Human
+    const lf=((window.__initialHash||location.hash).match(/lookfeel=([^&]+)/));
+    if(lf){try{const k=decodeURIComponent(lf[1]);if(window.CODES&&window.CODES[k])setTimeout(()=>window.__enterPlanet(k),400);}catch(e){}}
+  }
+
+  // ---- node title labels (above each star, in its substrate colour) ----
+  const view=document.getElementById("view-explore");
+  const labelEls=new Array(N);
+  const TRUNC=t=>(t&&t.length>34)?t.slice(0,33)+"…":(t||"");
+  for(let i=0;i<N;i++){const d=document.createElement("div");d.className="node-label";d.textContent=TRUNC(DATA[i].title);d.style.color=COL[subOf[i]];view.appendChild(d);labelEls[i]=d;}
+  const projV=new THREE.Vector3();
+  function positionLabels(){const r=cv.getBoundingClientRect();const camP=camera.position;
+    if(interior||flyPhase){for(let i=0;i<N;i++)labelEls[i].style.display="none";return;}
+    for(let i=0;i<N;i++){const el=labelEls[i];projV.copy(worldPos[i]).project(camera);
+      if(projV.z>1){el.style.display="none";continue;}
+      if(rel&&rel[i]<=0&&i!==hoverI){el.style.display="none";continue;} // query gravity: unmatched stars lose their labels
+      const raw=Math.min(1,1.2-camP.distanceTo(worldPos[i])/280);
+      if(raw<0.2&&i!==hoverI&&!rel){el.style.display="none";continue;} // cull far labels — but never cull a matched star's label
+      const op=Math.max(rel?.25:.2,raw);
+      el.style.display="block";el.style.opacity=(i===hoverI)?1:(rel?Math.min(1,op*(0.4+0.6*rel[i])+0.1):op);
+      el.style.zIndex=(i===hoverI)?999999:Math.round((1-projV.z)*100000);  // nearer = on top
+      el.style.left=(r.left+(projV.x*.5+.5)*r.width)+"px";
+      el.style.top=(r.top+(-projV.y*.5+.5)*r.height)+"px";}}
+
+  // ---- picking & selection ----
+  const panel=document.getElementById("panel"),pbody=document.getElementById("panel-body");
+  let hoverI=-1;const v=new THREE.Vector3();
+  function nearest(mx,my){const rect=cv.getBoundingClientRect();let best=-1,bd=16*16;
+    for(let i=0;i<N;i++){if(rel&&rel[i]<=0&&(!aff||aff[i]<0.25))continue;v.copy(worldPos[i]).project(camera);if(v.z>1)continue;const sx=rect.left+(v.x*.5+.5)*rect.width,sy=rect.top+(-v.y*.5+.5)*rect.height;const dx=sx-mx,dy=sy-my,d=dx*dx+dy*dy;if(d<bd){bd=d;best=i;}}return best;}
+  function setHover(i){if(i===hoverI)return;
+    if(hoverI>=0){const el=labelEls[hoverI];el.classList.remove("hl");el.textContent=TRUNC(DATA[hoverI].title);}
+    hoverI=i;
+    if(i>=0){const el=labelEls[i];el.classList.add("hl");el.textContent=DATA[i].title;el.style.opacity=1;cv.style.cursor="pointer";}else cv.style.cursor="grab";}
+  cv.addEventListener("pointermove",e=>{
+    if(interior){setHover(-1);cv.style.cursor=codeAt(e.clientX,e.clientY)?"pointer":"grab";return;}
+    const sk=sunAt(e.clientX,e.clientY);
+    if(sk){setHover(-1);cv.style.cursor="pointer";}
+    else setHover(nearest(e.clientX,e.clientY));
+  });
+  cv.addEventListener("pointerleave",()=>setHover(-1));
+  cv.addEventListener("click",e=>{
+    if(interior){const ck=codeAt(e.clientX,e.clientY);if(ck)openCodePanel(ck);return;}
+    if(flyPhase)return;
+    const sk=sunAt(e.clientX,e.clientY);
+    if(sk){openThemePanel(sk);return;}
+    const i=nearest(e.clientX,e.clientY);
+    if(i>=0){flashI=i;flashRequest=true;openPanel(DATA[i],subOf[i]);}
+  });
+  // Escape: close the panel, release any focus, planets drift home
+  document.addEventListener("keydown",e=>{
+    if(e.key!=="Escape"||!document.body.classList.contains("mode-explore"))return;
+    if(panel.classList.contains("open")){panel.classList.remove("open");return;}
+    if(interior){exitPlanet();return;}
+    if(rel){exq.value="";
+      const sq=document.getElementById("q");
+      if(sq.value){sq.value="";sq.dispatchEvent(new Event("input"));}
+      release();
+      try{history.replaceState(null,"","#explore");}catch(err){}}
+  });
+  // share the current view (query or theme focus travels in the hash)
+  document.getElementById("exshare").onclick=()=>{
+    navigator.clipboard.writeText(location.href).then(()=>toast("Link copied — opens this exact view"));
+  };
+  controls.addEventListener("change",positionLabels);
+  window.addEventListener("resize",positionLabels);
+  function esc(t){return (t||"").replace(/[&<>"']/g,x=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]));}
+  function fmtDate(d){d=d||"";return /\(approx\)/.test(d)?("~"+d.replace(/\s*\(approx\)\s*/,"")):d;}
+  function openPanel(s,sub){pbody.innerHTML=`<div class="psub" style="color:${COL[sub]}">${sub}</div><div class="pmeta">${esc(s.source)} · ${esc(fmtDate(s.date))}${(s._runs||[]).length>1?` · seen in ${s._runs.length} runs`:""}</div><h3>${esc(s.title)}</h3><p>${esc(s.summary)}</p>${s.novelty_note?`<div class="pnote"><b>Novelty:</b> ${esc(s.novelty_note)}</div>`:""}${s.cross_substrate_notes?`<div class="pnote"><b>Crosscurrents:</b> ${esc(s.cross_substrate_notes)}</div>`:""}<a class="go" href="${esc(s.url)}" target="_blank" rel="noopener">Read the source →</a>`;panel.classList.remove("wide");panel.classList.add("open");}
+  document.getElementById("panel-close").onclick=()=>panel.classList.remove("open");
+
+  // ---- theme suns: descriptions + click-to-read (from NEED_TAXONOMY.md) ----
+  const NEED_DESC={
+    "Certified Human":{one:"Prove to me a person made this and meant it.",
+      body:"The need to trust that what you perceive and consume is real, traceable, and made by a person who meant it. Provenance claims, anti-slop criticism, durational handcraft, labor-time as content, sincerity as method. The most era-defining of the needs — and the one most likely to date as the AI-saturation moment evolves."},
+    "Kinship":{one:"Build me the structures that put me in a room with my people.",
+      body:"The need for unmediated bodily togetherness, now deliberately built rather than assumed: gatherings, sleepovers, scenes, markets, mutual aid, mentorship — plus the diagnoses of togetherness failing (phones, automated intimacy, dead dancefloors). Togetherness has become infrastructure, engineered on purpose because it no longer happens by default."},
+    "Settling Accounts":{one:"See the record corrected, and the losses properly held.",
+      body:"The need for a past that has been fairly judged and properly mourned: recantations, canon recovery, restitution, biopic and legacy wars, archive rescue, grief given durable form. The single largest engine in this corpus — the culture compulsively reopens the past to re-judge it or recover what was wrongly buried."},
+    "Self-Authorship":{one:"I write me — not the platform, the estate, or the algorithm.",
+      body:"The need to be the author, not the authored: reclaimed identities, careers deliberately destroyed or rewritten, gender as practice, refusal of brand-ness — and the newest variant, the right to illegibility: withholding yourself from platform readability as an identity act. Recognition without becoming what recognition demands."},
+    "Appetite":{one:"Let me actually want things, in my actual body.",
+      body:"The need to feel your own wanting — hunger, pleasure, intensity — against pharmaceutical, algorithmic, and managerial suppression. GLP-1 discourse, defended indulgence, sedation diagnosed, joy as discipline, vicarious wildness. The smallest theme but the most consistently startling: the culture is treating desire itself as endangered."},
+    "Ballast":{one:"Help me hold the weight and keep moving.",
+      body:"The need to stay emotionally upright inside ongoing collapse: doom as operating register, grief externalized into form, comedy and calm as civic medicine, refuge aesthetics. Not solving the unbearable — metabolizing it."},
+    "Naming the Machine":{one:"Show me the machinery acting on me, in words I can repeat.",
+      body:"The need to see the systems acting on you, named plainly: illegitimate power, wage theft as default, attention and prediction markets, algorithmic management, supply-chain unmaskings. Comprehension as the precondition of agency. Carries a known genre-confound: intellectual magazines diagnose systems by trade."},
+    "unsettled":{one:"The honest residue.",
+      body:"Signals processing no single need the taxonomy can see: pure formal play, craft-for-craft's-sake, and the emerging more-than-human cluster (ecology, kinship beyond the human) that may become an eighth need if it grows. Kept deliberately small — no pseudo-need invented to mop it up."}
+  };
+  const themeCount={};subOf.forEach(k=>themeCount[k]=(themeCount[k]||0)+1);
+  function openThemePanel(k){
+    const d=NEED_DESC[k]||{one:k,body:""};
+    const focused=(focusedTheme===k);
+    pbody.innerHTML=`<div class="psub" style="color:${COL[k]}">${esc(k==="unsettled"?"Unsettled":k)}</div>
+      <div class="pmeta">${themeCount[k]||0} signals in this system · one of the 7 needs (+ residue)</div>
+      <h3>${esc(d.one)}</h3><p>${esc(d.body)}</p>
+      <div class="gobtns">
+        <a class="go" href="#" id="focus-theme">${focused?"Release →":"Pull into orbit →"}</a>
+        ${window.CODES&&window.CODES[k]?`<a class="go" href="#" id="lookfeel">Look &amp; feel →</a>`:""}
+      </div>`;
+    panel.classList.remove("wide");panel.classList.add("open");
+    document.getElementById("focus-theme").onclick=e=>{e.preventDefault();panel.classList.remove("open");
+      if(focused)release();else applyTheme(k);};
+    const lf=document.getElementById("lookfeel");
+    if(lf)lf.onclick=e=>{e.preventDefault();window.__enterPlanet(k);};
+  }
+  const sv=new THREE.Vector3();
+  function sunAt(mx,my){const rect=cv.getBoundingClientRect();let best=null,bd=42*42;  // generous: click the planet OR its glow/label to open its summary
+    for(const k in anchors){sv.copy(anchors[k]).project(camera);if(sv.z>1)continue;
+      const sx=rect.left+(sv.x*.5+.5)*rect.width,sy=rect.top+(-sv.y*.5+.5)*rect.height;
+      const dx=sx-mx,dy=sy-my,d=dx*dx+dy*dy;if(d<bd){bd=d;best=k;}}
+    return best;}
+
+  // ---- planet interior: fly INTO a need-sun to explore its semiotic codes ----
+  // (pilot: needs present in window.CODES; codes orbit an inner core, each
+  // dressed in its own observed palette; click a code for the full board.)
+  let interior=null,interiorParts=null,flyK=null,flyPhase=0;
+  let viewOffX=0;   // eased horizontal lens-shift so the interior recenters into the left half when a wide code board is open
+  const INT_C=new THREE.Vector3(0,-640,0);
+  const warp=document.createElement("div");warp.id="warp";view.appendChild(warp);
+  const pui=document.createElement("div");pui.id="planet-ui";
+  pui.innerHTML=`<h2 id="pui-h"></h2><p class="sub" id="pui-sub"></p><button id="planet-back">← Back to the constellation</button>`;
+  view.appendChild(pui);
+  pui.querySelector("#planet-back").onclick=()=>exitPlanet();
+  function hsl(hex){const n=parseInt(hex.slice(1),16),r=(n>>16)/255,g=((n>>8)&255)/255,b=(n&255)/255;
+    const mx=Math.max(r,g,b),mn=Math.min(r,g,b),l=(mx+mn)/2,s=mx===mn?0:(mx-mn)/(1-Math.abs(2*l-1));return{s,l};}
+  function codeColor(c,k){
+    for(const p of (c.visual&&c.visual.palette)||[]){const{s,l}=hsl(p.hex);if(s>.18&&l>.18&&l<.72)return p.hex;}
+    return COL[k];}
+  function setConstellationVisible(vis){
+    points.visible=vis;
+    for(const k2 in suns){suns[k2].visible=vis;sunGlows[k2].visible=vis;}
+    if(!vis)for(const k2 in labels)labels[k2].style.display="none";
+    document.querySelector(".legend").style.display=vis?"":"none";
+    document.querySelector(".ex-search").style.display=vis?"":"none";
+    document.querySelector(".hint-3d").style.display=vis?"":"none";
+    document.querySelector(".ex-title").style.display=vis?"":"none";
+    if(!vis){searchSun.visible=searchGlow.visible=false;}
+    pui.style.display=vis?"none":"block";
+  }
+  function buildInterior(k){
+    const cdata=window.CODES[k];
+    const group=new THREE.Group();
+    const core=new THREE.Mesh(new THREE.SphereGeometry(5.2,26,17),sunMaterial(COL[k]));core.position.copy(INT_C);
+    const coreGlow=makeGlow(COL[k],74,.4);coreGlow.position.copy(INT_C);
+    group.add(core,coreGlow);
+    const nodes=[];
+    const m=cdata.codes.length;
+    cdata.codes.forEach((c,j)=>{
+      const pal=(c.visual.palette||[]);
+      const hex=codeColor(c,k);
+      const node=new THREE.Mesh(new THREE.SphereGeometry(4.2,26,18),sunMaterial(hex));
+      const glow=makeGlow(hex,40,.55);
+      const ang=j/m*Math.PI*2;
+      const off=new THREE.Vector3(Math.cos(ang)*34,(j%2?4.2:-4.2),Math.sin(ang)*34);
+      // palette satellites: each code is literally dressed in its observed colors,
+      // a tight ring of swatch-moons close to the code planet
+      const sats=pal.slice(0,5).map((p,si)=>{
+        const sm=new THREE.Mesh(new THREE.SphereGeometry(.95,12,9),new THREE.MeshBasicMaterial({color:new THREE.Color(p.hex)}));
+        group.add(sm);return{mesh:sm,r:6.4+si*1.5,ph:si*2.1,sp:.4+.1*si};});
+      // a soft second halo in a secondary palette color, so the planet reads as
+      // multi-hued rather than a single dot
+      let halo=null;
+      if(pal.length>1){halo=makeGlow(pal[pal.length-1].hex,58,.18);group.add(halo);}
+      const lab=document.createElement("div");lab.className="anchor-label code-label";lab.style.color=hex;
+      lab.innerHTML=`${c.name.replace(/&/g,"&amp;").replace(/</g,"&lt;")}<span class="cl-status">${c.status}</span>`;
+      view.appendChild(lab);
+      group.add(node,glow);
+      nodes.push({c,node,glow,halo,off,sats,lab,phase:j*1.3,glowBase:40});
+    });
+    scene.add(group);
+    interiorParts={group,nodes,core,coreGlow};
+    pui.querySelector("#pui-h").textContent=k+" — look & feel";
+    pui.querySelector("#pui-sub").textContent=cdata.codes.length+" semiotic codes · "+cdata.images_observed+" images observed · updated "+cdata.updated+" · click a code to open its board";
+  }
+  function disposeInterior(){
+    if(!interiorParts)return;
+    scene.remove(interiorParts.group);
+    interiorParts.nodes.forEach(n=>{n.lab.remove();n.node.geometry.dispose();});
+    interiorParts=null;
+  }
+  function enterPlanet(k){
+    if(interior||flyPhase||!window.CODES[k])return;
+    poke();release();panel.classList.remove("open");
+    flyK=k;flyPhase=1;controls.enabled=false;
+    warp.style.background=`radial-gradient(circle at 50% 50%, rgba(255,255,255,1) 0%, rgba(242,237,228,1) 100%)`;
+    try{history.replaceState(null,"","#explore&lookfeel="+encodeURIComponent(k));}catch(e){}
+  }
+  function finishEnter(){
+    warp.style.opacity=1;
+    setTimeout(()=>{
+      interior=flyK;flyPhase=0;flyK=null;
+      buildInterior(interior);
+      setConstellationVisible(false);
+      camera.position.copy(INT_C).add(tmp.set(0,6,50));
+      controls.target.copy(INT_C);
+      bgTarget.set(0xeae5dc);
+      controls.enabled=true;controls.autoRotate=true;
+      animateInterior(clock.getElapsedTime());
+      warp.style.opacity=0;
+    },1000);
+  }
+  function exitPlanet(){
+    if(!interior)return;
+    panel.classList.remove("open");
+    warp.style.opacity=1;
+    setTimeout(()=>{
+      disposeInterior();
+      setConstellationVisible(true);
+      interior=null;
+      camera.position.set(0,30,210);controls.target.set(0,0,0);
+      bgTarget.copy(bgBase);
+      controls.autoRotate=true;
+      warp.style.opacity=0;
+      try{history.replaceState(null,"","#explore");}catch(e){}
+    },1000);
+  }
+  const civ=new THREE.Vector3();
+  function animateInterior(time){
+    const P=interiorParts;if(!P)return;
+    const s=P.coreGlow;const gs=74*(1+.05*Math.sin(time*.8));s.scale.set(gs,gs,1);
+    const rct2=cv.getBoundingClientRect();
+    for(const n of P.nodes){
+      civ.copy(n.off).applyAxisAngle(YAXIS,time*.05);
+      n.node.position.copy(INT_C).add(civ);
+      n.node.position.y+=Math.sin(time*.7+n.phase)*1.1;
+      n.glow.position.copy(n.node.position);
+      const g2=n.glowBase*(1+.06*Math.sin(time*1.1+n.phase));n.glow.scale.set(g2,g2,1);
+      if(n.halo){n.halo.position.copy(n.node.position);const h2=58*(1+.08*Math.sin(time*.6+n.phase));n.halo.scale.set(h2,h2,1);}
+      for(const st of n.sats){
+        st.mesh.position.copy(n.node.position);
+        st.mesh.position.x+=Math.cos(time*st.sp+st.ph)*st.r;
+        st.mesh.position.z+=Math.sin(time*st.sp+st.ph)*st.r;
+        st.mesh.position.y+=Math.sin(time*.9+st.ph)*1.1;
+      }
+      tmp.copy(n.node.position).project(camera);
+      const vis2=tmp.z<1;
+      n.lab.style.display=vis2?"block":"none";
+      if(vis2){n.lab.style.left=(rct2.left+(tmp.x*.5+.5)*rct2.width)+"px";
+        n.lab.style.top=(rct2.top+(-tmp.y*.5+.5)*rct2.height-14)+"px";}
+    }
+  }
+  function codeAt(mx,my){
+    if(!interiorParts)return null;
+    const rect=cv.getBoundingClientRect();let best=null,bd=30*30;
+    for(const n of interiorParts.nodes){tmp.copy(n.node.position).project(camera);if(tmp.z>1)continue;
+      const sx=rect.left+(tmp.x*.5+.5)*rect.width,sy=rect.top+(-tmp.y*.5+.5)*rect.height;
+      const dx=sx-mx,dy=sy-my,d=dx*dx+dy*dy;if(d<bd){bd=d;best=n.c;}}
+    return best;}
+  function openCodePanel(c){
+    const hex=codeColor(c,interior);
+    const imgs=c.evidence.flatMap(e2=>(e2.image_refs||[]).map(u=>({u,a:e2.url,s:e2.source}))).slice(0,15);
+    pbody.innerHTML=`<div class="psub" style="color:${hex}">${esc(c.name)}<span class="stat2" style="color:${hex}">${esc(c.status)}</span></div>
+      <h3 style="font-size:18px">${esc(c.one_liner)}</h3>
+      ${imgs.length?`<div class="pcollage">${imgs.map(i=>`<a href="${esc(i.a)}" target="_blank" rel="noopener" title="${esc(i.s)}"><img loading="lazy" referrerpolicy="no-referrer" src="${esc(i.u)}" alt="" onerror="this.parentElement.style.display='none'"></a>`).join("")}</div>`:""}
+      <div class="swmini">${(c.visual.palette||[]).map(p=>`<i style="background:${esc(p.hex)}" title="${esc(p.name)} ${esc(p.hex)}"></i>`).join("")}</div>
+      <p style="font-size:13px">${esc(c.definition)}</p>
+      <div class="plabel">Visual register</div>
+      <div class="chiprow">${[...(c.visual.materials_textures||[]),...(c.visual.composition||[])].slice(0,8).map(x=>`<span class="chip2">${esc(x)}</span>`).join("")}</div>
+      <div class="plabel">Verbal register</div>
+      <div class="chiprow">${(c.verbal.lexicon||[]).slice(0,9).map(x=>`<span class="chip2">${esc(x)}</span>`).join("")}</div>
+      ${(c.verbal.sample_phrases||[]).slice(0,2).map(q=>`<blockquote>“${esc(q.quote)}” <a href="${esc(q.url)}" target="_blank" rel="noopener">${esc(q.source)} →</a></blockquote>`).join("")}
+      <div class="pnote"><b>Against:</b> ${esc(c.tensions)}</div>
+      <div class="pnote"><b>Execution:</b> ${esc(c.execution_notes)}</div>
+      <div class="plabel">Evidence</div>
+      ${c.evidence.slice(0,5).map(e2=>`<p style="font-size:12px;margin:3px 0"><a style="color:#c9c6c0" href="${esc(e2.url)}" target="_blank" rel="noopener">${esc(e2.source)} →</a></p>`).join("")}
+      <div class="pnote" style="font-size:11px">Imagery embedded live from the publishers' servers — nothing stored. Trajectory: ${c.history.map(h=>`${esc(h.run)} ${esc(h.change)}`).join(" → ")}</div>`;
+    panel.classList.add("open","wide");
+  }
+  window.__enterPlanet=enterPlanet; // theme panel button hooks in here
+
+  // an occasional shooting star, far out in the deep field
+  const trailN=16,trailPos=new Float32Array(trailN*3);
+  const trailGeo=new THREE.BufferGeometry();trailGeo.setAttribute("position",new THREE.BufferAttribute(trailPos,3));
+  const trailMat=new THREE.LineBasicMaterial({color:0xcfd8ff,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false});
+  scene.add(new THREE.Line(trailGeo,trailMat));
+  const metFrom=new THREE.Vector3(),metTo=new THREE.Vector3();
+  let metStart=-10,metNext=7+Math.random()*15;
+
+  const tmp=new THREE.Vector3(),orbV=new THREE.Vector3();
+  const clock=new THREE.Clock();
+  let frameN=0;
+  function frame(){controls.update();
+    const time=clock.getElapsedTime();
+    if(entrance){ // arrival: dolly in from deep space, cancelled by any touch
+      camera.position.lerp(ENTRANCE_TARGET,0.028);
+      if(camera.position.distanceTo(ENTRANCE_TARGET)<2)entrance=false;
+    }
+    if(flyPhase===1){ // diving into a need-sun (look & feel)
+      controls.target.lerp(anchors[flyK],0.11);
+      camera.position.lerp(anchors[flyK],0.095);
+      if(camera.position.distanceTo(anchors[flyK])<22){flyPhase=2;finishEnter();}
+    }
+    dofMat.uniforms.uTime.value=time;          // star twinkle
+    dofMat.uniforms.uFade.value=Math.min(1,time/1.6);     // stars resolve from black
+    if(time<1.9&&!rel){const f=Math.min(1,time/1.6);      // suns resolve with them
+      for(const k in suns){suns[k].material.uniforms.uOpacity.value=f;sunGlows[k].material.opacity=.5*f;}}
+    // atmosphere drifts toward (or back from) the focus colour
+    bgCur.lerp(bgTarget,0.035);renderer.setClearColor(bgCur);scene.fog.color.copy(bgCur);
+    // planets: each star eases toward its orbital position around its sun
+    for(let i=0;i<N;i++){const h=homes[i];
+      orbV.copy(h.off).applyAxisAngle(h.axis,time*h.speed).add(h.anchor);
+      const p=worldPos[i];p.lerp(orbV,0.07);
+      pos[i*3]=p.x;pos[i*3+1]=p.y;pos[i*3+2]=p.z;}
+    geo.attributes.position.needsUpdate=true;
+    // suns breathe — glow swells and settles, each on its own phase
+    for(const k in sunGlows){const s=glowBase[k]*(1+.045*Math.sin(time*.9+glowPhase[k]));sunGlows[k].scale.set(s,s,1);}
+    if(interior)animateInterior(time);   // code moons orbit the inner core
+    // when a wide code board is open, lens-shift the scene left so it fills the
+    // visible half rather than sitting behind the panel
+    {const W=window.innerWidth,H=window.innerHeight;
+     const wantOff=(interior&&panel.classList.contains("open")&&panel.classList.contains("wide"))?W*0.25:0;
+     viewOffX+=(wantOff-viewOffX)*0.12;
+     if(viewOffX>0.5){camera.setViewOffset(W,H,viewOffX,0,W,H);}
+     else if(camera.view&&camera.view.enabled){camera.clearViewOffset();}}
+    // search sun: ease into (or out of) being
+    sunScale+=(sunScaleTarget-sunScale)*0.08;
+    if(sunScale<0.02&&!sunScaleTarget){searchSun.visible=searchGlow.visible=false;}
+    else{searchSun.visible=searchGlow.visible=true;
+      searchSun.scale.setScalar(Math.max(.001,sunScale));
+      const gs=52*sunScale*(1+.05*Math.sin(time*1.6));
+      searchGlow.scale.set(gs,gs,1);}
+    // constellation lines: rays from the focus sun to its orbiting signals
+    lineMat.opacity+=(lineOpTarget-lineMat.opacity)*0.045;  // slow sketch-in
+    if(lineIdx.length&&lineMat.opacity>0.005){
+      for(let k=0;k<lineIdx.length;k++){const p=worldPos[lineIdx[k]];
+        linePos[k*6]=0;linePos[k*6+1]=0;linePos[k*6+2]=0;
+        linePos[k*6+3]=p.x;linePos[k*6+4]=p.y;linePos[k*6+5]=p.z;}
+      lineGeo.setDrawRange(0,lineIdx.length*2);
+      lineGeo.attributes.position.needsUpdate=true;
+    }else lineGeo.setDrawRange(0,0);
+    // birth pulse: one expanding ring when a sun comes into being
+    if(pulseRequest){pulseRequest=false;pulseStart=time;}
+    const pt=(time-pulseStart)/1.1;
+    if(pt>=0&&pt<=1){pulse.visible=true;
+      const ps=4+pt*86;pulse.scale.setScalar(ps);
+      pulse.material.opacity=(1-pt)*(1-pt)*.5;
+      pulse.quaternion.copy(camera.quaternion);
+    }else pulse.visible=false;
+    // click flash: a spark on the star you just selected
+    if(flashRequest){flashRequest=false;flashStart=time;}
+    const ft=(time-flashStart)/.5;
+    if(ft>=0&&ft<=1&&flashI>=0){
+      flash.position.copy(worldPos[flashI]);
+      flash.material.opacity=Math.sin(ft*Math.PI)*.85;
+      const fsc=8+ft*7;flash.scale.set(fsc,fsc,1);
+    }else flash.material.opacity=0;
+    // shooting star: a brief streak across the deep field, then a long wait
+    if(time>metNext){
+      metStart=time;metNext=time+16+Math.random()*28;
+      const r1=()=>Math.random()*2-1;
+      metFrom.set(r1(),r1()*.5,r1()).normalize().multiplyScalar(430);
+      metTo.copy(metFrom).add(tmp.set(r1(),r1()*.4,r1()).normalize().multiplyScalar(260));
+    }
+    const mt=(time-metStart)/1.3;
+    if(mt>=0&&mt<=1){
+      trailMat.opacity=Math.sin(mt*Math.PI)*.65;
+      for(let s2=0;s2<trailN;s2++){const tt=Math.max(0,mt-s2*.012);
+        tmp.copy(metFrom).lerp(metTo,tt);
+        trailPos[s2*3]=tmp.x;trailPos[s2*3+1]=tmp.y;trailPos[s2*3+2]=tmp.z;}
+      trailGeo.attributes.position.needsUpdate=true;
+    }else trailMat.opacity=0;
+    if((frameN++&1)===0)positionLabels();   // labels track the orbits (every other frame)
+    dofMat.uniforms.focusDist.value=camera.position.distanceTo(controls.target);
+    dofMat.uniforms.scale.value=window.innerHeight*Math.min(devicePixelRatio,2)*0.5;
+    const rct=cv.getBoundingClientRect();
+    for(const k in labels){tmp.copy(anchors[k]).project(camera);const vis=tmp.z<1&&!rel&&!interior&&!flyPhase;labels[k].style.display=vis?"block":"none";labels[k].style.left=(rct.left+(tmp.x*.5+.5)*rct.width)+"px";labels[k].style.top=(rct.top+(-tmp.y*.5+.5)*rct.height)+"px";}
+    // cluster (theme) suns: ease in/out, breathe, and float their keyword label
+    for(let c=0;c<MAXCLUST;c++){
+      const on=(c<activeClusters)&&!!rel&&!interior&&!flyPhase;
+      clustScale[c]+=((on?1:0)-clustScale[c])*0.1;
+      const mesh=clustSuns[c],glow=clustGlows[c],lab=clustLabels[c];
+      if(clustScale[c]<0.02){mesh.visible=glow.visible=false;lab.style.display="none";continue;}
+      mesh.visible=glow.visible=true;
+      mesh.position.copy(clustAnchor[c]);glow.position.copy(clustAnchor[c]);
+      mesh.scale.setScalar(Math.max(.001,clustScale[c]*2.4));
+      mesh.material.uniforms.uOpacity.value=clustScale[c];
+      const gs=20*clustScale[c]*(1+.05*Math.sin(time*1.1+c*1.3));glow.scale.set(gs,gs,1);
+      tmp.copy(clustAnchor[c]).project(camera);
+      if(tmp.z<1&&clustScale[c]>0.4){lab.style.display="block";
+        lab.style.left=(rct.left+(tmp.x*.5+.5)*rct.width)+"px";
+        lab.style.top=(rct.top+(-tmp.y*.5+.5)*rct.height-20)+"px";}
+      else lab.style.display="none";
+    }
+    // the search sun's name floats above it
+    if(rel&&sunScale>0.1){tmp.set(0,0,0).project(camera);
+      sunLabel.style.display=tmp.z<1?"block":"none";
+      sunLabel.style.left=(rct.left+(tmp.x*.5+.5)*rct.width)+"px";
+      sunLabel.style.top=(rct.top+(-tmp.y*.5+.5)*rct.height-26)+"px";
+    }else sunLabel.style.display="none";
+    renderer.render(scene,camera);
+    requestAnimationFrame(frame);}
+  positionLabels(); frame();
+};
+
+</script>
+<script>
+(function(){
+  if(!window.DATA||!window.DATA.length){ var n=document.getElementById('__nodata'); if(n)n.style.display='grid'; return; }
+  try{ if(typeof window.__initExplore==='function') window.__initExplore(); }catch(e){ console.error('universe init failed',e); }
+  var b=document.getElementById('u-back');
+  if(b)b.addEventListener('click',function(ev){ev.preventDefault(); try{ if(window.parent&&window.parent.__exitUniverse) window.parent.__exitUniverse(); }catch(e){}});
+})();
+</script>
+</body>
+</html>

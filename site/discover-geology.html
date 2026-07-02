@@ -32,6 +32,10 @@
   .masthead h1{font-size:13px;letter-spacing:.34em;text-transform:uppercase;margin:0;font-weight:600;color:#cfc8ba}
   .masthead p{margin:9px 0 0;font-size:12.5px;line-height:1.6;color:var(--mute);max-width:40ch}
   .masthead .meta{margin-top:7px;font-size:11px;letter-spacing:.08em;color:#5f5a51}
+  .masthead #see-universe{display:inline-block;margin-top:13px;pointer-events:auto;cursor:pointer;
+    font-size:12px;letter-spacing:.03em;color:#e2bd72;text-decoration:none;
+    border-bottom:1px solid rgba(226,189,114,.4);padding-bottom:1px}
+  .masthead #see-universe:hover{color:#fff;border-color:#fff}
 
   /* ---- legend ---- */
   .legend{position:fixed;left:30px;bottom:24px;z-index:6;font-size:12px;color:#cfccc6;
@@ -147,6 +151,7 @@
 <div class="masthead">
   <h1>Discover</h1>
   <p>The cultural sphere, divided into eight territories by how the corpus actually distributes. A territory's width is its share of the field. Click one to lift the shard.</p>
+  <a id="see-universe" href="#">See the whole universe &rarr;</a>
   <div class="meta" id="totmeta"></div>
 </div>
 
@@ -301,6 +306,10 @@ function init(){
   geoq.addEventListener('input',()=>{clearTimeout(gdeb);gdeb=setTimeout(()=>reconstitute(geoq.value),160);});
   geoq.addEventListener('keydown',e=>{if(e.key==='Enter'){clearTimeout(gdeb);reconstitute(geoq.value);}});
   document.getElementById('geoclear').addEventListener('click',()=>{geoq.value='';reconstitute('');geoq.focus();});
+  // "See the whole universe" -> ask the parent site to swap in the constellation view
+  const su=document.getElementById('see-universe');
+  if(su)su.addEventListener('click',e=>{e.preventDefault();
+    try{ if(window.parent&&window.parent!==window&&window.parent.__enterUniverse) window.parent.__enterUniverse(); }catch(err){}});
   // carry an existing site query into the sphere on load (embedded in the Explore tab)
   try{
     const pq=window.parent&&window.parent!==window&&window.parent.document.getElementById('q');

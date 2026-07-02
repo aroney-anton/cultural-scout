@@ -12,7 +12,7 @@ Monthly update: re-run build_corpus.py (folds in the new run), then this. The
 site is just a view of the corpus — only whoever runs these scripts can change
 what the team sees.
 """
-import json, os, re, sys
+import json, os, re, shutil, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CORPUS = os.path.join(HERE, "corpus.json")
@@ -139,6 +139,16 @@ def main():
     kb = round(len(html.encode("utf-8")) / 1024)
     print(f"Wrote {OUT}: {len(signals)} signals, {len(runs)} runs, {len(sources)} sources, ~{kb} KB single file.")
     print("Open it: double-click site/index.html, or deploy the site/ folder to any static host.")
+
+    # "See the whole universe" — the recovered constellation view is a static,
+    # self-contained page (it mirrors the parent's DATA/scorer via window.parent),
+    # so it just gets copied into site/ rather than data-injected.
+    universe = os.path.join(HERE, "mockup_discover_universe.html")
+    if os.path.exists(universe):
+        shutil.copy(universe, os.path.join(HERE, "site", "discover-universe.html"))
+        print("  Copied universe view -> site/discover-universe.html")
+    else:
+        print("  [universe] NOTE: mockup_discover_universe.html not present yet — universe toggle will 404 until it's added.")
 
     # Also re-bake the geology globe (Explore view) from the same corpus so it
     # never drifts stale behind the Search tab. Degrades gracefully if absent.
