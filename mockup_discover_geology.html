@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Discover · The Cultural Sphere (geological mockup)</title>
+<style>
+  :root{
+    --bg:#0b0d10; --ink:#ece7dd; --mute:#8e887d; --line:rgba(255,255,255,.12);
+    --panel:#14110d; --panel2:#1b1812;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;overflow:hidden;
+    background:
+      radial-gradient(120% 82% at 50% 113%, rgba(216,170,106,0.74) 0%, rgba(255,178,92,0) 46%),
+      linear-gradient(180deg, #14172a 0%, #2a2433 36%, #543829 66%, #8a5535 88%, #aa703e 100%);
+    background-attachment:fixed}
+  #scene{position:fixed;inset:0;z-index:1}
+  canvas{display:block}
+  /* territory labels floating on the globe */
+  #labels{position:fixed;inset:0;z-index:4;pointer-events:none}
+  .tlabel{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;
+    font-size:11.5px;letter-spacing:.04em;font-weight:600;color:#fdf4e4;
+    text-shadow:0 1px 5px rgba(0,0,0,.85),0 0 2px rgba(0,0,0,.9);
+    transition:opacity .25s;padding:2px 8px;border-radius:20px;
+    background:rgba(28,18,10,.34);border:1px solid rgba(255,228,190,.18);backdrop-filter:blur(2px)}
+  .tlabel small{font-weight:400;opacity:.7;margin-left:5px;font-variant-numeric:tabular-nums}
+
+  /* ---- title ---- */
+  .masthead{position:fixed;top:26px;left:30px;z-index:6;max-width:42ch;pointer-events:none}
+  .masthead h1{font-size:13px;letter-spacing:.34em;text-transform:uppercase;margin:0;font-weight:600;color:#cfc8ba}
+  .masthead p{margin:9px 0 0;font-size:12.5px;line-height:1.6;color:var(--mute);max-width:40ch}
+  .masthead .meta{margin-top:7px;font-size:11px;letter-spacing:.08em;color:#5f5a51}
+
+  /* ---- legend ---- */
+  .legend{position:fixed;left:30px;bottom:24px;z-index:6;font-size:12px;color:#cfccc6;
+    display:flex;flex-direction:column;gap:5px}
+  .legend .lg{display:flex;align-items:center;gap:9px;cursor:pointer;opacity:.78;
+    transition:opacity .2s;padding:1px 0}
+  .legend .lg:hover{opacity:1}
+  .legend .lg i{width:11px;height:11px;border-radius:2px;flex:none;
+    box-shadow:0 0 0 1px rgba(255,255,255,.16) inset}
+  .legend .lg b{font-weight:500}
+  .legend .lg span{color:#6f6a61;font-variant-numeric:tabular-nums}
+  .hint{position:fixed;right:30px;bottom:24px;z-index:6;font-size:11.5px;color:#5f5a51;
+    text-align:right;line-height:1.8;pointer-events:none}
+
+  /* ---- callout sheet ---- */
+  #callout{position:fixed;top:5vh;right:24px;height:90vh;width:min(820px,62vw);z-index:8;
+    background:linear-gradient(180deg,var(--panel) 0%,var(--panel2) 100%);
+    border:1px solid var(--line);border-radius:12px;box-shadow:-30px 24px 90px rgba(0,0,0,.55);
+    transform:translateX(calc(100% + 40px));opacity:0;
+    transition:transform .6s cubic-bezier(.16,.84,.3,1),opacity .5s;
+    display:flex;flex-direction:column;overflow:hidden}
+  #callout.open{transform:translateX(0);opacity:1}
+  .co-top{display:flex;justify-content:space-between;align-items:flex-start;
+    padding:24px 30px 0}
+  .co-eyebrow{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+  #co-close{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.04);
+    color:#cfccc6;border-radius:3px;font-size:11px;letter-spacing:.06em;padding:7px 11px;cursor:pointer}
+  #co-close:hover{border-color:rgba(255,255,255,.4);color:#fff}
+  .co-scroll{flex:1;overflow-y:auto;padding:6px 30px 60px;scroll-behavior:smooth}
+  .co-scroll::-webkit-scrollbar{width:9px}
+  .co-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.13);border-radius:5px}
+
+  /* section shells, dim until active so the "which layer" link is felt */
+  .sec{position:relative;padding:22px 0;border-bottom:1px solid var(--line);
+    opacity:.5;transition:opacity .4s}
+  .sec.active{opacity:1}
+  .sec .layer-tag{position:absolute;left:-30px;top:30px;width:4px;height:0;border-radius:2px;
+    transition:height .45s,opacity .4s;opacity:0}
+  .sec.active .layer-tag{opacity:1}
+
+  /* A — territory name (deep layer) */
+  .t-name{font-size:34px;line-height:1.04;font-weight:600;margin:14px 0 4px;letter-spacing:-.01em}
+  .t-share{font-size:12px;letter-spacing:.1em;color:var(--mute);font-variant-numeric:tabular-nums;
+    display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .t-share i{width:9px;height:9px;border-radius:50%}
+  .t-one{font-size:17px;line-height:1.45;font-style:italic;color:#e8e2d6;margin:0 0 12px}
+  .t-body{font-size:13.5px;line-height:1.66;color:#b6b0a4;margin:0}
+  .lyr-cap{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6b665c;margin-bottom:4px}
+
+  /* B — look & feel (middle layer) */
+  .lf-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .lf-title{font-size:18px;font-weight:600;margin:6px 0 2px}
+  .lf-code{margin-top:14px;border-radius:7px;overflow:hidden;border:1px solid var(--line)}
+  .lf-img{width:100%;height:188px;object-fit:cover;display:block;background:#241c12}
+  .lf-meta{padding:13px 15px}
+  .lf-codename{font-size:15px;font-weight:600;letter-spacing:.01em;display:flex;align-items:center;gap:9px}
+  .lf-codename .swatch{width:15px;height:15px;border-radius:3px;flex:none;
+    box-shadow:0 0 0 1px rgba(255,255,255,.25) inset}
+  .lf-status{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);
+    border:1px solid var(--line);border-radius:20px;padding:2px 9px}
+  .lf-one{font-size:13px;line-height:1.55;color:#cfc7b8;margin:9px 0 0}
+  .lf-strip{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+  .lf-strip .chip{font-size:11px;color:#d8d1c4;border:1px solid var(--line);border-radius:20px;
+    padding:4px 10px;display:flex;align-items:center;gap:7px}
+  .lf-strip .chip i{width:9px;height:9px;border-radius:50%}
+  .lf-explore{display:inline-flex;align-items:center;gap:9px;margin-top:16px;cursor:pointer;
+    text-decoration:none;font:600 13px/1 inherit;letter-spacing:.02em;color:#1b140d;
+    background:#e2bd72;border:1px solid #e2bd72;border-radius:7px;padding:11px 16px}
+  /* in-callout look & feel panel: a flex child that fills the whole callout body */
+  #lf-frame{flex:1 1 auto;width:100%;min-height:0;border:0;display:none;background:var(--panel2)}
+  #lf-frame.show{display:block}
+  #lf-back{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.04);
+    color:#cfccc6;border-radius:3px;font:11px/1 inherit;letter-spacing:.06em;padding:7px 11px;cursor:pointer}
+  #lf-back:hover{border-color:rgba(255,255,255,.4);color:#fff}
+  .lf-explore span{font-size:15px;transition:transform .2s}
+  .lf-explore:hover span{transform:translateX(3px)}
+  .lf-empty{font-size:13px;line-height:1.6;color:#7e7a70;border:1px dashed var(--line);
+    border-radius:7px;padding:16px;margin-top:12px}
+
+  /* C — articles by lexical group (top layer) */
+  .grp{margin-top:16px}
+  .grp-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9b958a;
+    display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .grp-label::before{content:"";width:18px;height:1px;background:rgba(255,255,255,.25)}
+  .art{display:block;font-size:13px;line-height:1.4;color:#ddd6c9;text-decoration:none;
+    padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .art:hover{color:#fff}
+  .art .src{display:block;font-size:11px;color:#6f6a61;margin-top:2px}
+
+  /* loading / fallback */
+  #fallback{position:fixed;inset:0;z-index:20;display:none;place-items:center;
+    text-align:center;padding:40px;color:var(--mute);font-size:14px;line-height:1.7}
+
+  /* search-reconstitution: type and the sphere re-forms into query themes */
+  #geosearch{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:9;
+    display:flex;align-items:center;gap:6px;background:rgba(20,17,13,.82);
+    border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 8px 6px 16px;
+    backdrop-filter:blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
+  #geoq{background:transparent;border:0;outline:0;color:#f0e8da;font-size:14px;width:min(46vw,360px)}
+  #geoq::placeholder{color:#8a8170}
+  #geoclear{background:rgba(255,255,255,.1);border:0;color:#e8e0d2;border-radius:999px;
+    width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
+  #geoclear:hover{background:rgba(255,255,255,.22)}
+  #geomode{position:fixed;top:56px;left:50%;transform:translateX(-50%);z-index:9;
+    color:#d6cdbc;font-size:12px;background:rgba(20,17,13,.72);padding:5px 14px;border-radius:999px;
+    display:none;max-width:82vw;text-align:center;backdrop-filter:blur(6px)}
+</style>
+</head>
+<body>
+<div id="scene"></div>
+<div id="labels"></div>
+
+<div class="masthead">
+  <h1>Discover</h1>
+  <p>The cultural sphere, divided into eight territories by how the corpus actually distributes. A territory's width is its share of the field. Click one to lift the shard.</p>
+  <div class="meta" id="totmeta"></div>
+</div>
+
+<div id="geosearch">
+  <input id="geoq" type="search" autocomplete="off" spellcheck="false"
+         placeholder="search the sphere — it re-forms into themes">
+  <button id="geoclear" title="clear" style="display:none">✕</button>
+</div>
+<div id="geomode"></div>
+
+<div class="legend" id="legend"></div>
+<div class="hint">drag to turn the sphere<br>click a territory to open it<br>scroll the callout to read the strata</div>
+
+<aside id="callout">
+  <div class="co-top">
+    <button id="lf-back" style="display:none">&larr; Back to summary</button>
+    <div class="co-eyebrow" id="co-eyebrow">Territory</div>
+    <button id="co-close">Close ✕</button>
+  </div>
+  <iframe id="lf-frame" title="Look &amp; feel codes"></iframe>
+  <div class="co-scroll" id="co-scroll">
+    <section class="sec" id="sec-name" data-layer="0">
+      <div class="layer-tag" id="tag0"></div>
+      <div class="lyr-cap">Deepest stratum · the territory</div>
+      <div class="t-name" id="t-name"></div>
+      <div class="t-share" id="t-share"></div>
+      <p class="t-one" id="t-one"></p>
+      <p class="t-body" id="t-body"></p>
+    </section>
+
+    <section class="sec" id="sec-lf" data-layer="1">
+      <div class="layer-tag" id="tag1"></div>
+      <div class="lyr-cap">Middle stratum · look &amp; feel</div>
+      <div class="lf-head"><div class="lf-title">How this territory looks</div></div>
+      <div id="lf-body"></div>
+    </section>
+
+    <section class="sec" id="sec-art" data-layer="2">
+      <div class="layer-tag" id="tag2"></div>
+      <div class="lyr-cap">Top stratum · the signals</div>
+      <div class="lf-head"><div class="lf-title">What's in it, by lexical group</div></div>
+      <div id="art-body"></div>
+    </section>
+  </div>
+</aside>
+
+<div id="fallback">This mockup needs WebGL. Open it in a desktop browser (Chrome, Safari, Firefox).</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ===== DATA ===== */
+const GEO = /*__GEO__*/{"needs":[{"key":"Naming the Machine","n":193,"pct":22.4,"color":"#d671a8","one":"Show me the machinery acting on me, in words I can repeat.","body":"The need to see the systems acting on you, named plainly: illegitimate power, wage theft, attention and prediction markets, algorithmic management, supply-chain unmaskings. Comprehension as the precondition of agency.","code":null,"clusters":[{"label":"essay \u00b7 internet \u00b7 have","items":[{"t":"The Internet is Air with Maya Man","s":"032c.com"},{"t":"The blacklist is back: Paramount's retributions should worry the industry","s":"avclub.com"},{"t":"The Business Literacy Gap in Design Leadership","s":"coolhunting.com"},{"t":"The Architects of Anthropic's Public Image Have a Tough Job","s":"culturedmag.com"},{"t":"Producing Legibility with Sable Elyse Smith","s":"elephant.art"},{"t":"Ten Unspoken Rules of Art World Etiquette, As Told By Your Favourite PRs","s":"elephant.art"}]},{"label":"argues \u00b7 gala \u00b7 money","items":[{"t":"Into the Right-Wing Dreamworld","s":"thedriftmag.com"},{"t":"Kony 2012 Forever","s":"thenewinquiry.com"},{"t":"the monsters hiding in your algorithm","s":"etymology.substack.com"},{"t":"Everything's probably fake now","s":"garbageday.email"},{"t":"Architecture in the 21st Century","s":"pinuphome.com"},{"t":"Meme Culture's Corrosive Effect on the American Heart","s":"popmatters.com"}]},{"label":"arguing \u00b7 williams \u00b7 post-reality","items":[{"t":"Panic! At the post-reality (Katherine Williams on How to See Like a Machine)","s":"dirt.fyi"},{"t":"Marked Down","s":"nplusonemag.com"},{"t":"Totally Spies: Surveillance, Girlhood, & the Millennial Spy Complex","s":"polyesterzine.com"},{"t":"Directing the Herd","s":"thedriftmag.com"},{"t":"Who Is Nick Bilton?","s":"todayintabs.com"},{"t":"The sound and fury of Manu Joseph","s":"himalmag.com"}]}]},{"key":"Settling Accounts","n":191,"pct":22.2,"color":"#a884d6","one":"See the record corrected, and the losses properly held.","body":"The need for a past that has been fairly judged and properly mourned: recantations, canon recovery, restitution, legacy wars, archive rescue, grief given durable form. The single largest engine in this corpus.","code":null,"clusters":[{"label":"essay \u00b7 years \u00b7 black","items":[{"t":"After Woman","s":"032c.com"},{"t":"A conversation with Brewster Kahle","s":"apartamentomagazine.com"},{"t":"Two first-time M\u0101ori filmmakers refuse to look away from the past","s":"avclub.com"},{"t":"A pair of supporting turns make the case for Michaela Coel, movie star","s":"avclub.com"},{"t":"Madoka Magica is the successor to Sailor Moon, not a subversion","s":"avclub.com"},{"t":"Jackson estate can't hide Leaving Neverland from those who've already seen it","s":"avclub.com"}]},{"label":"history \u00b7 world \u00b7 jackson","items":[{"t":"Can 'Tribu-Tainment' Rewrite History? The New Michael Jackson Biopic Argues Ye","s":"culturedmag.com"},{"t":"From Britney Spears to Chappell Roan - The Fraught History of the Tramp Stamp","s":"polyesterzine.com"},{"t":"History Has Its Eyes on You: Slam Frank and Musical Theater's Hamilton Bind","s":"thedriftmag.com"},{"t":"Chartbook 450: Modern growth surges. Or, why China's economic development is u","s":"adamtooze.substack.com"},{"t":"The Forgotten Untouchables of France","s":"daily.jstor.org"},{"t":"The Violent History Behind Nutmeg","s":"daily.jstor.org"}]},{"label":"argues \u00b7 problems \u00b7 girl","items":[{"t":"Boy Girl Problems","s":"thebaffler.com"},{"t":"Weapons of the Furious: Vengeance Feminism as \"Loving Correction\"","s":"aaihs.org"},{"t":"Who's afraid of Michael Jackson?","s":"africasacountry.com"},{"t":"My mother's buried story","s":"africasacountry.com"},{"t":"Lionel Wendt: The Politics of the Male Nude","s":"artreview.com"},{"t":"When the Rock Hall is Wrong","s":"cantgetmuchhigher.com"}]}]},{"key":"Self-Authorship","n":108,"pct":12.6,"color":"#5b86d6","one":"I write me, not the platform, the estate, or the algorithm.","body":"The need to be the author, not the authored: reclaimed identities, careers rewritten, gender as practice, refusal of brand-ness, and the right to illegibility. Recognition without becoming what recognition demands.","code":null,"clusters":[{"label":"artist \u00b7 sophie \u00b7 fame","items":[{"t":"Chxrry's Hall of Fame","s":"032c.com"},{"t":"Elsa Rouy's Painted Figures Are Growing Up With Her","s":"elephant.art"},{"t":"The Internet is Air with Maya Man","s":"032c.com"},{"t":"For Artist Cecilia Vicu\u00f1a, Being Busy Is Not a Sign of Success","s":"culturedmag.com"},{"t":"Trespassing On Public Property: On Sophie Kovel","s":"impulsemagazine.com"},{"t":"Roda Medhat Subverts Traditional Kurdish Narratives Into Modern Tactile Experi","s":"thisiscolossal.com"}]},{"label":"exhibition \u00b7 comes \u00b7 oyiri","items":[{"t":"Christelle Oyiri: 'All life comes from rupture'","s":"032c.com"},{"t":"Cinga Samson 'Ukuphuthelwa' @ White Cube Gallery, NYC","s":"juxtapoz.com"},{"t":"Amy Sherald Speaks Out on Cancelling Her Smithsonian Show","s":"hyperallergic.com"},{"t":"'How Asian Is It?' at the Milton Resnick and Pat Passlof Foundation","s":"impulsemagazine.com"},{"t":"Turning Towards the Sun","s":"zeitz-mocaa"},{"t":"A Protea Is Not a Flower","s":"zeitz-mocaa"}]},{"label":"interview \u00b7 career \u00b7 years","items":[{"t":"Lila Raicek Was at the Center of a Public Scandal. Then She Wrote a Novel Abou","s":"culturedmag.com"},{"t":"Charles Melton Actually Has No Idea Where His Career Goes From Here","s":"culturedmag.com"},{"t":"Inside the Closet of a Revered Stylist Who Has Only Worn Prada For Over 30 Yea","s":"culturedmag.com"},{"t":"My Internet: Scaachi Koul","s":"embedded.substack.com"},{"t":"My Internet: Sam Adler-Bell","s":"embedded.substack.com"},{"t":"My Internet: Kat Rosenfield","s":"embedded.substack.com"}]}]},{"key":"Certified Human","n":105,"pct":12.2,"color":"#d9a84e","one":"Prove to me a person made this and meant it.","body":"The need to trust that what you perceive and consume is real, traceable, and made by a person who meant it. Provenance claims, anti-slop criticism, durational handcraft, labor-time as content, sincerity as method.","code":{"name":"The Provenance Ledger","bg":"#3a2113","img":"https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg","one":"Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying.","all":[{"name":"The Provenance Ledger","bg":"#3a2113","status":"dominant","img":"https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg","one":"Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying."},{"name":"Countable Labor","bg":"#5e5730","status":"dominant","img":"https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/04/HeBuiltThisCity_byFilipWolak_0309_8683.jpg","one":"Authentication by enumeration: the stitch macro, the field of ten thousand units, the headline that counts the years."},{"name":"The Unretouched Witness","bg":"#8c1c20","status":"dominant","img":"https://pattaclothing.us/cdn/shop/articles/Daniel_Patta_Magazine_3.jpg?v=1778617712&width=2560","one":"Imperfect human presence as the logo: life-marked faces, mature casting, hard flash, clutter left in frame."},{"name":"Slop, Repainted Slow","bg":"#a7e029","status":"emergent","img":"https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/650e7c3d-72ad-4e20-aec4-f3b1d3566d65/georgia.png","one":"Disposable detritus, screenshots, memes, shipping cartons, lovingly re-rendered in slow media with its artifacts preserved."},{"name":"The Analog Sanctuary","bg":"#6b3f22","status":"residual","img":"https://radii.co/wp-content/uploads/2026/06/radii_analog_01.png","one":"Warm-lit rooms where slow media is practiced together: the listening bar, the record shop, the reading cafe, the archive as altar."}]},"clusters":[{"label":"feature \u00b7 spent \u00b7 among","items":[{"t":"Ultrace: 'A car is an object of applied art'","s":"032c.com"},{"t":"A conversation with Dea Kulumbegashvili for Apartamento magazine issue #36","s":"apartamentomagazine.com"},{"t":"A conversation with Mijae Kim","s":"apartamentomagazine.com"},{"t":"At Home with Jeremy Liebman","s":"apartamentomagazine.com"},{"t":"False Idols: Imagining a pop star, even one based in reality, inevitably feels","s":"avclub.com"},{"t":"Virtuosity Can Exist with Awkwardness: Alexa West & Adam Charlap Hyman on Jawb","s":"elephant.art"}]},{"label":"interview \u00b7 ambitious \u00b7 gabriel","items":[{"t":"How Artist Gabriel de la Mora Transformed 27,798 Shards of Eggshell and Glass ","s":"culturedmag.com"},{"t":"Felix Beaudry: Soft Bodies, Hard Tech","s":"impulsemagazine.com"},{"t":"'Lord of the Flies' Channels the Magic of Trees \u2014 and Also 'Lone Survivor'","s":"indiewire.com"},{"t":"Patta Selects: Daniel Smedeman","s":"pattaclothing.us"},{"t":"TV's Best Comedy Went Out With a Perfect Finale. It Was Years in the Making.","s":"slate.com"},{"t":"The Story Behind Every Song On Kevin Morby's Masterful New Album Little Wide O","s":"stereogum.com"}]},{"label":"design \u00b7 away \u00b7 tucked","items":[{"t":"Tucked Away","s":"family.style"},{"t":"POV: Graphic design schools are teaching tech, but are they teaching taste?","s":"itsnicethat.com"},{"t":"Lo-Fi Beats for Studying","s":"kneelingbus.substack.com"},{"t":"Murano glass, plaster flowers, mosaic tables: All the hits from New York Desig","s":"sightunseen.com"},{"t":"Ceramic \"burlwood,\" vintage nightclub chairs, bronze reliefs, and more from Li","s":"sightunseen.com"},{"t":"CSM Shows 2026: graduating work across art, design and performance","s":"csm (arts.ac.uk)"}]}]},{"key":"Kinship","n":92,"pct":10.7,"color":"#3f9d96","one":"Build me the structures that put me in a room with my people.","body":"The need for unmediated bodily togetherness, now deliberately built rather than assumed: gatherings, scenes, markets, mutual aid, mentorship, plus the diagnoses of togetherness failing. Togetherness has become infrastructure.","code":null,"clusters":[{"label":"feature \u00b7 china's \u00b7 good","items":[{"t":"Frost Children: 'Our objective is ageless'","s":"032c.com"},{"t":"JEREMY LIEBMAN: An exhibition at Salon 94","s":"apartamentomagazine.com"},{"t":"Pok\u00e9mon might be the last vestige of the monoculture","s":"avclub.com"},{"t":"The Buzz in Bucharest: Sammy Loren on RAD and the Refreshing Romanian Art Scen","s":"culturedmag.com"},{"t":"Introducing a Play For Every New Yorker Who's Had More Bad Dates Than Good","s":"culturedmag.com"},{"t":"Letters to Deborah Roberts","s":"elephant.art"}]},{"label":"shared \u00b7 lucy \u00b7 beech","items":[{"t":"Out of Body with Lucy Beech and Logan February","s":"elephant.art"},{"t":"Patrick","s":"vittlesmagazine.com"},{"t":"Centre for dance and wellbeing among projects from IE University","s":"dezeen.com"},{"t":"The social contract around phones is broken","s":"embedded.substack.com"},{"t":"Eight People, One Hob","s":"vittlesmagazine.com"}]},{"label":"artist \u00b7 another \u00b7 artists","items":[{"t":"What Artists Build for One Another: Notes from Wassaic","s":"impulsemagazine.com"},{"t":"An Interview With The Renowned French Artist JR","s":"juxtapoz.com"},{"t":"Raheem Esteban for Patta Magazine","s":"pattaclothing.us"}]}]},{"key":"Appetite","n":61,"pct":7.1,"color":"#e0654a","one":"Let me actually want things, in my actual body.","body":"The need to feel your own wanting, hunger, pleasure, intensity, against pharmaceutical, algorithmic, and managerial suppression. The smallest theme but the most consistently startling.","code":null,"clusters":[{"label":"essay \u00b7 projects \u00b7 wants","items":[{"t":"The Agony of Defeat: Giulio Bertelli on Sports and War","s":"032c.com"},{"t":"Jonathan Saunders: 'Aspiration is great, snobbishness isn't'","s":"032c.com"},{"t":"Techno-Development and Desire: Mindy Seu's Sexual History of the Internet","s":"032c.com"},{"t":"Helena Fradera's Saffron Torrijas","s":"apartamentomagazine.com"},{"t":"Arch Hades Wants You to Have an Existential Crisis in Venice","s":"elephant.art"},{"t":"Mire Lee Isn't Afraid of the Grotesque","s":"elephant.art"}]},{"label":"culture \u00b7 edition \u00b7 labubu","items":[{"t":"From Labubu to Beyblade: Asian Adults Are Playing Again","s":"radii.co"},{"t":"go the frick outside","s":"shesabeast.co"},{"t":"The Celebration of Suffering Edition","s":"whyisthisinteresting.substack.com"},{"t":"The Golf Umbrella Edition","s":"whyisthisinteresting.substack.com"},{"t":"The Enantiodromia Edition","s":"whyisthisinteresting.substack.com"}]},{"label":"food \u00b7 little \u00b7 carnivores","items":[{"t":"Eat This, Not That","s":"vittlesmagazine.com"},{"t":"Sexless Little Carnivores","s":"vittlesmagazine.com"},{"t":"Let Them Take Ozempic! People Are Now Taking GLP-1s to Save Money on Food","s":"milleworld.com"}]}]},{"key":"unsettled","n":55,"pct":6.4,"color":"#8f9092","one":"The honest residue.","body":"Signals processing no single need the taxonomy can see: pure formal play, craft-for-craft's-sake, and the emerging more-than-human cluster that may become an eighth need if it grows.","code":null,"clusters":[{"label":"exhibition \u00b7 design \u00b7 gallery","items":[{"t":"Apollo World Tour: Seoul","s":"apartamentomagazine.com"},{"t":"Are laptops millennial cringe?","s":"embedded.substack.com"},{"t":"how to look at brainrot","s":"etymology.substack.com"},{"t":"Dream Machine (Nick Doyle)","s":"family.style"},{"t":"Alex Carver: 'The Knot'","s":"impulsemagazine.com"},{"t":"SVA MA Curatorial Practice Program: 'N3O_iD011z'","s":"impulsemagazine.com"}]},{"label":"interview \u00b7 conversation \u00b7 biyao","items":[{"t":"In Conversation with Mimi Biyao Bai","s":"impulsemagazine.com"},{"t":"An Interview with Surreal Salon 18 Winner, River Reishi","s":"juxtapoz.com"},{"t":"Music Gives New Meaning to Josh Johnson's Comedy in His HBO Special 'Symphony'","s":"indiewire.com"},{"t":"The Navelgazer: Sitting with Sculptor CARO to Talk Bodies, Machines, and Every","s":"polyesterzine.com"},{"t":"Craig Gillespie: 'Supergirl' More 'Mad Max' Than You're Expecting","s":"indiewire.com"},{"t":"The Multiplicity of Worlds: In Conversation with Zheng Mahler (M+ Magazine)","s":"mplus"}]},{"label":"artist \u00b7 cruz \u00b7 studio","items":[{"t":"Step Into the New Haven Studio of Ta\u00edna Cruz, the Youngest Artist in the Whitn","s":"culturedmag.com"},{"t":"Rugiyatou Ylva Jallow Presents Her Most Ambitious Projects to Date","s":"elephant.art"}]}]},{"key":"Ballast","n":55,"pct":6.4,"color":"#7fb069","one":"Help me hold the weight and keep moving.","body":"The need to stay emotionally upright inside ongoing collapse: doom as register, grief externalized into form, comedy and calm as civic medicine, refuge aesthetics. Not solving the unbearable, metabolizing it.","code":null,"clusters":[{"label":"interview \u00b7 design \u00b7 among","items":[{"t":"Orangutan and A Gorilla Story made Earth Day a chill Planet Of The Apes","s":"avclub.com"},{"t":"Marlon Wayans on Why the World Needs More Comedies Right Now","s":"culturedmag.com"},{"t":"How Deep Does Your Love Reach?: Del Valle's Mundos Rotos","s":"elephant.art"},{"t":"The Bee Stings Before It Dies: Anne Imhof on Love, Power, and Doom","s":"elephant.art"},{"t":"brainrot, buddhism, and radical meaning","s":"etymology.substack.com"},{"t":"why I enjoy conveyor belt advertisements","s":"etymology.substack.com"}]},{"label":"essay \u00b7 patrick \u00b7 illustrated","items":[{"t":"Patrick: An Illustrated Essay","s":"vittlesmagazine.com"},{"t":"The Polycrisis Sublime of the Whitney Biennial","s":"hyperallergic.com"},{"t":"The inherent hopefulness of art","s":"artforecast.substack.com"},{"t":"#268: The 3 tiers of fun","s":"haleynahman.substack.com"},{"t":"Sometimes You Need a \"W\"","s":"thehunger.substack.com"},{"t":"Serving Biscuits in God's Kitchen","s":"vittlesmagazine.com"}]},{"label":"artist \u00b7 taymour \u00b7 hillary","items":[{"t":"Camille Henrot and Hillary Taymour on Outgrowing the LES, Touching Grass, and ","s":"culturedmag.com"},{"t":"At the Whitney Biennial, This Artist Brings Dog Heaven to Life","s":"culturedmag.com"},{"t":"Jorge Tacla: Time the destroyer is time the preserver","s":"sharjah-art-foundation"}]}]}],"total":860}/*__END__*/;
+
+/* ===== helpers ===== */
+const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* Consistent naming: every territory named as the cultural MOVE (gerund register),
+   matching the two anchor names. Canonical keys in the data are unchanged. */
+const LABEL={
+  "Naming the Machine":"Naming the Machine",
+  "Settling Accounts":"Settling Accounts",
+  "Self-Authorship":"Authoring the Self",
+  "Certified Human":"Proving the Human",
+  "Kinship":"Building the Room",
+  "Appetite":"Reclaiming Appetite",
+  "Ballast":"Carrying the Weight",
+  "unsettled":"Unsettled"
+};
+const NAME=k=>LABEL[k]||k;
+// need -> colour, so query-clusters can be tinted by their dominant need
+const NEEDCOLOR={}; GEO.needs.forEach(n=>NEEDCOLOR[n.key]=n.color);
+function hexToRgb(h){h=h.replace('#','');return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function mix(a,b,t){ // blend two hex ints
+  const ar=a>>16&255,ag=a>>8&255,ab=a&255, br=b>>16&255,bg=b>>8&255,bb=b&255;
+  return (Math.round(ar+(br-ar)*t)<<16)|(Math.round(ag+(bg-ag)*t)<<8)|Math.round(ab+(bb-ab)*t);
+}
+function shade(hex,f){ // f<1 darken, f>1 lighten toward white
+  let [r,g,b]=hexToRgb(hex);
+  if(f<=1){r*=f;g*=f;b*=f;} else {const t=f-1;r+=(255-r)*t;g+=(255-g)*t;b+=(255-b)*t;}
+  return (Math.round(r)<<16)|(Math.round(g)<<8)|Math.round(b);
+}
+
+/* ===== THREE setup ===== */
+let renderer,scene,camera,globe,raf;
+let territories=[]; // {item, group, strata:[deep,mid,top], phiMid, dir} — item is a need OR a query-cluster
+let selected=null;            // index into territories
+let activeLayer=0;            // 0 deep / 1 mid / 2 top
+let dragging=false,lastX=0,lastY=0,manualY=0,pitchTarget=0.12;
+const tmp={rotY:0,rotX:0.12,globeX:0};
+let oceanMesh=null;           // persistent ocean sphere, kept across relayouts
+let queryMode=false;          // true while the sphere is reconstituted around a search
+const CLUSTER_ITEMS_MAX=24;   // articles listed per query-theme in the callout
+
+/* shared geometry constants (were local to buildGlobe) */
+const TH0=Math.PI*0.20, TH1=Math.PI*0.80;             // belt = continents; caps = grey poles
+const RAD=[[0.858,0.916],[0.916,0.966],[0.966,1.028]]; // deep, mid, top(land surface)
+const ROCK=[0x5c3d27,0xab8350];                        // lower strata: deep rock, sandstone
+const GREY=0x8f9092;                                   // undefined/neutral territory colour
+
+function init(){
+  if(!window.THREE || !document.createElement('canvas').getContext('webgl')){
+    document.getElementById('fallback').style.display='grid';return;
+  }
+  const host=document.getElementById('scene');
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setSize(innerWidth,innerHeight);
+  renderer.setClearColor(0x000000,0);   // let the CSS sunrise show through
+  host.appendChild(renderer.domElement);
+
+  scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x5a3a2a,0.04);   // warm haze on the horizon
+  camera=new THREE.PerspectiveCamera(44,innerWidth/innerHeight,0.1,100);
+  camera.position.set(0,0,3.05);
+
+  // sunrise lighting: warm low key from front-right, soft amber bounce from below
+  scene.add(new THREE.HemisphereLight(0xffd8a8,0x2a1c14,0.6));
+  const key=new THREE.DirectionalLight(0xffdca0,1.25); key.position.set(2.2,1.4,3.2); scene.add(key);
+  const bounce=new THREE.DirectionalLight(0xffae66,0.6); bounce.position.set(-1.5,-2.2,1.5); scene.add(bounce);
+  const rim=new THREE.DirectionalLight(0xbcd0ff,0.28); rim.position.set(-2.5,2,-2); scene.add(rim);
+
+  globe=new THREE.Group(); scene.add(globe);
+  layout(GEO.needs,'unsettled');          // needs mode: 7 continents + the grey unsettled pole
+  globe.scale.setScalar(0.55);   // ~half size so a lifted shard + its glow read clearly
+  buildLabels();
+  buildLegend();
+  document.getElementById('totmeta').textContent =
+    GEO.total + " signals · " + GEO.needs.length + " territories · monthly harvest";
+
+  // interaction
+  const el=renderer.domElement;
+  el.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;el.setPointerCapture(e.pointerId);moved=false;});
+  el.addEventListener('pointermove',e=>{
+    if(!dragging)return;
+    const dx=e.clientX-lastX, dy=e.clientY-lastY; lastX=e.clientX;lastY=e.clientY;
+    if(Math.abs(dx)+Math.abs(dy)>3)moved=true;
+    manualY+=dx*0.005;                                    // spin freely, even with a callout open
+    pitchTarget=Math.max(-0.5,Math.min(0.6,pitchTarget+dy*0.004));
+  });
+  el.addEventListener('pointerup',e=>{
+    dragging=false;
+    if(!moved){ pick(e); }
+  });
+  window.addEventListener('resize',onResize);
+  document.getElementById('co-close').addEventListener('click',deselect);
+  document.getElementById('lf-back').addEventListener('click',closeLookFeel);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){ if(document.getElementById('lf-frame').classList.contains('show'))closeLookFeel(); else deselect(); }});
+  document.getElementById('co-scroll').addEventListener('scroll',onScroll);
+
+  // ---- search-reconstitution wiring ----
+  const geoq=document.getElementById('geoq');
+  let gdeb;
+  geoq.addEventListener('input',()=>{clearTimeout(gdeb);gdeb=setTimeout(()=>reconstitute(geoq.value),160);});
+  geoq.addEventListener('keydown',e=>{if(e.key==='Enter'){clearTimeout(gdeb);reconstitute(geoq.value);}});
+  document.getElementById('geoclear').addEventListener('click',()=>{geoq.value='';reconstitute('');geoq.focus();});
+  // carry an existing site query into the sphere on load (embedded in the Explore tab)
+  try{
+    const pq=window.parent&&window.parent!==window&&window.parent.document.getElementById('q');
+    if(pq&&pq.value.trim()){geoq.value=pq.value.trim();reconstitute(geoq.value);}
+  }catch(e){}
+
+  animate();
+}
+let moved=false;
+
+/* ===== globe construction (reusable across needs mode + query mode) ===== */
+// clean stylized planet: blue ocean + continents coloured by their territory
+// colour. The grey poles are the undefined/neutral cap. On lift a shard rises,
+// exposing its rock strata + a socket.
+
+function addOcean(){
+  if(oceanMesh)return;
+  oceanMesh=new THREE.Mesh(
+    new THREE.SphereGeometry(0.84,80,52),
+    new THREE.MeshStandardMaterial({color:0x2f7ad0,roughness:0.82,metalness:0.0,
+      emissive:new THREE.Color(0x123a66),emissiveIntensity:0.32}));
+  globe.add(oceanMesh);
+}
+
+// build a 3-strata shard; top stratum painted the territory's own colour
+function makeShard(p0,pl,ta,tb,topInt){
+  const seg=Math.max(14,Math.round((pl/(2*Math.PI))*150)) + (pl>=Math.PI*1.9?40:0);
+  const grp=new THREE.Group(); const strata=[];
+  RAD.forEach((rr,li)=>{
+    const col = (li===2)?topInt:ROCK[li];
+    const geo=crustWedge(p0,pl,rr[0],rr[1],seg,26,ta,tb);
+    const mat=new THREE.MeshStandardMaterial({color:col,roughness:li===2?0.82:0.95,metalness:0.0,
+      emissive:new THREE.Color(0xffffff),emissiveIntensity:0.0,side:THREE.DoubleSide});
+    grp.add(new THREE.Mesh(geo,mat)); strata.push(grp.children[grp.children.length-1]);
+  });
+  return {grp,strata,seg};
+}
+function makeBedrock(p0,pl,ta,tb,seg){
+  return new THREE.Mesh(crustWedge(p0,pl,0.83,0.864,seg,22,ta,tb),
+    new THREE.MeshStandardMaterial({color:0x6f4a2f,roughness:1.0,metalness:0.0,side:THREE.DoubleSide}));
+}
+function greyCap(th0,th1){
+  return new THREE.Mesh(crustWedge(0,Math.PI*2,0.858,1.0,120,18,th0,th1),
+    new THREE.MeshStandardMaterial({color:GREY,roughness:0.92,metalness:0.0,side:THREE.DoubleSide}));
+}
+
+// tear down every territory mesh (keep the ocean) so we can relayout
+function clearTerritories(){
+  for(let i=globe.children.length-1;i>=0;i--){
+    const c=globe.children[i];
+    if(c===oceanMesh)continue;
+    globe.remove(c);
+    c.traverse&&c.traverse(o=>{
+      if(o.geometry&&o.geometry.dispose)o.geometry.dispose();
+      if(o.material&&o.material.dispose)o.material.dispose();
+    });
+    if(c.geometry&&c.geometry.dispose)c.geometry.dispose();
+    if(c.material&&c.material.dispose)c.material.dispose();
+  }
+  territories=[];
+}
+
+/* Generalized layout: place `list` items around the belt proportional to .n,
+   coloured by .color. If poleKey names an item, it takes the interactive north
+   pole (needs mode's unsettled); otherwise both poles are static neutral caps
+   (query mode). Every item just needs {key,n,color}. */
+function layout(list,poleKey){
+  clearTerritories();
+  addOcean();
+  const poleItem = poleKey!=null ? list.find(x=>x.key===poleKey) : null;
+  const belt = list.filter(x=>x!==poleItem);
+  const totalBelt = belt.reduce((s,x)=>s+(x.n||0),0)||1;
+  let phi=0;
+  belt.forEach(it=>{
+    const topInt=parseInt(String(it.color).replace('#',''),16);
+    const frac=(it.n||0)/totalBelt, span=frac*Math.PI*2, gap=0.05;
+    const p0=phi+gap/2, pl=Math.max(0.03,span-gap), phiMid=p0+pl/2;
+    const s=makeShard(p0,pl,TH0,TH1,topInt);
+    globe.add(makeBedrock(p0,pl,TH0,TH1,s.seg)); globe.add(s.grp);
+    const ni=territories.length;
+    s.strata.forEach(m=>m.userData={ni});
+    territories.push({item:it,group:s.grp,strata:s.strata,phiMid,
+      dir:new THREE.Vector3(Math.cos(phiMid),0,Math.sin(phiMid)),baseColor:it.color});
+    phi+=span;
+  });
+  if(poleItem){
+    const s=makeShard(0,Math.PI*2,0,TH0,GREY);
+    globe.add(makeBedrock(0,Math.PI*2,0,TH0,s.seg)); globe.add(s.grp);
+    const ni=territories.length;
+    s.strata.forEach(m=>m.userData={ni});
+    territories.push({item:poleItem,group:s.grp,strata:s.strata,phiMid:0,
+      dir:new THREE.Vector3(0,1,0),baseColor:poleItem.color});
+  } else {
+    globe.add(greyCap(0,TH0));          // static neutral north cap in query mode
+  }
+  globe.add(greyCap(TH1,Math.PI));      // south pole always a static neutral cap
+}
+
+/* ===== search-reconstitution: bridge to the parent site's scorer ===== */
+// The globe is embedded as an iframe inside the site's Explore tab, so it reaches
+// up to the Search tab's exposed scorer + clusterer + corpus.
+function searchAPI(){
+  try{
+    const p=window.parent;
+    if(p&&p!==window&&p.__scoreAll&&p.__clusterSignals&&p.DATA)
+      return {scoreAll:p.__scoreAll,clusterSignals:p.__clusterSignals,DATA:p.DATA};
+  }catch(e){}
+  return null;
+}
+// most common need across a cluster's members -> used to tint the cluster
+function dominantNeed(members){
+  const c={}; let best='unsettled', bn=-1;
+  members.forEach(s=>{const k=s.need||'unsettled'; c[k]=(c[k]||0)+1; if(c[k]>bn){bn=c[k];best=k;}});
+  return best;
+}
+function setModeMeta(txt){
+  const m=document.getElementById('geomode');
+  if(txt){m.textContent=txt;m.style.display='';}
+  else{m.style.display='none';}
+}
+// return to the resting 8-territory needs sphere
+function restoreNeeds(keepMeta){
+  queryMode=false;
+  layout(GEO.needs,'unsettled');
+  buildLabels(); buildLegend();
+  if(!keepMeta) setModeMeta('');
+  document.getElementById('totmeta').textContent =
+    GEO.total + " signals · " + GEO.needs.length + " territories · monthly harvest";
+}
+// type a query -> the sphere re-forms into the query's semantic themes
+function reconstitute(q){
+  q=(q||'').trim();
+  document.getElementById('geoclear').style.display=q?'':'none';
+  deselect();
+  if(!q){ restoreNeeds(); return; }
+  const api=searchAPI();
+  if(!api){ setModeMeta('Live search runs inside the site’s Explore tab.'); return; }
+  const scores=api.scoreAll(q);
+  if(!scores){ restoreNeeds(); return; }
+  const matched=[];
+  for(let i=0;i<api.DATA.length;i++){ if(scores[i]>0) matched.push([scores[i],api.DATA[i]]); }
+  matched.sort((a,b)=>b[0]-a[0]);
+  const sigs=matched.map(x=>x[1]);
+  if(!sigs.length){ restoreNeeds(true); setModeMeta('Nothing matched “'+q+'” · the sphere holds its territories'); return; }
+  const clusters=api.clusterSignals(sigs,q);
+  const total=sigs.length;
+  let items;
+  if(clusters&&clusters.length>=2){
+    items=clusters.map(cl=>{
+      const need=dominantNeed(cl.members);
+      return {_cluster:true,
+        key:(cl.keywords||[]).filter(Boolean).join(' · ')||'theme',
+        n:cl.members.length,
+        pct:Math.round(cl.members.length/total*100),
+        color:NEEDCOLOR[need]||'#8f9092',
+        one:cl.central?cl.central.title:'',
+        items:cl.members.slice(0,CLUSTER_ITEMS_MAX).map(s=>({t:s.title,s:s.source,u:s.url}))};
+    });
+  } else {
+    // too few matches / no vectors to cluster: one territory holding them all
+    const need=dominantNeed(sigs);
+    items=[{_cluster:true,key:q,n:total,pct:100,color:NEEDCOLOR[need]||'#8f9092',one:'',
+      items:sigs.slice(0,CLUSTER_ITEMS_MAX).map(s=>({t:s.title,s:s.source,u:s.url}))}];
+  }
+  queryMode=true;
+  layout(items,null);
+  buildLabels(); buildLegend();
+  setModeMeta('“'+q+'” · '+total+' signal'+(total!==1?'s':'')+' re-formed into '+
+    items.length+' theme'+(items.length!==1?'s':''));
+  document.getElementById('totmeta').textContent =
+    total+' matched signals · '+items.length+' themes · reconstituted from “'+q+'”';
+}
+
+/* solid spherical-wedge slab over azimuth [p0,p0+pl] and polar belt [th0,th1]:
+   outer + inner surfaces, 2 azimuth side caps, 2 polar end caps. */
+function crustWedge(p0,pl,ri,ro,np,nt,th0,th1){
+  th0=(th0===undefined)?0:th0; th1=(th1===undefined)?Math.PI:th1;
+  const verts=[],idx=[];
+  function v(r,th,ph){verts.push(r*Math.sin(th)*Math.cos(ph), r*Math.cos(th), r*Math.sin(th)*Math.sin(ph));return verts.length/3-1;}
+  const outer=[],inner=[];
+  for(let i=0;i<=np;i++){
+    const ph=p0+pl*i/np; outer[i]=[];inner[i]=[];
+    for(let j=0;j<=nt;j++){const th=th0+(th1-th0)*j/nt; outer[i][j]=v(ro,th,ph); inner[i][j]=v(ri,th,ph);}
+  }
+  const quad=(a,b,c,d)=>{idx.push(a,b,c,a,c,d);};
+  for(let i=0;i<np;i++)for(let j=0;j<nt;j++) quad(outer[i][j],outer[i+1][j],outer[i+1][j+1],outer[i][j+1]);
+  for(let i=0;i<np;i++)for(let j=0;j<nt;j++) quad(inner[i][j],inner[i][j+1],inner[i+1][j+1],inner[i+1][j]);
+  for(let j=0;j<nt;j++) quad(outer[0][j],outer[0][j+1],inner[0][j+1],inner[0][j]);      // phi=p0 cap
+  for(let j=0;j<nt;j++) quad(outer[np][j],inner[np][j],inner[np][j+1],outer[np][j+1]);  // phi=p0+pl cap
+  for(let i=0;i<np;i++) quad(outer[i][0],inner[i][0],inner[i+1][0],outer[i+1][0]);      // th0 cap
+  for(let i=0;i<np;i++) quad(outer[i][nt],outer[i+1][nt],inner[i+1][nt],inner[i][nt]);  // th1 cap
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.BufferAttribute(new Float32Array(verts),3));
+  g.setIndex(idx); g.computeVertexNormals();
+  return g;
+}
+
+/* ===== territory labels ===== */
+function buildLabels(){
+  const host=document.getElementById('labels');
+  host.innerHTML='';                    // clear prior labels before relayout
+  territories.forEach((t,i)=>{
+    const el=document.createElement('div'); el.className='tlabel';
+    el.innerHTML=`${esc(NAME(t.item.key))}<small>${t.item.pct}%</small>`;
+    host.appendChild(el); t.labelEl=el;
+  });
+}
+const _lp=new THREE.Vector3(), _ld=new THREE.Vector3();
+function updateLabels(){
+  globe.updateMatrixWorld();
+  const W=innerWidth,H=innerHeight;
+  territories.forEach((t,i)=>{
+    if(!t.labelEl)return;
+    // facing: is this territory on the near hemisphere?
+    _ld.copy(t.dir).applyQuaternion(globe.quaternion);
+    const facing=_ld.z;                       // camera looks down -Z, so +z faces us
+    // world position of the territory's surface centre (rides the lift)
+    _lp.copy(t.dir).multiplyScalar(1.08).add(t.group.position);
+    globe.localToWorld(_lp); _lp.project(camera);
+    const x=(_lp.x*0.5+0.5)*W, y=(-_lp.y*0.5+0.5)*H;
+    const isSel=(i===selected), dimOthers=(selected!==null&&!isSel);
+    let op = facing>0.12 ? Math.min(1,(facing-0.12)/0.35) : 0;
+    if(dimOthers) op*=0.18;
+    if(isSel) op=1;
+    t.labelEl.style.opacity=op;
+    t.labelEl.style.left=x+'px'; t.labelEl.style.top=y+'px';
+    t.labelEl.style.fontSize=(isSel?13.5:11.5)+'px';
+  });
+}
+
+/* ===== picking ===== */
+const ray=new THREE.Raycaster(), ndc=new THREE.Vector2();
+function pick(e){
+  const r=renderer.domElement.getBoundingClientRect();
+  ndc.x=((e.clientX-r.left)/r.width)*2-1;
+  ndc.y=-((e.clientY-r.top)/r.height)*2+1;
+  ray.setFromCamera(ndc,camera);
+  const meshes=[]; territories.forEach(t=>t.strata.forEach(m=>meshes.push(m)));
+  const hit=ray.intersectObjects(meshes,false);
+  if(hit.length){ select(hit[0].object.userData.ni); }
+  else deselect();
+}
+
+/* ===== select / callout ===== */
+function select(ni){
+  selected=ni;
+  const t=territories[ni];
+  // turn the globe to present the shard (3/4 view), but the user can still drag from here
+  let target=t.phiMid-Math.PI/2+0.44;
+  target += Math.round((manualY-target)/(2*Math.PI))*2*Math.PI;
+  manualY=target; pitchTarget=0.26;
+  closeLookFeel();                       // always start on the summary
+  fillCallout(t.item);
+  document.getElementById('callout').classList.add('open');
+  const sc=document.getElementById('co-scroll'); sc.scrollTop=0; activeLayer=0; markActive();
+}
+function deselect(){
+  if(selected===null && !document.getElementById('callout').classList.contains('open'))return;
+  selected=null; closeLookFeel();
+  document.getElementById('callout').classList.remove('open');
+}
+
+/* ===== in-callout look & feel panel ===== */
+const LF_PAGE="mockup_lookfeel_certified_human.html";
+function openLookFeel(){
+  const fr=document.getElementById('lf-frame');
+  if(!fr.getAttribute('src')) fr.setAttribute('src',LF_PAGE);   // load once
+  fr.classList.add('show');
+  document.getElementById('co-scroll').style.display='none';
+  document.getElementById('lf-back').style.display='';
+}
+function closeLookFeel(){
+  document.getElementById('lf-frame').classList.remove('show');
+  document.getElementById('co-scroll').style.display='';
+  document.getElementById('lf-back').style.display='none';
+}
+
+function artLink(it){
+  // real click-through when we have a URL (query mode), inert otherwise (needs mode)
+  return it.u
+    ? `<a class="art" href="${esc(it.u)}" target="_blank" rel="noopener">${esc(it.t)}<span class="src">${esc(it.s)}</span></a>`
+    : `<a class="art" href="#" onclick="return false">${esc(it.t)}<span class="src">${esc(it.s)}</span></a>`;
+}
+function fillCallout(nd){
+  const isC=!!nd._cluster;
+  document.getElementById('co-eyebrow').textContent=
+    isC ? ('Theme · '+nd.pct+'% of matches') : ('Territory · '+nd.pct+'% of the field');
+  // colour the layer tags + share dot
+  for(let i=0;i<3;i++){ document.getElementById('tag'+i).style.background=shade2(nd.color,[0.5,0.75,1][i]); }
+  document.getElementById('t-name').textContent=NAME(nd.key);
+  document.getElementById('t-share').innerHTML=
+    isC ? `<i style="background:${esc(nd.color)}"></i>${nd.n} signal${nd.n!==1?'s':''} · ${nd.pct}% of matches`
+        : `<i style="background:${esc(nd.color)}"></i>${nd.n} signals · ${nd.pct}% of ${GEO.total}`;
+  const one=document.getElementById('t-one'), body=document.getElementById('t-body');
+  one.textContent = nd.one ? '“'+nd.one+'”' : '';
+  one.style.display = nd.one ? '' : 'none';
+  body.textContent = nd.body || '';
+  body.style.display = nd.body ? '' : 'none';
+
+  // look & feel — hidden entirely for query-themes (they have no semiotic codebook)
+  const secLf=document.getElementById('sec-lf');
+  const lf=document.getElementById('lf-body');
+  if(isC){
+    secLf.style.display='none';
+  } else {
+    secLf.style.display='';
+    if(nd.code){
+      const c=nd.code;
+      lf.innerHTML=`
+        <div class="lf-code" style="background:${esc(c.bg)}">
+          <img class="lf-img" src="${esc(c.img)}" referrerpolicy="no-referrer"
+               onerror="this.style.display='none'">
+          <div class="lf-meta">
+            <div class="lf-codename"><span class="swatch" style="background:${esc(c.bg)}"></span>${esc(c.name)}</div>
+            <p class="lf-one">${esc(c.one)}</p>
+          </div>
+        </div>
+        <div class="lf-strip">
+          ${c.all.map(x=>`<span class="chip"><i style="background:${esc(x.bg)}"></i>${esc(x.name)} · ${esc(x.status)}</span>`).join("")}
+        </div>
+        <button class="lf-explore" onclick="openLookFeel()">Explore look &amp; feel <span>&rarr;</span></button>`;
+    } else {
+      lf.innerHTML=`<div class="lf-empty">Look &amp; feel codes not yet excavated for this territory. Certified Human is the coded pilot; the others get their codebooks as the semiotic pass rolls out.</div>`;
+    }
+  }
+
+  // articles: query-themes carry their own flat list (with links); needs carry lexical groups
+  const ab=document.getElementById('art-body');
+  if(isC){
+    ab.innerHTML=`
+      <div class="grp">
+        <div class="grp-label">${esc(nd.key)}</div>
+        ${nd.items.map(artLink).join("")}
+      </div>`;
+  } else {
+    ab.innerHTML=nd.clusters.map(g=>`
+      <div class="grp">
+        <div class="grp-label">${esc(g.label)}</div>
+        ${g.items.map(artLink).join("")}
+      </div>`).join("");
+  }
+}
+function shade2(hex,f){const n=shade(hex,f);return '#'+n.toString(16).padStart(6,'0');}
+
+/* ===== scroll -> active layer ===== */
+function onScroll(){
+  const sc=document.getElementById('co-scroll');
+  const secs=[document.getElementById('sec-name'),document.getElementById('sec-lf'),document.getElementById('sec-art')];
+  const probe=sc.scrollTop+140;
+  let a=0; secs.forEach((s,i)=>{ if(s.offsetParent!==null && s.offsetTop<=probe)a=i; });
+  if(a!==activeLayer){ activeLayer=a; markActive(); }
+}
+function markActive(){
+  ['sec-name','sec-lf','sec-art'].forEach((id,i)=>{
+    const s=document.getElementById(id); s.classList.toggle('active',i===activeLayer);
+    const tag=document.getElementById('tag'+i); tag.style.height=(i===activeLayer?'62px':'0');
+  });
+}
+
+/* ===== legend ===== */
+function buildLegend(){
+  const L=document.getElementById('legend');
+  L.innerHTML=territories.map((t,i)=>
+    `<div class="lg" data-i="${i}"><i style="background:${esc(t.item.color)}"></i><b>${esc(NAME(t.item.key))}</b><span>${t.item.pct}%</span></div>`).join("");
+  L.querySelectorAll('.lg').forEach(el=>el.addEventListener('click',()=>select(+el.dataset.i)));
+}
+
+/* ===== loop ===== */
+function animate(){
+  raf=requestAnimationFrame(animate);
+  // rotation always follows drag (no auto-spin); only framing depends on selection
+  tmp.rotY += (manualY-tmp.rotY)*0.12;
+  tmp.rotX += (pitchTarget-tmp.rotX)*0.08;
+  if(selected!==null){
+    tmp.globeX += (-0.82-tmp.globeX)*0.08;                 // slide left, clear of the wider callout
+    camera.position.z += (2.7-camera.position.z)*0.06;
+  } else {
+    tmp.globeX += (0-tmp.globeX)*0.08;
+    camera.position.z += (3.05-camera.position.z)*0.06;
+  }
+  globe.rotation.y=tmp.rotY; globe.rotation.x=tmp.rotX; globe.position.x=tmp.globeX;
+
+  // per-territory state: the whole segment pops out and stays STILL; scrolling just lights
+  // up the matching band of the crust (deep / middle / top) in white, nothing moves.
+  territories.forEach((t,i)=>{
+    const isSel=(i===selected);
+    const lift=isSel?0.6:0.0;
+    t.group.position.lerp(new THREE.Vector3(t.dir.x*lift,t.dir.y*lift,t.dir.z*lift),0.1);
+    t.strata.forEach((m,li)=>{
+      let emi=0.0, op=1.0;
+      if(isSel){
+        emi = (li===activeLayer)?1.7:0.0;     // active band glows white in place
+      } else if(selected!==null){
+        op = 0.34;                            // dim other territories while a callout is open
+      }
+      m.material.emissiveIntensity += (emi-m.material.emissiveIntensity)*0.14;
+      if(m.material.transparent!==true) m.material.transparent=true;
+      m.material.opacity += (op-m.material.opacity)*0.1;
+    });
+  });
+  updateLabels();
+  renderer.render(scene,camera);
+}
+function onResize(){renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();}
+
+init();
+</script>
+</body>
+</html>

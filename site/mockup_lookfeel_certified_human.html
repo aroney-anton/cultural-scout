@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Look &amp; Feel — Certified Human (mockup)</title>
+<style>
+  :root { --ease: cubic-bezier(.22,.61,.36,1); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #141414;
+    background: #fafaf8;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  #bg { position: fixed; inset: 0; z-index: -2; background: #fafaf8; transition: background-color .15s linear; }
+  #grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .055;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .mockup-flag {
+    position: fixed; top: 14px; right: 16px; z-index: 50; font-size: 10px; letter-spacing: .18em;
+    text-transform: uppercase; padding: 5px 9px; border: 1px solid currentColor; border-radius: 3px;
+    opacity: .5; mix-blend-mode: difference; color: #fff;
+  }
+  .backbtn {
+    position: fixed; top: 14px; left: 16px; z-index: 50; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    background: rgba(0,0,0,.06); color: inherit; border: 1px solid rgba(0,0,0,.18); mix-blend-mode: difference;
+  }
+
+  /* ---------- INTRO ---------- */
+  #intro { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8vh 7vw; }
+  #intro .eyebrow { font-size: 12px; letter-spacing: .32em; text-transform: uppercase; opacity: .5; margin-bottom: 28px; }
+  #intro h1 { font-size: clamp(20px, 2.4vw, 30px); font-weight: 500; opacity: .55; margin-bottom: 6vh; max-width: 40ch; line-height: 1.45; }
+  .codelist { display: flex; flex-direction: column; gap: clamp(8px, 1.6vh, 20px); }
+  .codelist a {
+    text-decoration: none; color: #141414; font-size: clamp(30px, 6.2vw, 86px); font-weight: 650;
+    line-height: 1.02; letter-spacing: -.02em; display: flex; align-items: baseline; gap: 18px;
+    opacity: .92; transition: opacity .2s, transform .25s var(--ease);
+  }
+  .codelist a:hover { opacity: 1; transform: translateX(10px); }
+  .codelist .num { font-size: clamp(12px,1vw,15px); font-weight: 500; opacity: .4; letter-spacing: 0; }
+  .codelist .dot { width: .42em; height: .42em; border-radius: 50%; display: inline-block; align-self: center; }
+  .scrollhint { margin-top: 7vh; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; animation: bob 2.2s infinite ease-in-out; }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+  /* ---------- CODE: HERO ---------- */
+  .code { position: relative; }
+  .hero { display: grid; grid-template-columns: 26% 74%; align-items: stretch; min-height: 100vh; }
+  .hero .text {
+    position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 6vh 2.2vw 6vh 7vw; z-index: 2;
+  }
+  .hero .num { font-size: 12px; letter-spacing: .26em; opacity: .6; margin-bottom: 18px; }
+  .hero .status {
+    display: inline-block; align-self: flex-start; font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 4px 9px; border: 1px solid currentColor; border-radius: 999px; opacity: .7; margin-bottom: 22px;
+  }
+  .hero h2 { font-size: clamp(28px, 3.1vw, 52px); font-weight: 650; line-height: 1.04; letter-spacing: -.02em; margin-bottom: 22px; }
+  .hero .oneliner { font-size: clamp(14px, 1.15vw, 18px); line-height: 1.5; opacity: .82; max-width: 30ch; }
+  .hero .palette { display: flex; gap: 7px; margin-top: 30px; }
+  .hero .palette span { width: 26px; height: 26px; border-radius: 4px; box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset; }
+  .scrollon { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; margin-top: 34px; }
+
+  .collage { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 11.5vw; gap: 10px; padding: 9vh 0 9vh 1.5vw; align-content: start; }
+  .collage figure { overflow: hidden; position: relative; border-radius: 3px; background: rgba(0,0,0,.12); }
+  .collage img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.02); }
+  .collage figure.tall { grid-row: span 2; }
+  .collage figure.wide { grid-column: span 2; }
+  .collage figure.big { grid-column: span 2; grid-row: span 2; }
+
+  /* ---------- CODE: ANALYSIS ---------- */
+  .analysis { padding: 4vh 7vw 12vh; max-width: 1200px; }
+  .analysis .def { font-size: clamp(17px, 1.5vw, 23px); line-height: 1.5; max-width: 56ch; opacity: .95; margin-bottom: 7vh; font-weight: 450; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5vh 6vw; }
+  .block { border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent); padding-top: 16px; }
+  .block.full { grid-column: 1 / -1; }
+  .label { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; opacity: .55; margin-bottom: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 13px; padding: 5px 11px; border-radius: 999px; line-height: 1.2;
+    background: color-mix(in srgb, var(--tx) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tx) 26%, transparent);
+  }
+  .quotes { margin-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .quote { font-size: 15px; line-height: 1.45; }
+  .quote .q { font-style: italic; }
+  .quote a, .ev a, .def a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .quote .src { display: inline-block; font-size: 12px; opacity: .7; margin-top: 3px; }
+  .body { font-size: 15px; line-height: 1.55; opacity: .92; max-width: 54ch; }
+  .ev { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; }
+  .meta { grid-column: 1 / -1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+          margin-top: 5vh; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent);
+          font-size: 12px; opacity: .6; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero .text { position: relative; height: auto; min-height: 60vh; padding: 12vh 7vw 4vh; }
+    .collage { grid-template-columns: repeat(2,1fr); grid-auto-rows: 32vw; padding: 0 0 6vh; }
+    .codelist a { font-size: 40px; }
+    .grid2 { grid-template-columns: 1fr; }
+    .analysis { padding: 4vh 7vw 9vh; }
+  }
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="grain"></div>
+<div class="backbtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</div>
+
+<section id="intro">
+  <div class="eyebrow">Certified Human · Look &amp; Feel</div>
+  <h1>Five visual-verbal codes the corpus uses to certify that something was made by a human. Scroll to enter each one.</h1>
+  <nav class="codelist" id="codelist"></nav>
+  <div class="scrollhint">Scroll ↓</div>
+</section>
+
+<main id="codes"></main>
+
+<script>
+const IMG_NOTE = "Imagery embedded live from the publishers' servers — nothing stored.";
+const CODES = [
+  {
+    id:"provenance-ledger", name:"The Provenance Ledger", status:"dominant",
+    oneliner:"Documentation is the aesthetic: credits, captions, materials, dimensions and consent lines do the certifying.",
+    bg:"#3a2113", text:"#f6efe2",
+    palette:["#FAF7F0","#141414","#4A2C17","#E2B33C"],
+    def:"Human-made value claimed not through imagery but through metadata performed as form: museum-grade captions, credit blocks set as typographic objects, supply-chain disclosure, and the ritualized consent line ('shared with permission') that extends provenance to the image's right to exist. Verbally it runs on forensic vocabulary.",
+    visual:["print conventions on screen","italic caption faces","hairline rules","credit blocks set like colophons","caption co-equal with image","metadata framed as part of the artwork's field","maker named, chain of custody visible"],
+    verbal:["provenance","evidence","receipts","courtesy of","shared with permission","detect","audit","scare-quoted 'writers'"],
+    quotes:[
+      {q:"the era of evidence is over, and there is only content", src:"Rob Horning", url:"https://robhorning.substack.com/p/evidence-as-content"},
+      {q:"Some of the biggest 'writers' on Substack aren't writing at all.", src:"Taylor Lorenz, User Mag", url:"https://www.usermag.co/p/how-much-of-substack-is-actually-ai-pangram-analysis-substack-bestsellers"}
+    ],
+    against:"The unsourced, the laundered byline, institutions that defected. Internal critique: when evidence becomes content, receipts themselves become a style that can be worn.",
+    execution:"Publish the chain of custody as designed form, not legal fine print. Misuse: provenance theater on an industrially-made product, the audience notices the intruder.",
+    evidence:[
+      {s:"thisiscolossal.com", u:"https://www.thisiscolossal.com/2026/04/kenny-nguyen-silk-textiles-paintings/"},
+      {s:"family.style", u:"https://www.family.style/articles/estelle-hanania-benoit-bethume-stephanie-cavalli-fashion"},
+      {s:"dezeen.com", u:"https://www.dezeen.com/2026/05/14/zero-waste-textiles-project-among-work-featured-at-new-designers-2026/"},
+      {s:"aliciakennedy.news", u:"https://www.aliciakennedy.news/p/on-leather"},
+      {s:"usermag.co", u:"https://www.usermag.co/p/how-much-of-substack-is-actually-ai-pangram-analysis-substack-bestsellers"},
+      {s:"robhorning.substack.com", u:"https://robhorning.substack.com/p/evidence-as-content"}
+    ],
+    trajectory:"2026-06-12 coined",
+    imgs:[
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-9.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-11.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-3.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-4.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-5.jpg",
+      "https://elephant.art/wp-content/uploads/2026/04/2-1-scaled.jpg",
+      "https://elephant.art/wp-content/uploads/2026/04/GJA04493_IG-scaled.jpg",
+      "https://elephant.art/wp-content/uploads/2026/04/1-1-scaled.jpg",
+      "https://static.dezeen.com/uploads/2026/05/uwe-bristol-dezeen-herosq-schoolshows_dezeen_2364_col_0-852x479.jpg",
+      "https://static.dezeen.com/uploads/2026/05/uwe-bristol-dezeenschoolshows_dezeen_2364_col_1-852x1206.jpg",
+      "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad853b_926dfaf7.webp"
+    ]
+  },
+  {
+    id:"countable-labor", name:"Countable Labor", status:"dominant",
+    oneliner:"Authentication by enumeration: the stitch macro, the field of ten thousand units, the headline that counts the years.",
+    bg:"#5e5730", text:"#f7f3e6",
+    palette:["#F2EDE2","#E8E0D0","#6B6434","#C07B3F","#C9C9C7"],
+    def:"Human labor certified by making its units countable. Visually: the macro detail where a single loop, stitch or fold is legible (the 'Detail of…' convention), and the wide shot of a vast field of small handmade units. Verbally: quantified duration and volume as watermark, '22 years', 'thousands of strips', 'hand-cut', shot in clinical verification light.",
+    visual:["legible stitch and loop structure","fold-lines kept visible","seams showing","extreme macro as certificate","aerial field-of-many-units","white-cube flatness","the work, not the worker"],
+    verbal:["handmade","hand-cut","by hand","years","thousands","stitch","loop","every"],
+    quotes:[
+      {q:"If you take money for work you didn't do yourself, then you are a thief.", src:"Sam Kriss", url:"https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will"},
+      {q:"people find a unique comfort in art that feels clearly and intentionally made by human hands", src:"Tata Dovnar, AV Club", url:"https://www.avclub.com/liminal-horror-rise-internet-subgenre-backrooms-dream-pools-dreamcore-outwaters"}
+    ],
+    against:"Instantaneous slickness and infinite reproduction. Watch: the proof has migrated from imagery into captions and headlines, so the counting is increasingly taken on faith.",
+    execution:"Show the unit of making at watermark fidelity and keep the numbers specific and checkable. Misuse: counting things that aren't labor, and this audience audits.",
+    evidence:[
+      {s:"hyperallergic.com", u:"https://hyperallergic.com/joe-macken-spent-22-years-building-a-miniature-new-york-by-hand/"},
+      {s:"thisiscolossal.com", u:"https://www.thisiscolossal.com/2026/04/cassandra-dias-richly-stitched-landscape-embroidery-book/"},
+      {s:"pattaclothing.us", u:"https://pattaclothing.us/blogs/magazine/patta-selects-daniel-smedeman"},
+      {s:"impulsemagazine.com", u:"https://impulsemagazine.com/articles/soft-bodies-hard-tech"},
+      {s:"dezeen.com", u:"https://www.dezeen.com/2026/05/14/zero-waste-textiles-project-among-work-featured-at-new-designers-2026/"}
+    ],
+    trajectory:"2026-06-12 coined",
+    imgs:[
+      "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/04/HeBuiltThisCity_byFilipWolak_0309_8683.jpg",
+      "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/04/HeBuiltThisCity_byFilipWolak_0011_8474-1.jpg",
+      "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/04/JOE-MACKEN-2026-008--1-.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/dias-9.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/dias-8.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/dias-1.jpg",
+      "https://pattaclothing.us/cdn/shop/articles/Daniel_Patta_Magazine_3.jpg?v=1778617712&width=2560",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-1.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-7.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-5.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/05/ramos-4.jpeg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/05/ramos-2.jpeg"
+    ]
+  },
+  {
+    id:"unretouched-witness", name:"The Unretouched Witness", status:"dominant",
+    oneliner:"Imperfect human presence as the logo: life-marked faces, mature casting, hard flash, clutter left in frame.",
+    bg:"#8c1c20", text:"#fbe9e2",
+    palette:["#8A5F4A","#DEDEDE","#5A2C24","#C1271B","#A31F24"],
+    def:"A person, or the trace of one, does the certifying. Three carriers: the dead-frontal face marked by a life (tattoos, age, stage blood); casting older and realer than fashion default; and the snapshot vernacular, hard flash and clutter left in frame, where imperfection proves nothing was staged. Verbally it claims the unforgeable: flesh, mortality, the cultivated ear ('I can tell'), disgust at the synthetic as proof of humanity.",
+    visual:["unretouched skin","real makeup and costume craft","flash glare","retained clutter","dead-frontal portrait, face as full bleed","mirror shots and self-documentation","formal frontal pairs, unsmiling"],
+    verbal:["flesh and blood","voice","I can tell","raw","real","witness","ear","taste"],
+    quotes:[
+      {q:"Did you think I wouldn't be able to tell? I can tell.", src:"Sam Kriss", url:"https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will"},
+      {q:"This was a living creature. Let's not waste it.", src:"Gabrielle Soltis, via Alicia Kennedy", url:"https://www.aliciakennedy.news/p/on-leather"}
+    ],
+    against:"The idealized, the retouched, the synthetic spokesperson, and the fashion-blank face. Internal anxiety: every witness-mark is counterfeitable (a filter can fake flash; AI can fake a face), so the code keeps retreating toward the genuinely unforgeable: age, mortality, named specific people.",
+    execution:"Casting and registration ARE the strategy: specific, named, life-marked people shot frontally with their context left in frame. Misuse: 'real people' casting with retouched skin and cleared sets reads as the fashion-blank deadpan it replaced, the audience reads light and clutter before they read faces.",
+    evidence:[
+      {s:"pattaclothing.us", u:"https://pattaclothing.us/blogs/magazine/patta-selects-daniel-smedeman"},
+      {s:"family.style", u:"https://www.family.style/articles/estelle-hanania-benoit-bethume-stephanie-cavalli-fashion"},
+      {s:"polyesterzine.com", u:"https://www.polyesterzine.com/features/a-look-inside-haut-corporation-one-of-londons-best-stockists-of-rare-covetable-vintage"},
+      {s:"sixthtone.com", u:"https://www.sixthtone.com/news/1018534/handmade%3A-two-chinese-productions-go-viral-for-skipping-ai"},
+      {s:"impulsemagazine.com", u:"https://impulsemagazine.com/articles/the-nurturer-the-hunter-in-a-room-of-ones-own-jersey-city-free-public-library-creative-arts-center"}
+    ],
+    trajectory:"2026-06-12 coined",
+    imgs:[
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/f6218ba2-4a8b-4ac2-a9a2-f8147f34b419/DSCF4878r.jpg",
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/6b24a10f-419d-449e-9487-dba675d427fc/DSCF4935r.jpg",
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/b8e30ca1-9b07-48a0-85f0-2f4d07a6adff/DSCF4972r.jpg",
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/43d24ddc-6fee-4fdd-b0c0-a5dc23c2c96c/DSCF5020r.jpg",
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/28aff6e2-bce3-4502-9449-8c4bf247ed10/DSCF4910r.jpg",
+      "https://pattaclothing.us/cdn/shop/articles/Daniel_Patta_Magazine_3.jpg?v=1778617712&width=2560",
+      "https://image5.sixthtone.com/image/5/97/263.jpg",
+      "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad853b_926dfaf7.webp",
+      "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad8538_a674727e.webp",
+      "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad8535_2755a925.webp",
+      "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/asset/file/ab7842d8-9383-465a-b715-e719b23aab22/image.png",
+      "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/asset/file/d882b727-7cd5-4387-bfc1-7c9319a5a03c/image.png"
+    ]
+  },
+  {
+    id:"slop-repainted-slow", name:"Slop, Repainted Slow", status:"emergent",
+    oneliner:"Disposable detritus, screenshots, memes, shipping cartons, lovingly re-rendered in slow media with its artifacts preserved.",
+    bg:"#a7e029", text:"#161616",
+    palette:["#9FE53A","#E14FAE","#C8102E","#E5C9C2","#9B93A6"],
+    def:"Cheap circulation re-made expensive: oil paintings of phone screenshots that keep the title bar, airbrushed memes, collagraphs printed from discarded cartons with the dielines as skeleton. The acid slop palette is quoted as subject matter while the slow medium does the certifying. Verbally, the 'slop' word-family at full inflection, and the corpus's sharpest fight: every authenticity move is gameable.",
+    visual:["oil rendering of screen blur","airbrush softness on meme subjects","carton fold-lines and plate-tone","compression artifacts preserved by hand","UI chrome as framing device","the internet's cast elevated to portrait subjects"],
+    verbal:["slop","slopified","tasteslop","corporate slop","brainrot","grey goo","glossy","seamless (pejorative)"],
+    quotes:[
+      {q:"Tasteslop is cultural capital after extraction, after it's been through the blender.", src:"Emily Segal, via Drew Austin", url:"https://kneelingbus.substack.com/p/lo-fi-beats-for-studying"},
+      {q:"Producing intentionally flawed content to assert one's humanity is like solving an elaborate CAPTCHA.", src:"Drew Austin", url:"https://kneelingbus.substack.com/p/lo-fi-beats-for-studying"}
+    ],
+    against:"Slickness itself, not just machines (slop predates AI). And its own gameability: intentional jank as just another filter, liminal-horror CGI wearing craft language. This code knows it can be counterfeited and makes that part of the work.",
+    execution:"Display taste ABOUT the slop economy you operate in, name the cheap thing while making it expensively. Misuse is fatal: without genuine wit it becomes exactly the tasteslop it critiques.",
+    evidence:[
+      {s:"polyesterzine.com", u:"https://www.polyesterzine.com/features/the-female-artists-turning-internet-slop-into-fine-art"},
+      {s:"thisiscolossal.com", u:"https://www.thisiscolossal.com/2026/04/rachel-mentzer-discarded-cartons-collagraphs-printmaking/"},
+      {s:"newlinesmag.com", u:"https://newlinesmag.com/essays/how-a-sufi-saints-coffee-recipe-took-senegal-by-storm/"},
+      {s:"kneelingbus.substack.com", u:"https://kneelingbus.substack.com/p/lo-fi-beats-for-studying"},
+      {s:"kylechayka.substack.com", u:"https://kylechayka.substack.com/p/rip-millennial-lifestyle-brands"},
+      {s:"avclub.com", u:"https://www.avclub.com/liminal-horror-rise-internet-subgenre-backrooms-dream-pools-dreamcore-outwaters"}
+    ],
+    trajectory:"2026-06-12 coined",
+    imgs:[
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/650e7c3d-72ad-4e20-aec4-f3b1d3566d65/georgia.png",
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/754db6fe-f6d0-4f2c-b8fc-32d9333da5b1/meme+art.png",
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/04daffb8-a66f-401f-8486-6819a251fccf/meme+art+2.png",
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/415bb764-fe4c-485d-b258-fc4fd6700477/meme+art+3.png",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-9-e1777275088694.jpeg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-3.jpeg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-1.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-6.jpeg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-4.jpg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-8.jpeg",
+      "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-2.jpeg",
+      "https://newlinesmag.com/wp-content/uploads/coffee.jpg-web.jpg"
+    ]
+  },
+  {
+    id:"analog-sanctuary", name:"The Analog Sanctuary", status:"residual",
+    oneliner:"Warm-lit rooms where slow media is practiced together: the listening bar, the record shop, the reading cafe, the archive as altar.",
+    bg:"#6b3f22", text:"#f6e7d4",
+    palette:["#B97F3D","#E8B45C","#6F6A3F","#7A3B2A","#111111"],
+    def:"The oldest code, tagged residual: inhabited spaces built around analog ritual, vinyl walls, turntable altars, film cameras in working hands, long tables of people journaling by window light. Lit warm and practical, never HDR. What clients reach for by default when briefed 'human', though its smartest advocates concede the memory is partly reinvented, not remembered.",
+    visual:["wood grain","worn leather","paper, grain and hiss","plaster, murano glass, patina","interiors at human scale, occupied","shelf and archive walls as backdrop","communal tables, window light"],
+    verbal:["analog","vinyl","film","grain","warmth","ritual","slow","curation","tactile"],
+    quotes:[
+      {q:"preserving the raw, tactile soul of the past", src:"Tata Dovnar, AV Club", url:"https://www.avclub.com/liminal-horror-rise-internet-subgenre-backrooms-dream-pools-dreamcore-outwaters"},
+      {q:"Reality is a scarce resource.", src:"Sam Kriss", url:"https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will"}
+    ],
+    against:"The placeless, the streamed, the frictionless. Internal critique: the sanctuary is increasingly a reinvention rather than a memory, which is why it reads residual, not emergent.",
+    execution:"Right where the practice is real, an actual listening bar, an actual archive. Misuse: sanctuary set-dressing on a digital-first product, the most common 'certified human' cliche in client work.",
+    evidence:[
+      {s:"radii.co", u:"https://radii.co/article/vinyl-bars-film-cameras-and-the-rise-of-asias-analog-revival"},
+      {s:"popmatters.com", u:"https://www.popmatters.com/record-stores-tokyo"},
+      {s:"sightunseen.com", u:"https://www.sightunseen.com/2026/05/murano-glass-plaster-flowers-mosaic-tables-all-the-hits-from-new-york-design-month-so-far/"},
+      {s:"avclub.com", u:"https://www.avclub.com/liminal-horror-rise-internet-subgenre-backrooms-dream-pools-dreamcore-outwaters"}
+    ],
+    trajectory:"2026-06-12 coined",
+    imgs:[
+      "https://radii.co/wp-content/uploads/2026/06/radii_analog_01.png",
+      "https://radii.co/wp-content/uploads/2026/06/radii_analog_03.png",
+      "https://radii.co/wp-content/uploads/2026/06/radii_analog_05.png",
+      "https://radii.co/wp-content/uploads/2026/06/radii_analog_06.jpg",
+      "https://radii.co/wp-content/uploads/2026/06/radii_analog_07.png",
+      "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/InCommonWith_MuranoOrb8Pendant_GotoBianco_Blackened_Brass_CasaTabarelli_61-728x558.jpg",
+      "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/Danny-Kaplan-Fox-Glove189766-728x512.jpg",
+      "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/260507_LooseGrip0692.pd_-728x558.jpg",
+      "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/Danny-Kaplan-Fox-Glove189078-728x558.jpg",
+      "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/Anna-Fasshauer-Cosmic-Cocktail-2026-Aluminium-lacquer-155-x-75-x-50-cm-photo-angel-gil-galerie-forsblom-728x558.jpg",
+      "https://img.pastemagazine.com/wp-content/avuploads/2026/02/24101751/MixCollage-24-Feb-2026-10-16-AM-6079.jpg"
+    ]
+  }
+];
+
+const INTRO_BG = [250,250,248];
+function hexRgb(h){ h=h.replace('#',''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
+function mix(a,b,t){ return `rgb(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)})`; }
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+// intro list
+const cl = document.getElementById('codelist');
+CODES.forEach((c,i)=>{
+  const a = document.createElement('a');
+  a.href = '#'+c.id;
+  a.innerHTML = `<span class="num">0${i+1}</span><span class="dot" style="background:${c.palette[c.palette.length-1]}"></span>${c.name}`;
+  cl.appendChild(a);
+});
+
+// code sections
+const main = document.getElementById('codes');
+const spanPattern = ['big','','tall','','wide','','tall','','','wide','','tall'];
+CODES.forEach((c,i)=>{
+  const sec = document.createElement('section');
+  sec.className = 'code';
+  sec.id = c.id;
+  sec.dataset.bg = c.bg;
+  sec.style.color = c.text;
+  sec.style.setProperty('--tx', c.text);
+
+  const tiles = c.imgs.map((src,j)=>{
+    const k = spanPattern[j % spanPattern.length];
+    return `<figure class="${k}"><img src="${src}" loading="lazy" referrerpolicy="no-referrer" alt="" onerror="this.closest('figure').remove()"></figure>`;
+  }).join('');
+  const sw = c.palette.map(p=>`<span style="background:${p}"></span>`).join('');
+  const visualChips = c.visual.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const verbalChips = c.verbal.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const quotes = c.quotes.map(q=>`<div class="quote"><span class="q">“${esc(q.q)}”</span> <a href="${q.url}" target="_blank" rel="noopener">${esc(q.src)} →</a></div>`).join('');
+  const ev = c.evidence.map(e=>`<a href="${e.u}" target="_blank" rel="noopener">${esc(e.s)} →</a>`).join('');
+
+  sec.innerHTML = `
+    <div class="hero">
+      <div class="text">
+        <div class="num">0${i+1} / 05</div>
+        <span class="status">${c.status}</span>
+        <h2>${c.name}</h2>
+        <p class="oneliner">${c.oneliner}</p>
+        <div class="palette">${sw}</div>
+        <div class="scrollon">Scroll for the analysis ↓</div>
+      </div>
+      <div class="collage">${tiles}</div>
+    </div>
+    <div class="analysis">
+      <p class="def">${esc(c.def)}</p>
+      <div class="grid2">
+        <div class="block"><div class="label">Visual register</div><div class="chips">${visualChips}</div></div>
+        <div class="block"><div class="label">Verbal register</div><div class="chips">${verbalChips}</div><div class="quotes">${quotes}</div></div>
+        <div class="block"><div class="label">Against</div><div class="body">${esc(c.against)}</div></div>
+        <div class="block"><div class="label">Execution</div><div class="body">${esc(c.execution)}</div></div>
+        <div class="block full"><div class="label">Evidence</div><div class="ev">${ev}</div></div>
+        <div class="meta"><span>${esc(IMG_NOTE)}</span><span>Trajectory · ${esc(c.trajectory)}</span></div>
+      </div>
+    </div>`;
+  main.appendChild(sec);
+});
+
+// scroll color morph
+const bg = document.getElementById('bg');
+const stops = [...document.querySelectorAll('.code')].map(s=>({el:s, rgb:hexRgb(s.dataset.bg)}));
+function paint(){
+  const vh = window.innerHeight;
+  const mid = window.scrollY + vh*0.5;
+  const introH = document.getElementById('intro').offsetHeight;
+  if(mid < stops[0].el.offsetTop){
+    const t = Math.max(0, Math.min(1, (mid - introH*0.4) / (introH*0.6)));
+    bg.style.backgroundColor = mix(INTRO_BG, stops[0].rgb, t);
+    return;
+  }
+  let idx = 0;
+  for(let i=0;i<stops.length;i++){ if(mid >= stops[i].el.offsetTop) idx = i; }
+  const cur = stops[idx];
+  const next = stops[idx+1] || cur;
+  const start = cur.el.offsetTop;
+  const end = stops[idx+1] ? stops[idx+1].el.offsetTop : start + cur.el.offsetHeight;
+  const t = Math.max(0, Math.min(1, (mid - start) / (end - start)));
+  const tt = t < 0.7 ? 0 : (t - 0.7) / 0.3;
+  bg.style.backgroundColor = mix(cur.rgb, next.rgb, tt);
+}
+let ticking=false;
+window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(()=>{paint();ticking=false;}); ticking=true; } },{passive:true});
+window.addEventListener('resize',paint);
+paint();
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Look &amp; Feel — Certified Human (prototype)</title>
+<style>
+  :root{--ink:#141414;--mute:#6b665c;--line:#e6e3db;--card:#fcfbf9}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:#fff}
+  .wrap{max-width:880px;margin:0 auto;padding:56px 24px 120px}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+  h1{font-family:Georgia,serif;font-weight:600;font-size:40px;margin:0 0 10px;letter-spacing:-.01em}
+  .lede{color:#3a382f;max-width:68ch;margin:0 0 6px}
+  .statline{font-size:13px;color:var(--mute);margin-bottom:34px}
+  .proto{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid #e2cb96;color:#9a6b1a;border-radius:20px;padding:2px 9px;margin-bottom:14px}
+  .code{border:1px solid var(--line);border-radius:4px;background:var(--card);margin:22px 0;padding:24px 28px}
+  .c-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .c-head h2{font-family:Georgia,serif;font-size:25px;font-weight:600;margin:0}
+  .status{font-size:10px;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--line);border-radius:20px;padding:2.5px 10px;color:var(--mute)}
+  .status.emergent{color:#2f6f3e;border-color:#bcd6c3;background:#f2f8f3}
+  .status.dominant{color:#3a5a9b;border-color:#b9c6e2;background:#f3f6fb}
+  .status.residual{color:#8a6d3b;border-color:#e2d6b6;background:#faf7ee}
+  .one{font-family:Georgia,serif;font-size:16.5px;color:#2e2c26;margin:10px 0 4px;line-height:1.45}
+  .def{font-size:14px;color:#33312c;margin:8px 0 18px;max-width:74ch}
+  .collage{display:flex;flex-wrap:wrap;gap:4px;margin:14px 0 4px}
+  .collage a{display:block;height:150px;overflow:hidden;border-radius:2px;background:#eeebe3;position:relative}
+  .collage img{height:150px;width:auto;display:block}
+  .collage a:hover::after{content:attr(data-src);position:absolute;left:0;right:0;bottom:0;font-size:9.5px;letter-spacing:.04em;color:#fff;background:rgba(20,20,20,.62);padding:2px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .collage-note{font-size:10.5px;color:var(--mute);margin:0 0 14px}
+  .swatches{display:flex;gap:0;margin:6px 0 18px;border:1px solid var(--line);border-radius:3px;overflow:hidden;height:54px}
+  .sw{flex:1;position:relative}
+  .sw span{position:absolute;left:7px;bottom:5px;font-size:9px;letter-spacing:.03em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);white-space:nowrap}
+  .sw.light span{color:#444;text-shadow:none}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 30px}
+  @media(max-width:640px){.cols{grid-template-columns:1fr}}
+  h4{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:14px 0 6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+  .chips{display:flex;flex-wrap:wrap;gap:5px}
+  .chip{font-size:11.5px;border:1px solid var(--line);background:#fff;border-radius:20px;padding:2.5px 10px;color:#33312c}
+  ul{margin:4px 0;padding-left:17px;font-size:13px;color:#33312c}
+  li{margin:2.5px 0}
+  blockquote{margin:8px 0;padding:7px 13px;border-left:3px solid var(--line);font-family:Georgia,serif;font-style:italic;font-size:14px;color:#3a372f}
+  blockquote a{font-style:normal;font-size:11.5px;color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line)}
+  .note{font-size:13px;color:#4a473e;background:#fff;border:1px solid var(--line);border-radius:3px;padding:10px 14px;margin:8px 0}
+  .note b{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;font-weight:600}
+  .ev{font-size:12.5px;color:var(--mute);margin:3px 0}
+  .ev a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  .ev a:hover{border-color:var(--ink)}
+  .hist{font-size:11.5px;color:var(--mute);margin-top:14px;border-top:1px dashed var(--line);padding-top:9px}
+  .fnote{font-size:11.5px;color:var(--mute);margin-top:40px;border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="proto">Flat prototype — gate review, not deployed</span>
+  <p class="kicker">Look &amp; Feel · Semiotic Codes</p>
+  <h1 id="t-need"></h1>
+  <p class="lede">How this need currently signifies: the recurring visual and verbal patterns independent cultural actors keep reaching for. Evidence imagery is hotlinked live from each publisher's own servers and credited — nothing is stored or copied; everything clicks through to its source.</p>
+  <p class="statline" id="t-stat"></p>
+  <div id="codes"></div>
+  <p class="fnote" id="t-method"></p>
+</div>
+<script>
+const D = /*__CODES__*/{}/*__END__*/;
+const esc=t=>(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const lum=h=>{const n=parseInt(h.slice(1),16);return (0.299*(n>>16)+0.587*((n>>8)&255)+0.114*(n&255))/255;};
+document.getElementById("t-need").textContent=D.need;
+document.getElementById("t-stat").textContent=`${D.codes.length} codes · ${D.images_observed} images observed across ${D.articles_viewed} articles · runs ${D.runs_covered.join(", ")} · updated ${D.updated}`;
+document.getElementById("t-method").textContent=D.method_note;
+document.getElementById("codes").innerHTML=D.codes.map(c=>`
+  <div class="code">
+    <div class="c-head"><h2>${esc(c.name)}</h2><span class="status ${esc(c.status)}">${esc(c.status)}</span><span style="font-size:11px;color:var(--mute)">confidence: ${esc(c.confidence)}</span></div>
+    <p class="one">${esc(c.one_liner)}</p>
+    ${(()=>{const imgs=c.evidence.flatMap(e=>(e.image_refs||[]).map(u=>({u,s:e.source,a:e.url})));
+      return imgs.length?`<div class="collage">${imgs.map(i=>`<a href="${esc(i.a)}" target="_blank" rel="noopener" data-src="${esc(i.s)}"><img loading="lazy" referrerpolicy="no-referrer" src="${esc(i.u)}" alt="evidence imagery — ${esc(i.s)}" onerror="this.parentElement.style.display='none'"></a>`).join("")}</div>
+      <p class="collage-note">${imgs.length} evidence images, embedded live from the publishers' own servers — nothing stored. Hover for source, click through to the article.</p>`:"";})()}
+    <p class="def">${esc(c.definition)}</p>
+    <div class="swatches">${c.visual.palette.map(p=>`<div class="sw ${lum(p.hex)>.62?"light":""}" style="background:${esc(p.hex)}" title="${esc(p.hex)}"><span>${esc(p.name)} ${esc(p.hex)}</span></div>`).join("")}</div>
+    <div class="cols">
+      <div>
+        <h4>Materials &amp; textures</h4><div class="chips">${c.visual.materials_textures.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div>
+        <h4>Composition</h4><ul>${c.visual.composition.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+        <h4>Typography</h4><ul>${c.visual.typography.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+        <h4>Casting &amp; setting</h4><ul>${c.visual.casting_setting.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+      </div>
+      <div>
+        <h4>Lexicon</h4><div class="chips">${c.verbal.lexicon.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div>
+        <h4>Metaphors</h4><ul>${c.verbal.metaphors.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+        <h4>Register</h4><ul><li>${esc(c.verbal.register)}</li></ul>
+        <h4>In their words</h4>${c.verbal.sample_phrases.map(q=>`<blockquote>“${esc(q.quote)}” <a href="${esc(q.url)}" target="_blank" rel="noopener">${esc(q.source)} →</a></blockquote>`).join("")}
+      </div>
+    </div>
+    <div class="note"><b>Defines itself against</b>${esc(c.tensions)}</div>
+    <div class="note"><b>Execution notes</b>${esc(c.execution_notes)}</div>
+    <h4>Evidence (${c.evidence.length})</h4>
+    ${c.evidence.map(e=>`<p class="ev"><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)}</a> — ${esc(e.note)}</p>`).join("")}
+    <div class="hist">Trajectory: ${c.history.map(h=>`${esc(h.run)} · ${esc(h.change)} — ${esc(h.note)}`).join(" → ")}</div>
+  </div>`).join("");
+</script>
+</body>
+</html>

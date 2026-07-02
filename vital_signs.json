@@ -1,0 +1,1510 @@
+{
+  "pulled": "2026-06-11",
+  "indicators": [
+    {
+      "id": "edelman_trust",
+      "name": "Edelman Trust Barometer",
+      "source_org": "Edelman",
+      "url": "https://www.edelman.com/news-awards/2026-edelman-trust-barometer-society-slides-into-insularity",
+      "value": "7 in 10 globally unwilling or hesitant to trust someone with different values/backgrounds; U.S. Trust Index 47 (Japan 38 lowest, China/UAE 80 highest)",
+      "as_of": "2026 report (fielded Oct 23 - Nov 18, 2025)",
+      "cadence": "annual",
+      "delta": "Business ethics score up 4 pts to 20 (first time above NGOs, 17); next-generation optimism in US down 9 pts to 21% vs 2025 report",
+      "series": [],
+      "measures": "Trust in business, government, media and NGOs among online general-population respondents (~34,000) across 28 countries.",
+      "caveat": "30-minute online interviews skew toward connected, literate populations and are not nationally representative probability samples.",
+      "citation": "2026 Edelman Trust Barometer, Edelman Trust Institute online survey of nearly 34,000 respondents across 28 countries, fielded Oct 23-Nov 18, 2025",
+      "synonyms": [
+        "trust",
+        "institutions",
+        "credibility",
+        "insularity",
+        "business",
+        "government",
+        "media",
+        "NGOs"
+      ],
+      "quote": "For the second year in a row, developed markets sit at the bottom of the Trust Index, including Japan (38), France (42), Germany (44), the UK (44), Spain (45), South Korea (46), and the U.S. (47), while developing markets top the index, led by China (80), the UAE (80), India (74), Indonesia (73), Saudi Arabia (73), and Nigeria (72).",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "7 in 10 globally unwilling or hesitant to trust someone with different values/backgrounds; U.S. Trust Index 47 (Japan 38 lowest, China/UAE 80 highest)"
+        }
+      ]
+    },
+    {
+      "id": "gallup_negative_experience",
+      "name": "Gallup Negative Experience Index",
+      "source_org": "Gallup",
+      "url": "https://www.gallup.com/405494/indicator-global-emotional-wellbeing.aspx",
+      "value": "31 (Negative Experience Index, 2024)",
+      "as_of": "2024 World Poll data (published 2025 in State of the World's Emotional Health)",
+      "cadence": "annual",
+      "delta": "no change since last reported (2023: 31)",
+      "series": [
+        {
+          "period": "2023",
+          "value": 31
+        },
+        {
+          "period": "2024",
+          "value": 31
+        }
+      ],
+      "measures": "Mean share of adults (15+) in 144 countries reporting a lot of worry, stress, sadness, anger or physical pain the previous day, multiplied by 100.",
+      "caveat": "Country margins of error range +/-2.1 to +/-5.4 pts, and the index remains at least 4 pts above 2014 levels despite easing from pandemic highs; Gallup's 2025 report rebranded Global Emotions as 'State of the World's Emotional Health'.",
+      "citation": "Gallup World Poll / State of the World's Emotional Health 2025, nationally representative surveys of adults 15+ in 144 countries and territories in 2024",
+      "synonyms": [
+        "emotions",
+        "wellbeing",
+        "stress",
+        "worry",
+        "negative experience",
+        "unhappiness"
+      ],
+      "quote": "Negative Experience Index in 2024: 31 — no change since last reported.",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "31 (Negative Experience Index, 2024)"
+        }
+      ]
+    },
+    {
+      "id": "gallup_institutions",
+      "name": "Confidence in US Institutions",
+      "source_org": "Gallup",
+      "url": "https://news.gallup.com/poll/692633/democrats-confidence-institutions-sinks-new-low.aspx",
+      "value": "28% average confidence in major U.S. institutions (near-record low)",
+      "as_of": "June 2-26, 2025 poll (annual average across nine institutions tracked since 1979)",
+      "cadence": "annual",
+      "delta": "unchanged vs 2024 (28%); fourth consecutive year of sub-30% averages",
+      "series": [
+        {
+          "period": "2024",
+          "value": 28
+        },
+        {
+          "period": "2025",
+          "value": 28
+        }
+      ],
+      "measures": "Share of U.S. adults expressing 'a great deal' or 'quite a lot' of confidence, averaged across nine major institutions (e.g., military, police, presidency, Congress, media) tracked consistently since 1979.",
+      "caveat": "The flat topline masks large partisan swings after the change of administration (Republicans 37%, up 9 pts; Democrats 26%, a new low); averages differ slightly depending on which set of institutions is included (the 14-institution average is also 28%).",
+      "citation": "Gallup Confidence in Institutions, telephone survey of U.S. adults conducted June 2-26, 2025",
+      "synonyms": [
+        "confidence",
+        "institutions",
+        "trust",
+        "military",
+        "congress",
+        "police"
+      ],
+      "quote": "Americans' average confidence in major U.S. institutions is unchanged since last year, with a near-record-low 28% of U.S. adults expressing \"a great deal\" or \"quite a lot\" of confidence in nine institutions tracked consistently since 1979.",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "28% average confidence in major U.S. institutions (near-record low)"
+        }
+      ]
+    },
+    {
+      "id": "pew_trust_gov",
+      "name": "Trust in Federal Government",
+      "source_org": "Pew Research Center",
+      "url": "https://www.pewresearch.org/politics/2025/12/04/public-trust-in-government-1958-2025/",
+      "value": "17% trust the federal government to do what is right always/most of the time",
+      "as_of": "September 2025 survey (report published Dec 4, 2025)",
+      "cadence": "annual",
+      "delta": "down 5 pts vs 2024 (22%)",
+      "series": [
+        {
+          "period": "Apr 2020",
+          "value": 27
+        },
+        {
+          "period": "Apr 2021",
+          "value": 24
+        },
+        {
+          "period": "May 2022",
+          "value": 20
+        },
+        {
+          "period": "Jun 2023",
+          "value": 16
+        },
+        {
+          "period": "May 2024",
+          "value": 22
+        },
+        {
+          "period": "Feb 2025",
+          "value": 17
+        },
+        {
+          "period": "Sep 2025",
+          "value": 17
+        }
+      ],
+      "measures": "Share of U.S. adults who say they trust the government in Washington to do what is right 'just about always' (2%) or 'most of the time' (15%).",
+      "caveat": "The September 2025 survey was conducted just prior to the federal government shutdown (Oct 1-Nov 12), and long-run comparisons splice multiple pollsters' trends (NES, Gallup, CBS/NYT) onto Pew's.",
+      "citation": "Pew Research Center, 'Public Trust in Government: 1958-2025,' Dec 2025; American Trends Panel survey of U.S. adults, September 2025",
+      "synonyms": [
+        "trust",
+        "government",
+        "federal",
+        "Washington",
+        "confidence"
+      ],
+      "quote": "Just 17% of Americans now say they trust the government in Washington to do what is right \"just about always\" (2%) or \"most of the time\" (15%).",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "17% trust the federal government to do what is right always/most of the time"
+        }
+      ]
+    },
+    {
+      "id": "world_happiness",
+      "name": "World Happiness Report",
+      "source_org": "World Happiness Report (Oxford Wellbeing Research Centre / Gallup)",
+      "url": "https://www.worldhappiness.report/ed/2026/international-evidence-on-happiness-and-social-media/",
+      "value": "Finland #1 at 7.764 (0-10 Cantril ladder); United States ranked 23rd (6.816)",
+      "as_of": "2026 report (life evaluations averaged 2023-2025)",
+      "cadence": "annual",
+      "delta": "Finland #1 for the 9th consecutive year; Costa Rica's rise to 4th is the highest ever for a Latin American country",
+      "series": [],
+      "measures": "Country-level average of self-reported life evaluations (Cantril ladder, 0-10) from Gallup World Poll nationally representative samples, averaged over 2023-2025, across 147 countries.",
+      "caveat": "Rankings use three-year rolling averages of roughly 1,000 respondents per country per year, so small score gaps (e.g., US 6.816 vs Saudi Arabia 6.817) are within confidence intervals.",
+      "citation": "World Happiness Report 2026 (Helliwell et al., eds.), University of Oxford Wellbeing Research Centre with Gallup World Poll data, life evaluations 2023-2025",
+      "synonyms": [
+        "happiness",
+        "wellbeing",
+        "life satisfaction",
+        "Cantril ladder",
+        "Finland"
+      ],
+      "quote": "Nordic countries once again lead the happiness rankings. Finland is still in a group of one at the top, followed by Iceland, Denmark, and Costa Rica in a group of three (as shown by their 2-4 ranking range in Figure 2.1).",
+      "confidence": "high",
+      "confidence_note": "Finland #1 verified on worldhappiness.report chapter text; exact scores (7.764) and US rank/score (23rd, 6.816) verified against the full WHR 2026 ranking table republished by Happier Lives Institute and corroborated by multiple search results.",
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "Finland #1 at 7.764 (0-10 Cantril ladder); United States ranked 23rd (6.816)"
+        }
+      ]
+    },
+    {
+      "id": "gallup_us_position",
+      "name": "Satisfaction With US Position in World",
+      "source_org": "Gallup",
+      "url": "https://news.gallup.com/poll/702767/americans-views-nation-global-image-power.aspx",
+      "value": "38% of Americans satisfied with the position of the US in the world (61% dissatisfied)",
+      "as_of": "World Affairs survey, Feb 2-16, 2026",
+      "cadence": "annual",
+      "delta": "down 1 pt vs 2025 (39%)",
+      "series": [
+        {
+          "period": "2020",
+          "value": 53
+        },
+        {
+          "period": "2021",
+          "value": 37
+        },
+        {
+          "period": "2024",
+          "value": 33
+        },
+        {
+          "period": "2025",
+          "value": 39
+        },
+        {
+          "period": "2026",
+          "value": 38
+        }
+      ],
+      "measures": "Share of U.S. adults satisfied with the United States' position in the world, from Gallup's annual February World Affairs telephone poll.",
+      "caveat": "Fieldwork ended before the US/Israel military action against Iran, which Gallup notes could reshape these perceptions, and the measure is highly partisan (80% of Republicans vs 7% of Democrats satisfied, a record 73-pt gap).",
+      "citation": "Gallup World Affairs survey, telephone interviews conducted by ReconMR Feb 2-16, 2026, with a random sample of 1,001 US adults (+/-4 pts)",
+      "synonyms": [
+        "satisfaction",
+        "world standing",
+        "global position",
+        "foreign policy",
+        "national pride"
+      ],
+      "quote": "Thirty-eight percent of Americans were satisfied and 61% dissatisfied with the United States' position in the world before the military action in Iran.",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "38% of Americans satisfied with the position of the US in the world (61% dissatisfied)"
+        }
+      ]
+    },
+    {
+      "id": "wui",
+      "name": "World Uncertainty Index (Global)",
+      "source_org": "Ahir, Bloom & Furceri (worlduncertaintyindex.com) / FRED, Federal Reserve Bank of St. Louis",
+      "url": "https://fred.stlouisfed.org/series/WUIGLOBALWEIGHTAVG",
+      "value": "94,947.060 (index, GDP-weighted global average)",
+      "as_of": "Q4 2025",
+      "cadence": "quarterly",
+      "delta": "Down from 106,862.200 in Q3 2025 (derived: -11,915.14)",
+      "series": [
+        {
+          "period": "Q4 2024",
+          "value": "26,370.250"
+        },
+        {
+          "period": "Q1 2025",
+          "value": "48,145.700"
+        },
+        {
+          "period": "Q2 2025",
+          "value": "80,038.140"
+        },
+        {
+          "period": "Q3 2025",
+          "value": "106,862.200"
+        },
+        {
+          "period": "Q4 2025",
+          "value": "94,947.060"
+        }
+      ],
+      "measures": "Counts the frequency of the word 'uncertain' (and variants) in Economist Intelligence Unit country reports across 143 countries, GDP-weighted and rescaled, as a proxy for global uncertainty.",
+      "caveat": "worlduncertaintyindex.com released Q1 2026 data (dataset updated April 19, 2026, covering through April 2026), but that value is only in a downloadable xlsx that could not be parsed; the latest text-verifiable value is Q4 2025 via FRED (updated Jan 15, 2026).",
+      "citation": "Ahir, Bloom & Furceri, World Uncertainty Index: Global, GDP Weighted Average (WUIGLOBALWEIGHTAVG), retrieved from FRED, Federal Reserve Bank of St. Louis; Q4 2025.",
+      "synonyms": [
+        "uncertainty",
+        "volatility",
+        "WUI",
+        "geopolitical risk",
+        "policy uncertainty",
+        "instability"
+      ],
+      "quote": "Q4 2025: 94,947.060 | Index, Not Seasonally Adjusted | Quarterly",
+      "confidence": "low",
+      "confidence_note": "The Q4 2025 figure is verbatim from FRED and solid, but a more recent Q1 2026 observation exists on worlduncertaintyindex.com (charts/xlsx only) that could not be extracted; treat Q4 2025 as one quarter behind the newest release.",
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "94,947.060 (index, GDP-weighted global average)"
+        }
+      ]
+    },
+    {
+      "id": "michigan_sentiment",
+      "name": "UMich Consumer Sentiment",
+      "source_org": "University of Michigan Surveys of Consumers",
+      "url": "https://www.sca.isr.umich.edu/",
+      "value": "44.8 (Index of Consumer Sentiment, May 2026 final)",
+      "as_of": "May 2026 (final); prior month April 2026: 49.8",
+      "cadence": "monthly",
+      "delta": "-5.0 points vs April 2026 (49.8 to 44.8); -10.0% M-M and -14.2% Y-Y per UM table",
+      "series": [
+        {
+          "period": "May 2025",
+          "value": "52.2"
+        },
+        {
+          "period": "Apr 2026",
+          "value": "49.8"
+        },
+        {
+          "period": "May 2026",
+          "value": "44.8"
+        }
+      ],
+      "measures": "Survey-based index of US consumers' assessments of personal finances, business conditions and buying conditions, benchmarked to 1966=100.",
+      "caveat": "May 2026 final marks a record/near-record low driven by Strait of Hormuz fuel-price disruptions; preliminary June 2026 data releases June 12, 2026, so this value may be superseded within days.",
+      "citation": "University of Michigan, Surveys of Consumers, Final Results for May 2026 (Director Joanne Hsu), sca.isr.umich.edu.",
+      "synonyms": [
+        "consumer confidence",
+        "sentiment",
+        "consumer mood",
+        "ICS",
+        "Michigan survey",
+        "household optimism"
+      ],
+      "quote": "Consumer sentiment fell for the third straight month as supply disruptions in the Strait of Hormuz continue to boost gasoline prices. Sentiment is now just below the previous historical trough seen in June 2022.",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "44.8 (Index of Consumer Sentiment, May 2026 final)"
+        }
+      ]
+    },
+    {
+      "id": "oecd_inflation",
+      "name": "OECD CPI Inflation (YoY)",
+      "source_org": "OECD",
+      "url": "https://www.oecd.org/en/data/insights/statistical-releases/2026/06/consumer-prices-oecd-updated-4-june-2026.html",
+      "value": "4.4% year-on-year (OECD area CPI)",
+      "as_of": "April 2026",
+      "cadence": "monthly",
+      "delta": "+0.4 percentage points vs March 2026 (4.0%)",
+      "series": [
+        {
+          "period": "Mar 2026",
+          "value": "4.0%"
+        },
+        {
+          "period": "Apr 2026",
+          "value": "4.4%"
+        }
+      ],
+      "measures": "Year-on-year change in consumer prices aggregated across the 38 OECD member countries.",
+      "caveat": "Released June 4, 2026 with an April 2026 reference period, so it lags roughly two months; the rise is heavily energy-driven amid the Middle East conflict.",
+      "citation": "OECD (2026), 'Consumer Prices, OECD - Updated: 4 June 2026', reference period April 2026, oecd.org.",
+      "synonyms": [
+        "inflation",
+        "cost of living",
+        "CPI",
+        "price growth",
+        "consumer prices",
+        "purchasing power"
+      ],
+      "quote": "Year-on-year inflation in the OECD, as measured by the Consumer Price Index, rose to 4.4% in April 2026, up from 4.0% in March.",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "4.4% year-on-year (OECD area CPI)"
+        }
+      ]
+    },
+    {
+      "id": "eurostat_esi",
+      "name": "Economic Sentiment Indicator (EU / euro area)",
+      "source_org": "European Commission, DG ECFIN",
+      "url": "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/business-and-consumer-surveys/latest-business-and-consumer-surveys_en",
+      "value": "93.7 (EU); 93.5 (euro area)",
+      "as_of": "May 2026",
+      "cadence": "monthly",
+      "delta": "+0.3 points vs April 2026 in both the EU and the euro area",
+      "series": [
+        {
+          "period": "May 2026 (EU)",
+          "value": "93.7"
+        },
+        {
+          "period": "May 2026 (euro area)",
+          "value": "93.5"
+        }
+      ],
+      "measures": "Composite of harmonised business (industry, services, retail, construction) and consumer confidence surveys, with long-term average = 100.",
+      "caveat": "Both readings remain well below the long-term average of 100, so a small monthly uptick still signals weak sentiment; next update (Flash Consumer Confidence) is June 22, 2026.",
+      "citation": "European Commission DG ECFIN, Business and Consumer Survey results, May 2026 (press release, 28 May 2026), ec.europa.eu.",
+      "synonyms": [
+        "economic sentiment",
+        "ESI",
+        "business confidence",
+        "consumer confidence",
+        "Eurozone mood",
+        "survey indicator"
+      ],
+      "quote": "In May 2026, the Economic Sentiment Indicator (ESI) moved broadly sideways in both the EU and the euro area (+0.3 points in both areas, to 93.7 in the EU and 93.5 in the EA).",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "93.7 (EU); 93.5 (euro area)"
+        }
+      ]
+    },
+    {
+      "id": "oecd_unemployment",
+      "name": "OECD Unemployment Rate",
+      "source_org": "OECD",
+      "url": "https://www.oecd.org/en/data/insights/statistical-releases/2026/06/unemployment-rates-updated-june-2026.html",
+      "value": "5.0% (OECD-area unemployment rate)",
+      "as_of": "April 2026",
+      "cadence": "monthly",
+      "delta": "Unchanged - 'held steady' vs March 2026 (0.0 pp)",
+      "series": [
+        {
+          "period": "Apr 2026",
+          "value": "5.0%"
+        }
+      ],
+      "measures": "Share of the OECD-area labour force that is unemployed, harmonised across the 38 member countries.",
+      "caveat": "The rate has hovered around 5.0% since February 2022, so headline stability can mask diverging country-level moves (e.g., double-digit rates in Spain and Finland).",
+      "citation": "OECD (2026), 'Unemployment Rates, OECD - Updated: June 2026', reference period April 2026, oecd.org.",
+      "synonyms": [
+        "unemployment",
+        "joblessness",
+        "labour market",
+        "jobless rate",
+        "employment",
+        "labor force"
+      ],
+      "quote": "The OECD unemployment rate held steady at 5.0% in April 2026, a level it has hovered around since February 2022.",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "5.0% (OECD-area unemployment rate)"
+        }
+      ]
+    },
+    {
+      "id": "hdi",
+      "name": "Human Development Index",
+      "source_org": "UNDP Human Development Report Office",
+      "url": "https://hdr.undp.org/content/human-development-report-2025",
+      "value": "Global human development progress slowed to a 35-year low; the projected rise in global HDI is the smallest increase since 1990 (excluding the 2020-21 crisis years). Iceland tops the 2025 HDI ranking (HDI 0.972, 2023 data), replacing Norway.",
+      "as_of": "HDR 2025 (published 6 May 2025; HDI values for 2023, projections for 2024)",
+      "cadence": "annual",
+      "delta": "Slowdown vs prior editions: 'the meagre rise in global human development projected in this year's report is the smallest increase since 1990'; inequality between Low HDI and Very High HDI countries increased for the fourth year in a row.",
+      "series": [],
+      "measures": "Composite index of health (life expectancy), education and income for 193 countries and territories, summarizing average achievement in human development.",
+      "caveat": "Headline slowdown and Iceland's #1 rank verified on hdr.undp.org and UN (UNRIC); the 0.972 value comes from search-result summaries of the HDR25 statistical annex rather than a directly parsed table, and 2024 figures are projections.",
+      "citation": "UNDP, Human Development Report 2025: 'A matter of choice: People and possibilities in the age of AI', 6 May 2025, hdr.undp.org",
+      "synonyms": [
+        "development",
+        "human development",
+        "HDI",
+        "wellbeing",
+        "living standards",
+        "UNDP"
+      ],
+      "quote": "Excluding those crisis years, the meagre rise in global human development projected in this year's report is the smallest increase since 1990.",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "Global human development progress slowed to a 35-year low; the projected rise in global HDI is the smallest increase since 1990 (excluding the 2020-21 crisis years). Iceland tops the 2025 HDI ranking (HDI 0.972, 2023 data), replacing Norway."
+        }
+      ]
+    },
+    {
+      "id": "spi",
+      "name": "Social Progress Index",
+      "source_org": "Social Progress Imperative",
+      "url": "https://www.socialprogress.org/social-progress-index",
+      "value": "2026 Global Social Progress Index: 50 of 171 countries declined in social progress, 85 showed no significant change, and only 36 improved; rights are down nearly 6 points globally since 2011 (-1.9 points 2021-25).",
+      "as_of": "2026 edition (data covering 2011-2025)",
+      "cadence": "annual",
+      "delta": "Vs prior period: rights -1.9 points 2021-25; health, safety and environmental quality all down 2021-25; the US declined -2.41 and has slipped 14 ranking places since 2011.",
+      "series": [],
+      "measures": "Measures 57 non-economic drivers of social and environmental progress across 171 countries covering more than 99% of the world's population.",
+      "caveat": "The official page leads with the trend narrative rather than a single global score or top-country rank, so no world score figure is reported here; full rankings sit behind the downloadable Results & Findings deck.",
+      "citation": "Social Progress Imperative, 2026 Global Social Progress Index, socialprogress.org",
+      "synonyms": [
+        "progress",
+        "social progress",
+        "quality of life",
+        "wellbeing",
+        "rights",
+        "SPI"
+      ],
+      "quote": "The 2026 Global Social Progress Index reveals that the world is at a turning point, where the steady improvement in quality of life of recent decades may be going into reverse.",
+      "confidence": "high",
+      "confidence_note": null,
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "2026 Global Social Progress Index: 50 of 171 countries declined in social progress, 85 showed no significant change, and only 36 improved; rights are down nearly 6 points globally since 2011 (-1.9 points 2021-25)."
+        }
+      ]
+    },
+    {
+      "id": "wvs_trust",
+      "name": "Interpersonal trust (US, WVS)",
+      "source_org": "World Values Survey (via Our World in Data, Integrated Values Surveys)",
+      "url": "https://ourworldindata.org/grapher/self-reported-trust-attitudes",
+      "value": "37.0% of US respondents agree that 'most people can be trusted' (OWID value 37.02172, latest Integrated Values Surveys data point, shown as 2022)",
+      "as_of": "WVS Wave 7 (2017-2022); US fieldwork conducted 2017",
+      "cadence": "wave",
+      "delta": null,
+      "series": [
+        {
+          "period": "Wave 7 (OWID latest point, labelled 2022)",
+          "value": 37.0
+        }
+      ],
+      "measures": "Share of adult survey respondents in the United States who say most people can be trusted (vs. 'need to be very careful'), from the WVS/EVS Integrated Values Surveys.",
+      "caveat": "The underlying US fieldwork dates to 2017 (Wave 7), so the figure is nearly a decade old; Wave 8 (2023-2026) is in the field, and a 2025 Pew survey using different methodology found a much higher 55%, so wording and mode matter.",
+      "citation": "World Values Survey Wave 7 (2017-2022), via Our World in Data 'Self-reported trust attitudes' (Integrated Values Surveys), ourworldindata.org",
+      "synonyms": [
+        "trust",
+        "interpersonal trust",
+        "social trust",
+        "generalized trust",
+        "WVS",
+        "social capital"
+      ],
+      "quote": "United States,USA,2022,37.02172 (Our World in Data CSV, 'Trust in others' = share agreeing most people can be trusted)",
+      "confidence": "high",
+      "confidence_note": "Figure read verbatim from the OWID dataset; not retrieved directly from worldvaluessurvey.org's own analysis portal, and the dashboard year label (2022) postdates actual US fieldwork (2017).",
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "37.0% of US respondents agree that 'most people can be trusted' (OWID value 37.02172, latest Integrated Values Surveys data point, shown as 2022)"
+        }
+      ]
+    },
+    {
+      "id": "ess_trust",
+      "name": "Political trust (ESS Round 11)",
+      "source_org": "European Social Survey (ESS ERIC)",
+      "url": "https://www.europeansocialsurvey.org/news/article/final-release-round-11-data",
+      "value": "UK political trust fell to an all-time ESS low of 3.4 (0-10 scale, combined mean trust in parliament, political parties and politicians), down from 4.3 in Round 1 (2002/03); highest trust in parliament was Norway at 6.5, with Finland and Switzerland at 6.4.",
+      "as_of": "ESS Round 11 (2023/24); fielded in 31 countries, final integrated data release (Edition 4.0) 21 Nov 2025",
+      "cadence": "wave",
+      "delta": "UK combined political-trust mean down from 4.3 in Round 1 (2002/03) to 3.4 in Round 11 (2023/24); 11 of 24 analysed countries recorded their highest-ever political trust.",
+      "series": [
+        {
+          "period": "Round 1 (2002/03), UK",
+          "value": 4.3
+        },
+        {
+          "period": "Round 11 (2023/24), UK",
+          "value": 3.4
+        }
+      ],
+      "measures": "Mean trust on 0-10 scales among nationally representative adult samples in European countries; this headline combines trust in national parliament, political parties and politicians.",
+      "caveat": "This is political/institutional trust (not interpersonal 'trust in others'), and the ESS analysis quoted was run on the initial 24-country Round 11 release before Estonia and Ukraine were added; only 5 of 24 countries scored above the scale mid-point of 5.",
+      "citation": "European Social Survey Round 11 (2023/24); ESS analysis by Rory Fitzgerald (ESS ERIC Director), 'Political trust in the European Social Survey', Encompass, Dec 2024; data release europeansocialsurvey.org",
+      "synonyms": [
+        "trust",
+        "political trust",
+        "institutional trust",
+        "ESS",
+        "democracy",
+        "Europe"
+      ],
+      "quote": "The most notable of these is the United Kingdom, where political trust - as measured by the ESS - has dropped to an all-time low. from a high point of 4.3 in Round 1 (2002/03) to a low of 3.4 in Round 11 (2023/24).",
+      "confidence": "high",
+      "confidence_note": "Round/years/country coverage verified on europeansocialsurvey.org; the trust means come from an ESS-authored analysis published on encompass-europe.com rather than an ESS-domain page.",
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "UK political trust fell to an all-time ESS low of 3.4 (0-10 scale, combined mean trust in parliament, political parties and politicians), down from 4.3 in Round 1 (2002/03); highest trust in parliament was Norway at 6.5, with Finland and Switzerland at 6.4."
+        }
+      ]
+    },
+    {
+      "id": "eurobarometer_mental",
+      "name": "Eurobarometer: Mental health",
+      "source_org": "European Commission (Flash Eurobarometer 530)",
+      "url": "https://europa.eu/eurobarometer/surveys/detail/3032",
+      "value": "46% of Europeans experienced an emotional or psychosocial problem, such as feeling depressed or anxious, in the past twelve months",
+      "as_of": "Flash Eurobarometer 530 'Mental Health'; fieldwork 14-21 June 2023, published October 2023",
+      "cadence": "one-off",
+      "delta": null,
+      "series": [],
+      "measures": "Survey of 26,501 respondents aged 15+ across all 27 EU Member States on experiences of and attitudes toward mental health.",
+      "caveat": "A one-off survey with mid-2023 fieldwork and no subsequent wave, so the figure is now roughly three years old; related findings include 54% of those with a mental health issue receiving no professional help.",
+      "citation": "European Commission, Flash Eurobarometer 530 'Mental Health', October 2023, europa.eu/eurobarometer",
+      "synonyms": [
+        "mental health",
+        "wellbeing",
+        "anxiety",
+        "depression",
+        "psychosocial",
+        "Eurobarometer",
+        "EU"
+      ],
+      "quote": "Nearly half of the respondents (46%) indicated that they had experienced an emotional or psychosocial problem in the past 12 months.",
+      "confidence": "high",
+      "confidence_note": "The europa.eu survey detail page renders via JavaScript and returned no text when fetched; the 46% figure, fieldwork dates and sample size were verified verbatim via the Eurobarometer search summary and GAMIAN-Europe's report of the survey.",
+      "pull_history": [
+        {
+          "pulled": "2026-06-11",
+          "value": "46% of Europeans experienced an emotional or psychosocial problem, such as feeling depressed or anxious, in the past twelve months"
+        }
+      ]
+    }
+  ],
+  "fieldguide": [
+    {
+      "name": "Pew Research Center",
+      "url": "https://www.pewresearch.org/",
+      "group": "datasets-and-indices",
+      "what": "Nonpartisan public-opinion polling and demographic research with rigorous, fully published methodology, strongest on US social trends, religion, tech adoption, and generational attitudes.",
+      "reach_for": "When you need a credible, citable read on what Americans actually believe or do, broken out by generation, party, race, or income.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "Hofstede Country Comparison Tool (The Culture Factor)",
+      "url": "https://www.theculturefactor.com/country-comparison-tool",
+      "group": "datasets-and-indices",
+      "what": "Interactive tool scoring countries on Hofstede's six cultural dimensions (individualism, power distance, uncertainty avoidance, etc.), the standard shorthand for cross-cultural difference.",
+      "reach_for": "When you need a fast, defensible first read on how a brand idea or campaign tone will land differently across markets.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Social Progress Index",
+      "url": "https://www.socialprogress.org/",
+      "group": "datasets-and-indices",
+      "what": "Composite index ranking ~170 countries on social and environmental outcomes (basic needs, wellbeing, opportunity) deliberately excluding GDP.",
+      "reach_for": "When you need to talk about national quality of life or societal progress without defaulting to economic metrics.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "World Happiness Report",
+      "url": "https://worldhappiness.report/",
+      "group": "datasets-and-indices",
+      "what": "Annual UN-backed report ranking countries on self-reported life evaluation from the Gallup World Poll, with strong thematic chapters on wellbeing drivers like trust, benevolence, and social support.",
+      "reach_for": "When you need country-level wellbeing data or a research-grounded angle on what actually makes people satisfied with life.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "UNDP Human Development Index",
+      "url": "https://hdr.undp.org/",
+      "group": "datasets-and-indices",
+      "what": "The UN's flagship composite of health, education, and income per country, plus thoughtful annual Human Development Reports on themes like uncertainty and AI.",
+      "reach_for": "When you need a single authoritative number for how developed a market is, or the data tables behind it.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "US Census Bureau Data",
+      "url": "https://data.census.gov/",
+      "group": "datasets-and-indices",
+      "what": "The official portal for American Community Survey and decennial census data, the ground truth for US population, household, income, and geography breakdowns.",
+      "reach_for": "When you need to size a US audience or check a demographic claim down to metro or ZIP level.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "University of Michigan Surveys of Consumers",
+      "url": "http://www.sca.isr.umich.edu/",
+      "group": "datasets-and-indices",
+      "what": "The long-running monthly US consumer sentiment survey (back to the 1940s), with free data tables on sentiment, expectations, and inflation views by demographic.",
+      "reach_for": "When you need to know how US consumers are feeling about the economy right now, and how abnormal that feeling is historically.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "Gallup Global Emotions Report",
+      "url": "https://www.gallup.com/analytics/349280/gallup-global-emotions-report.aspx",
+      "group": "datasets-and-indices",
+      "what": "Annual report from the Gallup World Poll measuring daily positive and negative experiences (stress, worry, enjoyment, anger) across 140+ countries, the best quantified read on the world's emotional state.",
+      "reach_for": "When you need evidence for claims about rising stress, loneliness, or negativity, with country-level comparisons; the report is free, raw World Poll data is not.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Gallup Historical Trends: U.S. Position in the World",
+      "url": "https://news.gallup.com/poll/116350/position-world.aspx",
+      "group": "datasets-and-indices",
+      "what": "Gallup's long-run trend lines on how Americans view the US's global standing, satisfaction, and national pride, some series stretching back decades.",
+      "reach_for": "When you need to show how American self-perception has shifted over time rather than a single-point poll.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "World Uncertainty Index",
+      "url": "https://worlduncertaintyindex.com/",
+      "group": "datasets-and-indices",
+      "what": "Quarterly index (Ahir, Bloom, Furceri) that text-mines Economist Intelligence Unit country reports to quantify economic and policy uncertainty across 143 countries.",
+      "reach_for": "When you need a hard number to back the 'we live in uncertain times' slide instead of asserting it.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Eurobarometer",
+      "url": "https://europa.eu/eurobarometer",
+      "group": "datasets-and-indices",
+      "what": "The European Commission's official public-opinion survey series across all EU member states, covering everything from mental health to trust in institutions to media habits.",
+      "reach_for": "When you need comparable, official attitude data across European countries on a social issue.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "World Values Survey",
+      "url": "https://www.worldvaluessurvey.org/",
+      "group": "datasets-and-indices",
+      "what": "The 40-year academic survey behind the Inglehart-Welzel cultural map, tracking how values around religion, family, work, and self-expression shift across ~100 societies.",
+      "reach_for": "When you need deep, longitudinal evidence on values change, like secularization or rising individualism, rather than a one-off poll.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "OECD Data Explorer",
+      "url": "https://data-explorer.oecd.org/",
+      "group": "datasets-and-indices",
+      "what": "Comparable official statistics across the 38 mostly rich OECD economies, strongest on economy, education, health systems, and wellbeing (Better Life Index).",
+      "reach_for": "When you need an apples-to-apples cross-country statistic that will survive client scrutiny.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "European Social Survey",
+      "url": "https://www.europeansocialsurvey.org/",
+      "group": "datasets-and-indices",
+      "what": "Methodologically gold-standard biennial academic survey of attitudes, values, and behavior in 30+ European countries, with free microdata for real analysis.",
+      "reach_for": "When you need rigorous European attitudinal data you can actually crosstab yourself, not just a press-release topline.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "Eurostat",
+      "url": "https://ec.europa.eu/eurostat",
+      "group": "datasets-and-indices",
+      "what": "The EU's official statistics office, the ground truth for European demographics, economy, digital adoption, and living conditions.",
+      "reach_for": "When you need the definitive European equivalent of a Census number.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "Edelman Trust Barometer",
+      "url": "https://www.edelman.com/trust/trust-barometer",
+      "group": "datasets-and-indices",
+      "what": "The annual 28-country survey of trust in business, government, media, and NGOs that established 'business as the most trusted institution', the default citation for institutional-trust claims.",
+      "reach_for": "When you need trust data for an opening act, or to argue why a brand must act where institutions have failed; remember it's a PR firm's survey, so check the methodology notes.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "WHO Global Health Observatory: Indicators Index",
+      "url": "https://www.who.int/data/gho/data/indicators/indicators-index",
+      "group": "datasets-and-indices",
+      "what": "The WHO's master A-to-Z index of thousands of global health indicators, from alcohol consumption to vaccination coverage, with country-level data behind each.",
+      "reach_for": "When you need an authoritative health statistic for any country and don't know where else it would live.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "World Economic Forum",
+      "url": "https://www.weforum.org/",
+      "group": "think-tanks",
+      "what": "The Davos organization's research output, strongest on the Global Risks Report, Future of Jobs Report, and consensus-establishment framing of macro issues.",
+      "reach_for": "When you need the C-suite-legible take on a global issue, or a risks/jobs statistic that executives already trust.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "UNDP Signals Spotlight",
+      "url": "https://www.undp.org/future-development/signals-spotlight",
+      "group": "think-tanks",
+      "what": "The UN Development Programme's annual horizon-scanning report, crowdsourced weak signals of change from its global network, spanning tech, society, and governance.",
+      "reach_for": "When you need fresh, non-Western-centric signals for a futures or trends exercise.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Penn Libraries Think Tank Guide",
+      "url": "https://guides.library.upenn.edu/thinktanks",
+      "group": "think-tanks",
+      "what": "A librarian-curated directory of top think tanks organized by research area, descended from the Global Go To Think Tank Index.",
+      "reach_for": "When you need to find the right institute for an unfamiliar topic or region before diving in.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "RUSI (Royal United Services Institute)",
+      "url": "https://www.rusi.org/",
+      "group": "think-tanks",
+      "what": "The UK's venerable defence and security institute, strongest on military operations analysis, sanctions, and financial crime, and a leading open-source voice on the Ukraine war.",
+      "reach_for": "When you need serious defence or security analysis with a European vantage point.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "Belfer Center (Harvard Kennedy School)",
+      "url": "https://www.belfercenter.org/",
+      "group": "think-tanks",
+      "what": "Harvard's international security research center, strongest on nuclear policy, cyber, intelligence, and the geopolitics of technology.",
+      "reach_for": "When you need academically rigorous analysis of where tech and national security collide.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "EU Institute for Security Studies (EUISS)",
+      "url": "https://www.iss.europa.eu/",
+      "group": "think-tanks",
+      "what": "The EU's own foreign and security policy agency-cum-think-tank, strongest on EU strategic autonomy, neighborhood policy, and official-adjacent foresight (its 'Chaillot Papers').",
+      "reach_for": "When you need to understand how Brussels itself frames a security or geopolitical question.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "NIDS (National Institute for Defense Studies, Japan)",
+      "url": "http://www.nids.mod.go.jp/english/",
+      "group": "think-tanks",
+      "what": "The Japanese Ministry of Defense's research arm, strongest on East Asian security and its annual China Security Report and East Asian Strategic Review.",
+      "reach_for": "When you need a Japanese-government-informed read on China, Korea, or Indo-Pacific security.",
+      "gated": false,
+      "region": "Asia"
+    },
+    {
+      "name": "Ecologic Institute",
+      "url": "https://www.ecologic.eu/",
+      "group": "think-tanks",
+      "what": "Berlin-based environmental policy institute doing applied research for European governments, strongest on EU climate law, biodiversity, and water policy.",
+      "reach_for": "When you need to know what European environmental regulation actually says or where it's heading.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "Stockholm Environment Institute",
+      "url": "https://www.sei.org/",
+      "group": "think-tanks",
+      "what": "International environment-and-development institute bridging science and policy, strongest on air quality, water, sustainable consumption, and climate equity in the Global South.",
+      "reach_for": "When you need credible environment-development research that goes beyond a rich-world lens.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Potsdam Institute for Climate Impact Research (PIK)",
+      "url": "https://www.pik-potsdam.de/",
+      "group": "think-tanks",
+      "what": "One of the world's leading climate science institutes, home of planetary boundaries and tipping points research (Rockström, Schellnhuber).",
+      "reach_for": "When you need the hard climate science behind a sustainability claim, not the policy spin.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Wuppertal Institute",
+      "url": "https://wupperinst.org/",
+      "group": "think-tanks",
+      "what": "German sustainability research institute, strongest on the practicalities of energy transition, circular economy, and decarbonizing industry and cities.",
+      "reach_for": "When you need grounded research on how the green transition actually gets implemented.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "Resources for the Future",
+      "url": "https://www.rff.org/",
+      "group": "think-tanks",
+      "what": "Independent, strictly nonpartisan environmental economics institute, strongest on carbon pricing, energy policy modeling, and the social cost of carbon.",
+      "reach_for": "When you need numbers-driven, ideology-free analysis of US climate and energy policy.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "DIW Berlin",
+      "url": "https://www.diw.de/",
+      "group": "think-tanks",
+      "what": "Germany's largest economic research institute, strongest on German/European macro forecasting, inequality, and the long-running SOEP household panel.",
+      "reach_for": "When you need authoritative data or forecasts on the German and European economy.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "NBER (National Bureau of Economic Research)",
+      "url": "https://www.nber.org/",
+      "group": "think-tanks",
+      "what": "The pipeline of frontier US economics research; its working papers surface findings years before journal publication and its committee officially dates US recessions.",
+      "reach_for": "When you need the newest empirical evidence on an economic question before it becomes conventional wisdom; non-academics pay a small fee per paper.",
+      "gated": true,
+      "region": "US"
+    },
+    {
+      "name": "Cato Institute",
+      "url": "https://www.cato.org/",
+      "group": "think-tanks",
+      "what": "The flagship libertarian think tank, strongest on free trade, immigration economics, and civil liberties, with a predictable but rigorously argued small-government lens.",
+      "reach_for": "When you need the strongest free-market counterargument to a policy position, or libertarian-leaning audience insight.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "Health and Global Policy Institute (HGPI)",
+      "url": "https://hgpi.org/en/",
+      "group": "think-tanks",
+      "what": "Independent Tokyo health-policy think tank, strongest on Japanese health system reform, dementia, and aging-society policy.",
+      "reach_for": "When you need health policy insight on Japan or the world's most aged society.",
+      "gated": false,
+      "region": "Asia"
+    },
+    {
+      "name": "Urban Institute",
+      "url": "https://www.urban.org/",
+      "group": "think-tanks",
+      "what": "Data-heavy US social and economic policy research, strongest on housing, the safety net, racial equity, and tax policy (via the Tax Policy Center).",
+      "reach_for": "When you need evidence on how US policy actually affects low- and middle-income households.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "Max Planck Institutes",
+      "url": "https://www.mpg.de/institutes",
+      "group": "think-tanks",
+      "what": "Directory of Germany's ~85 elite basic-research institutes spanning everything from human development to demographic research to intelligent systems.",
+      "reach_for": "When you need to find the world-class lab (and quotable expert) on a fundamental science question.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "SPRU (Science Policy Research Unit, Sussex)",
+      "url": "https://www.sussex.ac.uk/business-school/people-and-departments/spru",
+      "group": "think-tanks",
+      "what": "The birthplace of innovation studies as a discipline, strongest on how innovation systems, industrial policy, and technology transitions actually work.",
+      "reach_for": "When you need academic grounding on innovation policy or socio-technical transitions rather than consulting hand-waving.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "Institute for Future Engineering (IFENG)",
+      "url": "https://www.ifeng.or.jp/",
+      "group": "think-tanks",
+      "what": "Tokyo foresight institute (formerly Institute for Future Technology) doing technology forecasting and futures studies for Japanese government and industry, including Japan's long-running Delphi surveys.",
+      "reach_for": "When you need a Japanese institutional view on long-range technology futures.",
+      "gated": false,
+      "region": "Asia"
+    },
+    {
+      "name": "STEPI (Science and Technology Policy Institute, Korea)",
+      "url": "https://www.stepi.re.kr/eng/",
+      "group": "think-tanks",
+      "what": "South Korea's government-funded S&T policy institute, strongest on Korean innovation strategy, R&D policy, and tech foresight.",
+      "reach_for": "When you need to understand how Korea thinks about and plans its technology future.",
+      "gated": false,
+      "region": "Asia"
+    },
+    {
+      "name": "Samuel Neaman Institute",
+      "url": "https://www.neaman.org.il/EN/",
+      "group": "think-tanks",
+      "what": "Technion-based national policy institute, strongest on Israel's science, technology, industry, and higher-education policy and innovation indicators.",
+      "reach_for": "When you need data or policy context on Israel's innovation economy.",
+      "gated": false,
+      "region": "Asia"
+    },
+    {
+      "name": "African Technology Policy Studies Network (ATPS)",
+      "url": "https://atpsnet.org/",
+      "group": "think-tanks",
+      "what": "Nairobi-based transdisciplinary network researching science, technology, and innovation policy for African development, with members across 25+ countries.",
+      "reach_for": "When you need African-led research on technology and innovation rather than outside-in commentary.",
+      "gated": false,
+      "region": "Africa"
+    },
+    {
+      "name": "Fraser Institute",
+      "url": "https://www.fraserinstitute.org/",
+      "group": "think-tanks",
+      "what": "Canada's leading free-market think tank, best known for the Economic Freedom of the World index and school-performance rankings; openly ideological but data-rich.",
+      "reach_for": "When you need economic-freedom rankings or a market-oriented take on Canadian policy.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "ISGlobal (Barcelona Institute for Global Health)",
+      "url": "https://www.isglobal.org/en/",
+      "group": "think-tanks",
+      "what": "Leading global-health research institute, strongest on urban health and planetary health, including widely cited studies on city air quality, green space, and heat mortality.",
+      "reach_for": "When you need evidence linking environment and city design to human health.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Fundação Getulio Vargas (FGV)",
+      "url": "https://portal.fgv.br/en",
+      "group": "think-tanks",
+      "what": "Brazil's premier university-think-tank hybrid, strongest on Brazilian economics (its IGP/IPC price indices are national references), public administration, and social data.",
+      "reach_for": "When you need credible economic or social research on Brazil and Latin America.",
+      "gated": false,
+      "region": "LatAm"
+    },
+    {
+      "name": "Swedish Institute for Social Research (SOFI)",
+      "url": "https://www.su.se/swedish-institute-for-social-research/",
+      "group": "think-tanks",
+      "what": "Stockholm University institute, strongest on welfare-state research, labor economics, and inequality, home of the long-running Swedish Level of Living Survey.",
+      "reach_for": "When you need rigorous research on how Nordic welfare and labor models actually perform.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "MIT CEEPR",
+      "url": "https://ceepr.mit.edu/",
+      "group": "think-tanks",
+      "what": "MIT's Center for Energy and Environmental Policy Research, strongest on the economics of energy markets, carbon policy, and electricity systems.",
+      "reach_for": "When you need quantitative, engineering-adjacent analysis of energy policy questions.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "Baker Institute (Rice University)",
+      "url": "https://www.bakerinstitute.org/",
+      "group": "think-tanks",
+      "what": "Rice University's nonpartisan policy institute, strongest on energy (one of the top energy-policy programs anywhere), the Middle East, and US-Mexico relations.",
+      "reach_for": "When you need serious analysis of oil, gas, and energy geopolitics from inside the industry's home town.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "CIRAD",
+      "url": "https://www.cirad.fr/en",
+      "group": "think-tanks",
+      "what": "France's agricultural research organization for tropical and Mediterranean regions, strongest on food systems, crop science, and sustainable farming across the Global South.",
+      "reach_for": "When you need scientific depth on tropical agriculture or food-system sustainability.",
+      "gated": false,
+      "region": "Africa"
+    },
+    {
+      "name": "Gates Foundation",
+      "url": "https://www.gatesfoundation.org/",
+      "group": "think-tanks",
+      "what": "The world's largest private foundation; its Goalkeepers reports and funded research are strongest on global health, vaccines, sanitation, and development progress data.",
+      "reach_for": "When you need optimistic-but-evidenced data on global development progress and what still isn't working.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Agropolis International",
+      "url": "https://www.agropolis.fr/english/",
+      "group": "think-tanks",
+      "what": "Montpellier-based association federating one of the world's densest clusters of agriculture, food, and environment research institutions, useful mainly as a directory into that ecosystem.",
+      "reach_for": "When you need to locate European expertise on agriculture, food, and biodiversity research.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "Chatham House",
+      "url": "https://www.chathamhouse.org/",
+      "group": "think-tanks",
+      "what": "The Royal Institute of International Affairs, strongest on geopolitics, energy and resource security, Russia/Eurasia, and Africa, with the convening authority its rule is named after.",
+      "reach_for": "When you need the establishment-quality international affairs read with a non-American center of gravity.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "interface (formerly Stiftung Neue Verantwortung)",
+      "url": "https://www.interface-eu.org/",
+      "group": "think-tanks",
+      "what": "Berlin tech-policy think tank (rebranded from SNV in 2024), strongest on EU AI policy, cybersecurity, semiconductors, and platform regulation.",
+      "reach_for": "When you need sharp, practitioner-level analysis of European technology regulation.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "CERRE (Centre on Regulation in Europe)",
+      "url": "https://cerre.eu/",
+      "group": "think-tanks",
+      "what": "Brussels think tank on network and digital industry regulation, strongest on the DMA/DSA, telecoms, and energy market rules; note it is part-funded by the regulated companies themselves.",
+      "reach_for": "When you need to understand the detail of EU digital and energy regulation and how industry is positioning around it.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "CSIS (Center for Strategic and International Studies)",
+      "url": "https://www.csis.org/",
+      "group": "think-tanks",
+      "what": "Bipartisan Washington security think tank, strongest on defense budgets, China and Taiwan scenarios (its wargames are widely cited), and critical technology competition.",
+      "reach_for": "When you need the DC-consensus view on a geopolitical flashpoint, with credible numbers attached.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Brookings Institution",
+      "url": "https://www.brookings.edu/",
+      "group": "think-tanks",
+      "what": "The archetypal centrist US think tank, strongest on economic policy, metro/regional analysis, governance, and foreign policy, with consistently citable mid-depth explainers.",
+      "reach_for": "When you need a balanced, client-safe framing of almost any US policy issue.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "RAND Corporation",
+      "url": "https://www.rand.org/",
+      "group": "think-tanks",
+      "what": "Deeply researched, methodologically serious policy analysis, strongest on defense, health systems, education, and societal resilience (including its Truth Decay research).",
+      "reach_for": "When you need exhaustive, evidence-graded research on a hard public problem, free as full PDFs.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "CWEEP (Centre for Water Economics, Environment and Policy, ANU)",
+      "url": "https://crawford.anu.edu.au/cweep",
+      "group": "think-tanks",
+      "what": "ANU Crawford School centre on water economics and governance, strongest on water markets, pricing, the human right to water, and waterway restoration in the Asia-Pacific.",
+      "reach_for": "When you need expert grounding on water scarcity, pricing, or governance issues.",
+      "gated": false,
+      "region": "Asia"
+    },
+    {
+      "name": "Social Science Research Council (SSRC)",
+      "url": "https://www.ssrc.org/",
+      "group": "think-tanks",
+      "what": "Century-old nonprofit that convenes and funds social science for the public good, strongest as a gateway to emerging scholarship via its essay forums and programs on democracy, media, and AI.",
+      "reach_for": "When you need to find which social scientists are working on a frontier question like disinformation or AI and society.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Oxford Internet Institute (OII)",
+      "url": "https://www.oii.ox.ac.uk/",
+      "group": "think-tanks",
+      "what": "Oxford's multidisciplinary internet-and-society department, strongest on platform power, misinformation, online labor, and AI governance research.",
+      "reach_for": "When you need peer-reviewed evidence about how the internet is changing behavior and society, not vendor takes.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "FrameWorks Institute",
+      "url": "https://www.frameworksinstitute.org/",
+      "group": "think-tanks",
+      "what": "Nonprofit that empirically tests how to frame social issues (aging, climate, child development) so the public actually understands them, publishing the tested frames and metaphors.",
+      "reach_for": "When you need language strategies for communicating a social issue that are proven to shift understanding, not just sound good.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "MIT Media Lab",
+      "url": "https://www.media.mit.edu/",
+      "group": "think-tanks",
+      "what": "MIT's antidisciplinary research lab where speculative technology gets prototyped, strongest as an early-warning system for human-computer interaction, affective computing, and bio-digital ideas.",
+      "reach_for": "When you need a credible glimpse of what technology might feel like in ten years for an innovation provocation.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "frog Design Mind",
+      "url": "https://www.frog.co/designmind",
+      "group": "consulting-and-insight",
+      "what": "The thought-leadership channel of frog (Capgemini Invent's design arm), mostly polished essays and trend reports useful for knowing how the design-consulting world is framing CX and innovation.",
+      "reach_for": "When you need the design-industry consensus take on an experience or innovation theme, or a well-crafted trends deck to react against.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Charles River Associates",
+      "url": "https://www.crai.com/insights/",
+      "group": "consulting-and-insight",
+      "what": "Economic and litigation consulting firm whose insights ('Our Thinking') are strongest on antitrust and competition economics, life sciences strategy, and energy, written for expert audiences rather than marketing.",
+      "reach_for": "When you need rigorous economic reasoning on competition, pricing, or regulatory questions in a client's category.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Kearney Global Business Policy Council",
+      "url": "https://www.kearney.com/service/global-business-policy-council",
+      "group": "consulting-and-insight",
+      "what": "Kearney's geopolitics-for-CEOs unit, strongest on its annual Global Economic Outlook, FDI Confidence Index, and scenario thinking about macro forces.",
+      "reach_for": "When you need to translate geopolitical risk into business-planning language an executive team will accept.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Oliver Wyman Forum",
+      "url": "https://www.oliverwymanforum.com/",
+      "group": "consulting-and-insight",
+      "what": "Oliver Wyman's research arm, strongest on its Gen Z research program (A-Generation studies), urban mobility index, and cyber risk work, with more original survey data than most consulting blogs.",
+      "reach_for": "When you need consultancy-grade primary data on Gen Z attitudes or city-level mobility trends.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "L.E.K. Insights",
+      "url": "https://www.lek.com/insights",
+      "group": "consulting-and-insight",
+      "what": "L.E.K.'s sector publications, strongest on healthcare services, education, and consumer categories, with an M&A and growth-strategy flavor that signals where investor money is looking.",
+      "reach_for": "When you need to understand the investment thesis and market structure of a sector before a client conversation.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "PwC Consumer Markets Publications",
+      "url": "https://www.pwc.com/gx/en/industries/consumer-markets.html",
+      "group": "consulting-and-insight",
+      "what": "PwC's consumer-sector research hub, strongest on the Global Consumer Insights Pulse survey and Voice of the Consumer, large-sample but safe, consensus findings.",
+      "reach_for": "When you need a big-sample global statistic on consumer behavior shifts that a client's CFO will accept.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Automotive News",
+      "url": "https://www.autonews.com/",
+      "group": "consulting-and-insight",
+      "what": "The auto industry's trade paper of record, strongest on dealership economics, OEM strategy, and EV transition reporting with real sales data.",
+      "reach_for": "When you need to know what the auto industry is telling itself, not what it tells consumers; full access requires a subscription.",
+      "gated": true,
+      "region": "US"
+    },
+    {
+      "name": "Retail Dive",
+      "url": "https://www.retaildive.com/",
+      "group": "consulting-and-insight",
+      "what": "Free trade publication covering US retail, strongest on quick, well-sourced coverage of retailer earnings, store closures, bankruptcies, and DTC brand moves.",
+      "reach_for": "When you need to get current on a retailer or retail trend fast without a paywall.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "Health Affairs",
+      "url": "https://www.healthaffairs.org/",
+      "group": "consulting-and-insight",
+      "what": "The leading peer-reviewed journal of health policy, the venue where US healthcare cost, coverage, and equity debates actually happen.",
+      "reach_for": "When you need authoritative evidence on the US healthcare system for a health-sector client; most research articles are paywalled.",
+      "gated": true,
+      "region": "US"
+    },
+    {
+      "name": "Journal of Medical Internet Research (JMIR)",
+      "url": "https://www.jmir.org/",
+      "group": "consulting-and-insight",
+      "what": "The leading open-access journal on digital health, strongest on evidence about telehealth, health apps, and online health behavior.",
+      "reach_for": "When you need peer-reviewed proof points about whether digital health interventions actually work.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "McKinsey Insights",
+      "url": "https://www.mckinsey.com/featured-insights",
+      "group": "consulting-and-insight",
+      "what": "The most-cited consulting research machine; much is thought-leadership marketing, but the McKinsey Global Institute reports and annual State of Fashion / State of AI surveys carry real data and define the corporate consensus.",
+      "reach_for": "When you need to know what every Fortune 500 boardroom already believes about a topic, and the chart they believe it from.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Circana",
+      "url": "https://www.circana.com/",
+      "group": "consulting-and-insight",
+      "what": "The merged IRI/NPD data giant whose point-of-sale and consumer-panel data is the definitive record of what Americans actually buy in CPG and general merchandise.",
+      "reach_for": "When you need real purchase data rather than claimed behavior; free press releases give toplines, everything useful is client-only.",
+      "gated": true,
+      "region": "US"
+    },
+    {
+      "name": "EY Consumer Products and Retail",
+      "url": "https://www.ey.com/en_gl/industries/consumer-products",
+      "group": "consulting-and-insight",
+      "what": "EY's consumer-sector insights, strongest on the long-running Future Consumer Index tracking how consumer priorities shift through disruptions.",
+      "reach_for": "When you need a second large-sample consumer-sentiment source to triangulate against PwC and McKinsey.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "IEEE Spectrum",
+      "url": "https://spectrum.ieee.org/",
+      "group": "consulting-and-insight",
+      "what": "The engineering profession's flagship magazine, strongest on technically literate but readable coverage of semiconductors, AI, energy, and robotics, with less hype than consumer tech media.",
+      "reach_for": "When you need to understand how a technology actually works and whether the claims around it are plausible.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Ars Technica",
+      "url": "https://arstechnica.com/",
+      "group": "consulting-and-insight",
+      "what": "Deep, technically rigorous tech journalism, strongest on policy, security, space, and the gritty detail mainstream tech press skips.",
+      "reach_for": "When you need the accurate version of a tech story before repeating it to a client.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "WIRED",
+      "url": "https://www.wired.com/",
+      "group": "consulting-and-insight",
+      "what": "The culture-of-technology magazine, strongest on narrative features about how tech reshapes society, business, and identity, more zeitgeist than analysis.",
+      "reach_for": "When you need the cultural storyline around a technology, or vivid color for a deck; a metered paywall guards most of it.",
+      "gated": true,
+      "region": "US"
+    },
+    {
+      "name": "ReD Associates Perspectives",
+      "url": "https://www.redassociates.com/perspectives",
+      "group": "consulting-and-insight",
+      "what": "Essays from the ethnography-led strategy consultancy, strongest on applying social science and 'thick data' to business problems, genuinely idea-rich for a consulting blog.",
+      "reach_for": "When you need a human-science framing of a category or a smart contrarian angle for a strategy narrative.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Roland Berger Insights",
+      "url": "https://www.rolandberger.com/en/Insights/",
+      "group": "consulting-and-insight",
+      "what": "Europe's largest homegrown strategy consultancy, strongest on automotive, industrials, and operations topics with a distinctly European-industrial-policy perspective.",
+      "reach_for": "When you need the European industrial view on a sector dominated elsewhere by US consultancies.",
+      "gated": false,
+      "region": "Europe"
+    },
+    {
+      "name": "ZS Insights",
+      "url": "https://www.zs.com/insights",
+      "group": "consulting-and-insight",
+      "what": "Consulting insights from the pharma/med-tech commercial-strategy specialist, strongest on drug launches, oncology market dynamics, and healthcare sales and marketing analytics.",
+      "reach_for": "When you need inside-baseball understanding of how pharma actually commercializes products.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "The Cambridge Group",
+      "url": "https://www.thecambridgegroup.com/",
+      "group": "consulting-and-insight",
+      "what": "Nielsen-owned demand-strategy boutique, strongest on demand-landscape thinking, finding profitable growth by mapping latent consumer demand to brand portfolios.",
+      "reach_for": "When you need the demand-spaces school of growth strategy or its vocabulary for a positioning argument.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "Cognizant Insights",
+      "url": "https://www.cognizant.com/us/en/insights",
+      "group": "consulting-and-insight",
+      "what": "Mostly thought-leadership marketing from the IT-services giant, but its Center for the Future of Work reports ('21 Jobs of the Future') are useful provocations on AI and work.",
+      "reach_for": "When you need the enterprise-IT consensus on digital transformation, or a future-of-work conversation starter.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Gemic",
+      "url": "https://gemic.com/",
+      "group": "consulting-and-insight",
+      "what": "Anthropology-driven growth strategy consultancy (ReD's closest peer), whose ideas section is strongest on cultural foresight essays about emerging meanings in tech, health, and mobility.",
+      "reach_for": "When you need a culturally sophisticated hypothesis about where a category's meaning is heading.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Nieman Lab",
+      "url": "https://www.niemanlab.org/",
+      "group": "consulting-and-insight",
+      "what": "Harvard's journalism-industry observer, strongest on how news business models, platforms, and audience trust are evolving, plus its crystal-ball year-end predictions.",
+      "reach_for": "When you need to understand the media and attention environment your client's message has to survive in.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "Noema Magazine",
+      "url": "https://www.noemamag.com/",
+      "group": "consulting-and-insight",
+      "what": "The Berggruen Institute's long-form magazine, strongest on serious essays at the intersection of AI, geopolitics, philosophy, and planetary thinking by genuinely heavyweight contributors.",
+      "reach_for": "When you need intellectual depth and fresh conceptual frames for a big-think brand narrative.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Sustainability by Numbers (Hannah Ritchie)",
+      "url": "https://www.sustainabilitybynumbers.com/",
+      "group": "consulting-and-insight",
+      "what": "Substack from the Our World in Data researcher, strongest on data-driven, hype-free analysis of climate, energy, and food questions, reliably correcting popular misconceptions.",
+      "reach_for": "When you need to fact-check a sustainability claim or find the honest number behind an environmental debate.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Chartbook (Adam Tooze)",
+      "url": "https://adamtooze.substack.com/",
+      "group": "consulting-and-insight",
+      "what": "The economic historian's prolific newsletter weaving macro-finance, energy, geopolitics, and history into one synthesis, strongest on connecting today's headlines to structural forces ('polycrisis').",
+      "reach_for": "When you need to sound genuinely informed about the global macro picture and how its pieces interlock; some posts are subscriber-only.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Future Today Strategy Group (Future Today Institute)",
+      "url": "https://ftsg.com/",
+      "group": "consulting-and-insight",
+      "what": "Amy Webb's foresight consultancy, strongest on the massive annual Tech Trends Report (free download) covering hundreds of weak signals across AI, biotech, and computing.",
+      "reach_for": "When you need an exhaustive, ready-made scan of emerging tech signals to seed a futures workshop.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Backslash (TBWA) — Edges",
+      "url": "https://www.backslash.com/",
+      "group": "consulting-and-insight",
+      "what": "TBWA's cultural intelligence unit, strongest on its 'Edges', several dozen tracked macro cultural shifts fed by a global network of agency spotters.",
+      "reach_for": "When you need a structured map of cultural change to position a brand against, with agency-grade naming already done.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Fix The News",
+      "url": "https://fixthenews.com/",
+      "group": "consulting-and-insight",
+      "what": "Angus Hervey's progress-journalism newsletter (formerly Future Crunch), strongest on rigorously sourced roundups of good news, like its annual 'stories of progress' lists on health, conservation, and energy.",
+      "reach_for": "When you need credible optimism, evidence that things are improving, to balance a doom-heavy cultural narrative.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "PQAI Patent Search",
+      "url": "https://projectpq.ai/",
+      "group": "tools",
+      "what": "Free, open-source AI prior-art search that takes plain-language invention descriptions and returns relevant patents and papers, much friendlier than Boolean patent databases.",
+      "reach_for": "When you need a quick novelty check on an innovation concept without knowing patent-search syntax.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "USPTO Patent Public Search",
+      "url": "https://ppubs.uspto.gov/pubwebapp/",
+      "group": "tools",
+      "what": "The US Patent Office's official full-text search across all US patents and applications, the authoritative (if austere) source for patent records.",
+      "reach_for": "When you need the definitive record of what a company has actually patented in the US.",
+      "gated": false,
+      "region": "US"
+    },
+    {
+      "name": "Interbrand Best Global Brands",
+      "url": "https://interbrand.com/best-global-brands/",
+      "group": "tools",
+      "what": "The longest-running annual brand valuation ranking (top 100 since 2000), built on Interbrand's ISO-certified methodology blending financial performance, brand role, and brand strength.",
+      "reach_for": "When you need a headline brand-value number or year-over-year trajectory that clients and press already treat as canon.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "MBLM Brand Intimacy Study",
+      "url": "https://mblm.com/lab/brandintimacy-study/",
+      "group": "tools",
+      "what": "MBLM's annual ranking of brands by emotional bond strength, using a psychology-derived model (fusing, bonding archetypes like ritual and nostalgia) backed by large consumer surveys.",
+      "reach_for": "When you need an emotional-connection lens on brand performance to complement the financial valuation rankings.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Baron Sauvage Toolkit",
+      "url": "https://baronsauvage.com/toolkit/",
+      "group": "tools",
+      "what": "Brand strategist Nick Liddell's free library of classic brand-strategy frameworks (brand architecture, distinctive assets, the Five Ws) as clean downloadable one-pagers.",
+      "reach_for": "When you need a ready-made, well-explained framework page for a workshop or to refresh on a classic model fast.",
+      "gated": false,
+      "region": "global"
+    },
+    {
+      "name": "Trend Hunter",
+      "url": "https://www.trendhunter.com/",
+      "group": "tools",
+      "what": "A massive crowdsourced database of consumer-product and marketing novelties, strongest for breadth of fresh examples rather than analytical depth; the synthesized trend reports sit behind its paid tier.",
+      "reach_for": "When you need fifty quick stimulus examples of how brands are playing with an idea, not a considered point of view.",
+      "gated": true,
+      "region": "global"
+    },
+    {
+      "name": "Receptiviti",
+      "url": "https://www.receptiviti.com/",
+      "group": "tools",
+      "what": "Commercial psycholinguistics API built on LIWC (Pennebaker's text-analysis framework) that scores personality, emotion, and psychological states from natural language.",
+      "reach_for": "When you need to quantify the psychology in open-ended survey responses, reviews, or social text at scale; it's a paid API.",
+      "gated": true,
+      "region": "global"
+    }
+  ],
+  "world_summary": {
+    "updated": "2026-06-22",
+    "text": "The instrument panel has not been re-pulled since the June reading and still reads grim. US consumer sentiment sits at 44.8 (Michigan, May 2026 final, down from 49.8 in April) while OECD-area inflation has re-accelerated to 4.4% year-on-year and unemployment holds flat at 5.0%, a mood recession running ahead of the hard data, with euro-area sentiment stuck below its long-run average at 93.5. Trust remains the deeper structural story and every instrument still agrees: 17% of Americans trust the federal government to do what is right, average confidence in US institutions is 28%, only 38% are satisfied with America's place in the world, UK political trust sits at an all-time ESS low of 3.4, and Edelman's 2026 read finds seven in ten people globally unwilling or hesitant to trust those who differ from them. The long view is the most sobering: the smallest global HDI gain in 35 years, and social progress declining in 50 of 171 countries while only 36 improve.\n\nThis month's editorial harvest puts texture on those numbers, and the sharpest macro thread is the AI economy's widening credibility gap. Ed Zitron reports OpenAI's 2025 losses rising nearly eightfold (roughly $34bn in spend against about $13bn in revenue) and enterprises such as Uber, Brex and T-Mobile capping per-employee AI spend within months of providers moving to usage-based billing, a buildout whose economics look structurally unsustainable even as capital insists otherwise. Beneath it runs a youth-economy distress signal: nearly 16% of Gen Z now hold multiple jobs (about five times the Boomer rate), the UK counts more than a million NEETs, and clothing-rental churn (Nuuly at 477k subscribers) reads less as expression than as a treadmill of 'constant newness' that homogenises. In the sources, the felt economy is precarity narrated as identity.\n\nAway from the ledger, the strongest cultural current is contested records being renarrated rather than merely defended. A roughly 30% decline in antebellum-tour revenue in Natchez marks a measurable, generational loosening of the Lost Cause; Brazilian scholarship reframes authoritarianism as a live, structurally reproduced condition rather than a fading dictatorship-era legacy; and the new museum season tilts hard toward reckoning, with MASP devoting its whole year to Latin American Histories, Sharjah's March Meeting convening under 'Between Us, the World,' and Tate making the machinery of Frida Kahlo's iconhood, not the paintings, its subject. Against the distrust, two counter-currents recur: a hunger for the verifiably real (a defense of authenticity in music, graduate collections grown from foraged 'living fibre,' queues to buy a treat as engineered in-person community) and the 2026 World Cup absorbing the non-Western culture desk as both a unifier and a fresh stage for exclusion. Strategist's read: the panel says trust and progress are stalled, and the sources say audiences are answering by renarrating the past, doubting the machine, and paying a premium for what can be proven human."
+  }
+}

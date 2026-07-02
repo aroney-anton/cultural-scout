@@ -1,0 +1,16 @@
+{
+  "_note": "Curated semiotic-code blocks for the geology globe, keyed by need. These are HAND-CODED (Michael's monthly coding exercise) and persist between rebuilds — build_geology.py merges them into GEO as needs[].code. Data fields (counts, clusters) regenerate from corpus.json every build; THESE do not. The per-code `status` (residual/dominant/emergent) is what the Code Velocity card diffs month-over-month. Add a need key here when a theme gets coded. Copyright rule: img values are hotlinks to publishers' own servers, never stored locally.",
+  "Certified Human": {
+    "name": "The Provenance Ledger",
+    "bg": "#3a2113",
+    "img": "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg",
+    "one": "Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying.",
+    "all": [
+      {"name": "The Provenance Ledger", "bg": "#3a2113", "status": "dominant", "img": "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg", "one": "Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying."},
+      {"name": "Countable Labor", "bg": "#5e5730", "status": "dominant", "img": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/04/HeBuiltThisCity_byFilipWolak_0309_8683.jpg", "one": "Authentication by enumeration: the stitch macro, the field of ten thousand units, the headline that counts the years."},
+      {"name": "The Unretouched Witness", "bg": "#8c1c20", "status": "dominant", "img": "https://pattaclothing.us/cdn/shop/articles/Daniel_Patta_Magazine_3.jpg?v=1778617712&width=2560", "one": "Imperfect human presence as the logo: life-marked faces, mature casting, hard flash, clutter left in frame."},
+      {"name": "Slop, Repainted Slow", "bg": "#a7e029", "status": "emergent", "img": "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/650e7c3d-72ad-4e20-aec4-f3b1d3566d65/georgia.png", "one": "Disposable detritus, screenshots, memes, shipping cartons, lovingly re-rendered in slow media with its artifacts preserved."},
+      {"name": "The Analog Sanctuary", "bg": "#6b3f22", "status": "residual", "img": "https://radii.co/wp-content/uploads/2026/06/radii_analog_01.png", "one": "Warm-lit rooms where slow media is practiced together: the listening bar, the record shop, the reading cafe, the archive as altar."}
+    ]
+  }
+}

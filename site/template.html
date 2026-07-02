@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cultural Scout</title>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}}
+</script>
+<style>
+  :root{
+    --ink:#141414; --mute:#6b665c; --line:#e6e3db; --card:#fcfbf9;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;color:var(--ink);background:#fff;transition:background .4s ease;
+  }
+  body.mode-explore{background:#05060a;color:#e9e7e2}
+
+  /* ---- tab nav ---- */
+  nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;
+    display:flex;gap:2px;padding:4px;border-radius:999px;background:rgba(0,0,0,.05);border:1px solid var(--line);backdrop-filter:blur(8px)}
+  body.mode-explore nav{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+  nav button{appearance:none;border:0;background:transparent;cursor:pointer;font:inherit;font-size:13px;letter-spacing:.04em;
+    padding:8px 20px;border-radius:999px;color:var(--mute)}
+  body.mode-explore nav button{color:#aaa6a0}
+  nav button.on{background:var(--ink);color:#fff}
+  body.mode-explore nav button.on{background:#fff;color:#05060a}
+
+  .view{display:none}
+  .view.on{display:block}
+
+  /* ---- SEARCH VIEW ---- */
+  #view-search .wrap{max-width:860px;margin:0 auto;padding:92px 24px 120px}
+  header.s{margin-bottom:30px;border-bottom:1px solid var(--line);padding-bottom:26px}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:600;font-size:44px;line-height:1.04;margin:0 0 14px;letter-spacing:-.01em}
+  .lede{font-size:16px;color:#3a382f;margin:0;max-width:64ch}
+  .lede .label{color:var(--ink);font-weight:600}
+  .statline{display:block;margin-top:12px;font-size:13px;color:var(--mute);letter-spacing:.02em}
+
+  .search{position:sticky;top:0;background:#fff;padding:20px 0 14px;z-index:5;border-bottom:1px solid var(--line);margin-bottom:8px}
+  #q{width:100%;font-size:22px;font-family:Georgia,serif;padding:14px 16px;border:1.5px solid var(--ink);border-radius:2px;background:#fff;color:var(--ink)}
+  #q:focus{outline:none;box-shadow:0 0 0 3px rgba(20,20,20,.08)}
+  .subbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:11px;flex-wrap:wrap}
+  .hints{font-size:13px;color:var(--mute)}
+  .hints a{color:var(--mute);text-decoration:underline;text-underline-offset:2px;cursor:pointer;margin-right:14px}
+  .hints a:hover{color:var(--ink)}
+  .srcbtn{font-size:12px;letter-spacing:.04em;padding:7px 13px;border:1px solid var(--line);background:transparent;border-radius:2px;cursor:pointer;color:var(--ink);white-space:nowrap}
+  .srcbtn:hover{border-color:var(--ink)}
+
+  /* source-list modal */
+  .modal{position:fixed;inset:0;z-index:80;background:rgba(20,18,14,.42);display:none;align-items:flex-start;justify-content:center;padding:80px 20px 40px}
+  .modal.open{display:flex}
+  .modal-card{background:#fff;border:1px solid var(--line);border-radius:5px;max-width:680px;width:100%;max-height:80vh;overflow-y:auto;padding:26px 30px;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+  .modal-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .modal-head h2{font-family:Georgia,serif;font-size:24px;margin:0}
+  .mclose{cursor:pointer;color:var(--mute);font-size:26px;line-height:1}.mclose:hover{color:var(--ink)}
+  .modal-sub{font-size:13px;color:var(--mute);margin:6px 0 20px}
+  .src-group{margin-bottom:18px}
+  .src-group h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+  .src-item{display:flex;align-items:baseline;gap:8px;padding:3px 0;font-size:14px}
+  .src-item a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  .src-item a:hover{border-color:var(--ink)}
+  .src-item .off{font-size:11px;color:#b6b1a6;letter-spacing:.03em}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 2px 4px;flex-wrap:wrap}
+  .count{font-size:13px;color:var(--mute);letter-spacing:.02em}
+  .copy{font-size:12px;letter-spacing:.04em;padding:7px 12px;border:1px solid var(--ink);background:transparent;border-radius:2px;cursor:pointer;color:var(--ink)}
+  .copy:hover{background:var(--ink);color:#fff}
+  .copy:disabled{opacity:.35;cursor:default;border-color:var(--line)}
+
+  /* need-mix: the distribution of need tags across the current results, with a
+     filter-against-the-dominant-need dial. Pure client-side post-filter. */
+  .needmix{margin:12px 2px 2px}
+  .nm-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;background:var(--line);margin-bottom:9px}
+  .nm-bar span{height:100%;transition:width .2s}
+  .nm-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .nm-lab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-right:2px}
+  .nm-chip{font-size:11.5px;display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border:1px solid var(--line);border-radius:20px;cursor:pointer;color:var(--ink);background:transparent;user-select:none}
+  .nm-chip:hover{border-color:var(--ink)}
+  .nm-chip .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .nm-chip .pct{color:var(--mute)}
+  .nm-chip.ex{opacity:.5;text-decoration:line-through;border-style:dashed}
+  .nm-chip.ex .dot{filter:grayscale(1)}
+  .nm-act{font-size:11.5px;letter-spacing:.03em;padding:4px 11px;border:1px solid var(--ink);background:transparent;border-radius:20px;cursor:pointer;color:var(--ink)}
+  .nm-act:hover{background:var(--ink);color:#fff}
+
+  /* themes: emergent semantic clusters of the current search results, found
+     in-browser from the build-time embeddings (no model on the page). Labels
+     are keyword-extracted (TF-IDF of the cluster vs the rest of the matched
+     set); clicking a chip filters results to that cluster. */
+  .themes{margin:12px 2px 2px;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+  .th-lab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:5px 2px 0 0;white-space:nowrap}
+  .th-chip{font-size:12px;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border:1px solid var(--line);border-radius:6px;cursor:pointer;color:var(--ink);background:transparent;user-select:none;max-width:340px}
+  .th-chip b{font-weight:600}
+  .th-chip:hover{border-color:var(--ink)}
+  .th-chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .th-chip.on .th-n{color:#fff}
+  .th-chip .th-n{color:var(--mute);font-variant-numeric:tabular-nums}
+  .th-clear{font-size:11.5px;padding:5px 10px;border:1px dashed var(--line);border-radius:6px;cursor:pointer;color:var(--mute);background:transparent}
+  .th-clear:hover{border-color:var(--ink);color:var(--ink)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-left-width:3px;border-radius:3px;padding:16px 18px;margin:12px 0}
+  .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--mute);margin-bottom:7px}
+  .sub{font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+  .badge{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:20px;border:1px solid var(--line)}
+  .badge.fwd{color:#2f6f6b;border-color:#bcd6d3}
+  .badge.runs{color:#7a5aa0;border-color:#d7cae6}
+  .card h3{font-family:Georgia,serif;font-size:19px;line-height:1.25;margin:2px 0 6px;font-weight:600}
+  .card h3 a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  .card h3 a:hover{border-color:var(--ink)}
+  .summary{margin:0;color:#33312c}
+  .more{font-size:13.5px;color:var(--mute);margin-top:10px;display:none}
+  .more.show{display:block}
+  .more p{margin:4px 0}.more b{color:var(--ink)}
+  .toggle{font-size:12px;color:var(--mute);cursor:pointer;margin-top:9px;display:inline-block;text-decoration:underline;text-underline-offset:2px}
+  .src{color:var(--mute);text-decoration:none}.src:hover{color:var(--ink)}
+
+  /* ---- VITAL SIGNS VIEW ---- */
+  #view-vitals .wrap{max-width:1080px;margin:0 auto;padding:92px 24px 120px}
+  .v-head{margin-bottom:22px;border-bottom:1px solid var(--line);padding-bottom:20px}
+  .v-head h1{font-size:38px}
+  .v-search{margin:18px 0 6px}
+  #vq{width:100%;max-width:560px;font-size:17px;font-family:Georgia,serif;padding:11px 14px;border:1.5px solid var(--ink);border-radius:2px;background:#fff;color:var(--ink)}
+  #vq:focus{outline:none;box-shadow:0 0 0 3px rgba(20,20,20,.08)}
+  .v-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 2px 10px;flex-wrap:wrap}
+  .v-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:14px 16px;cursor:pointer;transition:border-color .15s}
+  .tile:hover{border-color:var(--ink)}
+  .tile.sel{border-color:var(--ink);box-shadow:0 0 0 2px rgba(20,20,20,.07)}
+  .tile .t-name{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
+  .tile .t-value{font-family:Georgia,serif;font-size:18px;line-height:1.2;font-weight:600;margin-bottom:3px}
+  .tile .t-delta{font-size:11.5px;color:#3a382f;min-height:15px}
+  .tile .t-delta.up{color:#2f6f3e}.tile .t-delta.down{color:#a03d2e}
+  .tile .t-meta{display:flex;align-items:center;gap:7px;margin-top:8px;font-size:10px;color:var(--mute);flex-wrap:wrap}
+  .v-brief{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ink);border-radius:3px;padding:16px 20px;margin:4px 0 22px}
+  .v-brief .b-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+  .v-brief p{margin:7px 0;font-size:14.5px;line-height:1.6;color:#2e2c26}
+  .t-chip{border:1px solid var(--line);border-radius:20px;padding:1px 7px;letter-spacing:.04em;text-transform:uppercase}
+  .t-chip.warn{color:#9a6b1a;border-color:#e2cb96}
+  .tile svg{display:block;margin-top:8px;width:100%;height:28px}
+  .tile polyline{fill:none;stroke:#8a8474;stroke-width:1.5}
+  .v-detail{background:#fff;border:1px solid var(--ink);border-radius:3px;padding:18px 20px;margin:14px 0;display:none}
+  .v-detail.show{display:block}
+  .v-detail h3{font-family:Georgia,serif;font-size:20px;margin:0 0 8px}
+  .v-detail p{margin:6px 0;font-size:14px;color:#33312c}
+  .v-detail .d-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+  .v-detail blockquote{margin:10px 0;padding:8px 14px;border-left:3px solid var(--line);font-style:italic;color:#4a473e;font-size:13.5px}
+  .v-detail .d-cite{font-size:13px;background:var(--card);border:1px solid var(--line);padding:8px 12px;border-radius:2px;margin:10px 0;font-family:ui-monospace,Menlo,monospace}
+  .fg-section{margin-top:44px}
+  .fg-section h2{font-family:Georgia,serif;font-size:24px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:6px}
+  .fg-sub{font-size:13px;color:var(--mute);margin:0 0 16px}
+  .fg-group h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:20px 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+  .fg-item{padding:9px 2px;border-bottom:1px solid #f0ede6;font-size:13.5px}
+  .fg-item a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line)}
+  .fg-item a:hover{border-color:var(--ink)}
+  .fg-item .fg-what{color:#33312c;margin:3px 0 1px}
+  .fg-item .fg-reach{color:var(--mute);font-size:12.5px}
+  .fg-chip{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);border-radius:20px;padding:1px 6px;color:var(--mute);margin-left:6px}
+
+  /* ---- PULSE (need distribution over time, Search tab headline) ---- */
+  .pulse{border:1px solid var(--line);border-radius:3px;background:var(--card);padding:18px 20px 12px;margin:24px 0 4px}
+  .pulse .p-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .pulse h2{font-family:Georgia,serif;font-size:17px;font-weight:600;margin:0}
+  .pulse .p-sub{font-size:11.5px;color:var(--mute)}
+  .pulse svg{display:block;width:100%;height:auto;margin-top:10px}
+  .pulse svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  .pulse .p-note{font-size:11px;color:var(--mute);margin:8px 0 2px;line-height:1.5}
+  .pulse .p-copy{font-size:11px;letter-spacing:.04em;padding:5px 10px;border:1px solid var(--line);background:transparent;border-radius:2px;cursor:pointer;color:var(--mute)}
+  .pulse .p-copy:hover{border-color:var(--ink);color:var(--ink)}
+
+  /* ---- RECEIPTS (Search-tab footer + modal) ---- */
+  .foot{margin-top:54px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--mute);line-height:1.6}
+  .foot a{color:var(--mute);text-decoration:underline;text-underline-offset:2px;cursor:pointer;white-space:nowrap}
+  .foot a:hover{color:var(--ink)}
+  .r-intro{font-size:14px;color:#33312c;line-height:1.6;border-left:3px solid var(--ink);padding:2px 0 2px 16px;margin:4px 0 20px}
+  .r-card{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:16px 20px;margin:12px 0}
+  .r-card h3{font-family:Georgia,serif;font-size:17px;margin:0 0 6px;font-weight:600}
+  .r-card p{margin:0;font-size:14px;color:#33312c;line-height:1.6}
+  .r-score{margin-top:40px}
+  .r-score h2{font-family:Georgia,serif;font-size:24px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px}
+  .r-method{font-size:13.5px;color:#4a473e;line-height:1.6;margin:0 0 16px}
+  .r-empty{background:var(--card);border:1px dashed var(--line);border-radius:3px;padding:14px 18px;font-size:13.5px;color:var(--mute)}
+  .r-entry{border:1px solid var(--line);border-left-width:3px;border-radius:3px;background:var(--card);padding:13px 16px;margin:10px 0;font-size:13.5px}
+  .r-entry .re-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+  .r-entry .re-title{font-family:Georgia,serif;font-weight:600;font-size:15px}
+  .r-verdict{font-size:10px;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line);border-radius:20px;padding:2px 8px;color:var(--mute)}
+  .r-verdict.matured{color:#2f6f3e;border-color:#bcd6c3}
+  .r-verdict.building{color:#3a5a9b;border-color:#b9c6e2}
+  .r-verdict.faded{color:#6b665c}
+  .r-verdict.wrong{color:#a03d2e;border-color:#e2b9ae}
+
+  /* ---- PROVENANCE (Field Guide, editorial intake breakdown) ---- */
+  .prov{border:1px solid var(--line);border-radius:3px;background:var(--card);padding:16px 20px;margin:4px 0 24px}
+  .prov h3{font-family:Georgia,serif;font-size:17px;font-weight:600;margin:0 0 2px}
+  .prov .prov-line{font-size:13px;color:#33312c;margin:6px 0 14px;line-height:1.55}
+  .prov .prov-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px 28px}
+  .prov h4{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:0 0 6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+  .pv-row{display:flex;align-items:center;gap:8px;padding:2.5px 0;font-size:12px;color:#33312c}
+  .pv-name{flex:0 0 128px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pv-bar{flex:1;height:7px;background:#eeebe3;border-radius:2px;overflow:hidden}
+  .pv-bar i{display:block;height:100%;background:#8a8474}
+  .pv-n{flex:0 0 24px;text-align:right;color:var(--mute);font-size:11px}
+  .prov .prov-note{font-size:11px;color:var(--mute);margin:12px 0 0;line-height:1.5}
+
+  /* ---- EXPLORE VIEW (geological sphere, embedded) ---- */
+  #view-explore{position:fixed;inset:0;background:#0b0d10}
+  #geo-frame{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  #cv{position:absolute;inset:0;display:block;cursor:grab}
+  #cv:active{cursor:grabbing}
+  .ex-title{position:absolute;top:74px;left:28px;z-index:10;pointer-events:none}
+  .ex-title h2{font-family:Georgia,serif;font-weight:600;font-size:22px;margin:0;color:#fff}
+  .ex-title p{margin:4px 0 0;font-size:12.5px;color:#8b8780;max-width:34ch}
+  .anchor-label{position:absolute;z-index:8;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+    transform:translate(-50%,-150%);pointer-events:none;text-shadow:0 0 12px rgba(0,0,0,.9);white-space:nowrap}
+  .sun-label{font-size:15px;color:#fff;letter-spacing:.18em;z-index:9;text-shadow:0 0 16px rgba(0,0,0,.95),0 0 8px rgba(0,0,0,.9)}
+  .cluster-label{font-size:10.5px;letter-spacing:.04em;text-transform:none;font-weight:600;z-index:9;text-shadow:0 0 12px rgba(0,0,0,.95),0 0 6px rgba(0,0,0,.9)}
+  .ex-search{position:absolute;top:70px;left:50%;transform:translateX(-50%);z-index:12;width:min(420px,72vw)}
+  .ex-search input{width:100%;font:15px Georgia,serif;padding:10px 14px;background:rgba(11,13,19,.78);
+    border:1px solid rgba(255,255,255,.25);border-radius:3px;color:#e9e7e2;backdrop-filter:blur(6px)}
+  .ex-search input::placeholder{color:#6f6b64}
+  .ex-search input:focus{outline:none;border-color:rgba(255,255,255,.55)}
+  .ex-count{margin-top:6px;font-size:12px;color:#8b8780;text-align:center;min-height:15px;text-shadow:0 0 6px #05060a}
+  .ex-actions{text-align:center;margin-top:5px;display:none}
+  .ex-actions.show{display:block}
+  .ex-actions button{font:11px/1 inherit;letter-spacing:.06em;padding:5px 11px;border:1px solid rgba(255,255,255,.22);
+    background:rgba(11,13,19,.6);border-radius:2px;color:#aaa6a0;cursor:pointer}
+  .ex-actions button:hover{border-color:rgba(255,255,255,.5);color:#e9e7e2}
+  .legend{position:absolute;left:28px;bottom:24px;z-index:10;font-size:12.5px;color:#cfccc6}
+  .legend .row{display:flex;align-items:center;gap:8px;margin:5px 0;cursor:pointer;opacity:.85}
+  .legend .row:hover{opacity:1}
+  .legend .dot{width:10px;height:10px;border-radius:50%;box-shadow:0 0 8px currentColor}
+  .hint-3d{position:absolute;right:28px;bottom:24px;z-index:10;font-size:12px;color:#6f6b64;text-align:right;line-height:1.7}
+  /* ---- planet interior (look & feel) ---- */
+  #warp{position:absolute;inset:0;z-index:34;pointer-events:none;opacity:0;transition:opacity .9s ease}
+  #planet-ui{position:absolute;top:74px;left:28px;z-index:11;display:none;max-width:340px}
+  #planet-ui h2{font-family:Georgia,serif;font-weight:600;font-size:22px;margin:0;color:#fff}
+  #planet-ui .sub{margin:6px 0 12px;font-size:12.5px;color:#8b8780;line-height:1.5}
+  #planet-back{font:11px/1 inherit;letter-spacing:.06em;padding:7px 12px;border:1px solid rgba(255,255,255,.22);background:rgba(11,13,19,.6);border-radius:2px;color:#aaa6a0;cursor:pointer}
+  #planet-back:hover{border-color:rgba(255,255,255,.5);color:#e9e7e2}
+  .code-label{text-transform:none;font-size:14px;letter-spacing:.05em;font-weight:600}
+  .code-label .cl-status{display:block;font-size:9px;letter-spacing:.14em;font-weight:500;opacity:.75;margin-top:2px}
+  #panel .stat2{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:2px 8px;margin-left:8px;vertical-align:middle}
+  #panel .swmini{display:flex;height:16px;border-radius:2px;overflow:hidden;margin:2px 0 12px;border:1px solid rgba(255,255,255,.12)}
+  #panel .swmini i{flex:1}
+  #panel .pcollage{display:flex;flex-wrap:wrap;gap:0;margin:4px 0 16px;border-radius:3px;overflow:hidden}
+  #panel .pcollage a{display:block;height:96px;overflow:hidden;background:rgba(255,255,255,.04)}
+  #panel .pcollage img{height:96px;width:auto;display:block}
+  #panel.wide .pcollage a,#panel.wide .pcollage img{height:118px}
+  #panel .chiprow{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 10px}
+  #panel .chip2{font-size:10.5px;border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:2px 9px;color:#c9c6c0}
+  #panel .plabel{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8b8780;margin:14px 0 4px}
+  #panel blockquote{margin:8px 0;padding:5px 12px;border-left:2px solid rgba(255,255,255,.25);font-family:Georgia,serif;font-style:italic;color:#d8d5cf;font-size:13px}
+  #panel blockquote a{font-style:normal;font-size:11px;color:#8b8780;text-decoration:none}
+  .node-label{position:absolute;transform:translate(-50%,-160%);font-size:10.5px;line-height:1;white-space:nowrap;pointer-events:none;
+    font-weight:500;letter-spacing:.01em;will-change:transform,opacity;text-shadow:0 0 5px #05060a,0 0 3px #05060a,0 1px 2px #05060a}
+  .node-label.hl{font-weight:700;font-size:12.5px;z-index:25;text-shadow:0 0 8px #000,0 0 4px #000}
+  #panel{position:fixed;top:0;right:0;height:100%;width:360px;max-width:88vw;z-index:40;background:#0b0d13;border-left:1px solid rgba(255,255,255,.12);
+    padding:74px 26px 26px;transform:translateX(100%);transition:transform .3s ease;overflow-y:auto}
+  #panel.open{transform:translateX(0)}
+  #panel.wide{width:50vw;max-width:none}        /* look & feel boards: half the screen, immersive */
+  @media(max-width:760px){#panel.wide{width:92vw}}
+  #panel .close{position:absolute;top:74px;right:22px;cursor:pointer;color:#8b8780;font-size:22px;line-height:1}
+  #panel .psub{font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:700}
+  #panel .pmeta{font-size:12px;color:#8b8780;margin:6px 0 12px}
+  #panel h3{font-family:Georgia,serif;font-size:21px;line-height:1.25;margin:0 0 12px;color:#fff}
+  #panel p{font-size:14px;color:#c9c6c0;margin:0 0 14px}
+  #panel .pnote{font-size:13px;color:#9a968f;border-top:1px solid rgba(255,255,255,.1);padding-top:12px;margin-top:4px}
+  #panel .pnote b{color:#d8d5cf}
+  #panel a.go{display:inline-block;font-size:13px;color:#fff;border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:3px;text-decoration:none;white-space:nowrap}
+  #panel a.go:hover{background:#fff;color:#0b0d13}
+  #panel .gobtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}  /* keep the two actions side by side, identical in both entry paths */
+  #loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#6f6b64;font-size:14px}
+
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 18px;border-radius:4px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:60}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  body.mode-explore .toast{background:#fff;color:#05060a}
+
+  /* ===== Look & Feel scroll overlay (replaces the 3D fly-in) ===== */
+  #lookfeel{position:fixed;inset:0;z-index:200;overflow-y:auto;overflow-x:hidden;display:none;
+    -webkit-overflow-scrolling:touch;color:#141414;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+  #lookfeel.open{display:block}
+  #lf-bg{position:fixed;inset:0;z-index:-2;background:#fafaf8;transition:background-color .15s linear}
+  #lf-grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+  #lf-close{position:fixed;top:14px;left:16px;z-index:210;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    padding:7px 14px;border-radius:999px;cursor:pointer;background:rgba(0,0,0,.06);color:inherit;
+    border:1px solid rgba(0,0,0,.2);mix-blend-mode:difference}
+  #lf-intro{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8vh 7vw}
+  #lf-intro .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;opacity:.5;margin-bottom:26px}
+  #lf-intro h1{font-size:clamp(20px,2.4vw,30px);font-weight:500;opacity:.55;margin-bottom:6vh;max-width:42ch;line-height:1.45}
+  #lf .codelist{display:flex;flex-direction:column;gap:clamp(8px,1.6vh,20px)}
+  #lf .codelist a{text-decoration:none;color:#141414;font-size:clamp(28px,5.6vw,80px);font-weight:650;line-height:1.03;
+    letter-spacing:-.02em;display:flex;align-items:baseline;gap:18px;opacity:.92;transition:opacity .2s,transform .25s cubic-bezier(.22,.61,.36,1)}
+  #lf .codelist a:hover{opacity:1;transform:translateX(10px)}
+  #lf .codelist .num{font-size:clamp(12px,1vw,15px);font-weight:500;opacity:.4;letter-spacing:0}
+  #lf .codelist .dot{width:.42em;height:.42em;border-radius:50%;display:inline-block;align-self:center}
+  #lf .scrollhint{margin-top:7vh;font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;animation:lfbob 2.2s infinite ease-in-out}
+  @keyframes lfbob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+  #lf .code{position:relative}
+  #lf .hero{display:grid;grid-template-columns:26% 74%;align-items:stretch;min-height:100vh}
+  #lf .hero .text{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;padding:6vh 2.2vw 6vh 7vw;z-index:2}
+  #lf .hero .num{font-size:12px;letter-spacing:.26em;opacity:.6;margin-bottom:18px}
+  #lf .hero .status{display:inline-block;align-self:flex-start;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:4px 9px;border:1px solid currentColor;border-radius:999px;opacity:.7;margin-bottom:22px}
+  #lf .hero h2{font-size:clamp(28px,3.1vw,52px);font-weight:650;line-height:1.04;letter-spacing:-.02em;margin-bottom:22px}
+  #lf .hero .oneliner{font-size:clamp(14px,1.15vw,18px);line-height:1.5;opacity:.82;max-width:30ch}
+  #lf .hero .palette{display:flex;gap:7px;margin-top:30px}
+  #lf .hero .palette span{width:26px;height:26px;border-radius:4px;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset}
+  #lf .scrollon{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-top:34px}
+  #lf .collage{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:11.5vw;gap:10px;padding:9vh 0 9vh 1.5vw;align-content:start}
+  #lf .collage figure{overflow:hidden;position:relative;border-radius:3px;background:rgba(0,0,0,.12);margin:0}
+  #lf .collage img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.02)}
+  #lf .collage figure.tall{grid-row:span 2}
+  #lf .collage figure.wide{grid-column:span 2}
+  #lf .collage figure.big{grid-column:span 2;grid-row:span 2}
+  #lf .analysis{padding:4vh 7vw 12vh;max-width:1200px}
+  #lf .analysis .def{font-size:clamp(17px,1.5vw,23px);line-height:1.5;max-width:56ch;opacity:.95;margin-bottom:7vh;font-weight:450}
+  #lf .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5vh 6vw}
+  #lf .block{border-top:1px solid color-mix(in srgb,var(--tx) 24%,transparent);padding-top:16px}
+  #lf .block.full{grid-column:1 / -1}
+  #lf .lflabel{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.55;margin-bottom:14px}
+  #lf .chips{display:flex;flex-wrap:wrap;gap:8px}
+  #lf .chip{font-size:13px;padding:5px 11px;border-radius:999px;line-height:1.2;
+    background:color-mix(in srgb,var(--tx) 12%,transparent);border:1px solid color-mix(in srgb,var(--tx) 26%,transparent)}
+  #lf .quotes{margin-top:18px;display:flex;flex-direction:column;gap:14px}
+  #lf .quote{font-size:15px;line-height:1.45}
+  #lf .quote .q{font-style:italic}
+  #lf .quote a,#lf .ev a,#lf .def a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+  #lf .lfbody{font-size:15px;line-height:1.55;opacity:.92;max-width:54ch}
+  #lf .ev{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px}
+  #lf .lfmeta{grid-column:1 / -1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:5vh;padding-top:16px;
+    border-top:1px solid color-mix(in srgb,var(--tx) 24%,transparent);font-size:12px;opacity:.6}
+  @media (max-width:760px){
+    #lf .hero{grid-template-columns:1fr}
+    #lf .hero .text{position:relative;height:auto;min-height:60vh;padding:12vh 7vw 4vh}
+    #lf .collage{grid-template-columns:repeat(2,1fr);grid-auto-rows:32vw;padding:0 0 6vh}
+    #lf .codelist a{font-size:40px}
+    #lf .grid2{grid-template-columns:1fr}
+    #lf .analysis{padding:4vh 7vw 9vh}
+  }
+</style>
+</head>
+<body class="mode-search">
+
+<nav>
+  <button id="tab-search" class="on">Search</button>
+  <button id="tab-explore">Explore</button>
+  <button id="tab-vitals">Vital Signs</button>
+</nav>
+
+<!-- ===================== SEARCH ===================== -->
+<section id="view-search" class="view on">
+  <div class="wrap">
+    <header class="s">
+      <p class="kicker">Cultural Signal Corpus</p>
+      <h1>Cultural Scout</h1>
+      <p class="lede"><span class="label">Search for signals.</span>
+        <span class="statline" id="statline">Loading…</span></p>
+    </header>
+    <div class="pulse" id="pulse" style="display:none">
+      <div class="p-head">
+        <h2>The pulse — share of cultural conversation by need</h2>
+        <button class="p-copy" id="p-copy">Copy data ⧉</button>
+      </div>
+      <div class="p-sub" id="p-sub"></div>
+      <div id="p-chart"></div>
+      <div class="p-note" id="p-note"></div>
+    </div>
+    <div class="search">
+      <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="search for signals">
+      <div class="subbar">
+        <div class="hints">Try:
+          <a data-ex="connection intimacy">connection &amp; intimacy</a>
+          <a data-ex="AI creativity">AI &amp; creativity</a>
+          <a data-ex="aspiration taste">aspiration &amp; taste</a>
+          <a data-ex="ritual community">ritual &amp; community</a>
+        </div>
+        <button id="srcbtn" class="srcbtn">Source list</button>
+      </div>
+    </div>
+    <div class="bar">
+      <span class="count" id="count"></span>
+      <button class="copy" id="copy" disabled>Copy for AI ⧉</button>
+    </div>
+    <div id="needmix" class="needmix" style="display:none">
+      <div class="nm-bar" id="nm-bar"></div>
+      <div class="nm-row">
+        <span class="nm-lab">Need mix</span>
+        <span id="nm-chips"></span>
+        <button class="nm-act" id="nm-act" style="display:none"></button>
+      </div>
+    </div>
+    <div id="themes" class="themes" style="display:none">
+      <span class="th-lab">Themes the corpus found</span>
+      <span id="th-chips"></span>
+    </div>
+    <div id="results"></div>
+    <footer class="foot" id="r-foot" style="display:none">
+      <span id="r-footline"></span> <a id="r-open">Methodology &amp; scorecard →</a>
+    </footer>
+  </div>
+</section>
+
+<!-- ===================== EXPLORE (the cultural sphere — geological view) ===================== -->
+<section id="view-explore" class="view">
+  <iframe id="geo-frame" title="Discover — the cultural sphere"></iframe>
+</section>
+
+<!-- ===================== VITAL SIGNS ===================== -->
+<section id="view-vitals" class="view">
+  <div class="wrap">
+    <header class="v-head">
+      <p class="kicker">Macro Instrument Panel</p>
+      <h1>Vital Signs</h1>
+      <p class="lede"><span class="label">The numbers behind the claims.</span>
+        <span class="statline" id="v-statline"></span></p>
+      <div class="v-search"><input id="vq" type="search" autocomplete="off" spellcheck="false" placeholder="filter — try trust, sentiment, uncertainty, happiness"></div>
+    </header>
+    <div class="v-bar">
+      <span class="count" id="v-count"></span>
+      <button class="copy" id="v-copy">Copy for AI ⧉</button>
+    </div>
+    <div class="v-grid" id="v-grid"></div>
+    <div class="v-detail" id="v-detail"></div>
+    <div class="fg-section">
+      <h2>Field Guide</h2>
+      <div class="v-brief" id="v-brief" style="display:none">
+        <div class="b-label" id="b-label"></div>
+        <div id="b-body"></div>
+      </div>
+      <p class="fg-sub" id="fg-sub"></p>
+      <div class="prov" id="prov" style="display:none">
+        <h3>Where the intake comes from</h3>
+        <p class="prov-line" id="prov-line"></p>
+        <div class="prov-cols">
+          <div><h4>By discipline</h4><div id="prov-disc"></div></div>
+          <div><h4>By region</h4><div id="prov-reg"></div></div>
+        </div>
+        <p class="prov-note">This breakdown covers the editorial harvest corpus behind the Search and Explore tabs (the Field Guide below is the separate macro-evidence armory). Region = editorial center of gravity, best effort; "Online (unplaced)" is the honest tag for born-digital sources we don't place. Full list: Source list, on the Search tab.</p>
+      </div>
+      <div id="fg-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RECEIPTS (modal, opened from the Search footer) ===================== -->
+<div class="modal" id="rcpmodal">
+  <div class="modal-card">
+    <div class="modal-head"><h2>Receipts</h2><span class="mclose" id="rcpclose">×</span></div>
+    <p class="modal-sub" id="r-statline"></p>
+    <div class="r-intro" id="r-intro"></div>
+    <div id="r-principles"></div>
+    <div class="r-score">
+      <h2 style="font-family:Georgia,serif;font-size:20px">The scorecard</h2>
+      <p class="r-method" id="r-method"></p>
+      <div id="r-entries"></div>
+    </div>
+  </div>
+</div>
+
+<div id="panel">
+  <span class="close" id="panel-close">×</span>
+  <div id="panel-body"></div>
+</div>
+<div class="modal" id="srcmodal">
+  <div class="modal-card">
+    <div class="modal-head"><h2>Editorial source list</h2><span class="mclose" id="srcclose">×</span></div>
+    <p class="modal-sub" id="srcsub"></p>
+    <div id="srclist"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- shared data ---------- */
+window.DATA    = /*__DATA__*/[]/*__END__*/;
+window.RUNS    = /*__RUNS__*/[]/*__END__*/;
+window.BUILT   = /*__BUILT__*/""/*__END__*/;
+window.SOURCES = /*__SOURCES__*/[]/*__END__*/;
+window.VITALS  = /*__VITALS__*/{"pulled":"","indicators":[],"fieldguide":[]}/*__END__*/;
+window.NEEDHIST = /*__NEEDHIST__*/[]/*__END__*/;
+window.RECEIPTS = /*__RECEIPTS__*/{}/*__END__*/;
+window.CODES    = /*__CODES__*/{}/*__END__*/; /* semiotic codes by need (pilot: Certified Human); image_refs are hotlinks */
+/* The 7-need taxonomy (2026-06, five-analyst convergence). "unsettled" is the
+   honest residue, kept small on purpose. Old substrate survives per-signal as
+   legacy metadata in s.recommended_substrate. */
+window.NEEDS = ["Certified Human","Kinship","Settling Accounts","Self-Authorship","Appetite","Ballast","Naming the Machine","unsettled"];
+window.NEED_LIGHT = {"Certified Human":"#9a7522","Kinship":"#2f6f6b","Settling Accounts":"#7a5aa0","Self-Authorship":"#3a5a9b","Appetite":"#b0492f","Ballast":"#4e7a3e","Naming the Machine":"#a04778","unsettled":"#6b665c"};
+window.NEED_DARK  = {"Certified Human":"#d9a84e","Kinship":"#3f9d96","Settling Accounts":"#a884d6","Self-Authorship":"#5b86d6","Appetite":"#e0654a","Ballast":"#7fb069","Naming the Machine":"#d671a8","unsettled":"#9c978a"};
+
+/* ---------- SEARCH ---------- */
+(function(){
+  const DATA=window.DATA, RUNS=window.RUNS, NEEDS=window.NEEDS, NCOL=window.NEED_LIGHT;
+  const STOP=new Set("the a an and or of to in on for with is are as at by it its about into that this what do you have any signals signal whats happening search".split(" "));
+  const SHORT_OK=new Set(["ai","uk","us","tv","vr"]); // real 2-letter queries (exact-word match only)
+  const W={title:3,summary:2,novelty_note:2,cross_substrate_notes:1,category:2,source:1,recommended_substrate:1,need:1};
+
+  /* Query expansion — curated synonyms tuned to cultural-strategy vocabulary.
+     Synonyms score at HALF the weight of the term the user typed.
+     NOTE: mirrored in scout.py (SYNONYMS). Keep the two in sync. */
+  const SYNONYMS={
+    ai:["artificial","intelligence","algorithm","algorithmic","chatbot","llm","machine"],
+    beauty:["aesthetic","cosmetic","skincare","grooming","makeup"],
+    wellness:["health","wellbeing","therapy","healing","mindfulness"],
+    sport:["athlete","athletic","fitness","running","gym","training"],
+    money:["wealth","financial","economic","income","class","capitalism"],
+    masculinity:["men","male","manhood","masculine"],
+    men:["masculinity","male","manhood"],
+    femininity:["women","female","womanhood","feminine","girlhood"],
+    women:["femininity","female","womanhood"],
+    intimacy:["closeness","tenderness","romance","desire","eroticism"],
+    community:["belonging","collective","gathering","communal"],
+    nostalgia:["retro","vintage","longing","memory","archival"],
+    luxury:["premium","opulence","wealth","aspirational"],
+    food:["culinary","eating","restaurant","cooking","cuisine","dining"],
+    fashion:["clothing","apparel","garment","style","dress"],
+    internet:["online","digital","platform","virality","meme"],
+    work:["labor","labour","career","workplace","job","hustle"],
+    identity:["selfhood","persona","self"],
+    ritual:["ceremony","practice","tradition","rite"],
+    authenticity:["authentic","sincerity","genuine"],
+    queer:["lgbtq","gay","lesbian","trans","drag"],
+    aging:["age","aged","older","elder","elderly","longevity"],
+    craft:["handmade","artisan","craftsmanship","maker"],
+    celebrity:["fame","stardom","influencer","parasocial"],
+    music:["song","album","pop","sound","sonic"],
+    film:["cinema","movie","documentary","director"],
+    home:["domestic","interior","household","dwelling"],
+    body:["embodied","physical","flesh","corporeal"],
+    death:["grief","mourning","mortality","funeral"],
+    grief:["death","mourning","loss"],
+    technology:["digital","device","software","tech"],
+    spirituality:["religion","sacred","faith","mysticism","astrology"],
+    status:["prestige","taste","distinction","aspiration"],
+    loneliness:["isolation","alone","solitude","disconnection"],
+    slowness:["slow","leisure","rest","idleness"]
+  };
+
+  const terms=q=>(q.toLowerCase().match(/[a-z0-9]+/g)||[]).filter(t=>!STOP.has(t)&&(t.length>2||SHORT_OK.has(t)));
+  function expand(ts){const out=[];for(const t of ts){out.push([t,1,t]);for(const s of (SYNONYMS[t]||[]))out.push([s,0.5,t]);}return out;}
+
+  /* word-boundary matching with cheap symmetric stemming: exact, or a prefix
+     relationship where the stem is >=4 chars. "ritual" matches "rituals";
+     "aging" no longer matches "packaging"; "men" no longer matches "women". */
+  /* Accept a prefix match only when the extra letters form a real inflectional
+     ending (plural / tense / gerund / comparative), NOT an arbitrary longer word.
+     So "rest" matches "rests/rested/resting" but NOT "restores/restaurant", and
+     "ritual" still matches "rituals". 1-2 char tails (s, es, ed, d, ly...) are
+     always fine; longer tails must be a known ending. */
+  const INFLECT=new Set(["ing","ings","ers","ier","iest","ied","ings","ling"]);
+  function stemOK(longer,shorter){const suf=longer.slice(shorter.length);return suf.length<=2||INFLECT.has(suf);}
+  function wordMatch(w,t){
+    if(w===t)return true;
+    if(SHORT_OK.has(t))return false;
+    if(t.length>=4&&w.startsWith(t))return stemOK(w,t);
+    if(w.length>=4&&t.startsWith(w))return stemOK(t,w);
+    return false;
+  }
+
+  // tokenize every field once, up front (DATA is static)
+  DATA.forEach(s=>{s.__w={};for(const f in W)s.__w[f]=((s[f]||"").toString().toLowerCase().match(/[a-z0-9]+/g)||[]);});
+  const LATEST=RUNS.length?RUNS[RUNS.length-1]:"";
+
+  function score(s,ex){
+    let sc=0;const hit=new Set();
+    for(const f in W){const words=s.__w[f];if(!words.length)continue;
+      for(const [t,tw,parent] of ex){let n=0;for(const w of words)if(wordMatch(w,t))n++;if(n){sc+=W[f]*tw*n;hit.add(parent);}}}
+    if(!sc)return 0;
+    sc*=(1+0.5*(hit.size-1));                 // breadth of distinct TYPED terms
+    if(s.tier==="core")sc*=1.2;               // strict-gate tier (forward_looking is on 81% — no signal)
+    if((s._runs||[]).length>1)sc*=1.1;
+    if(RUNS.length>1){const i=RUNS.indexOf(s._first_seen);sc*=Math.pow(0.92,(RUNS.length-1)-(i<0?RUNS.length-1:i));} // gentle recency tilt
+    return sc;
+  }
+
+  const esc=t=>(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const fmtDate=d=>{d=d||"";return /\(approx\)/.test(d)?("~"+d.replace(/\s*\(approx\)\s*/,"")):d;};
+  let shownNow=[],qNow="",limit=40,lastQ="";
+
+  /* ---- need-mix + filter-against-the-dominant-need (client-side post-filter) ----
+     The corpus carries a known theme-gravity bias (toward Naming the Machine /
+     provenance / anti-AI). Surfacing the need-mix and letting the user exclude
+     the dominant need turns that bias into a dial. No ranking change — this is a
+     pure post-filter on the already-ranked result set. */
+  const excluded=new Set();
+  window.__excludedNeeds=excluded;            // so the tab switcher can keep it in the hash
+  const needOf=s=>NEEDS.includes(s.need)?s.need:"unsettled";
+  function toggleNeed(n){if(excluded.has(n))excluded.delete(n);else excluded.add(n);clusterFilter=null;render();}
+
+  function renderNeedMix(listFull,listF){
+    const wrap=document.getElementById("needmix");
+    if(!listFull.length){wrap.style.display="none";return;}
+    wrap.style.display="block";
+    const cntFull={},cntF={};NEEDS.forEach(n=>{cntFull[n]=0;cntF[n]=0;});
+    listFull.forEach(s=>cntFull[needOf(s)]++);listF.forEach(s=>cntF[needOf(s)]++);
+    const totalF=listF.length||1;
+    const present=NEEDS.filter(n=>cntFull[n]>0).sort((a,b)=>cntFull[b]-cntFull[a]);
+    // slim stacked bar over the visible (non-excluded) shares
+    const bar=present.filter(n=>!excluded.has(n)).map(n=>{
+      const pct=cntF[n]/totalF*100;
+      return pct>0?`<span style="width:${pct.toFixed(2)}%;background:${NCOL[n]}" title="${esc(n)} ${Math.round(pct)}%"></span>`:"";
+    }).join("");
+    document.getElementById("nm-bar").innerHTML=bar||`<span style="width:100%;background:var(--line)"></span>`;
+    document.getElementById("nm-chips").innerHTML=present.map(n=>{
+      const ex=excluded.has(n);const pct=ex?0:Math.round(cntF[n]/totalF*100);
+      return `<span class="nm-chip${ex?' ex':''}" data-need="${esc(n)}" title="${ex?'click to add back':'click to hide this need'}"><span class="dot" style="background:${NCOL[n]}"></span>${esc(n)} <span class="pct">${ex?'excluded':pct+'% · '+cntF[n]}</span></span>`;
+    }).join("");
+    document.querySelectorAll("#nm-chips .nm-chip").forEach(el=>el.onclick=()=>toggleNeed(el.dataset.need));
+    const act=document.getElementById("nm-act");
+    const visible=present.filter(n=>!excluded.has(n));
+    if(excluded.size){act.style.display="";act.textContent="Show all needs";act.onclick=()=>{excluded.clear();clusterFilter=null;render();};}
+    else if(visible.length>1){const dom=visible.reduce((a,b)=>cntF[b]>cntF[a]?b:a,visible[0]);
+      act.style.display="";act.textContent="Outside “"+dom+"” →";act.onclick=()=>{excluded.add(dom);clusterFilter=null;render();};}
+    else act.style.display="none";
+  }
+
+  /* ---- in-browser semantic clustering of the matched set ----
+     Uses the build-time int8 embeddings (s.vec, base64) — NO model runs on the
+     page. Cosine on the int8 vectors approximates cosine on the originals (the
+     global quant scale cancels). k-means is deterministic (rank-seeded init) so
+     the same query yields the same clusters across renders. Labels are
+     keyword-only (TF-IDF, cluster vs the rest of the matched set); coined naming
+     stays the job of the Copy-for-AI handoff. */
+  let clusterFilter=null, currentClusters=null;
+  const HASVEC=DATA.some(s=>s.vec);
+  // generic words that make useless cluster labels (on top of the search STOP set)
+  const LBLSTOP=new Set("essay profile interview article piece review feature magazine story column report book author writer artist work works new more most make makes made into about over under after before being their there these those they them this that what when which while with from your you our who whom whose how why also just very much many some such than then only most into across amid against world year years time times life people thing things way ways big small good great first last next another between within without around through during because however whether using used uses based amid via like onto upon out off per show shows showing look looks tell tells talk talks come comes give gives take takes goes going gets getting argue argues argued arguing rather among amongst where long projects project traces toward towards really maybe perhaps might never itself should would could build builds built issue issues left right reflects reflect means meaning includes including remains remain becomes become".split(" "));
+  const _dot=(a,b)=>{let s=0;for(let i=0;i<a.length;i++)s+=a[i]*b[i];return s;};
+  function dvec(s){
+    if(s.__v!==undefined)return s.__v;
+    if(!s.vec){s.__v=null;return null;}
+    const bin=atob(s.vec),n=bin.length,u=new Uint8Array(n);
+    for(let i=0;i<n;i++)u[i]=bin.charCodeAt(i);
+    const q=new Int8Array(u.buffer),f=new Float32Array(q.length);let nm=0;
+    for(let i=0;i<q.length;i++){f[i]=q[i];nm+=f[i]*f[i];}
+    nm=Math.sqrt(nm)||1;for(let i=0;i<f.length;i++)f[i]/=nm;
+    s.__v=f;return f;
+  }
+  const kFor=n=>n<8?0:n<=15?2:n<=30?3:n<=60?4:5;
+
+  function tokenSet(s){
+    if(s.__tok)return s.__tok;
+    const set=new Set((((s.title||"")+" "+(s.summary||"")).toLowerCase().match(/[a-z0-9]+/g)||[])
+      .filter(w=>w.length>3&&!/^[0-9]+$/.test(w)&&!STOP.has(w)&&!LBLSTOP.has(w)));
+    s.__tok=set;return set;
+  }
+  function labelClusters(clusters,all,qterms){
+    const df={};const N=all.length||1;
+    all.forEach(s=>tokenSet(s).forEach(w=>df[w]=(df[w]||0)+1));
+    // a label should say what makes a cluster DIFFERENT, so drop the user's own
+    // query words (and their stems) — labeling "food culture" results "culture"
+    // is noise, since you typed it.
+    const isQ=w=>(qterms||[]).some(t=>wordMatch(w,t));
+    clusters.forEach(cl=>{
+      const tf={},sz=cl.members.length||1;
+      cl.members.forEach(s=>tokenSet(s).forEach(w=>tf[w]=(tf[w]||0)+1));
+      const scored=Object.keys(tf).filter(w=>!isQ(w)).map(w=>{
+        const idf=Math.log(1+N/(df[w]||1));
+        const support=(tf[w]>=2||sz<=2)?1:0.55;   // damp singletons in bigger clusters
+        return [w,(tf[w]/sz)*idf*support];
+      }).sort((a,b)=>b[1]-a[1]);
+      cl.keywords=scored.slice(0,3).map(x=>x[0]);
+    });
+  }
+  function clusterSignals(list,qterms){
+    if(!HASVEC)return null;
+    const items=[];for(const s of list){const v=dvec(s);if(v)items.push({s,v});}
+    const n=items.length,k=kFor(n);
+    if(!k||n<2)return null;
+    const dim=items[0].v.length;
+    // deterministic farthest-point init seeded at the top-ranked item
+    const seeds=[0];
+    while(seeds.length<k){
+      let best=-1,bestd=-1;
+      for(let i=0;i<n;i++){let mn=2;for(const c of seeds){const d=1-_dot(items[i].v,items[c].v);if(d<mn)mn=d;}if(mn>bestd){bestd=mn;best=i;}}
+      if(best<0||seeds.indexOf(best)>=0)break;seeds.push(best);
+    }
+    let cent=seeds.map(i=>items[i].v.slice());
+    const assign=new Array(n).fill(-1);
+    for(let it=0;it<14;it++){
+      let moved=false;
+      for(let i=0;i<n;i++){let bi=0,bs=-2;for(let c=0;c<cent.length;c++){const sc=_dot(items[i].v,cent[c]);if(sc>bs){bs=sc;bi=c;}}if(assign[i]!==bi){assign[i]=bi;moved=true;}}
+      const sum=cent.map(()=>new Float32Array(dim)),cnt=new Array(cent.length).fill(0);
+      for(let i=0;i<n;i++){const a=assign[i];cnt[a]++;const v=items[i].v;for(let d=0;d<dim;d++)sum[a][d]+=v[d];}
+      for(let c=0;c<cent.length;c++){if(!cnt[c])continue;let nm=0;for(let d=0;d<dim;d++)nm+=sum[c][d]*sum[c][d];nm=Math.sqrt(nm)||1;for(let d=0;d<dim;d++)sum[c][d]/=nm;cent[c]=sum[c];}
+      if(!moved&&it>0)break;
+    }
+    // Fold tiny clusters into their nearest surviving one: small groups produce
+    // noisy keyword labels (a 3-item cluster labeled "inflected gemini bike").
+    // Keep only centroids at/above minSize, then reassign everything to the
+    // nearest survivor. Always keep at least the 2 largest.
+    const minSize=Math.max(4,Math.round(n*0.08));
+    const cnt0=new Array(cent.length).fill(0);assign.forEach(a=>cnt0[a]++);
+    let keep=cent.map((_,c)=>c).filter(c=>cnt0[c]>=minSize);
+    if(keep.length<2)keep=cent.map((_,c)=>c).sort((a,b)=>cnt0[b]-cnt0[a]).slice(0,2);
+    const kc=keep.map(c=>cent[c]);
+    const fa=new Array(n);
+    for(let i=0;i<n;i++){let bi=0,bs=-2;for(let c=0;c<kc.length;c++){const sc=_dot(items[i].v,kc[c]);if(sc>bs){bs=sc;bi=c;}}fa[i]=bi;}
+    // recompute survivor centroids as normalized means (for picking the central signal)
+    const ks=kc.map(()=>new Float32Array(dim)),kn=new Array(kc.length).fill(0);
+    for(let i=0;i<n;i++){const a=fa[i];kn[a]++;const v=items[i].v;for(let d=0;d<dim;d++)ks[a][d]+=v[d];}
+    for(let c=0;c<kc.length;c++){let nm=0;for(let d=0;d<dim;d++)nm+=ks[c][d]*ks[c][d];nm=Math.sqrt(nm)||1;for(let d=0;d<dim;d++)ks[c][d]/=nm;}
+    const clusters=[];
+    for(let c=0;c<kc.length;c++){
+      const members=[];let central=null,cb=-2;
+      for(let i=0;i<n;i++)if(fa[i]===c){members.push(items[i].s);const sc=_dot(items[i].v,ks[c]);if(sc>cb){cb=sc;central=items[i].s;}}
+      if(members.length)clusters.push({members,central});
+    }
+    if(clusters.length<2)return null;
+    labelClusters(clusters,list,qterms);
+    clusters.sort((a,b)=>b.members.length-a.members.length);
+    return clusters;
+  }
+  function renderThemes(clusters){
+    const wrap=document.getElementById("themes"),chips=document.getElementById("th-chips");
+    if(!clusters||clusters.length<2){wrap.style.display="none";return;}
+    wrap.style.display="";
+    let html=clusters.map((cl,i)=>{
+      const kw=(cl.keywords||[]).filter(Boolean).join(" · ")||"theme";
+      const t=cl.central?cl.central.title:"";
+      return `<span class="th-chip${clusterFilter===i?' on':''}" data-c="${i}" title="${esc(t)}"><b>${esc(kw)}</b> <span class="th-n">${cl.members.length}</span></span>`;
+    }).join("");
+    if(clusterFilter!=null)html+=`<span class="th-clear" id="th-clear">show all themes</span>`;
+    chips.innerHTML=html;
+    chips.querySelectorAll(".th-chip").forEach(el=>el.onclick=()=>{const i=+el.dataset.c;clusterFilter=(clusterFilter===i?null:i);render();});
+    const cl=document.getElementById("th-clear");if(cl)cl.onclick=()=>{clusterFilter=null;render();};
+  }
+
+  function cardHTML(s){
+    const need=NEEDS.includes(s.need)?s.need:"unsettled";const col=NCOL[need];
+    const runs=(s._runs||[]);const multi=runs.length>1;const note=s.novelty_note||s.cross_substrate_notes;
+    return `<div class="card" style="border-left-color:${col}"><div class="meta"><span class="sub" style="color:${col}">${esc(need)}</span><a class="src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.source)}</a><span>· ${esc(fmtDate(s.date))}</span>${s.forward_looking?'<span class="badge fwd">forward</span>':''}${multi?`<span class="badge runs">seen in ${runs.length} runs</span>`:''}</div><h3><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></h3><p class="summary">${esc(s.summary)}</p>${note?`<span class="toggle" onclick="this.nextElementSibling.classList.toggle('show')">why this matters ↓</span><div class="more">${s.novelty_note?`<p><b>Novelty:</b> ${esc(s.novelty_note)}</p>`:''}${s.cross_substrate_notes?`<p><b>Crosscurrents:</b> ${esc(s.cross_substrate_notes)}</p>`:''}</div>`:''}</div>`;
+  }
+
+  // default (empty-query) state: the freshest signals from the latest run
+  const FRESH=DATA.filter(s=>s._first_seen===LATEST)
+    .sort((a,b)=>((b.tier==="core")-(a.tier==="core"))||((b.date||"").localeCompare(a.date||"")))
+    .slice(0,8);
+
+  function syncHash(q){
+    // hash carries view + query + theme: #q=… / #explore / #explore&q=… / #explore&need=… / #vitals
+    if(document.body.classList.contains("mode-vitals"))return; // vitals owns its hash; its filter is local
+    const ex=document.body.classList.contains("mode-explore");
+    try{
+      if(ex){
+        if(!q&&window.__focusedTheme)history.replaceState(null,"","#explore&need="+encodeURIComponent(window.__focusedTheme));
+        else history.replaceState(null,"",q?("#explore&q="+encodeURIComponent(q)):"#explore");
+      }else{
+        const parts=[];
+        if(q)parts.push("q="+encodeURIComponent(q));
+        if(excluded.size)parts.push("not="+encodeURIComponent([...excluded].join("|")));
+        history.replaceState(null,"",parts.length?("#"+parts.join("&")):location.pathname+location.search);
+      }
+    }catch(e){}
+  }
+
+  // expose the scorer so the Explore view can reuse it (query gravity)
+  window.__scoreAll=function(q){
+    const ts=terms(q||"");if(!ts.length)return null;
+    const ex=expand(ts);return DATA.map(s=>score(s,ex));
+  };
+  // expose the SAME build-time semantic clustering the Search tab's themes strip
+  // uses (int8 embeddings, deterministic spherical k-means, TF-IDF keyword
+  // labels — NO model/LLM on the page) so the Explore constellation can group
+  // matched planets into those themes spatially. Takes the matched signal
+  // objects + the raw query; returns labeled clusters [{members,central,
+  // keywords}] sorted by size, or null when vectors are absent or there are too
+  // few matches to cluster (caller then falls back to the single relevance spiral).
+  window.__clusterSignals=function(list,q){
+    if(!HASVEC||!list||list.length<2)return null;
+    return clusterSignals(list,terms(q||""));
+  };
+
+  function render(){
+    const q=document.getElementById("q").value.trim();
+    if(q!==lastQ){limit=40;lastQ=q;clusterFilter=null;}
+    const ts=terms(q);const res=document.getElementById("results");
+    syncHash(ts.length?q:"");
+    if(!ts.length){
+      // default state: freshest signals from the latest run (filter still applies)
+      const listF=FRESH.filter(s=>!excluded.has(needOf(s)));
+      qNow="new in the latest harvest";shownNow=listF;
+      clusterFilter=null;currentClusters=null;renderThemes(null);   // clustering is a search affordance, not a default-state one
+      renderNeedMix(FRESH,listF);
+      document.getElementById("count").textContent=excluded.size?(listF.length+" of "+FRESH.length+" shown"):"";
+      setCopy(listF,qNow);
+      res.innerHTML=listF.length?`<div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:18px 2px 4px">New in the latest harvest · ${esc(LATEST)}</div>`+listF.map(cardHTML).join(""):'<div style="color:var(--mute);padding:10px 2px">Every need is excluded — add one back above.</div>';
+      return;
+    }
+    const ex=expand(ts);
+    const list=DATA.map(s=>[score(s,ex),s]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]||((b[1]._runs||[]).length-(a[1]._runs||[]).length)).map(x=>x[1]);
+    const listF=list.filter(s=>!excluded.has(needOf(s)));
+    renderNeedMix(list,listF);
+    // emergent semantic themes over the (filtered) matched set
+    currentClusters=clusterSignals(listF,ts);
+    if(clusterFilter!=null&&(!currentClusters||clusterFilter>=currentClusters.length))clusterFilter=null;
+    renderThemes(currentClusters);
+    // a selected theme chip narrows the pool to that cluster's members (keeps rank order)
+    const pool=(currentClusters&&clusterFilter!=null)?currentClusters[clusterFilter].members:listF;
+    const shown=pool.slice(0,limit);shownNow=shown;qNow=q;
+    const themeNote=(currentClusters&&clusterFilter!=null)?" · theme: "+pool.length+" of "+listF.length:"";
+    document.getElementById("count").textContent=listF.length+" signal"+(listF.length!==1?"s":"")+(excluded.size?" · "+(list.length-listF.length)+" hidden":"")+themeNote+(pool.length>limit?" · showing top "+limit:"");
+    setCopy(shown,q);
+    if(!shown.length){res.innerHTML='<div style="color:var(--mute);padding:10px 2px">'+(excluded.size&&list.length?'Every matching signal is in an excluded need — add one back above.':'Nothing matched. Try broader or different words — describe the <em>feeling</em> or <em>tension</em>, not just a keyword.')+'</div>';return;}
+    res.innerHTML=shown.map(cardHTML).join("")+(pool.length>limit?'<div style="text-align:center;margin:18px 0"><span class="toggle" id="showmore">Show more ↓</span></div>':"");
+    const more=document.getElementById("showmore");
+    if(more)more.onclick=()=>{limit+=40;render();};
+  }
+
+  function setCopy(shown,q){const btn=document.getElementById("copy");btn.disabled=!shown.length;btn.onclick=()=>{const filt=excluded.size?` (filtered to exclude need${excluded.size>1?"s":""}: ${[...excluded].join(", ")})`:"";const head=`Cultural signals matching "${q}"${filt} — ${shown.length} results from a curated editorial corpus (runs: ${RUNS.join(", ")}).\n\nPlease synthesize: (1) the cultural read in 2–3 sentences, (2) 2–4 named moves/tensions clustering these, (3) the single sharpest, strangest signal that would change a brief.\n\n`+shown.map(s=>`- [${s.need||s.recommended_substrate}] ${s.title} (${s.source}, ${s.date})\n  ${s.summary}\n${s.novelty_note?`  Why it matters: ${s.novelty_note}\n`:""}${s.cross_substrate_notes?`  Crosscurrents: ${s.cross_substrate_notes}\n`:""}  ${s.url}`).join("\n");navigator.clipboard.writeText(head).then(()=>toast(`Copied ${shown.length} signals — paste into ChatGPT or Claude`));};}
+
+  document.getElementById("statline").textContent=DATA.length+" signals · "+RUNS.length+" harvest runs · updated "+window.BUILT;
+  let deb;document.getElementById("q").addEventListener("input",()=>{clearTimeout(deb);deb=setTimeout(render,90);});
+  document.querySelectorAll(".hints a").forEach(a=>a.onclick=()=>{document.getElementById("q").value=a.dataset.ex;render();document.getElementById("q").focus();});
+
+  // shareable searches: restore q=... on load (works for #q=… and #explore&q=…),
+  // then render (also paints the fresh-run default when the hash is empty).
+  // Stash the original hash first — render() rewrites it before the tab code runs.
+  window.__initialHash=location.hash;
+  const m=location.hash.match(/q=([^&]+)/);
+  if(m){try{document.getElementById("q").value=decodeURIComponent(m[1]);}catch(e){}}
+  const mn=location.hash.match(/not=([^&]+)/);
+  if(mn){try{decodeURIComponent(mn[1]).split("|").forEach(n=>{if(n)excluded.add(n);});}catch(e){}}
+  render();
+})();
+
+/* ---------- toast (shared) ---------- */
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),2600);}
+
+/* ---------- tabs ---------- */
+(function(){
+  const tabs={search:document.getElementById("tab-search"),explore:document.getElementById("tab-explore"),vitals:document.getElementById("tab-vitals")};
+  const views={search:document.getElementById("view-search"),explore:document.getElementById("view-explore"),vitals:document.getElementById("view-vitals")};
+  function go(which){
+    for(const k in tabs){tabs[k].classList.toggle("on",k===which);views[k].classList.toggle("on",k===which);}
+    document.body.classList.toggle("mode-explore",which==="explore");
+    document.body.classList.toggle("mode-search",which==="search");
+    document.body.classList.toggle("mode-vitals",which==="vitals");
+    // keep the URL linkable: #q=… / #explore[&q=…|&need=…] / #vitals
+    try{
+      const q=document.getElementById("q").value.trim();
+      if(which==="explore")history.replaceState(null,"",q?("#explore&q="+encodeURIComponent(q)):(window.__focusedTheme?"#explore&need="+encodeURIComponent(window.__focusedTheme):"#explore"));
+      else if(which==="vitals")history.replaceState(null,"","#vitals");
+      else{
+        const ex=window.__excludedNeeds&&window.__excludedNeeds.size?[...window.__excludedNeeds]:[];
+        const parts=[];
+        if(q)parts.push("q="+encodeURIComponent(q));
+        if(ex.length)parts.push("not="+encodeURIComponent(ex.join("|")));
+        history.replaceState(null,"",parts.length?("#"+parts.join("&")):location.pathname+location.search);
+      }
+    }catch(e){}
+    if(which==="explore"&&window.__initExplore)window.__initExplore();
+    if(which==="explore"&&window.__exploreSync)window.__exploreSync(); // carry the search query into the constellation
+  }
+  tabs.search.onclick=()=>go("search");tabs.explore.onclick=()=>go("explore");tabs.vitals.onclick=()=>go("vitals");
+  const h=window.__initialHash||location.hash;
+  if(/^#explore/.test(h))go("explore");
+  else if(/^#vitals/.test(h))go("vitals");
+})();
+
+/* ---------- VITAL SIGNS ---------- */
+(function(){
+  const V=window.VITALS||{indicators:[],fieldguide:[]};
+  const IND=V.indicators||[],FG=V.fieldguide||[];
+  if(!IND.length&&!FG.length)return;
+  const esc=t=>(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const grid=document.getElementById("v-grid"),detail=document.getElementById("v-detail"),fgList=document.getElementById("fg-list");
+  document.getElementById("v-statline").textContent=IND.length+" indicators · "+FG.length+" sources in the field guide · values pulled "+(V.pulled||"—");
+  document.getElementById("fg-sub").textContent="The annotated armory: every source, what it's for, and when to reach for it. ⛔ = gated/paid.";
+  // state-of-the-world brief — regenerated each monthly run from the panel + harvest
+  if(V.world_summary&&V.world_summary.text){
+    document.getElementById("v-brief").style.display="block";
+    document.getElementById("b-label").textContent="The state of play · according to the sources · updated "+V.world_summary.updated;
+    document.getElementById("b-body").innerHTML=V.world_summary.text.split(/\n\n+/).map(p=>`<p>${esc(p)}</p>`).join("");
+  }
+  let selId=null;
+
+  function deltaClass(d){
+    if(!d)return "";
+    const s=d.toLowerCase();
+    if(/down|fell|declin|low|-\d/.test(s))return "down";
+    if(/up|rose|gain|improv|\+\d/.test(s))return "up";
+    return "";
+  }
+  function spark(series){
+    if(!series||series.length<3)return "";
+    const vals=series.map(p=>+p.value).filter(v=>!isNaN(v));
+    if(vals.length<3)return "";
+    const min=Math.min(...vals),max=Math.max(...vals),rng=(max-min)||1;
+    const pts=vals.map((v,i)=>`${(i/(vals.length-1)*100).toFixed(1)},${(26-(v-min)/rng*22).toFixed(1)}`).join(" ");
+    return `<svg viewBox="0 0 100 28" preserveAspectRatio="none"><polyline points="${pts}"/></svg>`;
+  }
+  function blob(x){return [x.name,x.source_org,x.measures,x.value,(x.synonyms||[]).join(" ")].join(" ").toLowerCase();}
+  function fgBlob(e){return [e.name,e.what,e.reach_for,e.group,e.region].join(" ").toLowerCase();}
+
+  function pullChanged(x){
+    const h=x.pull_history||[];
+    return h.length>=2&&h[h.length-1].value!==h[h.length-2].value;
+  }
+  function tileHTML(x){
+    const warn=x.confidence!=="high";
+    return `<div class="tile${x.id===selId?" sel":""}" data-id="${esc(x.id)}">
+      <div class="t-name">${esc(x.name)}</div>
+      <div class="t-value">${esc(x.value||"—")}</div>
+      <div class="t-delta ${deltaClass(x.delta)}">${esc(x.delta||"")}</div>
+      ${spark(x.series)}
+      <div class="t-meta"><span class="t-chip">${esc(x.cadence)}</span><span>as of ${esc(x.as_of)}</span>${pullChanged(x)?'<span class="t-chip" style="color:#3a5a9b;border-color:#b9c6e2">changed</span>':""}${warn?'<span class="t-chip warn">verify</span>':""}</div>
+    </div>`;
+  }
+  function detailHTML(x){
+    return `<h3>${esc(x.name)} — ${esc(x.value||"value unverified")}</h3>
+      <p><span class="d-label">What it measures</span><br>${esc(x.measures||"")}</p>
+      ${x.quote?`<blockquote>“${esc(x.quote)}” <span style="font-style:normal;color:var(--mute)">— ${esc(x.source_org)}</span></blockquote>`:""}
+      <p><span class="d-label">Caveat</span><br>${esc(x.caveat||"")}</p>
+      ${x.confidence!=="high"?`<p><span class="d-label">⚠ Verify before citing</span><br>${esc(x.confidence_note||"Low-confidence pull — check the source.")}</p>`:""}
+      ${(x.pull_history||[]).length>1?`<p><span class="d-label">Pull history</span><br>${x.pull_history.slice(-6).map(h=>`${esc(h.pulled)}: ${esc(h.value||"—")}`).join(" · ")}</p>`:""}
+      <div class="d-cite" id="d-cite">${esc(x.citation)} · as of ${esc(x.as_of)}</div>
+      <button class="copy" id="d-copybtn">Copy citation ⧉</button>
+      <a class="srcbtn" style="text-decoration:none;display:inline-block;margin-left:8px" href="${esc(x.url)}" target="_blank" rel="noopener">Open the source →</a>`;
+  }
+  function fgItemHTML(e){
+    return `<div class="fg-item"><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.name)}</a>${e.gated?'<span class="fg-chip">⛔ gated</span>':""}${e.region&&e.region!=="global"?`<span class="fg-chip">${esc(e.region)}</span>`:""}
+      <div class="fg-what">${esc(e.what)}</div>
+      <div class="fg-reach">${esc(e.reach_for)}</div></div>`;
+  }
+
+  const GROUPS={"datasets-and-indices":"Datasets & indices","think-tanks":"Think tanks","consulting-and-insight":"Consulting & insight desks","tools":"Tools"};
+  function render(){
+    const q=(document.getElementById("vq").value||"").trim().toLowerCase();
+    const terms=q.split(/\s+/).filter(Boolean);
+    const match=b=>terms.every(t=>b.includes(t));
+    const inds=terms.length?IND.filter(x=>match(blob(x))):IND;
+    grid.innerHTML=inds.map(tileHTML).join("");
+    document.getElementById("v-count").textContent=terms.length?(inds.length+" of "+IND.length+" indicators"):"";
+    grid.querySelectorAll(".tile").forEach(el=>el.onclick=()=>{
+      const id=el.dataset.id;
+      if(selId===id){selId=null;detail.classList.remove("show");render();return;}
+      selId=id;const x=IND.find(i=>i.id===id);
+      detail.innerHTML=detailHTML(x);detail.classList.add("show");
+      document.getElementById("d-copybtn").onclick=()=>{
+        navigator.clipboard.writeText(`${x.name}: ${x.value} (as of ${x.as_of}, ${x.delta||"no change data"})\nSource: ${x.citation}\n${x.url}`).then(()=>toast("Citation copied — deck-ready"));
+      };
+      render();
+    });
+    const fgs=terms.length?FG.filter(e=>match(fgBlob(e))):FG;
+    const byGroup={};fgs.forEach(e=>{(byGroup[e.group]=byGroup[e.group]||[]).push(e);});
+    fgList.innerHTML=Object.keys(GROUPS).filter(g=>byGroup[g]).map(g=>
+      `<div class="fg-group"><h4>${GROUPS[g]} (${byGroup[g].length})</h4>${byGroup[g].map(fgItemHTML).join("")}</div>`).join("")
+      ||'<div style="color:var(--mute);padding:8px 2px">No sources match.</div>';
+  }
+  let vdeb;document.getElementById("vq").addEventListener("input",()=>{clearTimeout(vdeb);vdeb=setTimeout(render,90);});
+  document.getElementById("v-copy").onclick=()=>{
+    const q=(document.getElementById("vq").value||"").trim().toLowerCase();
+    const terms=q.split(/\s+/).filter(Boolean);
+    const inds=terms.length?IND.filter(x=>terms.every(t=>blob(x).includes(t))):IND;
+    const head=`Macro indicators${q?` matching "${q}"`:""} — ${inds.length} values from a curated instrument panel (pulled ${V.pulled}).\n\nUse these as sourced evidence; every value carries its citation. Flag any that seem stale for the period being discussed.\n\n`+
+      inds.map(x=>`- ${x.name}: ${x.value} (as of ${x.as_of}${x.delta?`, ${x.delta}`:""})${x.confidence!=="high"?" [VERIFY — low-confidence pull]":""}\n  ${x.measures}\n  Source: ${x.citation}\n  ${x.url}`).join("\n");
+    navigator.clipboard.writeText(head).then(()=>toast(`Copied ${inds.length} indicators with citations`));
+  };
+  render();
+})();
+
+/* ---------- PULSE (need distribution over time, Search headline) ---------- */
+(function(){
+  const H=window.NEEDHIST||[];
+  const box=document.getElementById("pulse");
+  if(!box)return;
+  // Discipline: two points are a line, not a signal. Render only at 3+ harvests.
+  if(H.length<3){box.style.display="none";return;}
+  const NEEDS=window.NEEDS, COL=window.NEED_LIGHT;
+  const last=H.length-1;
+  const shares=H.map(h=>{const o={};for(const n of NEEDS)o[n]=(h.needs[n]||0)/h.n*100;return o;});
+  const maxV=Math.max(10,Math.ceil(Math.max(...shares.flatMap(s=>NEEDS.map(n=>s[n])))/5)*5);
+  const W=760,HT=240,padL=36,padR=186,padT=12,padB=26;
+  const pw=W-padL-padR,ph=HT-padT-padB;
+  const x=i=>padL+i*pw/last;
+  const y=v=>padT+ph*(1-v/maxV);
+  let g="";
+  for(let t=0;t<=maxV;t+=10){
+    g+=`<line x1="${padL}" y1="${y(t)}" x2="${padL+pw}" y2="${y(t)}" stroke="#eae7df" stroke-width="1"/>`+
+       `<text x="${padL-7}" y="${y(t)+3.5}" text-anchor="end" font-size="10" fill="#9c978a">${t}%</text>`;
+  }
+  H.forEach((h,i)=>{g+=`<text x="${x(i)}" y="${HT-8}" text-anchor="middle" font-size="10" fill="#9c978a">${h.run}</text>`;});
+  // order by latest share; nudge end-labels apart so they never overlap
+  const order=[...NEEDS].sort((a,b)=>shares[last][b]-shares[last][a]);
+  const lab=order.map(n=>({n,ty:y(shares[last][n])})).sort((a,b)=>a.ty-b.ty);
+  for(let i=1;i<lab.length;i++)if(lab[i].ty-lab[i-1].ty<13)lab[i].ty=lab[i-1].ty+13;
+  const labY={};lab.forEach(l=>labY[l.n]=l.ty);
+  for(const n of order){
+    const c=COL[n];
+    const pts=shares.map((s,i)=>`${x(i).toFixed(1)},${y(s[n]).toFixed(1)}`).join(" ");
+    const dash=n==="unsettled"?' stroke-dasharray="4 3"':"";
+    g+=`<polyline points="${pts}" fill="none" stroke="${c}" stroke-width="1.8"${dash}/>`;
+    shares.forEach((s,i)=>{g+=`<circle cx="${x(i).toFixed(1)}" cy="${y(s[n]).toFixed(1)}" r="2.6" fill="${c}"><title>${n} — ${s[n].toFixed(1)}% of ${H[i].n} signals (${H[i].run})</title></circle>`;});
+    const lv=shares[last][n];
+    g+=`<line x1="${(x(last)+4).toFixed(1)}" y1="${y(lv).toFixed(1)}" x2="${padL+pw+6}" y2="${labY[n].toFixed(1)}" stroke="${c}" stroke-width=".6" opacity=".45"/>`;
+    g+=`<text x="${padL+pw+10}" y="${(labY[n]+3.5).toFixed(1)}" font-size="11" fill="${c}">${n} ${lv.toFixed(0)}%</text>`;
+  }
+  document.getElementById("p-chart").innerHTML=`<svg viewBox="0 0 ${W} ${HT}" role="img" aria-label="Need distribution per harvest">${g}</svg>`;
+  document.getElementById("p-sub").textContent=`The forces underneath the signals: each line is one of the 7 needs (plus the unsettled residue, dashed) as a share of that harvest's tagged signals. ${H.length} harvests.`;
+  const notes=H.filter(h=>h.note).map(h=>`※ ${h.run}: ${h.note}.`);
+  document.getElementById("p-note").textContent=["Read shares, not counts — harvest sizes differ ("+H.map(h=>h.n).join(" / ")+" signals)."].concat(notes).join(" ");
+  box.style.display="block";
+  document.getElementById("p-copy").onclick=()=>{
+    const head=`Need distribution per harvest (share of each run's tagged signals) — Cultural Scout corpus.\nRuns: ${H.map(h=>`${h.run} (n=${h.n})`).join(", ")}.\n${notes.join(" ")}\n\n`+
+      order.map(n=>`${n}: ${shares.map((s,i)=>`${H[i].run} ${s[n].toFixed(1)}%`).join(" · ")}`).join("\n");
+    navigator.clipboard.writeText(head).then(()=>toast("Pulse data copied with run caveats"));
+  };
+})();
+
+/* ---------- RECEIPTS (footer line + modal) ---------- */
+(function(){
+  const R=window.RECEIPTS||{};
+  if(!R.principles||!document.getElementById("r-intro"))return;
+  const esc=t=>(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  // tiny footer on the Search tab
+  document.getElementById("r-footline").textContent="Receipts: no number appears on this site unless it was read verbatim from a source you can open — the one-strike rule. Scorecard self-graded quarterly, misses included.";
+  document.getElementById("r-foot").style.display="block";
+  const modal=document.getElementById("rcpmodal");
+  const open=()=>modal.classList.add("open"),close=()=>modal.classList.remove("open");
+  document.getElementById("r-open").onclick=open;
+  document.getElementById("rcpclose").onclick=close;
+  modal.addEventListener("click",e=>{if(e.target===modal)close();});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")close();});
+  if(/^#receipts/.test(window.__initialHash||location.hash))open(); // old deep-links still land
+  document.getElementById("r-statline").textContent="Updated "+(R.updated||"—")+" · scorecard graded at each quarterly indicator refresh";
+  document.getElementById("r-intro").textContent=R.intro||"";
+  document.getElementById("r-principles").innerHTML=(R.principles||[]).map(p=>
+    `<div class="r-card"><h3>${esc(p.title)}</h3><p>${esc(p.body)}</p></div>`).join("");
+  document.getElementById("r-method").textContent=R.grading_method||"";
+  const sc=R.scorecard||{},entries=sc.entries||[];
+  const edge={matured:"#2f6f3e",building:"#3a5a9b",faded:"#b6b1a6",wrong:"#a03d2e"};
+  document.getElementById("r-entries").innerHTML=entries.length
+    ?entries.map(e=>`<div class="r-entry" style="border-left-color:${edge[e.verdict]||"#e6e3db"}">
+        <div class="re-head"><span class="re-title">${esc(e.title)}</span><span class="r-verdict ${esc(e.verdict)}">${esc(e.verdict)}</span><span style="color:var(--mute);font-size:11px">called ${esc(e.called)} · graded ${esc(e.graded)}</span></div>
+        <div>${esc(e.what_happened)}</div></div>`).join("")
+    :`<div class="r-empty">${esc(sc.status||"No gradings yet.")}</div>`;
+})();
+
+/* ---------- PROVENANCE (editorial intake breakdown, Field Guide) ---------- */
+(function(){
+  const SRC=window.SOURCES||[];
+  const box=document.getElementById("prov");
+  if(!box||!SRC.length)return;
+  if(!SRC.some(s=>s.region))return; // provenance.json absent — leave hidden
+  const esc=t=>(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const disc={},reg={};let indep=0;const placed=new Set();
+  SRC.forEach(s=>{
+    const d=(s.category||"other").replace(/_/g," ");disc[d]=(disc[d]||0)+1;
+    const r=s.region||"Online (unplaced)";reg[r]=(reg[r]||0)+1;
+    if(s.independent)indep++;
+    if(!/unplaced/i.test(r))placed.add(r);
+  });
+  const rows=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
+    `<div class="pv-row"><span class="pv-name" title="${esc(k)}">${esc(k)}</span><div class="pv-bar"><i style="width:${(v/SRC.length*100).toFixed(1)}%"></i></div><span class="pv-n">${v}</span></div>`).join("");
+  document.getElementById("prov-disc").innerHTML=rows(disc);
+  document.getElementById("prov-reg").innerHTML=rows(reg);
+  document.getElementById("prov-line").innerHTML=
+    `${SRC.length} editorial sources · ${Object.keys(disc).length} disciplines · ${placed.size} regions placed · ${indep} writer-owned or independent (${Math.round(indep/SRC.length*100)}%). `+
+    `Independent meta-analysis finds roughly 90% of trend reports draw on about ten global cities (<a href="https://zine.kleinkleinklein.com/p/meta-trends-2025" target="_blank" rel="noopener" style="color:inherit">Klein, META Trends</a>). This intake answers with discipline breadth and writer-owned independence first, geographic spread second — and shows its skew rather than hiding it.`;
+  box.style.display="block";
+})();
+
+/* ---------- source list modal ---------- */
+(function(){
+  const SRC=window.SOURCES||[];const btn=document.getElementById("srcbtn");
+  const modal=document.getElementById("srcmodal");
+  if(!SRC.length){btn.style.display="none";return;}
+  btn.textContent="Source list ("+SRC.length+")";
+  const esc=t=>(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const active=SRC.filter(s=>s.fetchable!==false).length;
+  document.getElementById("srcsub").textContent=`${SRC.length} publications on the editorial filter · ${active} actively harvested`;
+  // group by category, preserving first-seen order
+  const groups={},order=[];
+  SRC.forEach(s=>{const k=s.category||"other";if(!groups[k]){groups[k]=[];order.push(k);}groups[k].push(s);});
+  document.getElementById("srclist").innerHTML=order.map(k=>`<div class="src-group"><h4>${esc(k.replace(/_/g," "))}</h4>`+
+    groups[k].map(s=>`<div class="src-item">${s.base_url?`<a href="${esc(s.base_url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`:esc(s.name)}${s.fetchable===false?'<span class="off">· not harvested</span>':''}</div>`).join("")+`</div>`).join("");
+  const open=()=>modal.classList.add("open"),close=()=>modal.classList.remove("open");
+  btn.onclick=open;document.getElementById("srcclose").onclick=close;
+  modal.addEventListener("click",e=>{if(e.target===modal)close();});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")close();});
+})();
+</script>
+
+<!-- ---------- EXPLORE 3D (module, lazy) ---------- -->
+<script type="module">
+let started=false;
+window.__initExplore=function(){
+  // The Explore view is the geological "cultural sphere" page, embedded.
+  // Loaded lazily on first activation so its WebGL/Three.js only spins up when needed.
+  const fr=document.getElementById("geo-frame");
+  if(fr&&!fr.getAttribute("src"))fr.setAttribute("src","discover-geology.html");
+};
+</script>
+</body>
+</html>

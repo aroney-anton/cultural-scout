@@ -1,0 +1,1001 @@
+# Cultural Thought-Starter System — Source Config
+#
+# Sources are the editorial filter. Do not silently change this list.
+# `fetchable: false` means the source is on the editorial list but cannot be
+# harvested by the current pipeline (e.g. Instagram). It is documented here
+# so it doesn't get silently dropped.
+# `recent_url_uncertain: true` means I (Claude) am not confident the URL
+# below actually surfaces recent content. Verify before relying on harvest.
+
+harvest:
+  date_range_days: 90
+  items_per_source_min: 8
+  items_per_source_max: 15
+
+categories:
+  art: "Contemporary art and visual culture"
+  fashion: "Independent fashion, beauty, and style criticism"
+  consumer: "Consumer culture and brand-watching"
+  entertainment: "Entertainment, media, and criticism"
+  internet: "Internet culture and linguistics"
+  embodied: "Embodied culture, food futures, and bodily life"
+  intellectual: "Intellectual life, meaning, and the management of felt weight"
+  design_school: "Design school output (graduate work, exhibitions, leads commercial cycle by 12-36 months)"
+  history: "Leading-edge history — how established historical narratives are being reconceived (upstream of the Settling Accounts need)"
+  global: "Globally oriented culture writing from inside non-Western regions and diasporas"
+  museum: "Major art institutions — editorial (magazine/essays/criticism) PLUS exhibition & programming, read as a leading indicator of what the art world is canonizing (institutional-validation signal). Each entry carries an extra exhibitions_url; harvest BOTH arms (see the museum-wave header in sources for the harvest rules)."
+  sport: "Sport read as culture and interiority, not results — fandom, the body, scene-building, and the meaning we make of play. Added 2026-06-29; in-milieu (the cultural register of sport), NOT scores/analytics/betting."
+  games: "Videogame criticism and games culture — long-form, cultural-context games writing and the scenes around it. Added 2026-06-29; the criticism/essay register, NOT reviews/news/industry analyst coverage."
+
+sources:
+  # --- Contemporary art and visual culture ---
+  - name: elephant.art
+    category: art
+    base_url: https://elephant.art
+    note: "Contemporary art magazine; profiles, criticism, artist interviews. Editorial taste skews toward emerging practice."
+
+  - name: hyperallergic.com
+    category: art
+    base_url: https://hyperallergic.com
+    note: "Art criticism with a political edge; covers exhibitions, institutions, and the politics of who gets shown."
+
+  - name: thisiscolossal.com
+    category: art
+    base_url: https://www.thisiscolossal.com
+    note: "Visual culture aggregator; surfaces craft, sculpture, and material-driven contemporary work."
+
+  - name: juxtapoz.com
+    category: art
+    base_url: https://www.juxtapoz.com
+    note: "Lowbrow / underground / street-art-adjacent contemporary; surfaces practitioners outside the white cube."
+
+  - name: culturedmag.com
+    category: art
+    base_url: https://www.culturedmag.com
+    note: "Art-fashion-design crossover; emerging artists, young collectors, and the social fabric of contemporary art."
+
+  - name: impulsemagazine.com
+    category: art
+    base_url: https://impulsemagazine.com
+    note: "Indie art magazine. Validated 2026-04-29 (Phase 0 monthly run): homepage WebFetch surfaces 15 dated articles with author, type (Review / Voice / Interview), and short framing. Strong editorial yield across reviews of NYC/international shows, voice essays, and curatorial-method pieces. Removed prior recent_url_uncertain flag."
+
+  # --- Independent fashion, beauty, and style criticism ---
+  - name: polyesterzine.com
+    category: fashion
+    base_url: https://polyesterzine.com
+    recent_url: https://www.polyesterzine.com/features
+    note: "Internet-native style and culture zine; long on subculture and identity-formation through aesthetics. Canonical harvest path (validated 2026-04-29): /features yields 15 recent dated articles with authors. Homepage alone yields ~5; use the /features route for full density."
+
+  - name: holiday-magazine.com
+    category: fashion
+    base_url: https://holiday-magazine.com
+    fetchable: false
+    note: "Structurally incompatible with web harvest method as currently designed — site is a print-magazine portfolio and shop, no dated online articles. The editorial intent (travel-fashion shoots-as-essays) is real but lives in print issues, not the web. Dropped from active harvest 2026-04-28; revisit if a separate path for print-issue extraction is built."
+
+  - name: unconditionalmagazine.com
+    category: fashion
+    base_url: https://www.unconditionalmagazine.com
+    recent_url_uncertain: true
+    note: "Independent fashion / culture zine. URL structure unverified."
+
+  - name: pattaclothing.us/pages/patta-magazine
+    category: fashion
+    base_url: https://pattaclothing.us
+    recent_url: https://pattaclothing.us/pages/patta-magazine
+    note: "Patta brand's editorial arm; treats the brand as a cultural publication with product as one section among many."
+
+  - name: letiquette.com
+    category: fashion
+    base_url: https://letiquette.com
+    fetchable: false
+    note: "Style/etiquette publication. Marked fetchable:false 2026-06-01 (Phase 0 monthly run): letiquette.com is UNREACHABLE (connection refused/ECONNREFUSED), and the search-suggested alternate letiquette-blog.com (an ethical-fashion shopping blog) also refused connection. The print magazine L'Étiquette (Paris) does not appear to run a dated-article site at this domain. No items harvestable. Revisit if a working URL surfaces."
+
+  - name: readafm.com
+    category: fashion
+    base_url: https://readafm.com
+    fetchable: false
+    note: "AFM fashion magazine. Marked fetchable:false 2026-06-01 (Phase 0 monthly run): site is a product catalog for the physical AFM print magazine (URLs follow /products/afm-issue-N), not a web-article archive. Pieces are listed in a print table-of-contents with contributor names but no individual article URLs and no publication dates. Nothing dated/linkable to harvest. Revisit only if they launch online articles."
+
+  - name: heroine_mag (instagram)
+    category: fashion
+    base_url: https://www.instagram.com/heroine_mag/
+    fetchable: false
+    note: "Instagram account for Heroine Magazine. Not harvestable via web_search; requires separate path or manual paste."
+
+  - name: hero-magazine.com
+    category: fashion
+    base_url: https://hero-magazine.com
+    note: "Menswear-leaning editorial; runs essays and shoots that read more like art-magazine work than fashion-magazine work."
+
+  - name: notes_on_beauty_ (instagram)
+    category: fashion
+    base_url: https://www.instagram.com/notes_on_beauty_/
+    fetchable: false
+    note: "Instagram account. Not harvestable via web_search; requires separate path or manual paste."
+
+  - name: family.style
+    category: fashion
+    base_url: https://family.style
+    note: "Family-as-aesthetic; fashion-adjacent publication on intergenerational style and domestic-as-cultural."
+
+  - name: thefolklore.com
+    category: fashion
+    base_url: https://www.thefolklore.com
+    fetchable: false
+    note: "EDITORIAL BAR FAIL — flagged 2026-04-29 (Phase 0 monthly run). 'The Folklore Edit' (/blogs/the-folklore-edit) now surfaces seller-education content. Replaced 2026-04-29 by vestoj.com + 1granary.com + anothermag.com."
+
+  - name: vestoj.com
+    category: fashion
+    base_url: https://vestoj.com
+    note: "ADDED 2026-04-29 to replace thefolklore.com editorial-bar-fail. Anja Aronowsky Cronberg's academic-fashion criticism. Single strongest fashion-thinker source globally. Slow cadence (issue-based) but every published essay is dense — expect 3-6 items per pass, weighted high."
+
+  - name: 1granary.com
+    category: fashion
+    base_url: https://1granary.com
+    note: "ADDED 2026-04-29. CSM-student-and-alumni-edited fashion publication. Surfaces emerging-designer content from inside the educational-fashion-system. Partially fills the design-school gap (CSM/RISD/Pratt have low machine-readable yield)."
+
+  - name: anothermag.com
+    category: fashion
+    base_url: https://www.anothermag.com
+    note: "ADDED 2026-04-29. AnOther Magazine — fashion-art-culture crossover. Reliable WebFetch yield expected (large publishing operation, well-indexed)."
+
+  # --- Consumer culture and brand-watching ---
+  - name: thingtesting.com
+    category: consumer
+    base_url: https://thingtesting.com
+    fetchable: false
+    note: "DTC and emerging brand-watching. Returns 403 to WebFetch on / and /journal; domain-restricted WebSearch surfaces only brand-directory pages, not editorial. Marked unfetchable 2026-04-28 (Batch 2 validation). May be recoverable with a different harvest method (e.g. RSS feed, manual paste)."
+
+  - name: nymag.com/strategist
+    category: consumer
+    base_url: https://nymag.com
+    recent_url: https://nymag.com/strategist/
+    fetchable: false
+    note: "HARD BLOCKED — discovered 2026-04-29 (Phase 0 monthly run). Anthropic's web tooling refused fetch with 'Claude Code is unable to fetch from nymag.com' — same class of user-agent block as pitchfork.com. Both WebFetch and domain-restricted WebSearch surface only general/social/wiki references, no editorial content. Likely needs a different harvest path (RSS, manual paste, or alternate provider). Same outlier pattern as pitchfork — most consumer/entertainment sources fetch cleanly; nymag.com is the exception."
+
+  - name: coolhunting.com
+    category: consumer
+    base_url: https://coolhunting.com
+    note: "Long-running cool-hunting publication; product, design, travel, and culture crossover."
+
+  - name: dirt.fyi
+    category: consumer
+    base_url: https://dirt.fyi
+    recent_url: https://dirt.fyi
+    note: "ADDED 2026-04-29 to replace blocked nymag.com/strategist + thingtesting.com. Daisy Alioto + Terry Nguyen's publication on consumer culture / brand criticism. URL VERIFIED 2026-06-01 (Phase 0 monthly run), uncertain flag cleared: article pattern is dirt.fyi/article/YYYY/MM/slug (the /archive path 404s — use the homepage/articles listing). High cadence. CAVEAT: article bodies are JS-rendered and resist WebFetch (returns only nav); ground summaries via search snippets + the magazine.dirt.fyi mirror. Watch for reposts (e.g. older bylines republished)."
+
+  - name: garbageday.email
+    category: consumer
+    base_url: https://www.garbageday.email
+    recent_url: https://www.garbageday.email/archive
+    note: "ADDED 2026-04-29 to replace blocked sources. Ryan Broderick on internet-as-consumer-culture. Reliably surfaces emerging-things 2-4 weeks before mainstream. Doubles as Internet category coverage. URL VERIFIED 2026-06-01 (Phase 0 monthly run), uncertain flag cleared: archive at /archive, posts at /p/slug, healthy multi-post-per-week cadence (Broderick + guest writers). Some article bodies are JS-rendered and resist full WebFetch; ground via archive blurbs + search where needed."
+
+  - name: eater.com
+    category: consumer
+    base_url: https://www.eater.com
+    recent_url: https://www.eater.com/longform
+    fetchable: false
+    note: "HARD BLOCKED — discovered 2026-06-01 (Phase 0 monthly run). WAS fetching cleanly when added 2026-04-29; now Anthropic's web tooling refuses both WebFetch ('unable to fetch') and domain-scoped WebSearch (400 'domains not accessible to our user agent'). Same user-agent-block class as pitchfork.com / nymag.com. Editorial intent (Eater Voices/longform) still valid; needs an alternate path (RSS/manual paste). Re-test next run in case the block lifts."
+
+  - name: nemesisglobal.substack.com
+    category: consumer
+    base_url: https://nemesisglobal.substack.com
+    recent_url: https://nemesisglobal.substack.com/archive
+    note: "ADDED 2026-05-26. Nemesis Memos — Emily Segal + Martti Kalliala's substack on brand, culture, and strategy. Single strongest source globally for the consumer-culture/brand-criticism slot (alphabet-of-brands series, strategy memos). Fetchability VALIDATED 2026-05-26 via /archive WebFetch (clean dates, 15 items visible). Slow cadence — expect ~3 items in any 90-day window (most recent 2026-05-05, then 2026-04-16, 2026-02-25). Below 8-15 density target but weight high per item — same shape as vestoj.com. User also subscribes via Gmail — fallback path if WebFetch ever blocks."
+
+  # --- Entertainment, media, and criticism ---
+  - name: variety.com
+    category: entertainment
+    base_url: https://variety.com
+    note: "Industry trade for film/TV/music. Skews announcements; harvest filter should bias toward criticism and feature pieces."
+
+  - name: avclub.com
+    category: entertainment
+    base_url: https://www.avclub.com
+    note: "Pop-culture criticism; reviews, essays, and TV/film analysis."
+
+  - name: indiewire.com
+    category: entertainment
+    base_url: https://www.indiewire.com
+    note: "Independent film and TV criticism; festival coverage and craft interviews."
+
+  - name: pitchfork.com
+    category: entertainment
+    base_url: https://pitchfork.com
+    fetchable: false
+    note: "Music criticism; reviews and essays. HARD BLOCKED — Anthropic's web tooling cannot access pitchfork.com (user-agent block returned by both WebFetch and domain-restricted WebSearch). Marked unfetchable 2026-04-28 (Batch 2 validation). Likely needs a different harvest path (RSS, manual paste, or alternate provider) to be usable."
+
+  - name: popmatters.com
+    category: entertainment
+    base_url: https://www.popmatters.com
+    note: "Cross-medium pop-culture criticism; essays on film, music, books, and games."
+
+  - name: slate.com
+    category: entertainment
+    base_url: https://slate.com
+    recent_url_uncertain: true
+    note: "General culture / news magazine, very broad. Recent-content URL may need to be scoped to /culture or similar to avoid news bleed."
+
+  - name: dailydot.com
+    category: entertainment
+    base_url: https://www.dailydot.com
+    note: "Internet culture news; surfaces platform-specific behaviors and viral phenomena. VALIDATION 2026-04-28: technically fetchable, but content register is clickbait/viral-discourse (paramedic-mocks-patient, lawn-mower-at-Target, influencer-controversies) rather than analytical. Failed quality bar in Batch 3 — yielded 0 retained signals despite 12 returned items. Editorial concern, not technical: keep on list but expect low yield, OR substitute a different internet-culture source."
+
+  - name: stereogum.com
+    category: entertainment
+    base_url: https://www.stereogum.com
+    note: "ADDED 2026-04-29 to replace blocked pitchfork.com. Independent music criticism — direct Pitchfork-replacement slot. Premium long-reads have structural-cultural lens; reviews are dense enough to surface genuine signals."
+
+  - name: thequietus.com
+    category: entertainment
+    base_url: https://thequietus.com
+    note: "ADDED 2026-04-29 to replace blocked pitchfork.com. UK indie/avant music criticism with cultural depth. Different editorial register than Pitchfork (more avant-leaning) — closes a gap rather than mirroring."
+
+  # --- Internet culture and linguistics ---
+  - name: etymology.substack.com
+    category: internet
+    base_url: https://etymology.substack.com
+    note: "Adam Aleksic's substack on etymology and internet linguistics. (etymologynerd.com is a static portfolio — actual editorial content is here, swapped 2026-04-28 after Phase 0 small-batch.)"
+
+  - name: internetanthropologists.substack.com
+    category: internet
+    base_url: https://internetanthropologists.substack.com
+    note: "Substack on online behavior and emerging digital subcultures."
+
+  - name: readmax.substack.com
+    category: internet
+    base_url: https://readmax.substack.com
+    note: "ADDED 2026-04-29. Max Read on tech/internet culture. Strong analytical writing on platform shifts; 1-2 posts/week."
+
+  - name: todayintabs.com
+    category: internet
+    base_url: https://www.todayintabs.com
+    note: "ADDED 2026-04-29. Rusty Foster's daily internet-culture roundup. Surfaces emerging discourse before it travels. Cadence is daily — harvest filter should pick weekly digest essays rather than tab-by-tab summaries."
+
+  # --- Embodied culture, food futures, and bodily life ---
+  - name: 032c.com
+    category: embodied
+    base_url: https://032c.com
+    note: "Berlin-based magazine of art, fashion, and politics; treats body and physicality as cultural objects."
+
+  - name: apartamentomagazine.com
+    category: embodied
+    base_url: https://www.apartamentomagazine.com
+    note: "Interiors-as-portraiture; how people actually live in their spaces. Domestic life as cultural signal."
+
+  - name: thisismold.com
+    category: embodied
+    base_url: https://thisismold.com
+    fetchable: false
+    note: "DEFUNCT — MOLD ceased publication 2025-06-20 (summer solstice). Site is now a static archive. Energies transitioned to Field Meridians (Crown Heights). Dropped from active harvest 2026-04-28; replaced 2026-04-29 by fieldmeridians.com (MOLD's direct successor)."
+
+  - name: fieldmeridians.com
+    category: embodied
+    base_url: https://fieldmeridians.org
+    fetchable: false
+    note: "ADDED 2026-04-29 as MOLD's successor. CORRECTED + marked fetchable:false 2026-06-01 (Phase 0 monthly run): the org is at fieldmeridians.ORG (not .com), and it is an arts/food-futures org and events hub (Crown Heights — Sunday Seeds food forest, Solstice Kitchen), NOT an editorial publisher. Only 'publications' are a quarterly neighborhood newspaper (Field Meridians Observer, seasonal PDFs) plus the defunct MOLD archive. No individually-URL'd, dated essays to harvest. Revisit only if it launches web editorial; the Observer PDFs could be a manual-parse path."
+
+  - name: whetstonemagazine.com
+    category: embodied
+    base_url: https://www.whetstonemagazine.com
+    fetchable: false
+    note: "ADDED 2026-04-29 to replace defunct thisismold.com. Food anthropology and global food-cultures. Marked fetchable:false 2026-06-01 (Phase 0 monthly run): /journal surfaces nothing newer than early 2023 and /articles 404s — current output is podcast/radio episodes and transcripts, not written essays. No written editorial in any recent window. Revisit if it resumes text publishing, or build a transcript-parse path if the podcast content is worth it."
+
+  - name: cakezine.org
+    category: embodied
+    base_url: https://cakezine.substack.com
+    recent_url: https://cakezine.substack.com/archive
+    note: "Food / dessert / ritual publication; sweetness as cultural object. URL CORRECTED 2026-06-01 (Phase 0 monthly run): the cakezine.org domain is COMPROMISED/HIJACKED — it now serves illegal-marketplace content, DO NOT FETCH IT. Live editorial moved to cakezine.substack.com (shop is at cakezine.com). Yields ~4 strong in-window essays/interviews. Source name kept as 'cakezine.org' for continuity with prior harvests."
+
+  - name: pinuphome.com
+    category: embodied
+    base_url: https://www.pinupmagazine.org
+    recent_url: https://www.pinupmagazine.org/articles
+    note: "PIN–UP magazine — architecture, design, contemporary culture. URL CORRECTED 2026-06-01 (Phase 0 monthly run): editorial articles are NOT at pinuphome.com/articles (pinuphome.com is e-commerce only). Articles live at pinupmagazine.org/articles/<slug>. Pages carry no per-article date — date approx to the current issue (e.g. Issue 40 = S/S 2026). Discover article URLs via `site:pinupmagazine.org/articles` search. Yields ~4 items per pass — below 8-15 target. Source name kept as 'pinuphome.com' for continuity."
+
+  - name: documentjournal.com
+    category: embodied
+    base_url: https://www.documentjournal.com
+    fetchable: false
+    note: "Fashion-art-politics quarterly; long-form interviews and essays at the intersection of culture and the body. CADENCE CONFIRMED EMPTY 2nd run → marked fetchable:false 2026-06-01. The 2026-04-29 run found most-recent article dated Dec 2025 (zero in window); 2026-06-01 re-test still shows most-recent = 2025-12-22 (Usher interview), nothing since. Publishing cadence has effectively stalled or recent content is gated/unindexed. Revisit only if new dated content reappears."
+
+  - name: vittlesmagazine.com
+    category: embodied
+    base_url: https://www.vittlesmagazine.com
+    note: "Food writing as cultural and political analysis. (vittles.substack.com 301-redirects to this canonical domain — URL updated 2026-04-28 during Batch 3 validation.) Strong source: investigative pieces on hospitality wage theft, market gentrification, climate-cuisine impacts. Mix of essays and recipes, both treated at the same editorial bar."
+
+  # --- Intellectual life, meaning, and the management of felt weight ---
+  - name: thedriftmag.com
+    category: intellectual
+    base_url: https://www.thedriftmag.com
+    note: "Literary-political quarterly; essays on contemporary life, politics, and the management of meaning."
+
+  - name: nplusonemag.com
+    category: intellectual
+    base_url: https://www.nplusonemag.com
+    note: "n+1; literary-political magazine. Long essays on culture, work, and contemporary structures of feeling."
+
+  - name: thebaffler.com
+    category: intellectual
+    base_url: https://thebaffler.com
+    note: "Critical essays on capitalism, technology, and culture; skeptical of cultural consensus."
+
+  - name: thepointmag.com
+    category: intellectual
+    base_url: https://thepointmag.com
+    note: "The Point; philosophical essays on contemporary life. Treats everyday cultural objects as worth thinking about seriously."
+
+  - name: aeon.co
+    category: intellectual
+    base_url: https://aeon.co/
+    recent_url: https://aeon.co/essays
+    note: "Long-form essays on philosophy, science, and culture; serious-but-public intellectual register. Confirmed live & productive 2026-06-01 (Phase 0 monthly run) — yielded 3 strong in-window essays. METHOD NOTE: WebFetch on aeon.co article pages is persistently rate-limited (HTTP 429, same CDN as psyche.co); ground dates/summaries via domain-scoped WebSearch (reads article text) rather than direct fetch. SCOPE EXTENDED 2026-06-10: explicitly harvest the history strand (aeon.co/society/history) — runs Graeber/Wengrow-style deep-history reframings ('The great myth of empire collapse', Jan 2026) that feed the history category brief."
+
+  - name: psyche.co
+    category: intellectual
+    base_url: https://psyche.co
+    note: "Aeon's psychology arm; essays on mind, meaning, and the felt weight of being alive."
+
+  - name: thenewinquiry.com
+    category: intellectual
+    base_url: https://thenewinquiry.com
+    note: "Cultural criticism and theory; left-leaning, often surfaces the conceptual scaffolding behind emerging cultural patterns."
+
+  - name: embedded.substack.com
+    category: intellectual
+    base_url: https://embedded.substack.com
+    note: "Kate Lindsay's substack on internet culture and the feeling of being online."
+
+  - name: adamtooze.substack.com
+    category: intellectual
+    base_url: https://adamtooze.substack.com
+    recent_url: https://adamtooze.substack.com/archive
+    note: "ADDED 2026-05-26. Adam Tooze's Chartbook — economics, geopolitics, and history. Fetchability VALIDATED 2026-05-26 via /archive WebFetch (returns 15 items). HARVEST FILTER RULE (user-set 2026-05-26): include all 'Chartbook #NNN' long essays AND any Top Links posts that contain body copy / framing commentary; EXCLUDE Top Links posts that are pure headline-and-link lists with no Tooze prose. Body copy doesn't have to be essay-length — even a few framing paragraphs around the links qualifies. Per-post check required (post-level WebFetch, not just archive listing). DATE-PARSING NOTE: /archive page strips the year from relative dates; WebFetch may report dates as 2024 when they're 2026 — verify via post URL slug numbering (top-links-1113+ = current 2026 era). User also subscribes via Gmail — fallback if WebFetch ever blocks."
+
+  # --- Design school output ---
+  - name: csm (arts.ac.uk)
+    category: design_school
+    base_url: https://www.arts.ac.uk
+    recent_url: https://www.arts.ac.uk/colleges/central-saint-martins
+    recent_url_uncertain: true
+    note: "Central Saint Martins. Graduate work and exhibitions. Recent-content URL is likely the school overview, not show pages — needs verification before relying on harvest output. May not have machine-readable feed for student work."
+
+  - name: risd.edu
+    category: design_school
+    base_url: https://www.risd.edu
+    recent_url_uncertain: true
+    note: "Rhode Island School of Design. Graduate shows. Recent-content URL unverified — student work may live on /students or /show or annual microsite."
+
+  - name: pratt.edu
+    category: design_school
+    base_url: https://www.pratt.edu
+    recent_url: https://www.pratt.edu/prattfolio/
+    note: "Pratt Institute. Validated 2026-04-28 (Batch 2): /prattfolio/ surfaces editorial content but skews to alumni career-advice profiles rather than thesis work. /pratt-shows/ lists current student exhibitions but as event listings, not articles. The graduate-thesis signal the design doc envisioned isn't directly discoverable via either path — harvest gives alumni career narratives instead, which is a different (still useful) signal."
+
+  - name: dezeen.com/tag/dezeen-schools
+    category: design_school
+    base_url: https://www.dezeen.com
+    recent_url: https://www.dezeen.com/tag/dezeen-schools/
+    note: "ADDED 2026-04-29 as fallback for under-indexed CSM/RISD/Pratt graduate-thesis content (per design doc v1.1 open-question #4 explicitly suggesting this aggregator). Aggregates global design-school student work. Highest-likelihood replacement for the graduate-thesis signal the .edu sources fail to expose."
+
+  - name: itsnicethat.com
+    category: design_school
+    base_url: https://www.itsnicethat.com
+    note: "ADDED 2026-04-29. Covers emerging-designer / student work + practitioner profiles. Reliable WebFetch yield (well-indexed homepage). Crosses design-school and broader emerging-creative coverage."
+
+  - name: core77.com
+    category: design_school
+    base_url: https://www.core77.com
+    note: "ADDED 2026-04-29. Industrial / product / experience design publication with student-work coverage. Fills the design-school slot from the working professional side."
+
+  # ==========================================================================
+  # SOURCE EXPANSION 2026-06-10 — 54 sources added in one wave (user decision:
+  # bigger harvest preferred over phased adoption). All verified active-in-2026
+  # by research agents, most via direct /archive fetch. Full research notes in
+  # outputs/harvest-source-candidates.md from the 2026-06-10 session.
+  # HARVEST RULES for this wave:
+  #  - Daily sources: apply the Tooze rule — essays with body copy IN,
+  #    pure link-roundups OUT.
+  #  - Ghost/beehiiv archives (wheresyoured.at, aliciakennedy.news, backrow.net,
+  #    shesabeast.co) paginate differently from Substack — validate at first run.
+  #  - Watch corpus balance: Zitron/Lorenz/JSTOR will feed the already
+  #    genre-flattered Naming the Machine need.
+  # ==========================================================================
+
+  # --- expansion: internet / consumer / taste / media ---
+  - name: afterschool.substack.com
+    category: consumer
+    base_url: https://afterschool.substack.com
+    recent_url: https://afterschool.substack.com/archive
+    note: "ADDED 2026-06-10. Casey Lewis — daily youth-culture and Gen Z/Alpha consumer-trend diagnosis. Highest signal-per-day youth feed available. Daily cadence: apply essays-not-roundups filter."
+
+  - name: blackbirdspyplane.com
+    category: consumer
+    base_url: https://www.blackbirdspyplane.com
+    recent_url: https://www.blackbirdspyplane.com/archive
+    note: "ADDED 2026-06-10. Jonah Weiner & Erin Wylie — style, taste, and why-we-want-what-we-want criticism under the jokes. 2-3x/week. Archive fetch verified 2026-06."
+
+  - name: default.blog
+    category: internet
+    base_url: https://default.blog
+    recent_url: https://default.blog/archive
+    note: "ADDED 2026-06-10. Katherine Dee (defaultfriend) — internet culture as anthropology; online subcultures, digital intimacy. Complements embedded/garbageday rather than duplicating. 2-4x/week incl. guest essays."
+
+  - name: usermag.co
+    category: internet
+    base_url: https://www.usermag.co
+    recent_url: https://www.usermag.co/archive
+    note: "ADDED 2026-06-10. Taylor Lorenz — platform power, creator economy, online-culture reporting/criticism. 2-3x/week. Naming-the-Machine feeder — watch balance."
+
+  - name: readfeedme.com
+    category: consumer
+    base_url: https://www.readfeedme.com
+    recent_url: https://www.readfeedme.com/archive
+    note: "ADDED 2026-06-10. Emily Sundberg (Feed Me) — consumer culture, brands, NYC media/business. Newsier register than the rest of the list; harvest the analytical pieces. Daily (weekdays): apply essays-not-roundups filter."
+
+  - name: haleynahman.substack.com
+    category: intellectual
+    base_url: https://haleynahman.substack.com
+    recent_url: https://haleynahman.substack.com/archive
+    note: "ADDED 2026-06-10. Maybe Baby — cultural criticism of internet-era selfhood and everyday life (ex-Man Repeller). HARVEST RULE: take the numbered essays, skip the '15 things' link posts."
+
+  - name: wheresyoured.at
+    category: internet
+    base_url: https://www.wheresyoured.at
+    recent_url: https://www.wheresyoured.at/
+    note: "ADDED 2026-06-10. Ed Zitron — adversarial tech-industry / AI-economics criticism; the anti-hype counterweight the list lacked. ~2x/week. GHOST platform (not Substack): archive paginates via /page/2/ etc., RSS at /rss — validate pagination at first run."
+
+  - name: honest-broker.com
+    category: entertainment
+    base_url: https://www.honest-broker.com
+    recent_url: https://www.honest-broker.com/archive
+    note: "ADDED 2026-06-10. Ted Gioia — music industry + macro-culture forecasting ('The New Counterculture'). Fills the music-criticism hole Pitchfork left AND adds a forecasting register nothing else on the list has. 3-4x/week."
+
+  - name: samkriss.substack.com
+    category: intellectual
+    base_url: https://samkriss.substack.com
+    recent_url: https://samkriss.substack.com/archive
+    note: "ADDED 2026-06-10. Numb at the Lodge — literary-gonzo cultural criticism. Low cadence (2-3/month), every essay substantial — Vestoj-shaped, weight high per item."
+
+  - name: firstfloor.substack.com
+    category: entertainment
+    base_url: https://firstfloor.substack.com
+    recent_url: https://firstfloor.substack.com/archive
+    note: "ADDED 2026-06-10. Shawn Reynaldo — the only serious weekly criticism desk for electronic music culture (rave tourism, streaming endgame, scene economics). ~2x/week."
+
+  - name: kneelingbus.substack.com
+    category: internet
+    base_url: https://kneelingbus.substack.com
+    recent_url: https://kneelingbus.substack.com/archive
+    note: "ADDED 2026-06-10. Drew Austin — technology, urbanism, attention ('Tastecore and the Enclosure of the Commons'). Read Max register. 2-4/month."
+
+  - name: robhorning.substack.com
+    category: internet
+    base_url: https://robhorning.substack.com
+    recent_url: https://robhorning.substack.com/archive
+    note: "ADDED 2026-06-10. Internal exile — the most rigorous platform-criticism prose on Substack (ex-Real Life / New Inquiry). CADENCE WARNING: slowed to ~monthly (last verified post 2026-04-16); watch for dormancy, expect 1-3 items per window."
+
+  - name: kylechayka.substack.com
+    category: internet
+    base_url: https://kylechayka.substack.com
+    recent_url: https://kylechayka.substack.com/archive
+    note: "ADDED 2026-06-10. Kyle Chayka Industries / One Thing — algorithmic culture and taste from the Filterworld author. ~Monthly, partly digests of his New Yorker columns — dedupe against the underlying columns if both surface."
+
+  - name: theconvivialsociety.substack.com
+    category: intellectual
+    base_url: https://theconvivialsociety.substack.com
+    recent_url: https://theconvivialsociety.substack.com/archive
+    note: "ADDED 2026-06-10. L. M. Sacasas — philosophy of technology via Illich/Ellul. SLOWEST source on the list (6-10/year; last verified 2026-02-07): expect 0-2 items per 90-day window, weight very high when present."
+
+  - name: theparisreview.org
+    category: intellectual
+    base_url: https://www.theparisreview.org
+    recent_url: https://www.theparisreview.org/blog/
+    note: "ADDED 2026-06-26. The Paris Review Daily — literary essays, interviews, on-film/on-poetry columns, first-person and dispatch pieces. Verified GREEN 2026-06-26: clean WordPress, no bot-gate, the blog index returns each recent post with title, author, date, and section tag (First Person / Dispatch / On Film / Triptych / Making of a Poem / Letter from the Editor) plus opening paragraphs. HARVEST RULE: take the Daily essays/columns/interviews; skip the bare 'Announcing Our [Season] Issue' notices (treat as a low-signal announcement unless the letter carries an actual argument). RSS available at feeds.feedburner.com/TheParisReviewBlog if a structured pull is ever wanted. Distinctiveness: single-writer literary observation, the kind open web search buries."
+
+  - name: nereview.com
+    category: intellectual
+    base_url: https://nereview.com
+    recent_url: https://nereview.com/
+    note: "ADDED 2026-06-26. New England Review — literary quarterly (Middlebury). Verified GREEN 2026-06-26: clean WordPress, no gate; homepage fetch returns current-issue fiction/poetry/nonfiction/editor's-note plus the NER Digital web features (Behind the Byline, Writer's Notebook, Literature & Democracy, reading roundups) with title, author, genre, and dek. HARVEST RULE: prioritise the NER Digital features (Behind the Byline / Writer's Notebook / editor's notes) — they carry the argument and the date signal; current-issue creative pieces are fiction/poetry (capture title+author, they read as canon/validation rather than forward signal). nereview.com/feed/ should give RSS. Distinctiveness: literary craft-and-translation discourse outside the dominant cultural-discourse feed."
+
+  - name: jessicadefino.substack.com
+    category: fashion
+    base_url: https://jessicadefino.substack.com
+    recent_url: https://jessicadefino.substack.com/archive
+    note: "ADDED 2026-06-10. FLESH WORLD (ex-The Unpublishable) — beauty-industry criticism; the category-defining critic, structurally anti-product-roundup. Beauty was previously uncovered. ~Weekly historically; last free post verified 2026-03-29 — POSSIBLE PAUSE, verify at first harvest."
+
+  - name: cantgetmuchhigher.com
+    category: entertainment
+    base_url: https://www.cantgetmuchhigher.com
+    recent_url: https://www.cantgetmuchhigher.com/archive
+    note: "ADDED 2026-06-10. Chris Dalla Riva — music criticism through data (charts, industry economics, listening behavior). 2-3x/week; filter the lighter list posts."
+
+  - name: escapethealgorithm.substack.com
+    category: internet
+    base_url: https://escapethealgorithm.substack.com
+    recent_url: https://escapethealgorithm.substack.com/archive
+    note: "ADDED 2026-06-10. Elan Ullendorff — feeds, taste, attention, creative resistance to algorithmic distribution ('Anti-viral' series). ~Monthly, consistently substantial."
+
+  - name: whyisthisinteresting.substack.com
+    category: consumer
+    base_url: https://whyisthisinteresting.substack.com
+    recent_url: https://whyisthisinteresting.substack.com/archive
+    note: "ADDED 2026-06-10. Noah Brier & Colin Nagy — daily strategist-written mini-essays on culture, craft, consumption. HARVEST RULE: take thesis-driven editions, skip Monday Media Diet / Saturday Selection link posts."
+
+  # --- expansion: embodied / food / fashion / design / art ---
+  - name: aliciakennedy.news
+    category: embodied
+    base_url: https://www.aliciakennedy.news
+    recent_url: https://www.aliciakennedy.news/archive
+    note: "ADDED 2026-06-10. Alicia Kennedy — food culture, media, and politics; appetite, diaspora, food systems. The closest living relative to Vittles. 2x/week. BEEHIIV platform (migrated from Substack) — validate archive pagination at first run."
+
+  - name: snaxshot.com
+    category: embodied
+    base_url: https://www.snaxshot.com
+    recent_url: https://www.snaxshot.com/archive
+    note: "ADDED 2026-06-10. Andrea Hernández — food & beverage futures; CPG culture read the way Polyester reads subculture (protein-maxxing, grocery gentrification). ~Weekly. The list's only true food-futures signal source."
+
+  - name: thehunger.substack.com
+    category: embodied
+    base_url: https://thehunger.substack.com
+    recent_url: https://thehunger.substack.com/archive
+    note: "ADDED 2026-06-10. Michael Nagrant — restaurant criticism (Chicago) plus media criticism of food journalism itself. ~Weekly."
+
+  - name: backrow.net
+    category: fashion
+    base_url: https://www.backrow.net
+    note: "ADDED 2026-06-10. Amy Odell — fashion-industry power analysis (houses, editors, business dynamics), not shopping content. 2x/week. BEEHIIV (migrated from Substack Jan 2026; old archive at amyodell.substack.com/archive) — validate pagination at first run."
+
+  - name: natashastagg.substack.com
+    category: fashion
+    base_url: https://natashastagg.substack.com
+    recent_url: https://natashastagg.substack.com/archive
+    note: "ADDED 2026-06-10. Selling Out — fashion-world, art-world, and literary-scene essays from a novelist embedded in all three; the downtown register. ~Weekly."
+
+  - name: neverworns.substack.com
+    category: fashion
+    base_url: https://neverworns.substack.com
+    recent_url: https://neverworns.substack.com/archive
+    recent_url_uncertain: true
+    note: "ADDED 2026-06-10. Liana Satenstein (ex-Vogue) — fashion deep dives, closet psychology, archival obsessions. ~Weekly. UNCERTAIN FLAG: archive fetch returned empty once during validation (publication is live with June 2026 activity) — spot-check at first harvest."
+
+  - name: virginiasolesmith.substack.com
+    category: embodied
+    base_url: https://virginiasolesmith.substack.com
+    recent_url: https://virginiasolesmith.substack.com/archive
+    note: "ADDED 2026-06-10. Burnt Toast — anti-fat bias, diet culture, GLP-1 discourse, bodies and parenting. Owns the body-management conversation the Appetite need tracks. ~Weekly+."
+
+  - name: shesabeast.co
+    category: embodied
+    base_url: https://www.shesabeast.co
+    recent_url: https://www.shesabeast.co/archive
+    note: "ADDED 2026-06-10. Casey Johnston — strength culture and embodiment; the sharpest critical writer on fitness culture. ~Weekly. Own-domain site (migrated off Substack; legacy archive at shesabeast.substack.com/archive) — validate at first run."
+
+  - name: rethinkingwellness.substack.com
+    category: embodied
+    base_url: https://rethinkingwellness.substack.com
+    recent_url: https://rethinkingwellness.substack.com/archive
+    note: "ADDED 2026-06-10. Christy Harrison — evidence-based wellness-culture skepticism with dedicated GLP-1 and misinformation verticals. ~Weekly; podcast-plus-essay format — harvest the essays/transcribed pieces."
+
+  - name: late-review.com
+    category: embodied
+    base_url: https://www.late-review.com
+    recent_url: https://www.late-review.com/archive
+    note: "ADDED 2026-06-10. Kate Wagner (McMansion Hell / The Nation) — criticism of buildings, books, and cultural artifacts past the hype cycle. Vestoj-register theoretical depth for architecture/design. ~Monthly, weight high."
+
+  - name: sightunseen.com
+    category: embodied
+    base_url: https://www.sightunseen.com
+    note: "ADDED 2026-06-10. Monica Khemsurov & Jill Singer — design and visual arts, independent makers, craft-adjacent design culture. Relaunched Sept 2025 newsletter-first with a scrapable web archive. Weekly. PIN-UP-adjacent slot."
+
+  - name: abigailsandler.substack.com
+    category: embodied
+    base_url: https://abigailsandler.substack.com
+    recent_url: https://abigailsandler.substack.com/archive
+    note: "ADDED 2026-06-10. Price Upon Request — interiors, antiques, objects, domestic material culture, written by an architect. Apartamento energy. ~Weekly."
+
+  - name: artforecast.substack.com
+    category: art
+    base_url: https://artforecast.substack.com
+    recent_url: https://artforecast.substack.com/archive
+    note: "ADDED 2026-06-10. Tatum Dooley — art-world mechanics: market dynamics, collecting culture, studio visits, fairs. Leans practical/market — complements the criticism-heavy art lane rather than duplicating it. ~Weekly."
+
+  # --- expansion: leading-edge history (NEW category) ---
+  - name: kevinmlevin.substack.com
+    category: history
+    base_url: https://kevinmlevin.substack.com
+    recent_url: https://kevinmlevin.substack.com/archive
+    note: "ADDED 2026-06-10. Civil War Memory — the purest real-time feed of public-memory contestation: monuments, commemoration, state narrative-building. Near-daily: apply essays-not-roundups filter. Direct upstream of the Settling Accounts need."
+
+  - name: historyworkshop.org.uk
+    category: history
+    base_url: https://www.historyworkshop.org.uk
+    note: "ADDED 2026-06-10. History Workshop Online — radical 'history from below' (labor, empire, gender, public memory) written accessibly by academic historians; the institutional home of recovered/marginalized history. ~Weekly."
+
+  - name: aaihs.org
+    category: history
+    base_url: https://www.aaihs.org
+    recent_url: https://www.aaihs.org/black-perspectives/
+    note: "ADDED 2026-06-10. Black Perspectives (African American Intellectual History Society) — Black intellectual history; standing engine of canon revision with explicit Memory/Monuments/Museums tags. 3-5x/week."
+
+  - name: ageofrevolutions.com
+    category: history
+    base_url: https://ageofrevolutions.com
+    recent_url: https://ageofrevolutions.com/archives/
+    note: "ADDED 2026-06-10. Open-access scholarly web journal on comparative revolution historiography — where 'who counts as a founder' gets renegotiated. Weekly (Mondays)."
+
+  - name: publicbooks.org
+    category: history
+    base_url: https://www.publicbooks.org
+    recent_url: https://www.publicbooks.org/category/essays/
+    note: "ADDED 2026-06-10. Public Books — translates revisionist scholarship into public argument (immigration law's racist roots, borderlands history, university-of-repair). 2-3x/week. Free, no paywall."
+
+  - name: daily.jstor.org
+    category: history
+    base_url: https://daily.jstor.org
+    recent_url: https://daily.jstor.org/category/politics-history/
+    note: "ADDED 2026-06-10. JSTOR Daily — short analytical essays contextualizing current events with peer-reviewed scholarship; high-volume conveyor of counter-narratives. Daily: filter to the history/politics strand and apply the analytical bar. METHOD NOTE: direct fetch is JS-gated but article URLs resolve — ground via domain-scoped WebSearch."
+
+  - name: publicdomainreview.org
+    category: history
+    base_url: https://publicdomainreview.org
+    recent_url: https://publicdomainreview.org/essays/
+    note: "ADDED 2026-06-10. The Public Domain Review — long-form essays on overlooked histories; micro-histories that reframe big stories (women typists behind masterpieces, pre-histories of the attention economy). Biweekly, weight high. Fully free."
+
+  - name: ageofinvention.xyz
+    category: history
+    base_url: https://www.ageofinvention.xyz
+    recent_url: https://www.ageofinvention.xyz/archive
+    note: "ADDED 2026-06-10. Anton Howes — deep-archival economic history of invention; methodical revisionism on history-of-capitalism causation stories. Monthly-to-quarterly: expect 1-3 items per window, dense."
+
+  - name: brownhistory.substack.com
+    category: history
+    base_url: https://brownhistory.substack.com
+    recent_url: https://brownhistory.substack.com/archive
+    note: "ADDED 2026-06-10. Brown History (Ahsun Zafar) — South Asian and diaspora histories, 'the story of the vanquished, retold, reclaimed.' 2-4x/week. HARVEST CAVEAT: mixes history essays with personal/cultural pieces — slightly noisier signal, filter at the bar."
+
+  # --- expansion: global (NEW category) ---
+  - name: africasacountry.com
+    category: global
+    base_url: https://africasacountry.com
+    recent_url: https://africasacountry.com/blog
+    note: "ADDED 2026-06-10. Africa Is a Country — left-leaning analysis of Africa and its diaspora; decolonial counter-narratives at daily cadence from outside the Anglo-American frame. Doubles as a history source. Clean static HTML, dated URLs, CC BY 4.0. Daily: apply essays filter."
+
+  - name: readcommunique.com
+    category: global
+    base_url: https://www.readcommunique.com
+    recent_url: https://www.readcommunique.com/archive
+    note: "ADDED 2026-06-10. Communiqué (David Adeleke, Lagos) — Africa's media, creative and creator economy; original weekly analysis, not aggregation. ~2x/week (numbered essay + Offscript interviews)."
+
+  - name: restofworld.org
+    category: global
+    base_url: https://restofworld.org
+    recent_url: https://restofworld.org/latest/
+    note: "ADDED 2026-06-10. Rest of World — technology-meets-culture across Africa, Asia, LatAm, MENA. Reported features on how tech reshapes consumption/labor/identity in the Global South. Daily, clean HTML, free, RSS available."
+
+  - name: chineseconsumers.news
+    category: global
+    base_url: https://www.chineseconsumers.news
+    recent_url: https://www.chineseconsumers.news/archive
+    note: "ADDED 2026-06-10. Following the Yuan (Yaling Jiang) — Chinese consumer culture, brands, youth sentiment from a native researcher; Chaoyang Trap's working successor and purpose-built for strategy readers. 2-4/month; most essays free, some paid-gated."
+
+  - name: sixthtone.com
+    category: global
+    base_url: https://www.sixthtone.com
+    note: "ADDED 2026-06-10. Sixth Tone — contemporary Chinese society, subculture, generations; human-angle features and scholar op-eds. Several/week, free. EDITORIAL CAVEAT: Shanghai United Media (state-adjacent publisher) — read framing accordingly, prefer features/voices over anything politically load-bearing."
+
+  - name: radii.co
+    category: global
+    base_url: https://radii.co
+    recent_url: https://radii.co/article/
+    note: "ADDED 2026-06-10. RADII — Chinese and pan-Asian youth culture, internet, music, fashion (analog revival, monthly Chinese internet buzzwords column). Several/week, free, dated /article/ URLs."
+
+  - name: mekongreview.com
+    category: global
+    base_url: https://mekongreview.com
+    recent_url: https://mekongreview.com/category/free-to-read/
+    note: "ADDED 2026-06-10. Mekong Review — Southeast/East/South Asian literary and cultural criticism from regional writers. QUARTERLY (~20 pieces/issue): expect items only in issue months. PAYWALL NOTE: metered, but harvest the rotating 'Free to read' category which exposes several full essays per issue."
+
+  - name: newlinesmag.com
+    category: global
+    base_url: https://newlinesmag.com
+    recent_url: https://newlinesmag.com/latest/
+    note: "ADDED 2026-06-10. New Lines Magazine — Middle East-anchored, globally extended essays and cultural argument (pre-Islamic poetry, the Satrapi/Orientalism debate). 1-2/day, clean WordPress, free. Apply essays filter at daily cadence."
+
+  - name: milleworld.com
+    category: global
+    base_url: https://www.milleworld.com
+    recent_url: https://www.milleworld.com/category/change-the-world/opinions/
+    note: "ADDED 2026-06-10. MILLE World (Dubai) — Arab/MENA Gen-Z youth culture, fashion, music in English + Arabic. HARVEST RULE: scope to the Opinions / Art & Culture feeds (real cultural diagnosis); the general feed is listicle-prone and will fail the bar."
+
+  - name: himalmag.com
+    category: global
+    base_url: https://www.himalmag.com
+    note: "ADDED 2026-06-10. Himal Southasian (Colombo) — the only pan-Southasian review; long-form essays + Southasia Review of Books, culture read politically from inside. Weekly-ish. Free, donation-supported. Validation was search-based (not direct fetch) — confirm fetch path at first harvest."
+
+  - name: thejuggernaut.com
+    category: global
+    base_url: https://www.thejuggernaut.com
+    recent_url: https://www.thejuggernaut.com/latest
+    note: "ADDED 2026-06-10. The Juggernaut — South Asia + diaspora culture journalism; the reference point for this category. PAYWALL CAVEAT: homepage/RSS (/feed) are server-rendered with headlines + deks and dated URLs, but FULL TEXT is hard-paywalled. Harvest at headline/dek level only (summaries will be thinner than other sources) unless a subscription path is added."
+
+  - name: latamrob.substack.com
+    category: global
+    base_url: https://latamrob.substack.com
+    recent_url: https://latamrob.substack.com/archive
+    note: "ADDED 2026-06-10. Latin American Review of Books — Latin America via book-anchored cultural and political criticism, in English. ~Weekly."
+
+  - name: avenuesofamericas.substack.com
+    category: global
+    base_url: https://avenuesofamericas.substack.com
+    recent_url: https://avenuesofamericas.substack.com/archive
+    note: "ADDED 2026-06-10. Avenues of the Americas (Jeffrey Lawrence) — hemispheric US-Latin American literary and cultural criticism ('the Whitexican novel' debate). ~Monthly. Caveat: partly US-facing."
+
+  - name: artreview.com
+    category: art
+    base_url: https://artreview.com
+    recent_url: https://artreview.com/category/opinion/
+    note: "ADDED 2026-06-10. ArtReview / ArtReview Asia — global contemporary art criticism connecting art to broader culture; the Asia strand extends the art lane beyond the West. Daily online, free. METHOD NOTE: the /category/ar-asia/ index is JS-rendered and fetches empty — harvest via opinion/feature category pages and per-article URLs instead."
+
+  # ==========================================================================
+  # MUSEUM WAVE 2026-06-22 — 12 art institutions added (user request). These are
+  # INSTITUTIONS, not editorial publications, so each carries TWO harvest targets:
+  #   - recent_url      → the editorial arm (magazine / essays / criticism)
+  #   - exhibitions_url → current + upcoming exhibitions & programming
+  # WHY: user wants the institutional-VALIDATION signal (what the art world is
+  # canonizing) + a more VISUAL register than the newsletter tier + deliberate
+  # non-Western coverage. The 8 named are NYC/London/Paris-heavy; the 4 suggested
+  # adds (mplus/sharjah/ngs/zeitz) are the East-Asia/MENA/SE-Asia/Africa balance.
+  # HARVEST RULES for this wave (an explicit exception to the usual bar):
+  #  - Exhibition/programming pages ARE announcements, and that is the point: a
+  #    show going up at the Met / Tate / M+ IS the validation signal. Treat them
+  #    like the Strategist/Thingtesting exception — the announcement is the
+  #    editorial product. Capture title, venue, date range, artists, curatorial
+  #    framing; skip pure logistics (hours, ticketing, galas).
+  #  - From the editorial arm, keep the usual essays/criticism/interviews/
+  #    curatorial features. These sources carry the IMAGERY the newsletter tier
+  #    lacks — weight image-rich pieces + show pages (feeds the semiotic-codes pilot).
+  #  - Dedup by URL as always (tate-modern + tate-britain share the Tate Etc.
+  #    editorial; harvest dedups it — their distinct signal is each programme).
+  #  - FETCHABILITY varies a lot (verified 2026-06-22): Whitney/Tate/Pompidou/M+/
+  #    Sharjah/NGS/Zeitz are GREEN; MoMA is YELLOW (use press.moma.org + search);
+  #    the Met is RED (Vercel bot-block, no fallback — search-grounding only);
+  #    MASP/White Rabbit have domain/structure caveats. See each note.
+  #  - NEXT-RUN TODO: museums are a non-cultural intake change — at the harvest
+  #    that first ingests them, add a RUN_NOTES entry in build_corpus.py and spin
+  #    up parallel agent(s) for this category (workload grows).
+  # ==========================================================================
+
+  - name: the-met
+    category: museum
+    base_url: https://www.metmuseum.org
+    recent_url: https://www.metmuseum.org/perspectives
+    exhibitions_url: https://www.metmuseum.org/exhibitions
+    recent_url_uncertain: true
+    note: "ADDED 2026-06-22 (museum wave). The Metropolitan Museum of Art, NYC. EDITORIAL = 'Perspectives' (metmuseum.org/perspectives) — a deep, actively-published online magazine: long-form essays, 'Meet the Artist' interviews, '<X> in N objects' curatorial features; individually slugged, multiple/month, tied to current shows (verified 2026-dated pieces, e.g. 'Raphael: A Life in Nine Objects'). EXHIBITIONS = /exhibitions, each show its own dated page. FETCHABILITY = RED for direct WebFetch: metmuseum.org sits behind a Vercel bot-management challenge (HTTP 429 / x-vercel-mitigated) to all non-browser clients, and its press subdomain is dead — there is NO fetchable fallback. Ground dates/summaries via domain-scoped WebSearch only (same playbook as nymag/eater), or a headless fetcher if one is ever built. Strongly image-rich. Filter Perspectives to essays/interviews/curatorial (skip tours/member/event entries)."
+
+  - name: whitney
+    category: museum
+    base_url: https://whitney.org
+    recent_url: https://whitney.org/essays
+    exhibitions_url: https://whitney.org/exhibitions
+    note: "ADDED 2026-06-22 (museum wave). Whitney Museum of American Art, NYC. The CLEANEST-fetching of the NYC three (GREEN — /essays, individual essays, /exhibitions, /press, /press/archive all return real dated body content + image refs, no SPA shell, no block). EDITORIAL = /essays — long-form curatorial criticism by Whitney curators, individually URL'd (/essays/<slug>), image-dense (e.g. 'The Self as Cipher: Salman Toor's Narrative Paintings'). TWO caveats: cadence is LOW (~5-8 essays/year, pegged to exhibitions) and dating is COARSE (listing shows year only; essay bodies often carry no visible date — date to year). EXHIBITIONS = /exhibitions, richly dated + 50+ images per show (Whitney Biennial 2026, etc.); strong, image-led. Press/acquisitions: /press/archive (641 dated releases). Weight high per editorial item given the low volume."
+
+  - name: moma
+    category: museum
+    base_url: https://www.moma.org
+    recent_url: https://www.moma.org/magazine/
+    exhibitions_url: https://press.moma.org
+    note: "ADDED 2026-06-22 (museum wave). Museum of Modern Art, NYC. EDITORIAL = MoMA Magazine (moma.org/magazine) — substantial, near-WEEKLY: commissioned essays, artist interviews, photo essays, criticism; individually dated + URL'd (/magazine/articles/<id>); has a dedicated 'Photo essay' tag (strong visual register). EXHIBITIONS exist at /calendar/exhibitions but see fetchability. FETCHABILITY = YELLOW: www.moma.org hard-403s WebFetch on listing + exhibition pages (WAF/bot block), and magazine article BODIES are JS-rendered (plain fetch returns title/author/date metadata only). RELIABLE PATHS: (1) press.moma.org is fully GREEN — clean dated exhibition records with curatorial body + captioned images (this is the exhibitions_url); (2) domain-scoped WebSearch for the magazine. Some magazine pieces are member-login-gated. press.moma.org mixes MoMA + MoMA PS1 releases."
+
+  - name: tate-modern
+    category: museum
+    base_url: https://www.tate.org.uk
+    recent_url: https://www.tate.org.uk/tate-etc
+    exhibitions_url: https://www.tate.org.uk/whats-on?gallery=tate-modern&type=exhibition
+    note: "ADDED 2026-06-22 (museum wave). Tate Modern, London. GREEN — server-rendered, clean slugged URLs, readable via WebFetch across editorial/exhibitions/press; no paywall on the web articles. EDITORIAL = 'Tate Etc.' magazine (tate.org.uk/tate-etc) — quarterly criticism/essays/artist features with author bylines (Tóibín, Olah, etc.); CURRENT (Issue 70 Summer 2026 live). Dating is ISSUE-level (e.g. 'Spring 2026'), not day-precise. NOTE: the path tate.org.uk/art/art-articles is DEAD (404) — use /tate-etc. EXHIBITIONS = whats-on filtered to Tate Modern, each show an individual dated page (Tracey Emin, Frida 2026, etc.). Press/acquisitions feed at /press (dated 2026 releases). Card thumbnails are lazy-loaded — for images hit the individual show/article pages, not the listing grid. Editorial (Tate Etc.) is SHARED with tate-britain; harvest dedups by URL."
+
+  - name: tate-britain
+    category: museum
+    base_url: https://www.tate.org.uk
+    recent_url: https://www.tate.org.uk/tate-etc
+    exhibitions_url: https://www.tate.org.uk/whats-on/tate-britain
+    note: "ADDED 2026-06-22 (museum wave). Tate Britain, London. GREEN (same domain/behaviour as tate-modern). Its DISTINCT signal is the Tate Britain exhibition programme (whats-on/tate-britain — individual dated show pages: Hurvin Anderson, Whistler, 'The 90s: Art and Fashion', Vanessa Bell & Duncan Grant). EDITORIAL = the same 'Tate Etc.' magazine as tate-modern (recent_url shared) — harvest dedups by URL so the editorial isn't double-counted; this entry exists to capture Britain's programming as a separate institutional-validation signal. Same caveats: issue-level dates, lazy-loaded listing thumbnails (hit individual pages for images)."
+
+  - name: centre-pompidou
+    category: museum
+    base_url: https://www.centrepompidou.fr
+    recent_url: https://www.centrepompidou.fr/en/magazine
+    exhibitions_url: https://www.centrepompidou.fr/en/program/exhibitions
+    note: "ADDED 2026-06-22 (museum wave). Centre Pompidou, Paris. GREEN and — crucially — has a real ENGLISH edition at /en/ (no translation needed). EDITORIAL = 'Le Magazine du Centre Pompidou' (/en/magazine) — high cadence (multiple 2026-dated pieces/month), DAY-dated, image-rich features/interviews/critiques (~2,000+ words; verified e.g. 'Pedro Almodóvar: Design, Desire and Décor', 27 Apr 2026). IMPORTANT article path: /en/pompidou-plus/magazine/article/<slug>. EXHIBITIONS = /en/program/exhibitions. RENOVATION CONTEXT: the main building is CLOSED until ~2030 — current shows run as a distributed 'Constellation' programme at partner venues (Grand Palais Paris, regional France, + Shanghai/Málaga/Berlin/Barcelona/Seoul/Riga), so frame 'on view at Pompidou' carefully. Caveats: occasional untranslated French titles stray into the EN feed; dates are human-readable text (no schema.org markup) — regex the date strings."
+
+  - name: white-rabbit
+    category: museum
+    base_url: https://whiterabbitcollection.org
+    recent_url: https://whiterabbitcollection.org/exhibitions/
+    exhibitions_url: https://whiterabbitcollection.org/exhibitions/
+    note: "ADDED 2026-06-22 (museum wave). White Rabbit Gallery, Sydney — private museum of contemporary CHINESE art (3,000+ works, 800+ artists; strong non-Western validation signal). EXHIBITION-ONLY: no editorial/magazine arm, so recent_url + exhibitions_url both point at /exhibitions/. Nav is Visit/Exhibitions/Artists/News; the /news feed is gallery announcements (hours, shop, openings) mostly WITHOUT stable per-item URLs — low yield, skip. EXHIBITIONS = individual dated pages (/exhibition/<slug>, e.g. 'Black Myth' 25.06-08.11.2026), GREEN/clean static HTML, English-default (Simplified-Chinese toggle), image-rich. LOW cadence (~2 shows/year) + a long 2026 closure + some off-site programming (HOTA, Gold Coast). HARD WARNING: correct domain is whiterabbitCOLLECTION.org — whiterabbitGALLERIES.org is a DIFFERENT, unrelated org (community art center in Barberton, Ohio); do NOT harvest it."
+
+  - name: masp
+    category: museum
+    base_url: https://masp.org.br
+    recent_url: https://masp.org.br/en/exhibitions
+    exhibitions_url: https://masp.org.br/en/exhibitions
+    note: "ADDED 2026-06-22 (museum wave). MASP - Museu de Arte de São Paulo, Brazil. HIGH-PRIORITY non-Western / Global-South source (all of 2026 is dedicated to Latin American art histories). No separate web magazine — the EXHIBITION PAGES ARE the editorial value: individual /en/exhibitions/<slug> pages carry 450-500 words of real curatorial prose + curator credits + 40+ install images (verified on the Damián Ortega page). So recent_url + exhibitions_url BOTH point at /en/exhibitions; harvest the curatorial text from the show pages. Full ENGLISH edition via /en/. FETCHABILITY = YELLOW: DOMAIN/REDIRECT HAZARD — MASP runs both masp.org.br and masp.com.br, and some paths (e.g. /en/press) 301 cross-host to masp.com.br/pt-br/... (dropping English). PIN the harvester to masp.org.br/en/... and add redirect-following + a PT fallback. Press = PDF kits only (no per-release URLs). Mixed date formats (DD.M.YYYY / DD.M.YY) need normalizing. Real long-form scholarship lives in print catalogs/seminars, not the web."
+
+  # --- museum wave: suggested non-Western additions (Claude's picks 2026-06-22,
+  #     to balance the NYC/London/Paris weighting — East Asia / MENA / SE Asia /
+  #     Africa). Verified GREEN + dual-signal except where noted. ---
+
+  - name: mplus
+    category: museum
+    base_url: https://www.mplus.org.hk
+    recent_url: https://www.mplus.org.hk/en/magazine/
+    exhibitions_url: https://www.mplus.org.hk/en/exhibitions/
+    note: "ADDED 2026-06-22 (museum wave, suggested). M+, Hong Kong — museum of VISUAL CULTURE (design, moving image, art); the single strongest museum add and the East-Asia / Global-South anchor the list lacked. GREEN. EDITORIAL = 'M+ Magazine' (/en/magazine, absorbed the old M+ Stories blog + Podium journal) — regular (multiple/month), dated, individually URL'd curatorial criticism + artist interviews; verified 2026 pieces (Lee Bul in conversation, 28 May 2026; ~2,500 words + 12 images). Genuinely rare coverage (e.g. Tibetan / Inner Mongolian ethnic-minority art). EXHIBITIONS = /en/exhibitions, ~18 current + upcoming, each dated (Wael Shawky, Ryuichi Sakamoto, 'Myths and Monsters: The Art of Fantasy in Asia'). Full English at /en/. Note: /magazine/type/... sub-filters render thin via JS — harvest the main /magazine/ index + article slugs."
+
+  - name: sharjah-art-foundation
+    category: museum
+    base_url: https://www.sharjahart.org
+    recent_url: https://www.sharjahart.org/en/resources/saf-online/read/
+    exhibitions_url: https://www.sharjahart.org/en/whats-on
+    note: "ADDED 2026-06-22 (museum wave, suggested). Sharjah Art Foundation, UAE — opens a MENA / SWANA + decolonial lane no current source covers. GREEN. EDITORIAL = 'SAF Online / Read' (/en/resources/saf-online/read/) — a real live web-criticism arm, not just PDFs: dated, individually-URL'd essays incl. 'The Hook' close-readings (2026), plus video 'Backstory' interviews + an audio series. Register = decolonial/SWANA curatorial criticism; cadence modest; article dates are YEAR-granular. EXHIBITIONS = /en/whats-on, richly dated individual pages, PLUS the Sharjah Biennial + March Meeting (an unusually rich Global-South validation signal). English primary (Arabic toggle)."
+
+  - name: national-gallery-singapore
+    category: museum
+    base_url: https://www.nationalgallery.sg
+    recent_url: https://www.nationalgallery.sg/sg/en/learn-about-art/magazine.html
+    exhibitions_url: https://www.nationalgallery.sg/sg/en/whats-on.html
+    note: "ADDED 2026-06-22 (museum wave, suggested). National Gallery Singapore — the Southeast-Asia node, and the most 'true magazine' editorial of the SE-Asian institutions. GREEN (CMS-rendered real dated HTML, not a JS shell). EDITORIAL = 'Perspectives' (learn-about-art/magazine) — a self-described quarterly with an editorial team + explicit SE-Asia-and-the-world remit: essays, artist/director interviews, behind-the-scenes; bylined + 'Posted on' dated (verified into 2025). Volume is low/irregular and the landing page LAZY-LOADS — reach articles via search/category/slug, not the index feed. EXHIBITIONS = whats-on.html, fully fetchable individual dated pages (e.g. 'Fear No Power: Women Imagining Otherwise', 5 SE-Asian artists, 2026), image-rich. English-native. (Companion option if a 2nd SE-Asia source is ever wanted: Singapore Art Museum / SAM — sharper, fresher contemporary 'Stories' editorial.)"
+
+  - name: zeitz-mocaa
+    category: museum
+    base_url: https://zeitzmocaa.museum
+    recent_url: https://zeitzmocaa.museum/mocaavoice/
+    exhibitions_url: https://zeitzmocaa.museum/exhibitions-and-events/
+    note: "ADDED 2026-06-22 (museum wave, suggested). Zeitz MOCAA, Cape Town — the only contemporary-AFRICAN source on the list; primarily an EXHIBITION / programming-validation signal. GREEN, with the cleanest per-day machine dates of the wave. EDITORIAL = 'MOCAA Voice' (/mocaavoice/) but be honest: its register is institutional NEWS/announcements (galas, fellowships, Venice Biennale picks — e.g. Koyo Kouoh's 'In Minor Keys', 20 Mar 2026), NOT criticism/essays/interviews — weight it as African art-world signal, not editorial. EXHIBITIONS = /exhibitions-and-events/, individual dated pages with full curatorial text + artist bios ('A Protea Is Not a Flower', 'The Procession'). Entirely English, image-rich."
+
+  - name: serpentine
+    category: museum
+    base_url: https://www.serpentinegalleries.org
+    recent_url: https://www.serpentinegalleries.org/art-and-ideas/
+    exhibitions_url: https://www.serpentinegalleries.org/whats-on/
+    note: "ADDED 2026-06-22 (museum wave, user-approved). Serpentine Galleries, London. GREEN — editorial hub, individual articles, and exhibitions all return real dated HTML. EDITORIAL = 'Art + Ideas' (/art-and-ideas/) — essays, criticism, 'in conversation' interviews (verified: 'this messy song is ours', Sanah Ahsan, 7 Nov 2025, ~3,000 words); cadence is intermittent/curated, not high-frequency. DISTINCTIVE ANGLE = the Arts Technologies / 'Future Art Ecosystems' track (art × AI / blockchain / games / life-sciences) — a tech-culture leading indicator nothing else on the list carries; BUT the flagship FAE is an ANNUAL briefing (latest FAE5, 19 Jun 2025) published as a PDF + JS-app reader, not a dated feed, so the harvestable dated value is /art-and-ideas/ + its tech interviews. EXHIBITIONS = /whats-on/, individual dated pages (Hockney 'A Year in Normandie', Cecily Brown, Serpentine Pavilion 2026). English-native; editorial gravity leans global / decolonial / tech-futurist despite the London base."
+
+  # ==========================================================================
+  # SOURCE EXPANSION 2026-06-29 — sport / games / food-&-diaspora wave
+  # ==========================================================================
+  # Michael's expansion list. Two NEW categories introduced: `sport` (sport as
+  # culture/interiority) and `games` (videogame criticism). Food additions sit
+  # under the existing `embodied` lane; diaspora-identity newsletters under
+  # `global`, plus one `intellectual`. All 22 verified live + identified
+  # 2026-06-29 (WebSearch). Standard harvest rules apply: ESSAYS/criticism/
+  # interviews, not roundups/reviews/news (curation-source exception noted per
+  # entry). Substack custom domains use the /api/v1/archive?sort=new JSON
+  # endpoint per house learnings.
+  # NOTE: `noahopinion` (Noah Smith) WAS added 2026-06-29 — Michael's explicit
+  # override of the scope lock, on the basis that it shares the macro-as-culture
+  # orientation of Adam Tooze's Chartbook (already in the corpus). Harvest the
+  # cultural/argument essays, not the pure markets/policy explainers.
+
+  # --- expansion 2026-06-29: sport (as culture/interiority) ---
+  - name: basketballfeelings.com
+    category: sport
+    base_url: https://www.basketballfeelings.com
+    note: "ADDED 2026-06-29. Katie Heindl. Sport-as-interiority — pairs Woolf with NBA award rules; basketball as a lens on feeling, attention, and the body. Weekly. GREEN (Substack custom domain; /api/v1/archive?sort=new). Harvest essays, not game recaps."
+
+  - name: wnbaroughnotes.substack.com
+    category: sport
+    base_url: https://wnbaroughnotes.substack.com
+    note: "ADDED 2026-06-29. Rough Notes — queer WNBA fandom read as public infrastructure (the 'Lavender Scare' column). Weekly in-season. GREEN. Distinctive single-writer fandom-as-civic-life angle; harvest the columns, not score updates."
+
+  - name: footnotes.substack.com
+    category: sport
+    base_url: https://footnotes.substack.com
+    note: "ADDED 2026-06-29. 'Footnotes' — Sam Robinson. Life on foot: the philosophy of walking, the rituals of runners, the politics of public space, sidewalks/streets/trails. Weekly essays. GREEN. Embodied/sport crossover; essays only."
+
+  - name: runningsucks101.com
+    category: sport
+    base_url: https://www.runningsucks101.com
+    note: "ADDED 2026-06-29. 'Running Sucks' — Raziq Rauf (ex-BBC/Kerrang music journalist, USATF coach). Running culture: interviews, scene reports, hot-takes. ~weekly (Thu profile / Mon notes). GREEN, active 2026 (LA Marathon debrief). Harvest the interviews/essays."
+
+  - name: thesweatlookbook.substack.com
+    category: sport
+    base_url: https://thesweatlookbook.substack.com
+    note: "ADDED 2026-06-29. 'The Sweat Lookbook' — Lee Glandorf (ex-Tracksmith marketing). The intersection of women's sport and style: how athletes dress for performance, sportswear innovation, representation. Weekly. GREEN. Sport x fashion crossover."
+
+  - name: jenkemmag.com
+    category: sport
+    base_url: https://www.jenkemmag.com
+    recent_url: https://www.jenkemmag.com/home/articles/
+    note: "ADDED 2026-06-29. Jenkem — Brooklyn skateboarding-and-culture magazine (founded 2011, Ian Michna). Interviews, skate-history essays, scene pieces; one of few skate outlets covering LGBT pros. GREEN (active through late 2025+). Harvest essays/interviews, skip the shop/merch."
+
+  - name: lowerblock.com
+    category: sport
+    base_url: https://lowerblock.com
+    recent_url: https://lowerblock.com/all-articles/
+    note: "ADDED 2026-06-29. Lower Block (London) — global football/terrace fan culture as visual subculture: photo-led editorial on stadiums, pubs, the life beyond the pitch. GREEN. Mixed editorial + e-commerce; harvest /all-articles/ ONLY, skip shop/print-product pages."
+
+  # --- expansion 2026-06-29: games (videogame criticism & games culture) ---
+  - name: bulletpointsmonthly.com
+    category: games
+    base_url: https://bulletpointsmonthly.com
+    note: "ADDED 2026-06-29. Bullet Points Monthly — long-form, exploratory videogame criticism placing games in wider cultural context (four writers / four weeks / one game). Monthly issues. GREEN. The strongest pure games-crit register on the list."
+
+  - name: heterotopiaszine.com
+    category: games
+    base_url: https://www.heterotopiaszine.com
+    recent_url: https://www.heterotopiaszine.com/category/zine/
+    note: "ADDED 2026-06-29. Heterotopias — games x architecture: visual essays dissecting game spaces, power, ideology (Gareth Damian Martin). DISTINCTIVE but ISSUE-BASED / LOW CADENCE — may yield little inside a 30-90 day window; harvest when a new issue/essay drops, don't expect monthly volume."
+
+  - name: critical-distance.com
+    category: games
+    base_url: https://www.critical-distance.com
+    note: "ADDED 2026-06-29. Critical Distance — 'This Week in Videogame Blogging', a weekly CURATION of the best below-radar games criticism (active 2026). CURATION-SOURCE EXCEPTION: it's a discovery multiplier — mine the individual distinctive essays it surfaces (follow the outbound links), don't tag the roundup itself as a signal."
+
+  - name: postgame.substack.com
+    category: games
+    base_url: https://postgame.substack.com
+    note: "ADDED 2026-06-29. 'Post Games' — Chris Plante (Polygon co-founder). Why and how we love videogames; essays + podcast. GREEN. Despite the name it is GAMES not sport. Harvest essays, skip pure episode announcements."
+
+  - name: pushtotalk.gg
+    category: games
+    base_url: https://www.pushtotalk.gg
+    note: "ADDED 2026-06-29. 'Push to Talk' — Ryan K. Rigney. Interviews with people doing interesting things with games + the culture around games. Weekly. GREEN. CAVEAT: a meaningful share is games-MARKETING/industry craft — keep only the culture/interview pieces, drop the dev-comms how-tos (off-milieu)."
+
+  - name: gameandword.substack.com
+    category: games
+    base_url: https://gameandword.substack.com
+    note: "ADDED 2026-06-29. 'Game & Word' — Jay Rooney. Where games meet the arts, sciences, humanities, philosophy. GREEN. Modest cadence/scale (~1.6k subs); keep the genuinely essayistic pieces."
+
+  # --- expansion 2026-06-29: food (under embodied) ---
+  - name: thefuturemarket.substack.com
+    category: embodied
+    base_url: https://thefuturemarket.substack.com
+    note: "ADDED 2026-06-29. 'The Future Market' — Mike Lee (food futurist). Where food is going and what that says about where we are: tech, policy, culture, behavior across next-year-to-50-years. Weekly (Tue). GREEN (mirror at thefuturemarket.com). Food-futures register; keep the cultural/argument essays over pure industry trend notes."
+
+  - name: technicallyfood.substack.com
+    category: embodied
+    base_url: https://technicallyfood.substack.com
+    note: "ADDED 2026-06-29. 'Technically Food' — Larissa Zimberoff (investigative journalist; author of 'Technically Food'). Food x technology — UPFs, cultivated meat, additives, GLP-1s, who's making it and what it means. Bi-weekly (alt Fridays). GREEN."
+
+  - name: waytoocomplicated.substack.com
+    category: embodied
+    base_url: https://waytoocomplicated.substack.com
+    note: "ADDED 2026-06-29. 'Way Too Complicated' — Jenny Dorsey (chef; founder of food think-tank Studio ATAO). Food politics + philosophy + complicated recipes; 'food is never just food'. GREEN. Harvest the commentary/essays (recipes alone fail the bar unless framed)."
+
+  - name: penknife.substack.com
+    category: embodied
+    base_url: https://penknife.substack.com
+    note: "ADDED 2026-06-29. 'Penknife' — KC Hysmith (PhD American Studies; gastronomy). Food history x gender x digital media, with archival recipe work (Barbie Cake, cookbooks as activism). GREEN. 'Penknife is never just about food.'"
+
+  - name: rachelsigner.substack.com
+    category: embodied
+    base_url: https://rachelsigner.substack.com
+    note: "ADDED 2026-06-29. 'LA MESCITA' — Rachel Signer (founder/publisher of Pipette Magazine, the first print natural-wine title). Natural wine as culture: essays, explainers, city guides, interviews. GREEN. Drink-culture lane the food sources lacked."
+
+  - name: eatwithafia.substack.com
+    category: embodied
+    base_url: https://eatwithafia.substack.com
+    note: "ADDED 2026-06-29. 'No Plantains Left Behind' — Afia. Ghanaian / West African foodways through history and culture ('Colonizing the Colonizer's Dish', Lost Crops of Africa). GREEN. Food-first but a strong Global-South/decolonial angle (provenance: Africa)."
+
+  # --- expansion 2026-06-29: diaspora / identity (under global) ---
+  - name: diasporadiary.substack.com
+    category: global
+    base_url: https://diasporadiary.substack.com
+    note: "ADDED 2026-06-29. 'diaspora diary' — Ananya Kalahasti. 'For the brown girls': media, culture, community, queer South-Asian identity, culinary imperialism, Mumbai/diaspora life. GREEN, high cadence (130+ numbered issues). Essays blending personal narrative + cultural analysis."
+
+  - name: jenhorn.substack.com
+    category: global
+    base_url: https://jenhorn.substack.com
+    recent_url_uncertain: true
+    note: "ADDED 2026-06-29. 'Pagbubuo' — Jen Horn (Philippines; Good Food Community). Creativity, care, and connection with self and kapwa (fellow beings, incl. nature); Tagalog frame. Feeds Kinship/Ballast/the more-than-human cluster. CAVEAT: cadence looks slow/irregular (latest seen ~2025) — VERIFY in-window before relying on it."
+
+  # --- expansion 2026-06-29: intellectual / macro-as-culture
+  #     (Michael's override of the scope lock, 2026-06-29 — pairs with Tooze) ---
+  - name: noahpinion.substack.com
+    category: intellectual
+    base_url: https://www.noahpinion.blog
+    recent_url: https://www.noahpinion.blog/archive
+    note: "ADDED 2026-06-29 (Michael's scope-lock override). 'Noahpinion' — Noah Smith. Economics, technology, and geopolitics read as culture; the same macro-as-culture register as Adam Tooze's Chartbook (the stated rationale for inclusion). Custom domain noahpinion.blog (Substack-backed; /archive + /api/v1/archive?sort=new). HARVEST FILTER (mirror the Tooze rule): keep the argument/essay posts with real prose and a cultural read; DROP pure markets/policy explainers and link roundups. Per-post check; flag if it drifts off-milieu into trade/analyst content."

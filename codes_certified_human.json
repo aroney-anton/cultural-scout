@@ -1,0 +1,840 @@
+{
+  "need": "Certified Human",
+  "updated": "2026-06-12",
+  "runs_covered": [
+    "2026-04-29",
+    "2026-06-01",
+    "2026-06-11"
+  ],
+  "images_observed": 83,
+  "articles_viewed": 27,
+  "method_note": "Pilot baseline coding per SEMIOTIC_CODEBOOK.md. Two visual passes (46 + 37 images, second pass run adversarially against first-pass candidates) + one verbal pass (14 texts). Palette hexes are observational approximations from article imagery, not brand-spec values.",
+  "codes": [
+    {
+      "id": "provenance-ledger",
+      "name": "The Provenance Ledger",
+      "status": "dominant",
+      "short_def": "Human-made value claimed not through imagery but through metadata performed as form: museum-grade captions, credit blocks set as typographic objects, supply-chain disclosure, and the ritualized consent line ('shared with permission') that extends provenance to the image's right to exist. Verbally it runs on forensic vocabulary.",
+      "look": {"bg": "#3a2113", "text": "#f6efe2"},
+      "one_liner": "Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying.",
+      "definition": "The strongest pattern in the corpus. Human-made value is claimed not through imagery but through metadata performed as form: museum-grade captions (title, year, materials, dimensions), full credit blocks set as typographic objects, supply-chain disclosure, and the newly ritualized consent line ('All images courtesy of the artist, shared with permission'), which extends provenance from the object to the image's right to exist, a quiet anti-scraping ethic. Verbally it runs on forensic vocabulary: evidence, detection, audit, receipts, scare quotes around 'writers'.",
+      "visual": {
+        "palette": [
+          {
+            "hex": "#FAF7F0",
+            "name": "paper white"
+          },
+          {
+            "hex": "#141414",
+            "name": "ink black"
+          },
+          {
+            "hex": "#4A2C17",
+            "name": "espresso"
+          },
+          {
+            "hex": "#E2B33C",
+            "name": "ledger amber"
+          }
+        ],
+        "materials_textures": [
+          "print conventions on screen",
+          "italic caption faces",
+          "hairline rules",
+          "credit blocks set like colophons"
+        ],
+        "composition": [
+          "caption co-equal with image",
+          "metadata framed as part of the artwork's field",
+          "image + 'Detail of...' pairing"
+        ],
+        "typography": [
+          "museum-caption italics",
+          "small-caps credit lines",
+          "mono labels (Patta)",
+          "Student/Course/Tutor blocks (Dezeen)"
+        ],
+        "casting_setting": [
+          "the maker named, the chain of custody visible: photographer, stylist, permission"
+        ]
+      },
+      "verbal": {
+        "lexicon": [
+          "provenance",
+          "evidence",
+          "receipts",
+          "courtesy of",
+          "shared with permission",
+          "detect",
+          "audit",
+          "fake",
+          "scare-quoted 'writers'"
+        ],
+        "metaphors": [
+          "forensics and exposure: catching, testing, digging for wires",
+          "the charge-sheet timeline"
+        ],
+        "register": "forensic, prosecutorial, cool enumeration then verdict",
+        "sample_phrases": [
+          {
+            "quote": "the era of evidence is over, and there is only content",
+            "source": "Rob Horning",
+            "url": "https://robhorning.substack.com/p/evidence-as-content"
+          },
+          {
+            "quote": "Some of the biggest 'writers' on Substack aren't writing at all.",
+            "source": "Taylor Lorenz, User Mag",
+            "url": "https://www.usermag.co/p/how-much-of-substack-is-actually-ai-pangram-analysis-substack-bestsellers"
+          },
+          {
+            "quote": "It's now a brand name, he insists, with nothing behind it.",
+            "source": "Ted Gioia, Honest Broker",
+            "url": "https://www.honest-broker.com/p/how-to-destroy-a-literary-reputation"
+          }
+        ]
+      },
+      "tensions": "Defines itself against the unsourced, the laundered byline, institutions that defected (Sports Illustrated, prize juries). Internal critique (Horning): when evidence becomes content, receipts themselves become a style that can be worn.",
+      "execution_notes": "Cheapest code to execute and the hardest to fake retroactively: publish the chain of custody (who made it, of what, when, with whose permission) as designed form, not legal fine print. Misuse: provenance theater on an industrially produced product reads as the Liffner grid next to the one hand-woven bag, the audience notices the intruder.",
+      "evidence": [
+        {
+          "signal_id": "thisiscolossal_2026_04_22_011",
+          "source": "thisiscolossal.com",
+          "url": "https://www.thisiscolossal.com/2026/04/kenny-nguyen-silk-textiles-paintings/",
+          "note": "full museum captions: materials, dimensions, year, permission line",
+          "image_refs": [
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-9.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-11.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-3.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-4.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-5.jpg"
+          ]
+        },
+        {
+          "signal_id": "family_style_2026_05_05_003",
+          "source": "family.style",
+          "url": "https://www.family.style/articles/estelle-hanania-benoit-bethume-stephanie-cavalli-fashion",
+          "note": "credits block set as typographic object"
+        },
+        {
+          "signal_id": "dezeen_com_2026_05_14_007",
+          "source": "dezeen.com",
+          "url": "https://www.dezeen.com/2026/05/14/zero-waste-textiles-project-among-work-featured-at-new-designers-2026/",
+          "note": "Student/Course/Tutor provenance blocks per project"
+        },
+        {
+          "signal_id": "aliciakennedy_news_2026_06_11_005",
+          "source": "aliciakennedy.news",
+          "url": "https://www.aliciakennedy.news/p/on-leather",
+          "note": "vegetable-tanned, transparent-supply-chain vocabulary; provenance ethics applied to material"
+        },
+        {
+          "signal_id": "usermag_co_2026_06_11_001",
+          "source": "usermag.co",
+          "url": "https://www.usermag.co/p/how-much-of-substack-is-actually-ai-pangram-analysis-substack-bestsellers",
+          "note": "Pangram dataset audit as genre: detection journalism"
+        },
+        {
+          "signal_id": "robhorning_substack_com_2026_06_11_001",
+          "source": "robhorning.substack.com",
+          "url": "https://robhorning.substack.com/p/evidence-as-content",
+          "note": "the code theorized from inside: evidence degrading into content"
+        },
+        {
+          "signal_id": "impulse_2026_04_26_004",
+          "source": "impulsemagazine.com",
+          "url": "https://impulsemagazine.com/articles/the-nurturer-the-hunter-in-a-room-of-ones-own-jersey-city-free-public-library-creative-arts-center",
+          "note": "formal photo credits inside an intimate curatorial essay",
+          "image_refs": [
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad853b_926dfaf7.webp",
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad8538_a674727e.webp",
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad8538_a674727e.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "elephant.art",
+          "url": "https://elephant.art/virtuosity-can-exist-with-awkwardness-alexa-west-adam-charlap-hyman-on-jawbreaker/",
+          "note": "visual evidence (imagery observed in batch pass)",
+          "image_refs": [
+            "https://elephant.art/wp-content/uploads/2026/04/2-1-scaled.jpg",
+            "https://elephant.art/wp-content/uploads/2026/04/GJA04493_IG-scaled.jpg",
+            "https://elephant.art/wp-content/uploads/2026/04/1-1-scaled.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "dezeen.com",
+          "url": "https://www.dezeen.com/2026/05/10/proposal-for-sustainable-agriculture-factory-among-projects-from-uwe-bristol/",
+          "note": "visual evidence (imagery observed in batch pass)",
+          "image_refs": [
+            "https://static.dezeen.com/uploads/2026/05/uwe-bristol-dezeen-herosq-schoolshows_dezeen_2364_col_0-852x479.jpg",
+            "https://static.dezeen.com/uploads/2026/05/uwe-bristol-dezeenschoolshows_dezeen_2364_col_1-852x1206.jpg",
+            "https://static.dezeen.com/uploads/2026/05/uwe-bristol-dezeen-schoolshows_dezeen_2364_col_1-852x1157.jpg"
+          ]
+        }
+      ],
+      "confidence": "high",
+      "first_coded": "2026-06-12",
+      "history": [
+        {
+          "run": "2026-06-12",
+          "change": "coined",
+          "note": "pilot baseline; strongest pattern across both visual batches and the verbal pass"
+        }
+      ]
+    },
+    {
+      "id": "countable-labor",
+      "name": "Countable Labor",
+      "status": "dominant",
+      "short_def": "Human labor certified by making its units countable. Visually: the macro detail where a single loop, stitch or fold is legible (the 'Detail of…' convention), and the wide shot of a vast field of small handmade units. Verbally: quantified duration and volume as watermark, '22 years', 'thousands of strips', 'hand-cut', shot in clinical verification light.",
+      "look": {"bg": "#5e5730", "text": "#f7f3e6"},
+      "one_liner": "Authentication by enumeration: the stitch macro, the field of ten thousand units, the headline that counts the years.",
+      "definition": "Human labor certified by making its units countable. Visually: the macro detail where the loop, stitch, silk strip, or fold-line is individually legible (institutionalized as the full-work-then-'Detail-of' layout convention), and the wide shot of a vast field of small handmade units (a 50-foot miniature city, thousands of silk tabs, clustered embroidery hoops). Verbally: quantified duration and volume as watermark, '22 years', 'thousands of strips', 'hand-cut'. Shot in clinical, shadowless verification light on gallery grounds, museum grammar applied to humble materials.",
+      "visual": {
+        "palette": [
+          {
+            "hex": "#F2EDE2",
+            "name": "bone"
+          },
+          {
+            "hex": "#E8E0D0",
+            "name": "raw cotton"
+          },
+          {
+            "hex": "#6B6434",
+            "name": "olive"
+          },
+          {
+            "hex": "#C07B3F",
+            "name": "ochre"
+          },
+          {
+            "hex": "#C9C9C7",
+            "name": "gallery grey"
+          }
+        ],
+        "materials_textures": [
+          "legible stitch and loop structure",
+          "fold-lines and plate-tone kept visible",
+          "yarn, silk strips, punch-needle, machine-knit with seams showing"
+        ],
+        "composition": [
+          "extreme macro as certificate",
+          "aerial or frontal field-of-many-units",
+          "white-cube flatness, object centered"
+        ],
+        "typography": [
+          "'Detail of...' caption formula",
+          "counts and durations in headlines"
+        ],
+        "casting_setting": [
+          "the work, not the worker; labor present as accumulation rather than action"
+        ]
+      },
+      "verbal": {
+        "lexicon": [
+          "handmade",
+          "hand-cut",
+          "by hand",
+          "years",
+          "thousands",
+          "stitch",
+          "loop",
+          "every"
+        ],
+        "metaphors": [
+          "counting as proof",
+          "accumulation as monument",
+          "texture as data density"
+        ],
+        "register": "awed enumeration; museum-label restraint",
+        "sample_phrases": [
+          {
+            "quote": "If you take money for work you didn't do yourself, then you are a thief.",
+            "source": "Sam Kriss",
+            "url": "https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will"
+          },
+          {
+            "quote": "people find a unique comfort in art that feels clearly and intentionally made by human hands",
+            "source": "Tata Dovnar, AV Club",
+            "url": "https://www.avclub.com/liminal-horror-rise-internet-subgenre-backrooms-dream-pools-dreamcore-outwaters"
+          }
+        ]
+      },
+      "tensions": "Against instantaneous slickness and infinite reproduction; the unit that took time vs the output that took none. Watch: the labor proof has migrated from imagery into captions and headlines, working hands are nearly absent (1 of 83 images), so the counting is increasingly taken on faith.",
+      "execution_notes": "For brands: show the unit of making at watermark fidelity (the loop, the weld, the brushstroke) and let the numbers be specific and checkable. Misuse: counting things that aren't labor ('1,000 hours of testing' on an automated process) imports the form without the referent, and this audience audits.",
+      "evidence": [
+        {
+          "signal_id": "hyperallergic_2026_04_05_011",
+          "source": "hyperallergic.com",
+          "url": "https://hyperallergic.com/joe-macken-spent-22-years-building-a-miniature-new-york-by-hand/",
+          "note": "22 years / 50-foot city; aerial field-of-units imagery",
+          "image_refs": [
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/04/HeBuiltThisCity_byFilipWolak_0309_8683.jpg",
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/04/HeBuiltThisCity_byFilipWolak_0011_8474-1.jpg",
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/04/JOE-MACKEN-2026-008--1-.jpg"
+          ]
+        },
+        {
+          "signal_id": "thisiscolossal_2026_04_22_011",
+          "source": "thisiscolossal.com",
+          "url": "https://www.thisiscolossal.com/2026/04/kenny-nguyen-silk-textiles-paintings/",
+          "note": "thousands of hand-cut silk strips; detail macro convention",
+          "image_refs": [
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-9.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-11.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-3.jpg"
+          ]
+        },
+        {
+          "signal_id": "thisiscolossal_2026_04_27_006",
+          "source": "thisiscolossal.com",
+          "url": "https://www.thisiscolossal.com/2026/04/cassandra-dias-richly-stitched-landscape-embroidery-book/",
+          "note": "hoop clusters as specimen board; stitch-direction macro",
+          "image_refs": [
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/dias-9.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/dias-8.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/dias-1.jpg"
+          ]
+        },
+        {
+          "signal_id": "pattaclothing_us_2026_05_12_001",
+          "source": "pattaclothing.us",
+          "url": "https://pattaclothing.us/blogs/magazine/patta-selects-daniel-smedeman",
+          "note": "knit logotype macro, every loop legible: brand-as-handcraft",
+          "image_refs": [
+            "https://pattaclothing.us/cdn/shop/articles/Daniel_Patta_Magazine_3.jpg?v=1778617712&width=2560",
+            "https://cdn.shopify.com/s/files/1/0018/7793/4115/files/100000000000.jpg?v=1774281814"
+          ]
+        },
+        {
+          "signal_id": "thisiscolossal_com_2026_05_05_005",
+          "source": "thisiscolossal.com",
+          "url": "https://www.thisiscolossal.com/2026/05/adrienna-matzeg-embroidery-storefronts-travel-asia/",
+          "note": "punch-needle vending machines: machine portraits hand-slowed, stitch macro",
+          "image_refs": [
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-1.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-7.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-5.jpg"
+          ]
+        },
+        {
+          "signal_id": "impulsemagazine_com_2026_05_01_015",
+          "source": "impulsemagazine.com",
+          "url": "https://impulsemagazine.com/articles/soft-bodies-hard-tech",
+          "note": "machine-knit bodies with knit structure visible at seams; museum captions",
+          "image_refs": [
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69f296392aa63236a599e2b8_FB%20Smokey%20Dog%20Council.webp",
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69f576a65c8f3ded30a323c7_felix%20with%20dog.webp"
+          ]
+        },
+        {
+          "signal_id": "dezeen_com_2026_05_14_007",
+          "source": "dezeen.com",
+          "url": "https://www.dezeen.com/2026/05/14/zero-waste-textiles-project-among-work-featured-at-new-designers-2026/",
+          "note": "jacquard on plinth, dye-recipe flat-lay: process made visible"
+        },
+        {
+          "signal_id": null,
+          "source": "thisiscolossal.com",
+          "url": "https://www.thisiscolossal.com/2026/05/fatinha-ramos-illustrations/",
+          "note": "visual evidence (imagery observed in batch pass)",
+          "image_refs": [
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/ramos-4.jpeg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/ramos-2.jpeg"
+          ]
+        }
+      ],
+      "confidence": "high",
+      "first_coded": "2026-06-12",
+      "history": [
+        {
+          "run": "2026-06-12",
+          "change": "coined",
+          "note": "pilot baseline; merges first-pass 'Loop-Level Proof' + 'Black-Linen Reliquary' (reframed by batch 2: gallery grammar, not black linen) + batch-2 'Enumerated Labor'"
+        }
+      ]
+    },
+    {
+      "id": "unretouched-witness",
+      "name": "The Unretouched Witness",
+      "status": "dominant",
+      "short_def": "A person, or the trace of one, does the certifying. Three carriers: the dead-frontal face marked by a life (tattoos, age, stage blood); casting older and realer than fashion default; and the snapshot vernacular, hard flash and clutter left in frame, where imperfection proves nothing was staged. Verbally it claims the unforgeable: flesh, mortality, the cultivated ear ('I can tell'), disgust at the synthetic as proof of humanity.",
+      "look": {"bg": "#8c1c20", "text": "#fbe9e2"},
+      "one_liner": "Imperfect human presence as the logo: life-marked faces, mature casting, hard flash, clutter left in frame.",
+      "definition": "A person, or the unmistakable trace of one, does the certifying. Three carriers: the dead-frontal face bearing permanent marks of a life (tattoos, age, stage blood); casting that runs older and realer than fashion default; and the snapshot vernacular, hard on-camera flash, mirrors, fire extinguishers and garment bags left in frame, where photographic imperfection itself testifies that nothing was staged. Verbally it claims the unforgeable: flesh, mortality, appetite, the cultivated ear ('I can tell'), and visceral disgust at the synthetic as a bodily, pre-rational proof of humanity.",
+      "visual": {
+        "palette": [
+          {
+            "hex": "#8A5F4A",
+            "name": "skin umber"
+          },
+          {
+            "hex": "#DEDEDE",
+            "name": "studio grey"
+          },
+          {
+            "hex": "#5A2C24",
+            "name": "oxblood"
+          },
+          {
+            "hex": "#C1271B",
+            "name": "saturated tomato"
+          },
+          {
+            "hex": "#A31F24",
+            "name": "lacquer red"
+          }
+        ],
+        "materials_textures": [
+          "unretouched skin",
+          "real makeup and costume craft",
+          "flash glare",
+          "retained clutter"
+        ],
+        "composition": [
+          "dead-frontal portrait, face as full bleed",
+          "mirror shots and self-documentation",
+          "formal frontal pairs, unsmiling"
+        ],
+        "typography": [
+          "minimal; the face replaces the wordmark"
+        ],
+        "casting_setting": [
+          "face tattoos, mature models (40s+), maker's own selfie, opera performer with blood trickle: the specific person, not the type"
+        ]
+      },
+      "verbal": {
+        "lexicon": [
+          "flesh and blood",
+          "voice",
+          "I can tell",
+          "raw",
+          "real",
+          "witness",
+          "ear",
+          "taste"
+        ],
+        "metaphors": [
+          "body as credential: mortality, appetite, addiction as the unforgeable watermark",
+          "revulsion as proof (the cold shudder)"
+        ],
+        "register": "threat-comic oath of discernment; visceral; tender-deadpan",
+        "sample_phrases": [
+          {
+            "quote": "Did you think I wouldn't be able to tell? I can tell.",
+            "source": "Sam Kriss",
+            "url": "https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will"
+          },
+          {
+            "quote": "This was a living creature. Let's not waste it.",
+            "source": "Gabrielle Soltis, via Alicia Kennedy",
+            "url": "https://www.aliciakennedy.news/p/on-leather"
+          },
+          {
+            "quote": "However bad a writer you think you are, you are not worse than AI.",
+            "source": "Sam Kriss",
+            "url": "https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will"
+          }
+        ]
+      },
+      "tensions": "Against the idealized, the retouched, the synthetic spokesperson, and the fashion-blank face. Internal anxiety: every witness-mark is counterfeitable (a filter can fake flash; AI can fake a face), so the code keeps retreating toward the genuinely unforgeable: age, mortality, named specific people.",
+      "execution_notes": "Casting and registration ARE the strategy: specific, named, life-marked people shot frontally with their context left in frame. Misuse: 'real people' casting with retouched skin and cleared sets reads as the fashion-blank deadpan it replaced, the audience reads light and clutter before they read faces.",
+      "evidence": [
+        {
+          "signal_id": "pattaclothing_us_2026_05_12_001",
+          "source": "pattaclothing.us",
+          "url": "https://pattaclothing.us/blogs/magazine/patta-selects-daniel-smedeman",
+          "note": "face-tattooed frontal portrait, face as full bleed: the face is the product",
+          "image_refs": [
+            "https://pattaclothing.us/cdn/shop/articles/Daniel_Patta_Magazine_3.jpg?v=1778617712&width=2560",
+            "https://cdn.shopify.com/s/files/1/0018/7793/4115/files/100000000000.jpg?v=1774281814"
+          ]
+        },
+        {
+          "signal_id": "family_style_2026_05_05_003",
+          "source": "family.style",
+          "url": "https://www.family.style/articles/estelle-hanania-benoit-bethume-stephanie-cavalli-fashion",
+          "note": "mature casting (40s+), weathered mastery, film-soft light"
+        },
+        {
+          "signal_id": "polyester_2026_04_14_013",
+          "source": "polyesterzine.com",
+          "url": "https://www.polyesterzine.com/features/a-look-inside-haut-corporation-one-of-londons-best-stockists-of-rare-covetable-vintage",
+          "note": "hard flash, mirrors, fire extinguisher and garment bags in frame: snapshot vernacular as certificate",
+          "image_refs": [
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/f6218ba2-4a8b-4ac2-a9a2-f8147f34b419/DSCF4878r.jpg",
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/6b24a10f-419d-449e-9487-dba675d427fc/DSCF4935r.jpg",
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/b8e30ca1-9b07-48a0-85f0-2f4d07a6adff/DSCF4972r.jpg",
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/43d24ddc-6fee-4fdd-b0c0-a5dc23c2c96c/DSCF5020r.jpg",
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/28aff6e2-bce3-4502-9449-8c4bf247ed10/DSCF4910r.jpg"
+          ]
+        },
+        {
+          "signal_id": "sixthtone_com_2026_06_11_003",
+          "source": "sixthtone.com",
+          "url": "https://www.sixthtone.com/news/1018534/handmade%3A-two-chinese-productions-go-viral-for-skipping-ai",
+          "note": "handmade opera costume + real blood-trickle staging went viral FOR being handmade",
+          "image_refs": [
+            "https://image5.sixthtone.com/image/5/97/263.jpg"
+          ]
+        },
+        {
+          "signal_id": "impulse_2026_04_26_004",
+          "source": "impulsemagazine.com",
+          "url": "https://impulsemagazine.com/articles/the-nurturer-the-hunter-in-a-room-of-ones-own-jersey-city-free-public-library-creative-arts-center",
+          "note": "near-frontal portrait, bare skin, formally credited",
+          "image_refs": [
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad853b_926dfaf7.webp",
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad8538_a674727e.webp",
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad8538_a674727e.webp",
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69eba10f0fb91bd599ad8535_2755a925.webp"
+          ]
+        },
+        {
+          "signal_id": "samkriss_substack_com_2026_06_11_002",
+          "source": "samkriss.substack.com",
+          "url": "https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will",
+          "note": "the cultivated ear as witness; visceral disgust as proof of humanity"
+        },
+        {
+          "signal_id": "restofworld_org_2026_06_11_001",
+          "source": "restofworld.org",
+          "url": "https://restofworld.org/2026/ai-agent-china-one-person-company/",
+          "note": "verification ends not in a tool but in finding the specific human in Guilin"
+        },
+        {
+          "signal_id": null,
+          "source": "backrow.net",
+          "url": "https://www.backrow.net/p/the-very-best-anti-it-bags",
+          "note": "visual evidence (imagery observed in batch pass)",
+          "image_refs": [
+            "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/asset/file/ab7842d8-9383-465a-b715-e719b23aab22/image.png",
+            "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/asset/file/d882b727-7cd5-4387-bfc1-7c9319a5a03c/image.png",
+            "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/asset/file/1d921375-e63b-4a8b-a04c-988b6b612adf/image.png"
+          ]
+        }
+      ],
+      "confidence": "high",
+      "first_coded": "2026-06-12",
+      "history": [
+        {
+          "run": "2026-06-12",
+          "change": "coined",
+          "note": "pilot baseline; merges first-pass 'Face as Certificate' with batch-2 'Snapshot Vernacular'; absorbs the broken 'Tool-in-Hand' candidate (working hands appear in 1 of 83 images, labor-presence is carried by people and registration, not action shots)"
+        }
+      ]
+    },
+    {
+      "id": "slop-repainted-slow",
+      "name": "Slop, Repainted Slow",
+      "status": "emergent",
+      "short_def": "Cheap circulation re-made expensive: oil paintings of phone screenshots that keep the title bar, airbrushed memes, collagraphs printed from discarded cartons with the dielines as skeleton. The acid slop palette is quoted as subject matter while the slow medium does the certifying. Verbally, the 'slop' word-family at full inflection, and the corpus's sharpest fight: every authenticity move is gameable.",
+      "look": {"bg": "#a7e029", "text": "#161616"},
+      "one_liner": "Disposable detritus, screenshots, memes, shipping cartons, lovingly re-rendered in slow media with its artifacts preserved.",
+      "definition": "The emergent and most contested code: cheap circulation re-made expensive. Oil paintings of phone screenshots that keep the caps-lock title bar; airbrushed meme cats; collagraphs printed FROM discarded cartons with dielines and glue-tabs as the composition's skeleton; a Sufi saint's archival photo woodcut onto a to-go cup. The acid slop palette appears inside the work, quoted as subject matter, while the medium does the certifying. Verbally this is the 'slop' word-family at full inflection (slopified, tasteslop, corporate slop) and the corpus's sharpest internal fight: the awareness that every authenticity move is gameable.",
+      "visual": {
+        "palette": [
+          {
+            "hex": "#9FE53A",
+            "name": "acid green (quoted)"
+          },
+          {
+            "hex": "#E14FAE",
+            "name": "magenta (quoted)"
+          },
+          {
+            "hex": "#C8102E",
+            "name": "McDonald's red (quoted)"
+          },
+          {
+            "hex": "#E5C9C2",
+            "name": "milky blush (the slow ground)"
+          },
+          {
+            "hex": "#9B93A6",
+            "name": "grey-lilac compression haze"
+          }
+        ],
+        "materials_textures": [
+          "oil rendering of screen blur",
+          "airbrush softness on meme subjects",
+          "carton fold-lines and plate-tone",
+          "compression artifacts preserved by hand"
+        ],
+        "composition": [
+          "UI chrome as framing device (title bars, captions, watermarks kept)",
+          "detritus silhouette as the picture's structure"
+        ],
+        "typography": [
+          "tabloid caps repainted",
+          "meme caption faces rendered in slow media"
+        ],
+        "casting_setting": [
+          "the internet's cast: Trisha Paytas, filter bunnies, WhatsApp chickens, elevated to portrait subjects"
+        ]
+      },
+      "verbal": {
+        "lexicon": [
+          "slop",
+          "slopified",
+          "tasteslop",
+          "corporate slop",
+          "brainrot",
+          "grey goo",
+          "drivel",
+          "glossy",
+          "seamless (pejorative)"
+        ],
+        "metaphors": [
+          "food and contamination: swill, ingestion, 'eat this up'",
+          "magic and possession: the demon, the bluff, the hallucination"
+        ],
+        "register": "ironic-devotional; the anti-romantic skeptic policing its own moves",
+        "sample_phrases": [
+          {
+            "quote": "Tasteslop is cultural capital after extraction, after it's been through the blender.",
+            "source": "Emily Segal, via Drew Austin",
+            "url": "https://kneelingbus.substack.com/p/lo-fi-beats-for-studying"
+          },
+          {
+            "quote": "Producing intentionally flawed content to assert one's humanity is like solving an elaborate CAPTCHA.",
+            "source": "Drew Austin",
+            "url": "https://kneelingbus.substack.com/p/lo-fi-beats-for-studying"
+          },
+          {
+            "quote": "Like any LLM output, A.I.-generated images are designed to please, not to provoke.",
+            "source": "Max Read",
+            "url": "https://maxread.substack.com/p/people-prefer-ai-art-because-people-811"
+          },
+          {
+            "quote": "Slop's dismissibility is part of its appeal",
+            "source": "Rob Horning",
+            "url": "https://robhorning.substack.com/p/evidence-as-content"
+          }
+        ]
+      },
+      "tensions": "Against slickness itself, not just machines (slop predates AI: Shein, private equity media). And against its own gameability: the 'lo-fi tryhard', intentional jank as Instagram filter, liminal-horror CGI wearing craft language. This code knows it can be counterfeited and makes that knowledge part of the work.",
+      "execution_notes": "The highest-risk, highest-reward register: it requires the brand to display taste ABOUT the slop economy it operates in, naming the cheap thing while making it expensively. Misuse is fatal here: doing this without genuine wit produces exactly the tasteslop it critiques, and this audience coined the word for it.",
+      "evidence": [
+        {
+          "signal_id": "polyesterzine_com_2026_05_19_007",
+          "source": "polyesterzine.com",
+          "url": "https://www.polyesterzine.com/features/the-female-artists-turning-internet-slop-into-fine-art",
+          "note": "the code's namesake: oil screenshots, airbrushed memes, ragebait reliquaries",
+          "image_refs": [
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/650e7c3d-72ad-4e20-aec4-f3b1d3566d65/georgia.png",
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/754db6fe-f6d0-4f2c-b8fc-32d9333da5b1/meme+art.png",
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/04daffb8-a66f-401f-8486-6819a251fccf/meme+art+2.png",
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/415bb764-fe4c-485d-b258-fc4fd6700477/meme+art+3.png"
+          ]
+        },
+        {
+          "signal_id": "thisiscolossal_2026_04_27_008",
+          "source": "thisiscolossal.com",
+          "url": "https://www.thisiscolossal.com/2026/04/rachel-mentzer-discarded-cartons-collagraphs-printmaking/",
+          "note": "physical detritus version: cartons reborn as collagraphs, dielines preserved",
+          "image_refs": [
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-9-e1777275088694.jpeg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-3.jpeg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-1.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-6.jpeg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-4.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-8.jpeg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-2.jpeg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-7.jpeg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/04/mentzer-10.jpg"
+          ]
+        },
+        {
+          "signal_id": "newlinesmag_com_2026_06_11_002",
+          "source": "newlinesmag.com",
+          "url": "https://newlinesmag.com/essays/how-a-sufi-saints-coffee-recipe-took-senegal-by-storm/",
+          "note": "devotional commodity collage: the saint's archival image on the to-go cup",
+          "image_refs": [
+            "https://newlinesmag.com/wp-content/uploads/coffee.jpg-web.jpg"
+          ]
+        },
+        {
+          "signal_id": "kneelingbus_substack_com_2026_06_11_004",
+          "source": "kneelingbus.substack.com",
+          "url": "https://kneelingbus.substack.com/p/lo-fi-beats-for-studying",
+          "note": "the gameability critique from inside: lo-fi as CAPTCHA, tasteslop"
+        },
+        {
+          "signal_id": "kylechayka_substack_com_2026_06_11_001",
+          "source": "kylechayka.substack.com",
+          "url": "https://kylechayka.substack.com/p/rip-millennial-lifestyle-brands",
+          "note": "slop extended beyond AI to corporate output; the word as central metaphor of the late 2020s"
+        },
+        {
+          "signal_id": "avclub_com_2026_05_29_001",
+          "source": "avclub.com",
+          "url": "https://www.avclub.com/liminal-horror-rise-internet-subgenre-backrooms-dream-pools-dreamcore-outwaters",
+          "note": "the mirror-image fraud, logged as counterexample: CGI renders wearing handmade language",
+          "image_refs": [
+            "https://img.pastemagazine.com/wp-content/avuploads/2026/02/24101751/MixCollage-24-Feb-2026-10-16-AM-6079.jpg"
+          ]
+        },
+        {
+          "signal_id": "readmax_substack_com_2026_05_01_002",
+          "source": "readmax.substack.com",
+          "url": "https://maxread.substack.com/p/people-prefer-ai-art-because-people-811",
+          "note": "the audience problem: people prefer the pleasing; this code is deliberately minoritarian"
+        }
+      ],
+      "confidence": "medium",
+      "first_coded": "2026-06-12",
+      "history": [
+        {
+          "run": "2026-06-12",
+          "change": "coined",
+          "note": "pilot baseline; reframed by batch 2 from internet-detritus-only to substrate-agnostic (cartons count); mirror-fraud counterexample logged"
+        }
+      ]
+    },
+    {
+      "id": "analog-sanctuary",
+      "name": "The Analog Sanctuary",
+      "status": "residual",
+      "short_def": "The oldest code, tagged residual: inhabited spaces built around analog ritual, vinyl walls, turntable altars, film cameras in working hands, long tables of people journaling by window light. Lit warm and practical, never HDR. What clients reach for by default when briefed 'human', though its smartest advocates concede the memory is partly reinvented, not remembered.",
+      "look": {"bg": "#6b3f22", "text": "#f6e7d4"},
+      "one_liner": "Warm-lit rooms where slow media is practiced together: the listening bar, the record shop, the reading cafe, the archive as altar.",
+      "definition": "The oldest and most familiar code, tagged honestly as residual: inhabited spaces organized around analog ritual, vinyl walls and turntable altars, film cameras in working hands, long tables of people journaling by window light, lived-in interiors of wood, plaster, and glass. Lit warm and practical (lamps, candles, low winter sun, film stock), never HDR. This is what clients reach for by default when briefed 'human', and it still works, but its smartest advocates concede its memory is partly synthetic: its young consumers 'aren't remembering it, they are reinventing it'.",
+      "visual": {
+        "palette": [
+          {
+            "hex": "#B97F3D",
+            "name": "honey wood"
+          },
+          {
+            "hex": "#E8B45C",
+            "name": "lamp amber"
+          },
+          {
+            "hex": "#6F6A3F",
+            "name": "olive"
+          },
+          {
+            "hex": "#7A3B2A",
+            "name": "oxblood plaster"
+          },
+          {
+            "hex": "#111111",
+            "name": "vinyl black"
+          }
+        ],
+        "materials_textures": [
+          "wood grain",
+          "worn leather",
+          "paper, kraft, grain and hiss",
+          "plaster, murano glass, patina"
+        ],
+        "composition": [
+          "interiors at human scale, occupied",
+          "shelf and archive walls as backdrop",
+          "communal tables, window light"
+        ],
+        "typography": [
+          "spine labels, obi strips, hand-lettered signage"
+        ],
+        "casting_setting": [
+          "people mid-practice: listening, reading, journaling, digging through crates; the owner who knows the stock"
+        ]
+      },
+      "verbal": {
+        "lexicon": [
+          "analog",
+          "vinyl",
+          "film",
+          "grain",
+          "warmth",
+          "ritual",
+          "slow",
+          "curation",
+          "tactile"
+        ],
+        "metaphors": [
+          "archive as altar",
+          "shrine and sanctuary",
+          "the soul of the past preserved"
+        ],
+        "register": "devotional, tactile-reverent, elegiac at the edges",
+        "sample_phrases": [
+          {
+            "quote": "preserving the raw, tactile soul of the past",
+            "source": "Tata Dovnar, AV Club",
+            "url": "https://www.avclub.com/liminal-horror-rise-internet-subgenre-backrooms-dream-pools-dreamcore-outwaters"
+          },
+          {
+            "quote": "Reality is a scarce resource.",
+            "source": "Sam Kriss",
+            "url": "https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will"
+          }
+        ]
+      },
+      "tensions": "Against the placeless, the streamed, the frictionless. Internal critique (Horning): nostalgia for the golden age of 'seeing is believing' is partly reactionary, and the sanctuary is increasingly a reinvention rather than a memory, which is why it reads residual, not emergent.",
+      "execution_notes": "Safe, legible, and aging: right for spaces, retail, and hospitality where the practice is real (an actual listening bar, an actual archive). Misuse: applying sanctuary set-dressing to a digital-first product is the most common 'certified human' cliche in client work, and the one this corpus's writers mock most readily.",
+      "evidence": [
+        {
+          "signal_id": "radii_co_2026_06_11_005",
+          "source": "radii.co",
+          "url": "https://radii.co/article/vinyl-bars-film-cameras-and-the-rise-of-asias-analog-revival",
+          "note": "listening bars, film cameras in hand, reading cafes: the code at full strength, Asia-led",
+          "image_refs": [
+            "https://radii.co/wp-content/uploads/2026/06/radii_analog_01.png",
+            "https://radii.co/wp-content/uploads/2026/06/radii_analog_03.png",
+            "https://radii.co/wp-content/uploads/2026/06/radii_analog_05.png",
+            "https://radii.co/wp-content/uploads/2026/06/radii_analog_06.jpg",
+            "https://radii.co/wp-content/uploads/2026/06/radii_analog_05.png",
+            "https://radii.co/wp-content/uploads/2026/06/radii_analog_06.jpg",
+            "https://radii.co/wp-content/uploads/2026/06/radii_analog_07.png"
+          ]
+        },
+        {
+          "signal_id": "popmatters_com_2026_05_20_002",
+          "source": "popmatters.com",
+          "url": "https://www.popmatters.com/record-stores-tokyo",
+          "note": "~250 Tokyo record stores; curation and owner-knowledge as the value; 'sustaining businesses rather than growth businesses'"
+        },
+        {
+          "signal_id": "sightunseen_com_2026_06_11_004",
+          "source": "sightunseen.com",
+          "url": "https://www.sightunseen.com/2026/05/murano-glass-plaster-flowers-mosaic-tables-all-the-hits-from-new-york-design-month-so-far/",
+          "note": "inhabited connoisseurship: warm ambient interiors, murano process described in devotional detail",
+          "image_refs": [
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/InCommonWith_MuranoOrb8Pendant_GotoBianco_Blackened_Brass_CasaTabarelli_61-728x558.jpg",
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/Danny-Kaplan-Fox-Glove189766-728x512.jpg",
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/260507_LooseGrip0692.pd_-728x558.jpg",
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/Danny-Kaplan-Fox-Glove189766-728x512.jpg",
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/Danny-Kaplan-Fox-Glove189078-728x558.jpg",
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/Anna-Fasshauer-Cosmic-Cocktail-2026-Aluminium-lacquer-155-x-75-x-50-cm-photo-angel-gil-galerie-forsblom-728x558.jpg",
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/05/260507_LooseGrip0692.pd_-728x558.jpg"
+          ]
+        },
+        {
+          "signal_id": "avclub_com_2026_05_29_001",
+          "source": "avclub.com",
+          "url": "https://www.avclub.com/liminal-horror-rise-internet-subgenre-backrooms-dream-pools-dreamcore-outwaters",
+          "note": "grain/hiss/handdrawn celebrated, with the honest caveat that its consumers are reinventing, not remembering",
+          "image_refs": [
+            "https://img.pastemagazine.com/wp-content/avuploads/2026/02/24101751/MixCollage-24-Feb-2026-10-16-AM-6079.jpg"
+          ]
+        }
+      ],
+      "confidence": "high",
+      "first_coded": "2026-06-12",
+      "history": [
+        {
+          "run": "2026-06-12",
+          "change": "coined",
+          "note": "pilot baseline; deliberately tagged residual per codebook honesty rule, this is the client-default register"
+        }
+      ]
+    }
+  ],
+  "image_ref_note": "image_refs are HOTLINK REFERENCES to images served from the publishers' own servers (collected 2026-06-12). Nothing is stored or copied; each reference renders live from the source and links back to the article. Internal gate-review use; re-assess before any public deploy."
+}

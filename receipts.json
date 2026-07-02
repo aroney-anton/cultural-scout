@@ -1,0 +1,35 @@
+{
+  "updated": "2026-06-12",
+  "intro": "Most cultural intelligence products lead with an accuracy percentage nobody can audit. This page is the opposite: the rules this instrument runs on, stated plainly, and a scorecard that grades our own past calls, including the misses. If a number on this site can't be traced to a source you can open, that is a defect, and we want to know about it.",
+  "principles": [
+    {
+      "title": "The one-strike rule",
+      "body": "No number appears on this site unless it was read verbatim from a fetched source. Not paraphrased, not inferred from a chart, not estimated from a press release. A research tool's credibility doesn't degrade gradually, it dies on the first fabricated figure a reader catches. We treat one strike as out, so we don't take the swing."
+    },
+    {
+      "title": "Verbatim or flagged",
+      "body": "Every Vital Signs indicator carries the source's own words (the quote on its citation card) and a deck-ready citation string. When the newest release of an indicator can't be read directly, for example a value locked inside an unparseable file, the tile shows an amber 'verify' badge and a low-confidence note instead of a guessed value. The instrument tells you when it isn't sure."
+    },
+    {
+      "title": "Append, never overwrite",
+      "body": "Every indicator keeps a pull history. Each refresh appends a dated entry; nothing is ever overwritten. You can see what we showed, and when, for the life of the instrument. Tiles whose value moved since the previous pull wear a 'changed' chip."
+    },
+    {
+      "title": "Humans pull the numbers",
+      "body": "The monthly automated run rewrites narrative (the state-of-play brief, the signal corpus) but never re-pulls indicator values. Numbers only change in human-supervised refresh sessions, because the one-strike rule shouldn't depend on an unsupervised agent parsing a chart correctly at 9am."
+    },
+    {
+      "title": "The harvest quality bar",
+      "body": "The signal corpus is built monthly from a curated list of niche editorial and academic sources. Analytical essays only: no announcements, no listicles, no sponsored posts, no product roundups. Every signal carries a specific, grounded summary and its full article URL; items that can't be summarized specifically are dropped. Each signal is tagged into the seven-need taxonomy with an honest forward-looking flag (held to roughly half the corpus, not the 80%+ that flatters), and a 'core' tier reserved for signals that would change a strategist's next brief."
+    },
+    {
+      "title": "Trend reports describe the past. We try not to.",
+      "body": "Independent meta-analysis of the trend-report industry (Matt Klein's META Trends, 70+ reports a year) finds most published trend language describes culture that is already dominant or fading, and that roughly 90% of reports originate from about ten global cities. Our answer is structural, not rhetorical: a wide, deliberately fringe source list (see the provenance breakdown on the Field Guide), a needs-based taxonomy that tracks the forces underneath trends, and the forward-looking discipline above."
+    }
+  ],
+  "grading_method": "At each quarterly indicator refresh we re-read a sample of past tier-core signals and grade them: MATURED (the signal's tension is now visibly mainstream or acted on by brands), BUILDING (corroborated by further independent signals since), FADED (no further corroboration; likely noise we over-read), or WRONG (development since contradicts the read). Grades are published here as they're made and never edited after the fact. The point is not a headline percentage, it is a public record you can check.",
+  "scorecard": {
+    "status": "Inaugural grading scheduled for the Q3 2026 indicator refresh, the first quarter with three full harvests behind it. Until then this scorecard is honestly empty rather than retroactively flattering.",
+    "entries": []
+  }
+}

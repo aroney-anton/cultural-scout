@@ -1,0 +1,1541 @@
+{
+ "harvest_date": "2026-06-22",
+ "model": "claude-code:WebSearch+subagents",
+ "window": "2026-06-01..2026-06-22 (museum exhibition arms: current/upcoming shows, window-exempt per museum-wave rules)",
+ "lanes": [
+  "art",
+  "consumer",
+  "design_school",
+  "embodied",
+  "entertainment",
+  "fashion",
+  "global",
+  "history",
+  "intellectual",
+  "internet",
+  "museum"
+ ],
+ "signals": [
+  {
+   "id": "elephant_2026_06_12_001",
+   "source": "elephant.art",
+   "category": "art",
+   "title": "The Collaged, the Screwed, and the Assembled: Appropriation in London’s Summer Shows",
+   "url": "https://elephant.art/the-collaged-the-screwed-and-the-assemblage-the-art-of-appropriation-in-londons-summer-shows/",
+   "date": "2026-06-12",
+   "summary": "Casper Kelly tours five London Gallery Weekend shows that treat appropriation as the engine of contemporary art, from Tom Wesselmann and Billy Apple at The Mayor Gallery to Lucien Smith’s machine-painted Wizard of Oz canvases, Sara Cwynar’s Baby Blue Benzo, and Samir Laghouati-Rashwan’s chopped-and-screwed Houston car culture. Argues that in an age of image overload, collage, sampling and the remix have become both method and meaning."
+  },
+  {
+   "id": "hyperallergic_2026_06_09_001",
+   "source": "hyperallergic.com",
+   "category": "art",
+   "title": "My Queasy, Forest-Scented Stroll Through LA’s New AI Art Museum",
+   "url": "https://hyperallergic.com/my-queasy-forest-scented-stroll-through-las-new-ai-art-museum/",
+   "date": "2026-06-09",
+   "summary": "Matt Stromberg reviews Dataland, Refik Anadol’s for-profit “museum of AI Arts” in Downtown LA, whose inaugural Machine Dreams: Rainforest synthesizes 1.2 billion data points into a scent-and-sound immersive spectacle. He finds it closer to Disneyland than a museum—data as the star rather than a tool—and flags its undisclosed finances, biometric wristbands, and hollow ecological messaging."
+  },
+  {
+   "id": "hyperallergic_2026_06_22_001",
+   "source": "hyperallergic.com",
+   "category": "art",
+   "title": "Marc Spiegler Got It All Wrong",
+   "url": "https://hyperallergic.com/marc-spiegler-got-it-all-wrong/",
+   "date": "2026-06-22",
+   "summary": "Barbara Pollack rebuts former Art Basel director Marc Spiegler’s New York Times essay lamenting the collapse of the gallery system, arguing he was a chief architect of the profit-driven, corporate art-fair model that hollowed out art’s bohemian appeal. She calls for support of artist-run spaces and renegade practices operating off the market radar."
+  },
+  {
+   "id": "thisiscolossal_2026_06_01_001",
+   "source": "thisiscolossal.com",
+   "category": "art",
+   "title": "‘Keith Haring in 3D’ Highlights the Artist’s Prolifically Art-Filled Life",
+   "url": "https://www.thisiscolossal.com/2026/06/keith-haring-in-3d-crystal-bridges-sculpture-art-history/",
+   "date": "2026-06-01",
+   "summary": "Kate Mothes surveys Keith Haring in 3D at Crystal Bridges (curated by Glenn Adamson from Larry Warsh’s collection), which foregrounds Haring’s sculptural and object-based works—painted cars, TVs, totems and masks—over his familiar line drawings. The essay situates his “art everywhere” ethos in 1980s New York while reckoning with critiques of commercialization and cultural appropriation."
+  },
+  {
+   "id": "thisiscolossal_2026_06_22_001",
+   "source": "thisiscolossal.com",
+   "category": "art",
+   "title": "Willie Cole Traverses ‘Mind, Body, and Soul’ in Expressive Mixed Media Assemblages",
+   "url": "https://www.thisiscolossal.com/2026/06/willie-cole-mind-body-soul-sculptures-assemblages/",
+   "date": "2026-06-22",
+   "summary": "Profile of Willie Cole’s solo show at Sargent’s Daughters, where he reassembles salvaged saxophones into birds, stacks stilettos into African-style fertility figures, and arranges crushed plastic bottles into relief panels. Frames how Cole strips objects from their everyday context to probe consumerism, environmentalism, and global masking and figurative traditions."
+  },
+  {
+   "id": "culturedmag_2026_06_12_001",
+   "source": "culturedmag.com",
+   "category": "art",
+   "title": "In a World of A.I. Slop, Trevor Paglen Is Confident in Digital Art’s Capacity to Be ‘Nutritious’",
+   "url": "https://www.culturedmag.com/article/2026/06/12/art-zero10-digital-art-basel-trevor-paglen/",
+   "date": "2026-06-12",
+   "summary": "Interview with Trevor Paglen, co-curator of Art Basel’s digital initiative Zero10 in Basel, who argues the analog/digital art distinction is meaningless—citing Gursky’s Photoshop prints alongside blockchain-native and AI works. He champions artists who build their own tools over Midjourney prompters, and aims for “nutritious” culture against algorithmic, attention-baiting AI slop."
+  },
+  {
+   "id": "impulsemagazine_2026_06_22_001",
+   "source": "impulsemagazine.com",
+   "category": "art",
+   "title": "Jala Wahid: “Ungovernable” at SOPHIE TAPPEINER",
+   "url": "https://www.impulsemagazine.com/articles/jala-wahid-ungovernable-at-sophie-tappeiner",
+   "date": "2026-06-22",
+   "summary": "Christina Donoghue reviews Jala Wahid’s solo exhibition “Ungovernable” at Sophie Tappeiner, examining the artist’s material and political vocabulary. (Listed as a Review on Impulse’s index dated June 22, 2026.)"
+  },
+  {
+   "id": "impulsemagazine_2026_06_21_001",
+   "source": "impulsemagazine.com",
+   "category": "art",
+   "title": "“IT NEVER SSST”: Miet Warlop’s Score for Exhaustion",
+   "url": "https://www.impulsemagazine.com/articles/it-never-ssst-miet-warlops-score-for-exhaustion",
+   "date": "2026-06-21",
+   "summary": "Matthew McPhillips reviews Miet Warlop’s performance-based work, reading its relentless physical rhythm as a score for exhaustion. (Listed as a Review on Impulse’s index dated June 21, 2026.)"
+  },
+  {
+   "id": "impulsemagazine_2026_06_17_001",
+   "source": "impulsemagazine.com",
+   "category": "art",
+   "title": "Governors Island Organizations in Residence 2026",
+   "url": "https://www.impulsemagazine.com/articles/governors-island-organizations-in-residence-2026",
+   "date": "2026-06-17",
+   "summary": "Laura Luo reviews the 2026 Governors Island Organizations in Residence program, surveying the participating arts organizations and their site-responsive projects. (Listed as a Review on Impulse’s index dated June 17, 2026.)"
+  },
+  {
+   "id": "impulsemagazine_2026_06_11_001",
+   "source": "impulsemagazine.com",
+   "category": "art",
+   "title": "20 Years of GAVLAK: In Conversation with Sarah Gavlak",
+   "url": "https://www.impulsemagazine.com/interview",
+   "date": "2026-06-11",
+   "summary": "Xuezhu Jenny Wang interviews gallerist Sarah Gavlak on the 20th anniversary of GAVLAK, reflecting on two decades of building a program and the shifting conditions for galleries. (Listed as an Interview on Impulse’s index dated June 11, 2026.)"
+  },
+  {
+   "id": "artreview_2026_06_08_001",
+   "source": "artreview.com",
+   "category": "art",
+   "title": "What Drives the Enduring Popularity of Nancy Holt?",
+   "url": "https://artreview.com/what-drives-the-enduring-popularity-of-nancy-holt-opinion-jenny-wu/",
+   "date": "2026-06-08",
+   "summary": "Jenny Wu visits Nancy Holt’s Sun Tunnels in the Utah desert and reads the work’s framing apertures as both revelatory and exclusionary—noting bullet scars left by locals and the MAGA-flagged bar nearby. She argues Holt’s art stages a tension between the pristinely framed view and the disorder of the society outside it."
+  },
+  {
+   "id": "artreview_2026_06_11_001",
+   "source": "artreview.com",
+   "category": "art",
+   "title": "‘Correctomundo: Selected Writings 2001–2026’ by Bruce Hainley, Reviewed",
+   "url": "https://artreview.com/correctomundo-selected-writings-2001-2026-by-bruce-hainley-review-martin-herbert/",
+   "date": "2026-06-11",
+   "summary": "Martin Herbert reviews a collection of Bruce Hainley’s selected writings spanning 2001–2026, treating the anthology as a peephole onto the arc and idiosyncrasies of the art critic’s career."
+  },
+  {
+   "id": "artreview_2026_06_12_001",
+   "source": "artreview.com",
+   "category": "art",
+   "title": "Saodat Ismailova: Nothing Disappears Completely",
+   "url": "https://artreview.com/saodat-ismailova-nothing-disappears-completely/",
+   "date": "2026-06-12",
+   "summary": "Fi Churchman’s feature on Uzbek filmmaker Saodat Ismailova, whose work explores how present realities are shaped by shifting relationships between humans, nonhumans, and the landscapes they haunt."
+  },
+  {
+   "id": "artreview_2026_06_15_001",
+   "source": "artreview.com",
+   "category": "art",
+   "title": "Recession Indicator Art",
+   "url": "https://artreview.com/genuine-fake-premium-economy-ica-london-review-lydia-eliza-trail/",
+   "date": "2026-06-15",
+   "summary": "Lydia Eliza Trail reviews ‘Genuine Fake Premium Economy’ at London’s ICA, where Jenna Bliss, Buck Ellison and Jasmine Gregory mine the post-2008 millennial-artist condition through faux Patek Philippe ads, a Lehman Brothers babygrow, and Bliss’s art-fair videowork. Finds the show’s self-implicating irony its strongest asset, even as it traffics in the superficiality it critiques."
+  },
+  {
+   "id": "artreview_2026_06_17_001",
+   "source": "artreview.com",
+   "category": "art",
+   "title": "‘Depraved: The Story of Dangerous Art’ by Daisy Dixon, Reviewed",
+   "url": "https://artreview.com/depraved-the-story-of-dangerous-art-by-daisy-dixon-reviewed/",
+   "date": "2026-06-17",
+   "summary": "J.J. Charlesworth reviews Daisy Dixon’s ‘Depraved: The Story of Dangerous Art’, arguing it rehashes a ‘woke’ position on which kinds of artworks should be deemed bad."
+  },
+  {
+   "id": "artreview_2026_06_18_001",
+   "source": "artreview.com",
+   "category": "art",
+   "title": "Ana María Devis: What the Body Leaves Behind",
+   "url": "https://artreview.com/ana-maria-devis-what-the-body-leaves-behind-feature-chiara-wilkinson/",
+   "date": "2026-06-18",
+   "summary": "Chiara Wilkinson’s feature on Ana María Devis, whose beds of rotting matter and jars of decay question how—and what—we choose to value."
+  },
+  {
+   "id": "artreview_2026_06_19_001",
+   "source": "artreview.com",
+   "category": "art",
+   "title": "Glasgow International 2026 Review: Want and Need",
+   "url": "https://artreview.com/glasgow-international-2026-review-alexander-leissle/",
+   "date": "2026-06-19",
+   "summary": "Alexander Leissle reviews the 2026 edition of Glasgow International, finding that at its best the festival encapsulates a humanistic focus—art in service to the surrounding community."
+  },
+  {
+   "id": "artreview_2026_06_22_001",
+   "source": "artreview.com",
+   "category": "art",
+   "title": "Why the Beijing Artscene Is Still Compelling",
+   "url": "https://artreview.com/why-the-beijing-artscene-is-still-compelling-opinion-yiyi-you/",
+   "date": "2026-06-22",
+   "summary": "Writing for ArtReview Asia, Yiyi You concedes there are plenty of reasons to knock Beijing, but argues this year’s Gallery Weekend offers plenty of reasons to stay invested in the city’s art scene."
+  },
+  {
+   "id": "blackbirdspyplane_2026_06_02_001",
+   "source": "blackbirdspyplane.com",
+   "category": "consumer",
+   "title": "Why are we addicted to standing in line for treats?",
+   "url": "https://www.blackbirdspyplane.com/p/why-we-stand-in-lines-for-treats",
+   "date": "2026-06-02",
+   "summary": "Jonah Weiner coins the 'QTBAT' (Queue to Buy a Treat) to diagnose how mundane retail lines for bagels, matcha, pastries and Supreme drops have become a pervasive feature of urban life. He argues the QTBAT frames an ordinary purchase as an Event, and reads it as egalitarian status-seeking, a hunger for meaning and IRL community in a virtualized economy, and 'business-friendly hanging' that funnels the impulse to gather into vectors of commerce."
+  },
+  {
+   "id": "blackbirdspyplane_2026_06_09_002",
+   "source": "blackbirdspyplane.com",
+   "category": "consumer",
+   "title": "Analyze this (against color analysis and other code-unlocker hogwash)",
+   "url": "https://www.blackbirdspyplane.com/p/analyze-this-against-color-analysis-and-other-code-unlocker-hogwash",
+   "date": "2026-06-09",
+   "summary": "A skeptical takedown of the booming TikTok/Instagram 'color analysis' industry, which sorts people into seasonal palettes and is increasingly pitched to men as a way to define their jawline, tying it to looksmaxxing. Weiner frames it as the latest 'code-unlocker' grift preying on isolation and insecurity at scale, and advocates a ground-up, lived-experience approach to taste over top-down pseudoscientific taxonomies sold by influencers."
+  },
+  {
+   "id": "garbageday_2026_06_08_001",
+   "source": "garbageday.email",
+   "category": "consumer",
+   "title": "The Clear Channel internet",
+   "url": "https://www.garbageday.email/p/the-clear-channel-internet",
+   "date": "2026-06-08",
+   "summary": "Broderick dissects how prediction market Kalshi astroturfed the viral Knicks-fan content cycle during the NBA Finals, planting fans, a Kalshi-jerseyed robot (Bing Bot), and paid clipper accounts to manufacture and boost 'organic' moments. He argues this isn't Dead Internet theory but a 'Clear Channel internet' in which truly viral content is now corporatized payola, while feeds still market themselves as powered by real people."
+  },
+  {
+   "id": "garbageday_2026_06_10_002",
+   "source": "garbageday.email",
+   "category": "consumer",
+   "title": "The rise of Chudtech",
+   "url": "https://www.garbageday.email/p/the-rise-of-chudtech",
+   "date": "2026-06-10",
+   "summary": "Broderick names 'Chudtech' as an emerging strain of right-coded consumer technology and platform culture. (Body is paywalled/JS-rendered; framing grounded via headline and Garbage Day's running thesis that AI 'slop' and reactionary online aesthetics are converging into a distinct tech-product category.)"
+  },
+  {
+   "id": "whyisthisinteresting_2026_06_04_001",
+   "source": "whyisthisinteresting.substack.com",
+   "category": "consumer",
+   "title": "The Real McCoy's Edition",
+   "url": "https://whyisthisinteresting.substack.com/p/the-real-mccoys-edition",
+   "date": "2026-06-04",
+   "summary": "Colin Nagy profiles Japanese repro label The Real McCoy's, whose founder Hitoshi Tsujimoto reverse-engineers mid-century American workwear and military garments thread by thread on retired loopwheel machines. The thesis: by aiming not to copy but to deliver each garment's 'ideal final form,' Japanese obsession and near-total tradition preserved American manufacturing techniques the US itself abandoned, making 'Japan does Americana better' a genuine cultural-anthropology argument rather than cosplay."
+  },
+  {
+   "id": "afterschool_2026_06_12_001",
+   "source": "afterschool.substack.com",
+   "category": "consumer",
+   "title": "Lobster Nation and Bedroom Generation",
+   "url": "https://afterschool.substack.com/p/lobster-nation-and-bedroom-generation",
+   "date": "2026-06-12",
+   "summary": "Casey Lewis threads several youth-economy signals: nearly 16% of Gen Z now hold multiple jobs (5x the Boomer rate) amid a #Broketok wave of financial despair; the UK's 'bedroom generation' of 1M+ NEETs; clothing-rental service Nuuly hitting 477k subscribers on a 'need for constant newness' that has paradoxically homogenized what young women wear; and Red Lobster's 37-year-old CEO running a celebrity press tour to make the bankrupt chain cool again."
+  },
+  {
+   "id": "readfeedme_2026_06_16_001",
+   "source": "readfeedme.com",
+   "category": "consumer",
+   "title": "Kyla Scanlon has a new gig at CNN.",
+   "url": "https://www.readfeedme.com/p/kyla-scanlon-has-a-new-gig-at-cnn",
+   "date": "2026-06-16",
+   "summary": "Sundberg uses creator-economist Kyla Scanlon's new CNN contributor role to track legacy media's continued recognition that audiences now follow individual creators, not institutions. The issue also reports restaurateur John McDonald reactivating a dormant ~1M-subscriber Tasting Table email list to relaunch a publication with Refinery29's Christene Barberich, illustrating how parked owned-audience assets are becoming media businesses."
+  },
+  {
+   "id": "readfeedme_2026_06_22_002",
+   "source": "readfeedme.com",
+   "category": "consumer",
+   "title": "The business of facelift aftercare is booming (Stand Clear: America250 activations)",
+   "url": "https://www.readfeedme.com/p/the-business-of-facelift-aftercare",
+   "date": "2026-06-22",
+   "summary": "Feed Me's anonymous transit columnist reads the wave of America250 (Semiquincentennial) brand activations - Union Pacific's 'Big Boy' steam-locomotive tour, Norfolk Southern's six commemorative liveries, patriotic airline/transit wraps - against the fact that the US is now spending more constructing data centers than transit infrastructure, asking what it will take to physically 'build America again.' The issue also flags a booming luxury post-facelift-aftercare hospitality niche (Four Seasons, Peninsula offering 24/7 nursing)."
+  },
+  {
+   "id": "coolhunting_2026_06_17_001",
+   "source": "coolhunting.com",
+   "category": "consumer",
+   "title": "Rivian R2: A Masterclass in Subtraction",
+   "url": "https://coolhunting.com/design/rivian-r2-a-masterclass-in-subtraction/",
+   "date": "2026-06-17",
+   "summary": "An analytical design piece arguing Rivian turned aggressive cost reduction into a craft discipline with the R2 SUV, using ingenuity and humor so that engineering-driven subtraction reads as premium rather than cheap - a case study in design-led value engineering for mass-market EVs."
+  },
+  {
+   "id": "coolhunting_2026_06_16_002",
+   "source": "coolhunting.com",
+   "category": "consumer",
+   "title": "Dometic Makes Coolers - and Everything Else - By Obsessing About Minute Details",
+   "url": "https://coolhunting.com/design/dometic-makes-coolers-and-everything-else-by-obsessing-about-minute-details/",
+   "date": "2026-06-16",
+   "summary": "A look at how Dometic's product philosophy - obsessive attention to minute details across modular car-camping gear, portable batteries and electric coolers - builds a coherent brand around energy efficiency and ease of use, positioning detail-obsession itself as the differentiator in outdoor/mobility consumer hardware."
+  },
+  {
+   "id": "csm_2026_06_12_001",
+   "source": "csm (arts.ac.uk)",
+   "category": "design_school",
+   "title": "CSM Shows 2026: graduating work across art, design and performance",
+   "url": "https://www.arts.ac.uk/whats-on/csm-shows-2026",
+   "date": "2026-06-12",
+   "summary": "Central Saint Martins' Undergraduate and Graduate Diploma Show (12-17 June 2026) presents final projects framed around a 'more-than-human future', spanning art, design and performance. Across six MA courses, postgraduate students showed work ranging from AI-driven domestic objects and wearable devices to a living lamp powered by bioluminescent algae."
+  },
+  {
+   "id": "csm_2026_06_12_002",
+   "source": "csm (arts.ac.uk)",
+   "category": "design_school",
+   "title": "CSM Shows 2026 visual identity by BA Graphic Communication Design students",
+   "url": "https://www.arts.ac.uk/colleges/central-saint-martins/whats-on/csm-shows",
+   "date": "2026-06-12",
+   "summary": "The CSM Shows 2026 visual identity was created by BA Graphic Communication Design students Margot Ebzant, Carly Roby, Ellie Sharland and Misha Sofil, a student-led branding system carrying the whole degree-show season."
+  },
+  {
+   "id": "dezeen_2026_06_03_001",
+   "source": "dezeen.com/tag/dezeen-schools",
+   "category": "design_school",
+   "title": "Urban forest around Manchester United stadium among Manchester School of Architecture projects",
+   "url": "https://www.dezeen.com/2026/06/03/urban-forest-manchester-united-stadium-manchester-school-of-architecture-schoolshows/",
+   "date": "2026-06-03",
+   "summary": "Manchester School of Architecture degree-show projects include a proposal surrounding the Manchester United stadium with an urban forest, the adaptive reuse of a university IT building into a student centre, and the redevelopment of a shopping centre."
+  },
+  {
+   "id": "dezeen_2026_06_10_002",
+   "source": "dezeen.com/tag/dezeen-schools",
+   "category": "design_school",
+   "title": "Furniture informed by stained glass among Savannah College of Art and Design projects",
+   "url": "https://www.dezeen.com/2026/06/10/furniture-stained-glass-savannah-college-of-art-and-design-schoolshows/",
+   "date": "2026-06-10",
+   "summary": "SCAD student work features furniture informed by Art Nouveau stained glass, a support centre for people affected by dementia, and a Los Angeles-based animal shelter."
+  },
+  {
+   "id": "dezeen_2026_06_11_003",
+   "source": "dezeen.com/tag/dezeen-schools",
+   "category": "design_school",
+   "title": "Floating accommodation for London key workers among University of Westminster projects",
+   "url": "https://www.dezeen.com/2026/06/11/floating-accommodation-london-key-workers-university-of-westminster-schoolshows/",
+   "date": "2026-06-11",
+   "summary": "University of Westminster students proposed floating living quarters to house London's key workers, a project fostering togetherness between fibre artists and the queer community, and a speculative project on the National Gallery's future under climate change."
+  },
+  {
+   "id": "dezeen_2026_06_12_004",
+   "source": "dezeen.com/tag/dezeen-schools",
+   "category": "design_school",
+   "title": "Ceramics on the 'secret history of plants' among work at New Designers 2026",
+   "url": "https://www.dezeen.com/2026/06/12/vietnamese-culture-illustration-new-designers-2026-schoolshows/",
+   "date": "2026-06-12",
+   "summary": "New Designers 2026 highlights include a ceramic project exploring plant history and female botanists' contributions, a hand-embroidered reinterpretation of a Greek myth, and a digital illustration portraying Vietnamese cultural characters."
+  },
+  {
+   "id": "dezeen_2026_06_15_005",
+   "source": "dezeen.com/tag/dezeen-schools",
+   "category": "design_school",
+   "title": "Foraged 'living fibre' fashion collection among works at New Designers 2026",
+   "url": "https://www.dezeen.com/2026/06/15/foraged-woven-fashion-collection-new-designers-2026-schoolshows/",
+   "date": "2026-06-15",
+   "summary": "A foraged, woven 'living fibre' fashion collection is among graduate works featured at New Designers 2026, signalling material-led, bio-based and locally sourced approaches to garment construction emerging from UK design programmes."
+  },
+  {
+   "id": "dezeen_2026_06_16_006",
+   "source": "dezeen.com/tag/dezeen-schools",
+   "category": "design_school",
+   "title": "Speculative table design among conceptual projects from Paris School of Architecture",
+   "url": "https://www.dezeen.com/2026/06/16/speculative-table-design-paris-school-of-architecture-schoolshows/",
+   "date": "2026-06-16",
+   "summary": "Paris School of Architecture (Ecole Speciale d'Architecture) projects include a speculative table explored through experimental materials, plus work examining social, cultural and ecological themes in Paris and how architecture responds to the digital age."
+  },
+  {
+   "id": "dezeen_2026_06_17_007",
+   "source": "dezeen.com/tag/dezeen-schools",
+   "category": "design_school",
+   "title": "Zoned neighbourhood shaping emotion among American University in Dubai projects",
+   "url": "https://www.dezeen.com/2026/06/17/neighbourhood-sensory-zones-american-university-dubai-schoolshows/",
+   "date": "2026-06-17",
+   "summary": "American University in Dubai student work features a masterplan exploring how the built environment shapes human emotion, a proposal reimagining Dubai's industrial core as a creative hub, and a climate-responsive rethinking of the waterfront as public landscape."
+  },
+  {
+   "id": "dezeen_2026_06_20_008",
+   "source": "dezeen.com/tag/dezeen-schools",
+   "category": "design_school",
+   "title": "Student hub for academic collaboration among United Arab Emirates University projects",
+   "url": "https://www.dezeen.com/2026/06/20/academic-hub-united-arab-emirates-university-schoolshows/",
+   "date": "2026-06-20",
+   "summary": "United Arab Emirates University students designed a sustainable community centre for academic exchange, research and innovation, a climate-responsive workspace tackling extreme weather, and a visitor centre celebrating culture, architecture and landscape."
+  },
+  {
+   "id": "itsnicethat_2026_06_04_001",
+   "source": "itsnicethat.com",
+   "category": "design_school",
+   "title": "New Designers 2026: UK graduate showcase condenses to a four-day event",
+   "url": "https://www.itsnicethat.com/articles/new-designers-2026-creative-industry-sponsored-content-040626",
+   "date": "2026-06-04",
+   "summary": "New Designers 2026 (1-4 July) condenses the long-running UK graduate showcase into four days, spanning graphic design, illustration, animation and motion, plus contemporary craft, jewellery, metalwork and costume design, with the ND Educates programme of seminars and talks bridging new talent and industry."
+  },
+  {
+   "id": "itsnicethat_2026_05_20_002",
+   "source": "itsnicethat.com",
+   "category": "design_school",
+   "title": "The Click's university branding for Imperial College London graduate identity",
+   "url": "https://www.itsnicethat.com/articles/the-click-imperial-college-london-graphic-design-project-200526",
+   "date": "2026-05 (approx)",
+   "summary": "Studio The Click's identity work for Imperial College London plays on the 'I' across identity, individual and Imperial, a graduate/institutional branding case study indicative of current student-show and university visual-identity directions covered by It's Nice That."
+  },
+  {
+   "id": "core77_2026_06_17_001",
+   "source": "core77.com",
+   "category": "design_school",
+   "title": "2026 Core77 Design Awards: GyFoam wins Student Emerging Technologies",
+   "url": "https://www.core77.com/posts/144497/The-2026-Core77-Design-Awards-Emerging-Technologies-Winners",
+   "date": "2026-06-17",
+   "summary": "GyFoam, by a Zhejiang University team (Haotian Chen, Yue Tao, Yufeng Wang and others), won the 2026 Core77 Design Awards Student prize in Emerging Technologies: a fabrication framework integrating foam with lattice structures so designers can 3D-print customizable soft objects with tunable stiffness."
+  },
+  {
+   "id": "core77_2026_06_17_002",
+   "source": "core77.com",
+   "category": "design_school",
+   "title": "2026 Core77 Design Awards: MX Surgical wins Student Commercial & Industrial Equipment",
+   "url": "https://www.core77.com/posts/144454/The-2026-Core77-Design-Awards-Commercial-n-Industrial-Equipment-Winners",
+   "date": "2026-06-17",
+   "summary": "MX Surgical by Niklas Andreasen (Umea Institute of Design) won the 2026 Core77 Student award in Commercial & Industrial Equipment: a mobile, scalable XR surgical-training system combining multimodal tool replicas, modular pads and mixed-reality overlays to build operating-room muscle memory."
+  },
+  {
+   "id": "core77_2026_06_17_003",
+   "source": "core77.com",
+   "category": "design_school",
+   "title": "2026 Core77 Design Awards: Welcome to Thistopia wins Student Speculative Design",
+   "url": "https://www.core77.com/posts/144452/The-2026-Core77-Design-Awards-Speculative-Design-Winners",
+   "date": "2026-06-17",
+   "summary": "Welcome to Thistopia by So Young Song (Purdue University) won the 2026 Core77 Student Speculative Design award: a speculative 2077 department store selling climate-adaptation kits, turning a gallery into a retail experience that makes climate urgency visceral through a familiar consumer lens."
+  },
+  {
+   "id": "cakezine_2026_06_05_001",
+   "source": "cakezine.org",
+   "category": "embodied",
+   "title": "Six Orders of Foie Gras, for Research",
+   "url": "https://cakezine.substack.com/p/six-orders-of-foie-gras-for-research",
+   "date": "2026-06-05",
+   "summary": "An anonymous former plant-based meat scientist confesses how her alt-protein startup's $15M R&D budget funded a covert appetite for 'Real Meat' (dry-aged chateaubriand, whole goose, foie gras three ways), using 'reference samples' as cover. The essay reads the collapse of the fake-meat industry as a story about cultural capital, masculinity, and the failure of techno-optimist food futures against the resurgence of tallow and organ-meat influencers."
+  },
+  {
+   "id": "cakezine_2026_05_05_002",
+   "source": "cakezine.org",
+   "category": "embodied",
+   "title": "Was It Worth It?",
+   "url": "https://cakezine.substack.com/p/was-it-worth-it",
+   "date": "2026-05-05",
+   "summary": "Adam Dalva's essay (excerpted from Steak Zine) links Ozempic, grief, and the 'beat the buffet' logic of all-you-can-eat dining, tracing how GLP-1 drugs quiet his lifelong food shame and 'food noise' while reframing the moral theater of getting one's money's worth. Note: published May 5, just outside the June window, but retained as the lane's sharpest in-period treatment of appetite, GLP-1s, and bodily life."
+  },
+  {
+   "id": "vittles_2026_06_08_001",
+   "source": "vittlesmagazine.com",
+   "category": "embodied",
+   "title": "Serving Biscuits in God's Kitchen",
+   "url": "https://www.vittlesmagazine.com/p/serving-biscuits-in-gods-kitchen",
+   "date": "2026-06-08",
+   "summary": "An anonymous essay on running the tea-and-biscuit table at London AA meetings, where post-sobriety sugar cravings, the etiquette of biscuit selection, and the ritual of service become a study in care, control, and emotional sobriety. The writer reads the borrowed church kitchen against a freelancer's precarity and food insecurity as the one stable domestic space across years of unstable housing."
+  },
+  {
+   "id": "aliciakennedy_2026_06_01_001",
+   "source": "aliciakennedy.news",
+   "category": "embodied",
+   "title": "On Leather",
+   "url": "https://www.aliciakennedy.news/p/on-leather",
+   "date": "2026-06-01",
+   "summary": "Kennedy treats leather as a 'vice' to think through the ethics of material life, interviewing a vegetarian bespoke shoemaker who frames her animal-leather use as harm reduction against the plastic of vegan alternatives. The piece argues durability and the patina of long use complicate vegan/omnivore binaries, asking how we relate to consumption we cannot immediately abolish."
+  },
+  {
+   "id": "aliciakennedy_2026_06_08_002",
+   "source": "aliciakennedy.news",
+   "category": "embodied",
+   "title": "On Values",
+   "url": "https://www.aliciakennedy.news/p/on-values",
+   "date": "2026-06-08",
+   "summary": "Prompted by reader emails policing her newsletter's 'values,' Kennedy critiques a digital culture that prioritizes feelings and agreement over thought and analysis, where reactions ('I don't relate!') substitute for criticism. She uses Annie Lowrey's Atlantic 'permacession' piece to interrogate how voters' and readers' anxieties get flattened into identity-affirming consumption."
+  },
+  {
+   "id": "aliciakennedy_2026_06_15_003",
+   "source": "aliciakennedy.news",
+   "category": "embodied",
+   "title": "On Being a Regular",
+   "url": "https://www.aliciakennedy.news/p/on-being-a-regular",
+   "date": "2026-06-15",
+   "summary": "Kennedy examines the social labor of being a 'regular' in Old San Juan's cafes and bars, the retained 'worker sheen' of ex-hospitality workers, and how daily embodied presence in a neighborhood fuels her rage at gentrification (a planned felling of 50 trees, a new Hard Rock Hotel). Domestic and local rituals become the ground of political feeling."
+  },
+  {
+   "id": "aliciakennedy_2026_06_21_004",
+   "source": "aliciakennedy.news",
+   "category": "embodied",
+   "title": "The Desk Salon with Eli Davies",
+   "url": "https://www.aliciakennedy.news/p/the-desk-salon-with-eli-davies",
+   "date": "2026-06-21",
+   "summary": "A conversation with Eli Davies, author of 'The Spinster Cookbook: culture, politics and pleasure in the single woman's kitchen,' on the culture and politics of domestic life and the single woman's relationship to the kitchen, food, and pleasure. Davies's work connects food writing to memory and domestic space, including her research on women and domestic life during the Troubles."
+  },
+  {
+   "id": "snaxshot_2026_06_05_001",
+   "source": "snaxshot.com",
+   "category": "embodied",
+   "title": "State of Beverage",
+   "url": "https://www.snaxshot.com/p/state-of-beverage-7e2",
+   "date": "2026-06-05",
+   "summary": "Andrea Hernandez revisits her 2023 'state of beverage' thesis and argues much of it still holds, surveying the food-and-beverage futures landscape and CPG drink culture. (Largely paywalled; framing confirms an analytical industry read rather than a product roundup, in the lane's only true food-futures signal source.)"
+  },
+  {
+   "id": "rethinkingwellness_2026_06_22_001",
+   "source": "rethinkingwellness.substack.com",
+   "category": "embodied",
+   "title": "How to Avoid Conspiracy Theory Hype – Navigating the Post-Truth Era with Ellie Anderson, PhD",
+   "url": "https://rethinkingwellness.substack.com/p/conspiracy-theories-fake-news-and",
+   "date": "2026-06-22",
+   "summary": "Christy Harrison and philosopher Ellie Anderson dissect how wellness culture's hunt for a 'root cause' and a 'true self' primes people for conspiracy thinking, reading self-optimization, supplements, divine-feminine discourse, and self-typing (astrology, Myers-Briggs) as alienating attempts to overcome alienation. Anderson uses phenomenology to argue there is no pure core self to recover, only a self shaped through relation."
+  },
+  {
+   "id": "sightunseen_2026_06_05_001",
+   "source": "sightunseen.com",
+   "category": "embodied",
+   "title": "Ceramic \"burlwood,\" vintage nightclub chairs, bronze reliefs, and more from Lisbon Design Week",
+   "url": "https://www.sightunseen.com/2026/06/ceramic-burlwood-vintage-nightclub-chairs-bronze-reliefs-and-more-from-lisbon-design-week/",
+   "date": "2026-06-05",
+   "summary": "Monica Khemsurov uses a Lisbon Design Week roundup to argue smaller, venue-distributed design fairs (Lisbon, Copenhagen, Melbourne) now outpace the bloated Milan/New York circuit, foregrounding local Portuguese craft and diaspora makers (ceramic 'burlwood,' Burkina Faso bronze casting, Angolan-rooted basketry-in-ceramic) over imported star-designer spectacle. A reflection on the craft-culture economics of the global fair calendar."
+  },
+  {
+   "id": "pinuphome_2026_06_001",
+   "source": "pinuphome.com",
+   "category": "embodied",
+   "title": "Storefront for All: José Esparza Chong Cuy on Carrying the Nonprofit's Founding Spirit Forward",
+   "url": "https://www.pinupmagazine.org/articles/jose-esparza-chong-cuy-storefront-for-art-and-architecture-interview",
+   "date": "2026-06 (approx)",
+   "summary": "Whitney Mallett interviews Storefront for Art and Architecture director José Esparza Chong Cuy on the institution's 'for citizens not audiences or patrons' ethos, its history of programming that tracks the city's transformations, and a shift to long-term research cycles (On the Ground, Swamplands, the 2025–26 Homelands) that build cross-disciplinary cohorts around place, memory, and the social forces shaping the built environment. Date approx to PIN-UP Issue 40, S/S 2026."
+  },
+  {
+   "id": "variety_2026_06_15_001",
+   "source": "variety.com",
+   "category": "entertainment",
+   "title": "No Drama Required: The Emmys Movie Category Proves Comfort and Fun Can Win Statues",
+   "url": "https://variety.com/2026/film/columns/emmys-tv-movie-category-crowd-pleasers-1236780016/",
+   "date": "2026-06 (approx)",
+   "summary": "A column arguing the Emmys' outstanding-TV-movie category runs counter to Oscar logic: where the Academy rewards prestige drama, the TV-movie slot is where comedies and crowd-pleasing genres thrive, revealing a structural difference in how the two awards bodies define value."
+  },
+  {
+   "id": "variety_2026_06_06_002",
+   "source": "variety.com",
+   "category": "entertainment",
+   "title": "'Dreams of Violets' Review: What Does a Film Made Entirely with AI Look Like? Ash Koosha's Iranian Protest Drama Is a Startling Portent of the Future",
+   "url": "https://variety.com/2026/film/reviews/dreams-of-violets-review-ash-koosha-tribeca-festival-1236784209/",
+   "date": "2026-06 (approx)",
+   "summary": "A Tribeca review of the first feature made entirely with AI, Ash Koosha's Iranian protest drama, which the critic finds dramatically numbing yet a significant portent of where filmmaking is heading. The piece doubles as criticism of AI-generated cinema's aesthetic and emotional limits."
+  },
+  {
+   "id": "avclub_2026_06_20_001",
+   "source": "avclub.com",
+   "category": "entertainment",
+   "title": "The Hunchback Of Notre Dame remains the most challenging animated movie Disney ever made",
+   "url": "https://www.avclub.com/the-hunchback-of-notre-dame-anniversary-when-disney-took-risks",
+   "date": "2026-06-20",
+   "summary": "An anniversary essay by Kayleigh Donaldson arguing The Hunchback of Notre Dame stands as Disney's riskiest animated feature, reckoning with lust, religious hypocrisy and persecution in a way the studio has rarely attempted before or since."
+  },
+  {
+   "id": "avclub_2026_06_19_002",
+   "source": "avclub.com",
+   "category": "entertainment",
+   "title": "John Early dumped irony and embraced the tropes",
+   "url": "https://www.avclub.com/john-early-interview-dumped-irony-embraced-tropes-maddies-secret",
+   "date": "2026-06-19",
+   "summary": "An interview with John Early about his melodrama-comedy Maddie's Secret, in which he discusses setting aside his signature ironic detachment to commit sincerely to genre tropes, a shift in his comedic register."
+  },
+  {
+   "id": "avclub_2026_06_17_003",
+   "source": "avclub.com",
+   "category": "entertainment",
+   "title": "For Steven Spielberg, adventure is just a temporary affair",
+   "url": "https://www.avclub.com/steven-spielberg-adventure-temporary-affair-blockbuster-relationships",
+   "date": "2026-06-17",
+   "summary": "Monica Castillo's critical essay traces a recurring pattern across Spielberg's blockbusters: adventure functions as a fleeting interruption to domestic life rather than an escape from it, reframing his filmography through the lens of transient relationships."
+  },
+  {
+   "id": "avclub_2026_06_17_004",
+   "source": "avclub.com",
+   "category": "entertainment",
+   "title": "Funk and soul dominated Blaxploitation, but jazz gave its militant movies their edge",
+   "url": "https://www.avclub.com/sounds-of-blaxploitation-the-final-comedown-grant-green-the-spook-who-sat-by-the-door-herbie-hancock",
+   "date": "2026-06-17",
+   "summary": "Craig D. Lindsey's essay argues that while funk and soul defined the popular Blaxploitation sound, it was jazz scoring (Grant Green, Herbie Hancock) that gave the genre's more militant films their political and emotional edge."
+  },
+  {
+   "id": "avclub_2026_06_18_005",
+   "source": "avclub.com",
+   "category": "entertainment",
+   "title": "Did Steven Spielberg wish for a different A.I. ending?",
+   "url": "https://www.avclub.com/film-trivia-fact-check-ai-artificial-intelligence-ending-steven-spielberg-stanley-kubrick",
+   "date": "2026-06-18",
+   "summary": "Matt Schimkowitz fact-checks the persistent myth that A.I. Artificial Intelligence's controversial coda was Spielberg sentimentalizing Kubrick's darker vision, untangling authorship and intent behind one of the most-debated endings in modern Hollywood."
+  },
+  {
+   "id": "indiewire_2026_06_18_001",
+   "source": "indiewire.com",
+   "category": "entertainment",
+   "title": "Craig Gillespie: 'Supergirl' More 'Mad Max' Than You're Expecting",
+   "url": "https://www.indiewire.com/features/interviews/craig-gillespie-making-supergirl-mad-max-1235200961/",
+   "date": "2026-06 (approx)",
+   "summary": "A craft interview with director Craig Gillespie on bringing a Mad Max-inflected sensibility to James Gunn's DC reboot, discussing how he pushed the superhero template toward grittier action filmmaking."
+  },
+  {
+   "id": "indiewire_2026_06_18_002",
+   "source": "indiewire.com",
+   "category": "entertainment",
+   "title": "Leah McKendrick on 'Voicemails for Isabelle' and Her Leap to Netflix",
+   "url": "https://www.indiewire.com/features/interviews/voicemails-for-isabelle-netflix-leah-mckendrick-interview-1235200971/",
+   "date": "2026-06 (approx)",
+   "summary": "An interview with writer-director Leah McKendrick about making the dramedy Voicemails for Isabelle and navigating the move from indie filmmaking to a major streamer, touching on creative control within the Netflix system."
+  },
+  {
+   "id": "indiewire_2026_06_18_003",
+   "source": "indiewire.com",
+   "category": "entertainment",
+   "title": "'Color Book' Director David Fortune Is Proof Hollywood's Incubator Programs Can Work, Even If It Takes a While",
+   "url": "https://www.indiewire.com/features/interviews/color-book-director-david-fortune-interview-netflix-1235200975/",
+   "date": "2026-06 (approx)",
+   "summary": "A profile-interview with David Fortune framing his career as evidence that Hollywood's diversity incubator programs can produce results, while interrogating the slow, uneven pipeline from training initiative to feature directing."
+  },
+  {
+   "id": "indiewire_2026_06_18_004",
+   "source": "indiewire.com",
+   "category": "entertainment",
+   "title": "'Euphoria' Production Designer Interview: Craft Roundtables",
+   "url": "https://www.indiewire.com/features/craft/euphoria-production-designer-interview-craft-roundtables-1235200828/",
+   "date": "2026-06 (approx)",
+   "summary": "A craft roundtable with Euphoria's Season 3 production designer on how changing the show's aspect ratio let him deepen the relationship between environment and character, a detailed look at design as storytelling."
+  },
+  {
+   "id": "popmatters_2026_06_05_001",
+   "source": "popmatters.com",
+   "category": "entertainment",
+   "title": "The 'World Cup 2026 Album' Puts Afrobeats at the Center",
+   "url": "https://www.popmatters.com/world-cup-2026-album",
+   "date": "2026-06-05",
+   "summary": "An essay on FIFA abandoning the single World Cup anthem in favor of an 18-track double album that bets aggressively on Afrobeats, reading the move as a statement about the genre's global ascendancy and the politics of who gets centered."
+  },
+  {
+   "id": "popmatters_2026_06_18_002",
+   "source": "popmatters.com",
+   "category": "entertainment",
+   "title": "Olé! Allez! Go! World Cup Songs That Make the Earth Move",
+   "url": "https://www.popmatters.com/world-cup-songs-ole-allez-go",
+   "date": "2026-06-18",
+   "summary": "Iain Ellis surveys the history of World Cup songs, arguing most now sound like 'AI slop' but isolating the rare gems, using the form to examine how corporate, national and fan-made anthems collide in the streaming and AI era."
+  },
+  {
+   "id": "slate_2026_06_10_001",
+   "source": "slate.com",
+   "category": "entertainment",
+   "title": "Disclosure Day: Steven Spielberg's aliens movies have always been about something deeper",
+   "url": "https://slate.com/culture/2026/06/disclosure-day-steven-spielberg-aliens-movie-et.html",
+   "date": "2026-06 (approx)",
+   "summary": "A critical essay positioning Disclosure Day as the culmination of Spielberg's lifelong UFO obsession, arguing his alien films were always vehicles for human longing and that this entry shifts the conflict from physical invasion to psychic and moral struggle."
+  },
+  {
+   "id": "slate_2026_06_10_002",
+   "source": "slate.com",
+   "category": "entertainment",
+   "title": "Disclosure Day Is Like a Towering Sculpture Spielberg Has Been Molding for Decades out of Mashed Potatoes",
+   "url": "https://slate.com/culture/2026/06/disclosure-day-steven-spielberg-movie-reviews-emily-blunt.html",
+   "date": "2026-06 (approx)",
+   "summary": "A review reading Disclosure Day as a career-capping self-portrait, baggy at 2 hours 25 minutes but emotionally resonant, with the Close Encounters callback (mashed potatoes) framing it as Spielberg looking back over his own life."
+  },
+  {
+   "id": "stereogum_2026_06_12_001",
+   "source": "stereogum.com",
+   "category": "entertainment",
+   "title": "Premature Evaluation: Robyn 'Sexistential'",
+   "url": "https://stereogum.com/2492356/premature-evaluation-robyn-sexistential/reviews/premature-evaluation",
+   "date": "2026-06-12",
+   "summary": "A long-form review of Robyn's return album Sexistential, framing it as a dizzy, euphoric reassertion of her singular place in pop and tracing how her emotional, dancefloor-oriented sensibility has evolved across a long absence."
+  },
+  {
+   "id": "stereogum_2026_06_16_002",
+   "source": "stereogum.com",
+   "category": "entertainment",
+   "title": "Album Of The Week: End It 'Wrong Side Of Heaven'",
+   "url": "https://stereogum.com/2319853/album-of-the-week-end-it-wrong-side-of-heaven/reviews/album-of-the-week",
+   "date": "2026-06-16",
+   "summary": "An Album of the Week review examining how Baltimore hardcore band End It sustains their ferocious intensity across a full-length, weighing whether the breakneck style holds up at album scale."
+  },
+  {
+   "id": "stereogum_2026_06_16_003",
+   "source": "stereogum.com",
+   "category": "entertainment",
+   "title": "Album Of The Week: Styrofoam Winos 'Any River'",
+   "url": "https://stereogum.com/2502000/album-of-the-week-styrofoam-winos-any-river/reviews/album-of-the-week",
+   "date": "2026-06-16",
+   "summary": "An Album of the Week review of the Nashville trio Styrofoam Winos' Any River, a close reading of their loose, shared-songwriting indie-folk approach and what it reveals about collaborative band dynamics."
+  },
+  {
+   "id": "thequietus_2026_06_16_001",
+   "source": "thequietus.com",
+   "category": "entertainment",
+   "title": "I Know It's Overrated: The Queen Is Dead Turns 40",
+   "url": "https://thequietus.com/opinion-and-essays/anniversary/the-smiths-queen-is-dead-40th-anniversary/",
+   "date": "2026-06-16",
+   "summary": "Simon Price, a lifelong Smiths fan, writes a contrarian 40th-anniversary essay arguing The Queen Is Dead is overrated, using the canonized album to interrogate critical consensus and the durability of received wisdom about the band."
+  },
+  {
+   "id": "thequietus_2026_06_21_002",
+   "source": "thequietus.com",
+   "category": "entertainment",
+   "title": "\"Düsseldorf. Düsseldorf. Düsseldorf.\" La Düsseldorf's La Düsseldorf at 50",
+   "url": "https://thequietus.com/opinion-and-essays/anniversary/la-dusseldorf-anniversary-review/",
+   "date": "2026-06-21",
+   "summary": "Samuel Cox's 50th-anniversary essay celebrates La Düsseldorf's self-titled debut as an unwritten Krautrock manifesto, arguing its jubilant, motorik sound prefigured much of the optimism later drained from electronic and post-punk music."
+  },
+  {
+   "id": "honest-broker_2026_06_21_001",
+   "source": "honest-broker.com",
+   "category": "entertainment",
+   "title": "Authenticity in Music",
+   "url": "https://www.honest-broker.com/p/authenticity-in-music",
+   "date": "2026-06-21",
+   "summary": "Ted Gioia's long-gestating manifesto-essay defending the concept of authenticity in music against decades of academic debunking, arguing that the dismissal of authenticity has hollowed out criticism and listeners' relationship to art."
+  },
+  {
+   "id": "firstfloor_2026_06_18_001",
+   "source": "firstfloor.substack.com",
+   "category": "entertainment",
+   "title": "First Floor #316 - Impotence, Exhaustion and the Sinister Patience of Sónar",
+   "url": "https://firstfloor.substack.com/p/first-floor-316-impotence-exhaustion",
+   "date": "2026-06-18",
+   "summary": "Shawn Reynaldo's weary critique of the Sónar festival as it returns under KKR/Superstruct private-equity ownership amid an ongoing BDS boycott, arguing its commercial-techno lineup and corporate sloganeering signal the financialization of dance-music culture."
+  },
+  {
+   "id": "cantgetmuchhigher_2026_06_14_001",
+   "source": "cantgetmuchhigher.com",
+   "category": "entertainment",
+   "title": "Big in the UK, Not So Much in the US",
+   "url": "https://www.cantgetmuchhigher.com/p/big-in-the-uk-not-so-much-in-the",
+   "date": "2026-06-14",
+   "summary": "A guest data-essay by chart analyst John Taylor dissecting why certain artists dominate UK charts while flopping in the US, arguing that algorithmic discovery is weaving a 'worldwide web of interconnections' that is eroding national taste differences."
+  },
+  {
+   "id": "dailydot_2026_06_10_001",
+   "source": "dailydot.com",
+   "category": "entertainment",
+   "title": "Why the Gothic vampire aesthetic is dominating fashion again",
+   "url": "https://dailydot.com/gothic-vampire-aesthetic-explainer",
+   "date": "2026-06 (approx)",
+   "summary": "A trend-analysis piece reading the resurgence of the Gothic vampire aesthetic as a cultural barometer, arguing its return reflects collective dread and political anguish rather than mere fashion cyclicality."
+  },
+  {
+   "id": "polyesterzine_2026_06_19_001",
+   "source": "polyesterzine.com",
+   "category": "fashion",
+   "title": "Wasians and the Limits of Representation: Notes from a Blasian in Japan",
+   "url": "https://www.polyesterzine.com/features/wasians-and-the-limits-of-representation-notes-from-a-blasian-in-japan",
+   "date": "2026-06-19",
+   "summary": "Leiya Salis uses the internet's 'Wasian Avengers' discourse and her own experience as a Blasian model in Japan to argue that mixed-race visibility is conditional: white haafu are folded into the Japanese mainstream because they flatter an essentialist, Nihonjinron-rooted self-image, while Black and other mixed bodies remain tokens or absences. The essay's sharper claim is that representation itself is a dead end, pointing to declining Hollywood diversity and the return of thinness as aspirational to argue the real question is not who gets in the door but how to tear the house down."
+  },
+  {
+   "id": "polyesterzine_2026_06_18_002",
+   "source": "polyesterzine.com",
+   "category": "fashion",
+   "title": "The Second-Wave of Girl Boss Feminism Still Won't Save Us",
+   "url": "https://www.polyesterzine.com/features/the-second-wave-of-girl-boss-feminism-still-wont-save-usnbsp",
+   "date": "2026-06-18",
+   "summary": "Nasrin Warsame traces an aesthetic-and-messaging cycle from 2010s girlboss brands (Nasty Gal, Glossier, Djerf Avenue) through the tradwife backlash to a quieter 'second wave' of women's investment and hustle content (Emma Grede's book tour, 'rich girl habits' TikToks, Euphoria's Maddy). She argues each iteration repackages capitalism as female empowerment while leaving the structural conditions (pay gap, femicide, unequal labour) untouched, and that real protection lies in collective justice rather than individualised accumulation."
+  },
+  {
+   "id": "vestoj_2026_06_12_001",
+   "source": "vestoj.com",
+   "category": "fashion",
+   "title": "Dressing With Mothers",
+   "url": "https://vestoj.com/dressing-with-mothers/",
+   "date": "2026-06-12",
+   "summary": "Giuliana Mazzetta and Hamutal Hayun write a two-voiced prose piece on the intimate, formative experience of watching mothers dress and transform themselves, treating the maternal getting-ready ritual as a site of feminine inheritance, taste, and the learned performance of composure. The essay reads dress as a transmission between generations rather than as consumption."
+  },
+  {
+   "id": "anothermag_2026_06_09_001",
+   "source": "anothermag.com",
+   "category": "fashion",
+   "title": "The Curious Case of Paula Einfalt",
+   "url": "https://www.anothermag.com/fashion-beauty/17237/paula-einfalt-interview-spring-summer-2027",
+   "date": "2026-06-09",
+   "summary": "George Pistachio profiles Croatian designer Paula Einfalt, who inherited her father's debt after the collapse of her parents' Yugoslavian fashion 'empire' Skandal yet entered the industry anyway, studying at CSM and LCF and now working in Paris. The piece frames her romance-meets-activewear, deadstock, made-to-order debut as a deliberately precarious, anti-showroom 'fetus steps' model of building a brand, situating an emerging designer's aesthetic within the financial and emotional risk the fashion system imposes."
+  },
+  {
+   "id": "backrow_2026_06_18_001",
+   "source": "backrow.net",
+   "category": "fashion",
+   "title": "They Bought Birkins. Now They Find Them Embarrassing.",
+   "url": "https://www.backrow.net/p/they-bought-birkins-now-they-find-them-embarrassing",
+   "date": "2026-06-18",
+   "summary": "Amy Odell reports on a cohort of Birkin owners who, having played the Hermes 'game' to obtain the bag, now feel distaste for what it signals: status-chasing, complicity in the spend-to-qualify system, and social-media overexposure that has stripped the bag of specialness. The piece reads the Birkin's shifting meaning as a barometer of how conspicuous luxury status symbols are losing cultural value among the people who once coveted them."
+  },
+  {
+   "id": "backrow_2026_06_11_002",
+   "source": "backrow.net",
+   "category": "fashion",
+   "title": "What Gwyneth Paltrow's Politics and That Israeli Real Estate Ad Have in Common",
+   "url": "https://www.backrow.net/p/what-gwyneth-paltrow-s-politics-and-that-israeli-real-estate-ad-have-in-common",
+   "date": "2026-06-11",
+   "summary": "Amy Odell analyzes the shift in Gwyneth Paltrow's public image, from her overtly anti-Trump, pro-Clinton Goop era to a recent week of declaring herself politically 'apathetic' on a podcast with an Anduril defense-tech founder and fronting a luxury Israeli real-estate ad in Herzliya. Drawing on her Paltrow biography, Odell argues the seemingly contradictory moves cohere around Paltrow's venture-capital ambitions reshaping how she presents her politics."
+  },
+  {
+   "id": "1granary_2026_06_04_001",
+   "source": "1granary.com",
+   "category": "fashion",
+   "title": "Central Saint Martins BA Fashion 2026: Somewhere very specific",
+   "url": "https://1granary.com/designers-3/graduate-shows/csm-ba-2026/",
+   "date": "2026-06-04",
+   "summary": "1 Granary's review of the CSM BA Fashion class reads the cohort as graduates arriving at fashion 'from somewhere very specific' (a Dagenham council estate, a Shaoxing textile town, the Iraqi diaspora, Savile Row), bringing grief, political fury and dark humour with them. It frames the show's recurring trust in unstable material process (dissolving soap, cracking bookcloth, leather chainmail) and unresolved personal narrative as the deliberate point, profiling designers including Zahra Al-Najjar, Charlie Bennett, Lan Yang and Daniel Haworth."
+  },
+  {
+   "id": "africasacountry_2026_06_01_001",
+   "source": "africasacountry.com",
+   "category": "global",
+   "title": "Who's afraid of Michael Jackson?",
+   "url": "https://africasacountry.com/2026/06/whos-afraid-of-michael-jackson",
+   "date": "2026-06-01",
+   "summary": "Sherry Zane argues that Antoine Fuqua's estate-approved biopic 'Michael' (which grossed over $700m globally) converts a politically conscious Black artist into a raceless, depoliticized fantasy figure. The essay restores the documented record the film omits: the Black Power salutes, the Gorée Island visit, the MTV resegregation confrontation, the NAACP voter drives, and Jackson's Middle Eastern and Palestinian solidarities, reading the erasure as a continuation of Motown-style and COINTELPRO-era depoliticization."
+  },
+  {
+   "id": "africasacountry_2026_06_09_002",
+   "source": "africasacountry.com",
+   "category": "global",
+   "title": "A World Cup without the world?",
+   "url": "https://africasacountry.com/2026/06/a-world-cup-without-the-world",
+   "date": "2026-06-09",
+   "summary": "Algerian football journalist Maher Mezahi uses the US refusal of entry to Somali referee Omar Artan to argue that the 2026 World Cup is a global celebration increasingly defined by the politics of exclusion, asking how long FIFA will let Trump's America spoil a tournament that is not its to spoil."
+  },
+  {
+   "id": "africasacountry_2026_06_10_003",
+   "source": "africasacountry.com",
+   "category": "global",
+   "title": "What Bafana Bafana teaches South Africa about itself",
+   "url": "https://africasacountry.com/2026/06/what-bafana-bafana-teaches-south-africa-about-itself",
+   "date": "2026-06-10",
+   "summary": "Lee Nxumalo traces how South Africa's national team, long a symbol of post-1996 democratic disappointment and administrative dysfunction, has become credible again under Hugo Broos, and how fans are once again projecting national aspiration onto it. The essay reads the brewing nationalist sentiment around the team (including xenophobic policing of players' birthright) as evidence that sport has become a privileged, monetized site where political conflicts are litigated when formal politics feels foreclosed."
+  },
+  {
+   "id": "africasacountry_2026_06_16_004",
+   "source": "africasacountry.com",
+   "category": "global",
+   "title": "The meaning of Omar Artan",
+   "url": "https://africasacountry.com/2026/06/the-meaning-of-omar-artan",
+   "date": "2026-06-16",
+   "summary": "Reporting from Mogadishu, Faisal Ali narrates the homecoming of Somali referee Omar Artan after the US denied him World Cup entry on dubious terrorism allegations, turning a setback into a national coronation. The piece situates the episode within decades of US intervention in Somalia and the Trump-era assault on Somali-Americans, and argues that Somali writers, musicians (K'naan), and novelists offer a textured counter-narrative to the 'failed state' caricature."
+  },
+  {
+   "id": "newlinesmag_2026_06_18_005",
+   "source": "newlinesmag.com",
+   "category": "global",
+   "title": "How a Lebanese Dish Survived for a Century in Oklahoma",
+   "url": "https://newlinesmag.com/first-person/how-a-lebanese-dish-survived-for-a-century-in-oklahoma/",
+   "date": "2026-06-18",
+   "summary": "Nada Bakri traces mlaheeyeh, a cauliflower-and-cooked-yogurt dish from Jdeidet Marjayoun that vanished in southern Lebanon but was preserved in an Oklahoma City church cookbook by early-20th-century emigres. As Israel empties and burns southern Lebanon again, she argues that what war and displacement truly destroy is not the written recipe but the embodied chain of knowledge and the specific soil that no reconstruction can return."
+  },
+  {
+   "id": "newlinesmag_2026_06_19_006",
+   "source": "newlinesmag.com",
+   "category": "global",
+   "title": "What a Pocketful of Metal Reveals About Afghanistan's Forgotten Empires",
+   "url": "https://newlinesmag.com/essays/what-a-pocketful-of-metal-reveals-about-afghanistans-forgotten-empires/",
+   "date": "2026-06-19",
+   "summary": "Shabnam Nasimi examines a collection of ancient coins gathered by East India Company agent Alexander Burnes in the 1830s, now held in the British Museum. Through Graeco-Bactrian, Kushan, Parthian and Sasanian pieces, she reconstructs an Afghanistan that was once a wealthy, cosmopolitan crossroads of cultural synthesis, indicting both colonial extraction and the modern selective memory that reduces the region to terrorism and war."
+  },
+  {
+   "id": "restofworld_2026_06_05_007",
+   "source": "restofworld.org",
+   "category": "global",
+   "title": "Silicon Valley's lure is fading for India's tech talent",
+   "url": "https://restofworld.org/2026/silicon-valley-status/",
+   "date": "2026-06-05",
+   "summary": "Ananya Bhattacharya reports that AI-driven layoffs and Trump's H-1B unpredictability have broken Silicon Valley's promise of 'frontier work plus stability' for India's elite engineers, prompting US-based Indian-origin AI researchers to weigh returning home. Domestic startups and the India arms of OpenAI and Anthropic are courting the same shallow talent pool, signaling a shift in the once-unquestioned status hierarchy of global tech work."
+  },
+  {
+   "id": "restofworld_2026_06_10_008",
+   "source": "restofworld.org",
+   "category": "global",
+   "title": "Big Tech, big cons: Scammers are hiding in the apps that make your life easy",
+   "url": "https://restofworld.org/2026/tech-facebook-google-whatsapp-scams/",
+   "date": "2026-06-10",
+   "summary": "Drawing on Soumya Gupta's new book 'Bharat Bluff: Inside the Cons of India's Internet Revolution,' this piece examines how fraudsters in India exploit the trust users place in big-tech platforms like Google, Facebook, and WhatsApp, turning the conveniences of platformized everyday life into infrastructure for scams."
+  },
+  {
+   "id": "himalmag_2026_06_16_009",
+   "source": "himalmag.com",
+   "category": "global",
+   "title": "India's great men and the neglected women and homes that made them",
+   "url": "https://www.himalmag.com/gyanendra-pandey-men-at-home-masculinity-india/",
+   "date": "2026-06-16",
+   "summary": "Lucky Issar reviews historian Gyanendra Pandey's 'Men at Home,' which reads the domestic lives of India's celebrated 20th-century writers and reformers to show how they dismissed the home as incidental even as it underwrote their public authority. The review extends Pandey's argument into present-day India, framing the household as an active site that reproduces gendered hierarchies and renders women vulnerable."
+  },
+  {
+   "id": "milleworld_2026_06_02_010",
+   "source": "milleworld.com",
+   "category": "global",
+   "title": "Why Men Cry Over Football But Never Anything Else",
+   "url": "https://www.milleworld.com/why-men-cry-over-football-but-never-anything-else/",
+   "date": "2026-06-02",
+   "summary": "Khaoula Ghanem asks why Arab men, raised on norms of emotional restraint, are permitted to weep openly over football. Drawing on Connell's 'hegemonic masculinity,' Bourdieu, Messner and 'identity fusion' research, she argues the sport functions as a 'masculinity buffer' and a socially sanctioned vessel for emotions men have not been taught to express elsewhere, layered in the Arab context with politics, nationhood and collective memory."
+  },
+  {
+   "id": "milleworld_2026_06_08_011",
+   "source": "milleworld.com",
+   "category": "global",
+   "title": "Where Are the Boycott Calls Now? The 2026 World Cup is Exposing Football's Double Standards",
+   "url": "https://www.milleworld.com/where-are-the-boycott-calls-now-the-2026-world-cup-is-exposing-footballs-double-standards/",
+   "date": "2026-06-08",
+   "summary": "Yassine Hariss contrasts the sustained moral outcry over Qatar 2022 with the relative silence around the US-co-hosted 2026 World Cup, despite ICE detentions of Iraq's players, visa denials to Iranian and South African delegations, forced match-day-only travel for Iran, and a vast cross-continental carbon footprint. He argues the selective application of human-rights and environmental standards exposes how 'politics in football' is invoked only when convenient."
+  },
+  {
+   "id": "radii_2026_06_04_012",
+   "source": "radii.co",
+   "category": "global",
+   "title": "RADII Buzzwords: The Uncurated Self, For the Homies, Anti-Polished, and More",
+   "url": "https://radii.co/article/radii-buzzwords-june-2026",
+   "date": "2026-06-04",
+   "summary": "RADII's recurring Chinese-internet-slang column decodes four new buzzwords defining youth culture, centered on a turn toward raw authenticity, 'anti-polished' aesthetics, and performative burnout. The terms register Gen Z's reaction against the hyper-curated feeds of the prior era, valorizing the unfiltered texture of feeling genuinely alive."
+  },
+  {
+   "id": "latamrob_2026_06_12_013",
+   "source": "latamrob.substack.com",
+   "category": "global",
+   "title": "A bad smell in Brazil",
+   "url": "https://latamrob.substack.com/p/a-bad-smell-in-brazil",
+   "date": "2026-06-12",
+   "summary": "Gavin O'Toole reviews AJA Woods's 'The Cultural Marxism Conspiracy,' which traces the antisemitic, Nazi-era origins of the 'cultural Marxism' myth and its transmission into Bolsonarista Brazil via ideologue Olavo de Carvalho and US Maga networks. Pegged to the October election pitting Lula against Flavio Bolsonaro, the review reads the conspiracy theory as an imported ideology rooted in a conservative fixation on 'order' that still infects Brazilian politics."
+  },
+  {
+   "id": "latamrob_2026_06_19_014",
+   "source": "latamrob.substack.com",
+   "category": "global",
+   "title": "Roots of the right",
+   "url": "https://latamrob.substack.com/p/roots-of-the-right",
+   "date": "2026-06-19",
+   "summary": "Gavin O'Toole reviews 'The Faces of Authoritarianism and Strategies of Dissent in Contemporary Brazil,' arguing that scholarship has shifted from treating authoritarianism as a fading dictatorship-era legacy to seeing it as a live, structurally reproduced threat. The collection locates Bolsonarismo's roots in long-standing national hierarchies, evangelical 'regimes of truth,' bureaucratic struggle and transnational far-right networks, complicating the old authoritarian-versus-democratic binary."
+  },
+  {
+   "id": "thejuggernaut_2026_06_11_015",
+   "source": "thejuggernaut.com",
+   "category": "global",
+   "title": "Can Older Women Date Younger Men in Peace?",
+   "url": "https://www.thejuggernaut.com/older-women-younger-men-south-asian-taboo",
+   "date": "2026-06 (approx)",
+   "summary": "Headline-level (paywalled): an examination of why the older-woman/younger-man pairing remains taboo in South Asian culture, drawing on relationships with unexpected age dynamics and on screen portrayals from 'Indian Matchmaking' to 'Dil Chahta Hai' to show that the 'cougar' archetype doesn't translate."
+  },
+  {
+   "id": "thejuggernaut_2026_06_17_016",
+   "source": "thejuggernaut.com",
+   "category": "global",
+   "title": "Can Men and Women Be Friends in South Asia?",
+   "url": "https://www.thejuggernaut.com/male-female-friendship-in-south-asia",
+   "date": "2026-06 (approx)",
+   "summary": "Headline-level (paywalled): drawing on an analysis of 1.38 trillion Facebook friendship links, the piece reports that men and women across much of South Asia rarely interact, using the data as a window onto gender segregation and the social limits on cross-gender friendship in the region."
+  },
+  {
+   "id": "kevinmlevin_2026_06_05_001",
+   "source": "kevinmlevin.substack.com",
+   "category": "history",
+   "title": "The American Revolution Will Not Be Interpreted",
+   "url": "https://kevinmlevin.substack.com/p/the-american-revolution-will-not",
+   "date": "2026-06-05",
+   "summary": "Levin reports from Bunker Hill National Historical Park after the NPS, acting on Trump's March 2025 executive order, ordered the removal of three interpretive quotes (an 1846 abolitionist letter, a pro-immigrant passage, and a Vietnam Veterans Against the War reflection) following a visitor complaint that a women's-suffrage quote was 'woke.' He argues that editing primary sources off monument walls to produce only comfort converts history into mythology, framing the episode as state narrative-building that strips contested founding ideals from public memory."
+  },
+  {
+   "id": "kevinmlevin_2026_06_07_002",
+   "source": "kevinmlevin.substack.com",
+   "category": "history",
+   "title": "The Bunker Hill Monument Was Never Solely About the Battle",
+   "url": "https://kevinmlevin.substack.com/p/the-bunker-hill-monument-was-never",
+   "date": "2026-06-07",
+   "summary": "Levin counters the claim that the Bunker Hill Monument should commemorate only the 1775 battle, showing that from Daniel Webster's 1825 cornerstone oration onward it was always a statement about the living nation's contradictions and unfinished work. He marshals the women (led by Sarah Josepha Hale) who funded its completion, an 1846 abolitionist denunciation, and Vietnam-veteran critique to argue that the targeted quotes are evidence the monument's meaning was never finished, and that monuments are not history lessons but ongoing conversations with each generation."
+  },
+  {
+   "id": "kevinmlevin_2026_06_20_003",
+   "source": "kevinmlevin.substack.com",
+   "category": "history",
+   "title": "Stone Mountain Is Standing Still. The South Isn't.",
+   "url": "https://kevinmlevin.substack.com/p/stone-mountain-is-standing-still",
+   "date": "2026-06-20",
+   "summary": "Reviewing an Atlanta Journal-Constitution video on Southern identity, Levin distinguishes journalistic snapshots of belief from the historian's task of tracking change over time. He argues the Lost Cause's grip has measurably loosened, citing a roughly 30% decline in antebellum-tour revenue in Natchez as younger visitors reject hoop-skirt nostalgia, alongside renewed public attention to Reconstruction, Black political power, and slavery as a documented economic system, evidence of a generational, cross-racial shift in how the South narrates itself."
+  },
+  {
+   "id": "brownhistory_2026_06_16_001",
+   "source": "brownhistory.substack.com",
+   "category": "history",
+   "title": "The Surprising South Asian Origins of Romani People",
+   "url": "https://brownhistory.substack.com/p/the-surprising-south-asian-origins",
+   "date": "2026-06-16",
+   "summary": "Vishavjeet Dhaliwal traces the Roma's overlooked origins to Northern India (Punjab, Rajasthan, or Sindh), reconstructing a millennium of migration, linguistic evolution, and European persecution that culminated in Nazi genocide. The essay reframes long-standing Western misattributions (Egyptian, Levantine, Romanian) and uses a Romani creator's critique of Zionism to think through homeland, indigeneity, and belonging, arguing the Roma model a diasporic claim to equality that does not require displacing others through an ethnostate."
+  },
+  {
+   "id": "publicbooks_2026_06_15_001",
+   "source": "publicbooks.org",
+   "category": "history",
+   "title": "“Seize the Means of Knowledge Production”: Durba Mitra on Third World Feminists and Their Fight Against Patriarchal Authoritarianism",
+   "url": "https://www.publicbooks.org/seize-the-means-of-knowledge-production-durba-mitra-on-third-world-feminists-and-their-fight-against-patriarchal-authoritarianism/",
+   "date": "2026-06-15",
+   "summary": "In an interview on her book The Future That Was, historian Durba Mitra recovers a 1970s-80s history of Third World feminism that reinvented Third Worldism as a project of antiauthoritarianism, reframing decolonization's canon (Fanon, Cesaire, Rodney) to foreground women as knowledge producers. She reads the development 'report' as a colonial genre subverted from within, traces how feminist presses and transnational organizing flourished then collapsed under neoliberal capture, and positions this recovered genealogy as a resource against present-day dismantling of human-rights internationalism."
+  },
+  {
+   "id": "publicbooks_2026_06_16_002",
+   "source": "publicbooks.org",
+   "category": "history",
+   "title": "Edward Said, My Grandfather, and the Problem of Home",
+   "url": "https://www.publicbooks.org/edward-said-my-grandfather-and-the-problem-of-home/",
+   "date": "2026-06-16",
+   "summary": "Jeffrey Herlihy-Mera reads Said's 'Reflections on Exile' against his own Irish-American grandfather's silence to argue that 'Americanization' is a scarring imperial project that erases ancestral languages and histories, naturalizing the idea that family history begins in the US. The essay revisits Said's view of Ireland as a decolonial template (extensible to Puerto Rico, Palestine, Catalunya) and contends that exile is a deliberate design of exclusion that culture, language, and democratic citizenship beyond borders can partly redress."
+  },
+  {
+   "id": "publicbooks_2026_06_17_003",
+   "source": "publicbooks.org",
+   "category": "history",
+   "title": "Who Benefits from Distorting American Studies?",
+   "url": "https://www.publicbooks.org/who-benefits-from-distorting-american-studies/",
+   "date": "2026-06-17",
+   "summary": "Ivan Chaar Lopez and Erin McElroy rebut a January 2026 Progressive Policy Institute report that accused American studies and American Quarterly of an 'unrelentingly negative' distortion of US history and called for an 'honest and hopeful' account acknowledging sins while affirming redemption. They argue the report's demand for 'balance' and a single objective national truth is itself a distortion that mirrors right-wing 'both sides of slavery' pedagogy, and read it as cover for the real-time elimination of ethnic, gender, and area-studies departments at universities like UT Austin."
+  },
+  {
+   "id": "aeon_2026_06_22_001",
+   "source": "aeon.co",
+   "category": "intellectual",
+   "title": "Zhuangzi and the case against meritocracy",
+   "url": "https://aeon.co/essays/zhuangzi-and-the-case-against-meritocracy",
+   "date": "2026-06-22",
+   "summary": "A Neo-Daoist reading argues meritocracy rests on the flawed premise that people could have done otherwise and so deserve what they get. Drawing on Zhuangzi, it contends that the capacities enabling success are unevenly distributed before anyone begins and that 'virtue' is defined by those already on top, since action arises through circumstance, relationships, habit and institutions rather than autonomous merit."
+  },
+  {
+   "id": "aeon_2026_06_18_002",
+   "source": "aeon.co",
+   "category": "intellectual",
+   "title": "If we hope to build artificial souls, where should we start?",
+   "url": "https://aeon.co/essays/if-we-hope-to-build-artificial-souls-where-should-we-start",
+   "date": "2026-06-18",
+   "summary": "Peter Wolfendale (writing under the framing 'Geist in the machine') argues that what distinguishes persons is Geist: the open-ended capacity to generate peculiar, irreducible selves in response to the impossibility of calculating optimal choices. Unless such Geist can be cultivated rather than merely simulated, he warns, delegating judgment to machines risks forfeiting our cultural and historical agency and our capacity for self-realisation."
+  },
+  {
+   "id": "aeon_2026_06_12_003",
+   "source": "aeon.co",
+   "category": "intellectual",
+   "title": "What ancient philosophy really thought about domestic life",
+   "url": "https://aeon.co/essays/what-ancient-philosophy-really-thought-about-domestic-life",
+   "date": "2026-06-12",
+   "summary": "An argument that the home dropped out of Western philosophy not by accident but through selective transmission: classical Athens split men's public city-life from women's confined domestic sphere (Pericles held that women should be neither seen nor heard outside the home), and women philosophers were excluded from the canon. The essay recovers domestic space as a serious philosophical subject."
+  },
+  {
+   "id": "aeon_2026_06_11_004",
+   "source": "aeon.co",
+   "category": "intellectual",
+   "title": "What is Nick Land's philosophy of accelerationism really?",
+   "url": "https://aeon.co/essays/what-is-nick-lands-philosophy-of-accelerationism-really",
+   "date": "2026-06-11",
+   "summary": "Vincent Le reconstructs accelerationism's origins, arguing the original doctrine was neither white-nationalist nor techno-utopian but Land's ecstatic philosophy of human extinction via runaway capitalism. The term was coined by Benjamin Noys in 2010; subsequent strands, Le contends, have profoundly misunderstood Land's earliest writings, which contained sharp critiques of capitalist imperialism."
+  },
+  {
+   "id": "thebaffler_2026_06_18_005",
+   "source": "thebaffler.com",
+   "category": "intellectual",
+   "title": "Leave It to Beaver",
+   "url": "https://thebaffler.com/outbursts/leave-it-to-beaver-wilder",
+   "date": "2026-06-18",
+   "summary": "Forrest Wilder reads Buc-ee's, the cult Texas mega-travel-center chain, as more than a gas station: a symbol of Texas as a world-conquering brand and one of the state's most effective ambassadors. The piece treats consumer scale and roadside spectacle as a vehicle for a swaggering regional ideology."
+  },
+  {
+   "id": "thebaffler_2026_06_16_006",
+   "source": "thebaffler.com",
+   "category": "intellectual",
+   "title": "Groypthink",
+   "url": "https://thebaffler.com/latest/groypthink-brennan",
+   "date": "2026-06-16",
+   "summary": "Caleb Brennan examines longshot Florida gubernatorial candidate James Fishback's end-times conservatism, situating it against Nick Fuentes's 'groyper' movement and the parallel youth-right ecosystem built alongside Turning Point USA. An analysis of how apocalyptic and movement-meme politics are reshaping the Republican fringe."
+  },
+  {
+   "id": "convivialsociety_2026_06_22_007",
+   "source": "theconvivialsociety.substack.com",
+   "category": "intellectual",
+   "title": "Your AI Is Not a Tool",
+   "url": "https://theconvivialsociety.substack.com/p/your-ai-is-not-a-tool",
+   "date": "2026-06-22",
+   "summary": "L. M. Sacasas rejects the reassurance that AI is 'just a tool' to be used wisely, arguing instead that 'your AI is not a tool, it is an environment, and you are in it.' Drawing on McLuhan, he claims AI works on us from the inside out regardless of care or intentionality, and that systems designed to erode our vigilance make confidence in such vigilance self-defeating."
+  },
+  {
+   "id": "convivialsociety_2026_06_16_008",
+   "source": "theconvivialsociety.substack.com",
+   "category": "intellectual",
+   "title": "AI Is Not Conscious, But It Is Our Unconscious",
+   "url": "https://theconvivialsociety.substack.com/p/ai-is-not-conscious-but-it-is-becoming",
+   "date": "2026-06-16",
+   "summary": "Sacasas proposes the unconscious as an analogy for agentic AI: as we outsource judgment to a layer of activity separated from conscious oversight, the ratio of conscious to unconscious human action shrinks and the world grows uninterpretable. He warns the AI revolution may transfer the workings of civilization from consciousness to unconsciousness, with chatbots acting as an 'anti-therapist' leading us away from self-knowledge."
+  },
+  {
+   "id": "adamtooze_2026_06_22_009",
+   "source": "adamtooze.substack.com",
+   "category": "intellectual",
+   "title": "Chartbook 453: 22 June 1941 - The 85th anniversary of the invasion of the Soviet Union",
+   "url": "https://adamtooze.substack.com/p/chartbook-453-22-june-1941-the-85th",
+   "date": "2026-06-22",
+   "summary": "On the 85th anniversary of Operation Barbarossa, Adam Tooze revisits the Nazi invasion of the Soviet Union, drawing on his economic-history work to frame the scale, logistics and historical stakes of the largest land invasion in history."
+  },
+  {
+   "id": "thepointmag_2026_06_18_010",
+   "source": "thepointmag.com",
+   "category": "intellectual",
+   "title": "Wiseman's Children",
+   "url": "https://thepointmag.com/criticism/wisemans-children/",
+   "date": "2026-06-18",
+   "summary": "Lorna Finlayson reflects on Frederick Wiseman (who died this year at 96) and the long shadow of his observational documentaries, beginning with 'Juvenile Court' (1973). She draws out Wiseman's insistence that there is no passive, unmediated reporting of reality: shooting and editing are 'highly manipulative,' a stance that complicates the documentary's claim on truth."
+  },
+  {
+   "id": "samkriss_2026_06_07_011",
+   "source": "samkriss.substack.com",
+   "category": "intellectual",
+   "title": "A fire was in my head",
+   "url": "https://samkriss.substack.com/p/a-fire-was-in-my-head",
+   "date": "2026-06-07",
+   "summary": "Sam Kriss recounts insisting on taking a partner to Hebron in the occupied West Bank rather than the Dead Sea, using the visit, a wasteland of barbed wire, broken glass and settler apartment blocks, to interrogate his own 'classic Jewish male neuroticism' and the moral weight of bearing witness to the occupation."
+  },
+  {
+   "id": "haleynahman_2026_06_07_012",
+   "source": "haleynahman.substack.com",
+   "category": "intellectual",
+   "title": "#271: The worst emoji",
+   "url": "https://haleynahman.substack.com/p/271-the-worst-emoji",
+   "date": "2026-06-07",
+   "summary": "Haley Nahman diagnoses the tone of social media's most loyal posters through the shrugging emoji, arguing that its overuse encodes a defensive, performatively-detached register that captures one of the fundamental reasons it has become annoying to be online."
+  },
+  {
+   "id": "nplusonemag_2026_06_11_013",
+   "source": "nplusonemag.com",
+   "category": "intellectual",
+   "title": "In Search of Lost Tunnels",
+   "url": "https://www.nplusonemag.com/online-only/online-only/in-search-of-lost-tunnels/",
+   "date": "2026-06-11",
+   "summary": "The sixth 'City Mouse' column by Morley Musick (co-published with the Chicago Reader) follows a retired steelworker's photographs of Chicago's abandoned freight tunnels, sixty miles of track forty feet below the sidewalk that once moved coal, mail and goods between buildings before closing in 1954. A meditation on infrastructure, memory and the buried labor underneath the city."
+  },
+  {
+   "id": "usermag_2026_06_03_001",
+   "source": "usermag.co",
+   "category": "internet",
+   "title": "A Pro-AI Super PAC's Secret Meme Sockpuppets",
+   "url": "https://www.usermag.co/p/a-pro-ai-super-pacs-secret-meme-sockpuppets",
+   "date": "2026-06-03",
+   "summary": "Lorenz and Tyler Johnston trace a network of sockpuppet meme accounts (e.g. 'Doomers are dumb') back to a dark-money group tied to the pro-AI super PAC Leading the Future, showing how the accounts pivoted from generic viral bait to relentless anti-AI-skeptic attacks once the PAC began campaigning. It's a case study in how astroturfed meme pages now manufacture political discourse on X."
+  },
+  {
+   "id": "usermag_2026_06_10_002",
+   "source": "usermag.co",
+   "category": "internet",
+   "title": "The Bounty Economy Is Breaking Reality",
+   "url": "https://www.usermag.co/p/the-bounty-economy-is-breaking-reality-pump-fun-polymarket-ugc-marketing-attention-economy",
+   "date": "2026-06-10",
+   "summary": "Lorenz coins 'the bounty economy' to describe a new class of platforms (Pump.fun's Pump Fun GO, Polymarket, Kalshi, UGC-marketing services) that pay people to perform tasks and stage events for attention and financial return. She argues this builds a synthetic reality where an increasing share of what we encounter online and IRL is commissioned performance rather than spontaneous occurrence."
+  },
+  {
+   "id": "wheresyouredat_2026_06_08_001",
+   "source": "wheresyoured.at",
+   "category": "internet",
+   "title": "AI Is Slowing Down",
+   "url": "https://www.wheresyoured.at/ai-is-slowing-down/",
+   "date": "2026-06-08",
+   "summary": "Zitron argues generative AI's revenue growth is slowing just as its economics demand it accelerate, pointing to companies (Uber, Brex, T-Mobile) capping per-employee token spend within months of Anthropic and OpenAI shifting to usage-based billing. He frames the whole buildout as a circular con that requires AI to generate trillions in annual revenue by 2030 to justify data-center capex, capped with his 'giant metal spider from Wild Wild West' analogy for unreliable, ruinously expensive agentic tools."
+  },
+  {
+   "id": "wheresyouredat_2026_06_15_002",
+   "source": "wheresyoured.at",
+   "category": "internet",
+   "title": "AI's Brokenomics",
+   "url": "https://www.wheresyoured.at/brokenomics/",
+   "date": "2026-06-15",
+   "summary": "Zitron dissects the AI industry's underlying finances, pairing with his exclusive reporting that OpenAI's losses increased nearly 8x in 2025 with spending hitting $34 billion against ~$13 billion in revenue. He argues the sector's compute commitments and subsidized pricing make the economics structurally unsustainable rather than a temporary growth-stage loss."
+  },
+  {
+   "id": "kylechayka_2026_06_12_001",
+   "source": "kylechayka.substack.com",
+   "category": "internet",
+   "title": "Everything on the internet is a \"show\"",
+   "url": "https://kylechayka.substack.com/p/everything-on-the-internet-is-a-show",
+   "date": "2026-06-12",
+   "summary": "Chayka argues that digital content of all kinds is collapsing into the format of the repeatable 'show' (Subway Takes, messy-bedroom investigations, in-car interviews) as creators chase parasocial multimedia franchises to monetize via ads, subscriptions, or sponcon. Reviewing Kareem Rahma's 'Keep the Meter Running,' he contends the format's internet-native constraints (frenetic editing, clip-bait punchlines) flatten its subjects and prevent any real depth."
+  },
+  {
+   "id": "todayintabs_2026_06_16_001",
+   "source": "todayintabs.com",
+   "category": "internet",
+   "title": "The Dumb Matrix",
+   "url": "https://www.todayintabs.com/p/the-dumb-matrix",
+   "date": "2026-06-16",
+   "summary": "Foster's lead essay diagnoses the present as a dystopia blending 'Idiocracy' with 'The Matrix' — agentic-AI hype everywhere atop a culture where 'the dumbest people are in charge.' He argues Idiocracy nailed the aesthetics but misassigned blame (to the elites and 'heterodox fascist remoras,' not the 'cretins'), and closes on the unsettling thought that AI may yet enact The Matrix's premise precisely because we made the film."
+  },
+  {
+   "id": "the_met_2026_06_001",
+   "source": "the-met",
+   "category": "museum",
+   "title": "Raphael: Sublime Poetry",
+   "url": "https://www.metmuseum.org/exhibitions/raphael-sublime-poetry",
+   "date": "2026-06 (approx)",
+   "summary": "The Met's first comprehensive international loan exhibition on Raphael in the US (Mar 29-Jun 28, 2026), gathering more than 200 works including over 170 drawings alongside paintings, tapestries and decorative arts. The institution is staking a blockbuster on Old Master draftsmanship and connoisseurship at a moment of AI-image saturation."
+  },
+  {
+   "id": "the_met_2026_06_002",
+   "source": "the-met",
+   "category": "museum",
+   "title": "Musical Bodies",
+   "url": "https://www.metmuseum.org/press-releases/spring-2026-exhibitions",
+   "date": "2026-06-07",
+   "summary": "Opening June 7, the first major exhibition to explore the relationship between musical instruments and the human body, bringing ~120 works from around the world and across time. Frames instruments as extensions of and prostheses for the body rather than as objects."
+  },
+  {
+   "id": "the_met_2026_06_003",
+   "source": "the-met",
+   "category": "museum",
+   "title": "Costume Art (The Costume Institute) / 'The Body Is Art'",
+   "url": "https://www.metmuseum.org/perspectives/costume-art-corset-drapery-body",
+   "date": "2026-06 (approx)",
+   "summary": "The Costume Institute's spring 2026 show pairs garments with objects across the Met collection (through Jan 10, 2027) to assert the central role of the dressed body throughout art history. Accompanying Perspectives essay reads corset and drapery as art-historical arguments about the body itself."
+  },
+  {
+   "id": "the_met_2026_06_004",
+   "source": "the-met",
+   "category": "museum",
+   "title": "Raphael: A Life in Nine Objects (Perspectives)",
+   "url": "https://www.metmuseum.org/perspectives/raphael-a-life-in-nine-objects",
+   "date": "2026-06 (approx)",
+   "summary": "A Met Perspectives long-form feature telling Raphael's biography through nine objects, tied to the Sublime Poetry show. Exemplifies the museum's editorial turn to object-anchored, narrative curatorial writing for a general online audience."
+  },
+  {
+   "id": "whitney_2026_06_001",
+   "source": "whitney",
+   "category": "museum",
+   "title": "Whitney Biennial 2026",
+   "url": "https://whitney.org/exhibitions/2026-biennial",
+   "date": "2026-06 (approx)",
+   "summary": "The 82nd Whitney Biennial (Mar 8-Aug 23, 2026) gathers 56 artists, duos and collectives, framed less as a definitive statement than an invitation to 'tune in to the moods' of US art, with works from places 'marked by the broad reach of US power' from Afghanistan to Vietnam. Explicit themes: interspecies kinships, precarious ecologies, geopolitical entanglements, infrastructural networks."
+  },
+  {
+   "id": "moma_2026_06_001",
+   "source": "moma",
+   "category": "museum",
+   "title": "Greater New York 2026 (MoMA PS1)",
+   "url": "https://press.moma.org/exhibition/greater-new-york-2026/",
+   "date": "2026-06 (approx)",
+   "summary": "MoMA PS1's quinquennial survey of New York artists (Apr 16-Aug 17, 2026) fills the entire building with 150+ works including site-specific installations and new productions. The franchise remains the institution's barometer of which local, often under-recognized practices it is prepared to validate."
+  },
+  {
+   "id": "moma_2026_06_002",
+   "source": "moma",
+   "category": "museum",
+   "title": "Warm Up 2026 (MoMA PS1)",
+   "url": "https://press.moma.org/exhibition/warm-up-2026/",
+   "date": "2026-06 (approx)",
+   "summary": "MoMA PS1's signature outdoor music series returns for six Friday evenings across July-August with DJ sets and live performances from 26 artists and collectives. A flagship institution continuing to program live, embodied, scene-based gathering as part of its remit."
+  },
+  {
+   "id": "tate_modern_2026_06_001",
+   "source": "tate-modern",
+   "category": "museum",
+   "title": "Frida: The Making of an Icon",
+   "url": "https://www.tate.org.uk/whats-on/tate-modern/frida-kahlo-the-making-of-an-icon",
+   "date": "2026-06-25",
+   "summary": "Opening June 25, the first major exhibition to interrogate how Frida Kahlo became a global icon, tracing her rise from little-known painter to worldwide cultural phenomenon. The show makes mythmaking and the machinery of fame, rather than the paintings alone, its explicit subject."
+  },
+  {
+   "id": "tate_modern_2026_06_002",
+   "source": "tate-modern",
+   "category": "museum",
+   "title": "Tracey Emin retrospective",
+   "url": "https://www.tate.org.uk/whats-on/tate-modern/tracey-emin",
+   "date": "2026-06 (approx)",
+   "summary": "A landmark survey (Feb 27-Aug 31, 2026) tracing 40 years of Emin's confessional, autobiographical practice, pairing career-defining works with pieces never previously exhibited. Institutional canonization of radical first-person disclosure as a serious lifelong method."
+  },
+  {
+   "id": "tate_britain_2026_06_001",
+   "source": "tate-britain",
+   "category": "museum",
+   "title": "Hurvin Anderson",
+   "url": "https://www.tate.org.uk/press/press-releases/tate-announces-2026-exhibition-highlights",
+   "date": "2026-06 (approx)",
+   "summary": "Tate Britain show of the British painter (Mar 26-Aug 23, 2026) whose vibrant canvases mine Caribbean-British memory, barbershops and diasporic landscape. Part of Tate's continued institutional weighting toward Black British figurative painting."
+  },
+  {
+   "id": "centre_pompidou_2026_06_001",
+   "source": "centre-pompidou",
+   "category": "museum",
+   "title": "Constellation: the Pompidou program during its 2025-2030 closure",
+   "url": "https://www.centrepompidou.fr/en/centre-pompidou-is-transforming-itself",
+   "date": "2026-06 (approx)",
+   "summary": "With the building shut for renovation (closed Sep 2025, works from early 2026), the Pompidou is dispersing its collection and programming across France and abroad rather than going dormant, including a citizen-centric project at the Pantheon and regional partnerships. A flagship reframing closure as decentralization and access."
+  },
+  {
+   "id": "centre_pompidou_2026_06_002",
+   "source": "centre-pompidou",
+   "category": "museum",
+   "title": "Maison Pompidou in the former Brancusi Studio / 'La Muse endormie'",
+   "url": "https://www.centrepompidou.fr/en/lieu/maison-pompidou",
+   "date": "2026-06 (approx)",
+   "summary": "Maison Pompidou (opened Feb 13, 2026) turns Brancusi's former studio into a space for talks, tours and exhibitions about the institution's own history and transformation, with a 'La Muse endormie' tribute to Brancusi. The museum makes its own architecture and self-narrative the exhibit during transition."
+  },
+  {
+   "id": "serpentine_2026_06_001",
+   "source": "serpentine",
+   "category": "museum",
+   "title": "David Hockney: A Year in Normandie and Some Other Thoughts About Painting",
+   "url": "https://www.serpentinegalleries.org/whats-on/david-hockney-a-year-in-normandie-and-some-other-thoughts-about-painting-exhibition-serpentine-galleries/",
+   "date": "2026-06 (approx)",
+   "summary": "Serpentine North (Mar 12-Aug 23, 2026, free) shows new and recent Hockney alongside his monumental frieze 'A Year in Normandie' (2020-21), in London for the first time. A major institution foregrounding slow seasonal observation and analog painting after his iPad-art years."
+  },
+  {
+   "id": "serpentine_2026_06_002",
+   "source": "serpentine",
+   "category": "museum",
+   "title": "Cecily Brown solo exhibition",
+   "url": "https://www.serpentinegalleries.org/about/press/2026-exhibition-programme-highlights/",
+   "date": "2026-06 (approx)",
+   "summary": "A major solo of new works by Cecily Brown at Serpentine South (Mar 27-Sep 6, 2026), the gestural painter whose dissolving figuration sits between abstraction and the body. Continued institutional bet on painterly excess and the hand."
+  },
+  {
+   "id": "serpentine_2026_06_003",
+   "source": "serpentine",
+   "category": "museum",
+   "title": "Serpentine Pavilion 2026 'a serpentine' by LANZA atelier",
+   "url": "https://www.serpentinegalleries.org/whats-on/serpentine-pavilion-2026-by-isabel-abascal-and-alessandro-arienzo-lanza-atelier/",
+   "date": "2026-06 (approx)",
+   "summary": "The 2026 Pavilion, 'a serpentine,' is designed by Mexico City's LANZA atelier (Isabel Abascal and Alessandro Arienzo), anchored on the English crinkle-crankle (serpentine) wall. A vernacular, low-tech architectural reference chosen for a globally watched commission."
+  },
+  {
+   "id": "mplus_2026_06_001",
+   "source": "mplus",
+   "category": "museum",
+   "title": "Lee Bul: From 1998 to Now",
+   "url": "https://www.mplus.org.hk/en/press/m-plus-presents-lee-bul-from-1998-to-now-in-march-2026/",
+   "date": "2026-06 (approx)",
+   "summary": "A comprehensive survey (opened March 2026, co-organized with Leeum) of one of Asia's leading contemporary artists, whose work investigates technology, utopian modernity, and humanity's aspirations and failures in pursuit of progress. M+ canonizing a sustained critique of techno-progress."
+  },
+  {
+   "id": "mplus_2026_06_002",
+   "source": "mplus",
+   "category": "museum",
+   "title": "Shahzia Sikander: 3 to 12 Nautical Miles (M+ Facade)",
+   "url": "https://www.mplus.org.hk/en/mplus-facade/3-to-12-nautical-miles/",
+   "date": "2026-06 (approx)",
+   "summary": "Sikander's commission screens nightly on the giant M+ Facade from March 2026 for three months, its title invoking contested maritime boundaries. Public, monumental moving-image art addressing sovereignty and territory on Hong Kong's harbor."
+  },
+  {
+   "id": "mplus_2026_06_003",
+   "source": "mplus",
+   "category": "museum",
+   "title": "The Multiplicity of Worlds: In Conversation with Zheng Mahler (M+ Magazine)",
+   "url": "https://www.mplus.org.hk/en/magazine/in-conversation-with-zheng-mahler/",
+   "date": "2026-05-22",
+   "summary": "M+ Magazine interview with the artist duo Zheng Mahler on anthropology, more-than-human worlds and technology. Institutional editorial validating ecological and post-human framings from an Asian vantage."
+  },
+  {
+   "id": "mplus_2026_06_004",
+   "source": "mplus",
+   "category": "museum",
+   "title": "Takahashi Ryutaro Collection x M+ Collections (post-bubble Japan)",
+   "url": "https://www.mplus.org.hk/en/press/mplus-announces-2026-exhibition-and-programmes/",
+   "date": "2026-06 (approx)",
+   "summary": "Announced for December 2026, a show drawing the leading private collection of contemporary Japanese art together with M+ holdings to examine social and individual psychology after the 1980s bubble collapse (Murakami, Nara, Aida and others). Frames an economic trauma as the engine of a national aesthetic."
+  },
+  {
+   "id": "masp_2026_06_001",
+   "source": "masp",
+   "category": "museum",
+   "title": "2026 annual program: Latin American Histories (Histórias / Latinidades)",
+   "url": "https://masp.org.br/programacao-anual-2026",
+   "date": "2026-06 (approx)",
+   "summary": "MASP devotes its entire 2026 to 'Latin American Histories,' treating Latinidad not as a region but as an identity in constant construction and dispute, via monographic and collective shows organized in five nuclei. Continues MASP's signature 'Histórias' method (sexuality, Afro-Atlantic, women, dance) now turned on Latin American identity."
+  },
+  {
+   "id": "masp_2026_06_002",
+   "source": "masp",
+   "category": "museum",
+   "title": "The LGBTQIA+ Histories",
+   "url": "https://www.masp.org.br/en/exhibitions/the-lgbtqia-histories",
+   "date": "2026-06 (approx)",
+   "summary": "A large thematic exhibition within the Histórias series mapping LGBTQIA+ narratives across art and visual culture. Institutional canon-revision project building a durable, exhibitable record of a previously marginalized history."
+  },
+  {
+   "id": "masp_2026_06_003",
+   "source": "masp",
+   "category": "museum",
+   "title": "Five Essays on MASP",
+   "url": "https://masp.org.br/en/exhibitions/five-essays-on-masp-histories-of-masp",
+   "date": "2026-06 (approx)",
+   "summary": "A reflexive exhibition series in which MASP turns its curatorial method on its own institutional history (including a 'Histories of MASP' and a Renoir-focused essay). The museum auditing and historicizing itself as exhibition content."
+  },
+  {
+   "id": "sharjah_art_foundation_2026_06_001",
+   "source": "sharjah-art-foundation",
+   "category": "museum",
+   "title": "March Meeting 2026: Between Us, the World",
+   "url": "https://www.sharjahart.org/en/press/details/sharjah-art-foundation-announces-march-meeting-2026-between-us-the-world",
+   "date": "2026-06 (approx)",
+   "summary": "Sharjah's annual convening (Mar 27-29, 2026) gathers artists and thinkers under 'Between Us, the World,' a framework about relation and the space between people as the site of the political. A leading Global South platform setting discursive agendas for international contemporary art."
+  },
+  {
+   "id": "sharjah_art_foundation_2026_06_002",
+   "source": "sharjah-art-foundation",
+   "category": "museum",
+   "title": "Jorge Tacla: Time the destroyer is time the preserver",
+   "url": "https://www.sharjahart.org/en/press/details/jorge-tacla-brings-four-decades-of-paintings-drawings-and-installations-to-sharjah-art-foundation",
+   "date": "2026-06 (approx)",
+   "summary": "A four-decade survey (Feb 8-Jun 7, 2026) of the Chilean artist, 170+ works including a large-scale installation, dwelling on ruin, catastrophe and what time both destroys and conserves. Gulf institution platforming Latin American trauma-and-memory painting."
+  },
+  {
+   "id": "sharjah_art_foundation_2026_06_003",
+   "source": "sharjah-art-foundation",
+   "category": "museum",
+   "title": "Laila Majid and Inaam Zafar",
+   "url": "https://www.sharjahart.org/en/press/details/sharjah-art-foundation-announces-2026-spring-programme-including-major-exhibitions",
+   "date": "2026-06-13",
+   "summary": "A two-person show opening June 13 (through Sep 20) examining materiality and 'the images that structure our day-to-day life.' Younger-generation, image-critical practice given an institutional platform in the Gulf."
+  },
+  {
+   "id": "national_gallery_singapore_2026_06_001",
+   "source": "national-gallery-singapore",
+   "category": "museum",
+   "title": "Fear No Power: Women Imagining Otherwise",
+   "url": "https://www.nationalgallery.sg/sg/en/whats-on.html",
+   "date": "2026-06 (approx)",
+   "summary": "A show centering five Southeast Asian women artists (Amanda Heng, Dolorosa Sinaga, Imelda Cajipe Endaya, Nirmala Dutt, Phaptawan Suwannakudt) and their roles as educators, writers and community organizers, not only makers. Regional canon-building that redefines the artist as civic worker."
+  },
+  {
+   "id": "national_gallery_singapore_2026_06_002",
+   "source": "national-gallery-singapore",
+   "category": "museum",
+   "title": "When Art Meets Nature",
+   "url": "https://www.nationalgallery.sg/sg/en/exhibitions/When-Art-Meets-Nature.html",
+   "date": "2026-06 (approx)",
+   "summary": "An installation-based exhibition (Apr 30-Nov 1, 2026) by Soh Ee Shaun and Yenting Hsu staging encounters between art and the natural world. Family-accessible programming foregrounding ecology and wonder."
+  },
+  {
+   "id": "national_gallery_singapore_2026_06_003",
+   "source": "national-gallery-singapore",
+   "category": "museum",
+   "title": "Into the Modern: Impressionism from the MFA Boston",
+   "url": "https://www.nationalgallery.sg/sg/en/exhibitions.html",
+   "date": "2026-06 (approx)",
+   "summary": "A 100+ work Impressionism blockbuster (Jul 2025-Jun 21, 2026, closing in-window) bringing Renoir, Monet, Manet, Cezanne and Degas to Singapore for the first time. Southeast Asia's leading museum importing the Western canon as a draw while its own SEA gallery is closed for renovation."
+  },
+  {
+   "id": "zeitz_mocaa_2026_06_001",
+   "source": "zeitz-mocaa",
+   "category": "museum",
+   "title": "Turning Towards the Sun",
+   "url": "https://zeitzmocaa.museum/zeitz-mocaa-announces-upcoming-exhibition-season-2026-2027/",
+   "date": "2026-06 (approx)",
+   "summary": "A moving-image exhibition (monthly screenings from Apr 27, 2026) of newly commissioned films by Mati Diop, Wanuri Kahiu, Jim Chuchu, The Otolith Group and Zeresenay Berhane Mehari. Africa's leading contemporary museum commissioning a pan-African cinematic future-vision."
+  },
+  {
+   "id": "zeitz_mocaa_2026_06_003",
+   "source": "zeitz-mocaa",
+   "category": "museum",
+   "title": "A Protea Is Not a Flower",
+   "url": "https://zeitzmocaa.museum/zeitz-mocaa-presents-a-protea-is-not-a-flower/",
+   "date": "2026-06 (approx)",
+   "summary": "A Zeitz MOCAA exhibition using South Africa's national flower as a lens on national symbolism, naming and what stands in for identity. Institutional unpacking of how a symbol is made to carry a nation."
+  },
+  {
+   "id": "white_rabbit_2026_06_001",
+   "source": "white-rabbit",
+   "category": "museum",
+   "title": "White Rabbit Gallery: 'BIG IN CHINA' and new Chinese contemporary exhibition (Jun 25-Nov 8, 2026)",
+   "url": "https://whiterabbitcollection.org/exhibitions/",
+   "date": "2026-06-25",
+   "summary": "Sydney's White Rabbit, holding one of the world's most significant collections of 21st-century Chinese contemporary art (~3,000 works by ~750 artists), rotates from 'BIG IN CHINA' into a new exhibition opening June 25. A private-collection institution tracking social and artistic change in China through what it chooses to show."
+  },
+  {
+   "id": "theparisreview_2026_06_25_001",
+   "source": "theparisreview.org",
+   "category": "intellectual",
+   "title": "The Mudder, the Lawyer, the Prince, and Mr. Wrong",
+   "url": "https://www.theparisreview.org/blog/2026/06/25/the-mudder-the-lawyer-the-prince-and-mr-wrong/",
+   "date": "2026-06-25",
+   "summary": "Lisa Carver's first-person essay recounts dating three men at once in 2015 — a Spartan-race 'mudder,' a lawyer, a prince — and turns on the mudder's refusal ('my judgment regarding our future compatibility is clouded by physical attraction; I don't want to get broadsided by darkness') to argue that being broadsided IS the point: sexual love as the closest you can get to death and still live."
+  },
+  {
+   "id": "theparisreview_2026_06_24_001",
+   "source": "theparisreview.org",
+   "category": "intellectual",
+   "title": "Taiwan English",
+   "url": "https://www.theparisreview.org/blog/2026/06/24/taiwan-english/",
+   "date": "2026-06-24",
+   "summary": "Tao Lin's photo-essay collects error-ridden, idiosyncratic English on Taiwanese signs, shirts and ads ('CHEESE AND EGG OVERLOAD,' 'HEAVY TASTE DR. FISH,' 'ALONEMASTER'), reading the unintentional poetry of imperfect translation as more alive than the sanitized, copyedited correctness of fluent English."
+  },
+  {
+   "id": "theparisreview_2026_06_19_001",
+   "source": "theparisreview.org",
+   "category": "intellectual",
+   "title": "Three Horses",
+   "url": "https://www.theparisreview.org/blog/2026/06/19/three-horses/",
+   "date": "2026-06-19",
+   "summary": "Missouri Williams braids a personal account of riding her sister-in-law's aging stallion with horses in Greek tragedy — Aristophanes' ruinous 'madness for horses,' the offstage horses that destroy Hippolytus — on the gap between the immaterial horses of literature and the big, breathing, fly-buzzed animals that surprise us in fields."
+  },
+  {
+   "id": "theparisreview_2026_06_18_001",
+   "source": "theparisreview.org",
+   "category": "intellectual",
+   "title": "Drinking Movies: Down and Out at Cannes",
+   "url": "https://www.theparisreview.org/blog/2026/06/18/drinking-movies-down-and-out-at-cannes/",
+   "date": "2026-06-18",
+   "summary": "Inney Prakash recounts first getting sober at the 2019 Cannes Film Festival and reads 'drinking movies' — Leaving Las Vegas, Ulrike Ottinger's Ticket of No Return — as maps of nihilism and escape, where choosing an unfamiliar city makes self-annihilation easier to indulge."
+  },
+  {
+   "id": "theparisreview_2026_06_17_001",
+   "source": "theparisreview.org",
+   "category": "intellectual",
+   "title": "Making of a Poem: Hannah Piette on “Nijinsky Dancing”",
+   "url": "https://www.theparisreview.org/blog/2026/06/17/making-of-a-poem-hannah-piette/",
+   "date": "2026-06-17",
+   "summary": "Poet Hannah Piette dissects 'Nijinsky Dancing,' built from a golden book of Nijinsky photographs and Edwin Denby's account of how the dancer 'disappears completely' into each role; she asks whether she could write a poem in which her own face completely disappears."
+  },
+  {
+   "id": "nereview_2026_05_01_001",
+   "source": "nereview.com",
+   "category": "intellectual",
+   "title": "The Quiet Task of Speaking Our Palestine",
+   "url": "https://nereview.com/article/the-quiet-task-of-speaking-our-palestine/",
+   "date": "2026-05 (approx)",
+   "summary": "L. F. Khouri's nonfiction essay (NER 47.2, 2026) on the quiet, ongoing labor of speaking and witnessing Palestine — naming losses and holding them in durable form against erasure."
+  },
+  {
+   "id": "nereview_2026_05_01_002",
+   "source": "nereview.com",
+   "category": "intellectual",
+   "title": "Brazilian Badlands: Seven Women Writing the Brazilian Northeast",
+   "url": "https://nereview.com/article/brazilian-badlands-seven-women-writing-the-brazilian-northeast/",
+   "date": "2026-05 (approx)",
+   "summary": "Editor's note by Bruna Dantas Lobato (NER 47.2) introducing a feature on seven women writing the Brazilian Northeast in translation, foregrounding a regional literature that metropolitan and Anglophone canons routinely overlook."
+  },
+  {
+   "id": "nereview_2026_06_01_001",
+   "source": "nereview.com",
+   "category": "intellectual",
+   "title": "Writer's Notebook: Oscar Oswald",
+   "url": "https://nereview.com/writers-notebook-oscar-oswald/",
+   "date": "2026-06 (approx)",
+   "summary": "Oscar Oswald's notebook entry on 'The Manifest,' his poem of Idaho written in Idaho, which he frames as anonymous and authored long before him — 'an exquisite corpse, a shared writing of the world.'"
+  },
+  {
+   "id": "nereview_2026_04_01_001",
+   "source": "nereview.com",
+   "category": "intellectual",
+   "title": "Behind the Byline: Elizabeth Lee",
+   "url": "https://nereview.com/behind-the-byline-elizabeth-lee/",
+   "date": "2026-04 (approx)",
+   "summary": "NER 47.1 writer Elizabeth Lee on untranslatable language, the parasocial nature of mukbangs, and crafting a self-conscious point of view in her story 'AYCE' (all-you-can-eat)."
+  },
+  {
+   "id": "nereview_2026_05_01_003",
+   "source": "nereview.com",
+   "category": "intellectual",
+   "title": "The Children’s Museum",
+   "url": "https://nereview.com/article/the-childrens-museum/",
+   "date": "2026-05 (approx)",
+   "summary": "Douglas Silver's short story (NER 47.2) about Gene, whose childhood near-kidnapping has become the load-bearing fact of his identity — a man quietly anxious that the most interesting thing ever to happen to him happened to a 'latchkey kid' who could have been anyone."
+  },
+  {
+   "id": "nereview_2026_05_01_004",
+   "source": "nereview.com",
+   "category": "intellectual",
+   "title": "The Riddle of the Modern World",
+   "url": "https://nereview.com/article/the-riddle-of-the-modern-world/",
+   "date": "2026-05 (approx)",
+   "summary": "Cynthia Cruz's poem (NER 47.2, after Frank Stanford): a dream-within-a-dream of honey, pollen and humming bees, a yellow fox 'warm with illness' pawing at the water, closing on the fear that 'any moment now / my own death / will enter my body.'"
+  }
+ ]
+}

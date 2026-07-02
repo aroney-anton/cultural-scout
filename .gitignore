@@ -1,0 +1,22 @@
+# --- Python ---
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+
+# --- Cloudflare Pages / Wrangler local cache ---
+.wrangler/
+
+# --- deprecated / scratch ---
+*.deprecated
+
+# NOTE: intentionally TRACKED (not ignored):
+#   .emb_cache.npz      — int8 embedding cache; expensive to regenerate
+#                         (HF model hosts are firewalled on the build machine)
+#   site/*.html         — the deployable build artifact (small, and what ships)
+#   *.json, *.md, *.yaml, *.py, *.sh — all source, data, and playbook files

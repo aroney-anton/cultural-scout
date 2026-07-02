@@ -1,0 +1,1129 @@
+{
+  "harvest_date": "2026-04-28",
+  "model": "claude-code:WebFetch+WebSearch (interactive; harvest.py not yet runnable due to no API credits)",
+  "date_range_days": 90,
+  "recency_cutoff": "2026-01-28",
+  "phase": "Phase 0 small-batch validation (Batches 1 + 2 + 3 combined)",
+  "sources_attempted": [
+    "elephant.art",
+    "holiday-magazine.com",
+    "etymologynerd.com",
+    "thisismold.com",
+    "thedriftmag.com",
+    "pitchfork.com",
+    "thingtesting.com",
+    "internetanthropologists.substack.com",
+    "pinupmagazine.org",
+    "pratt.edu",
+    "variety.com",
+    "slate.com",
+    "avclub.com",
+    "indiewire.com",
+    "dailydot.com",
+    "vittles.substack.com",
+    "032c.com",
+    "polyesterzine.com",
+    "family.style"
+  ],
+  "sources_harvested": [
+    "elephant.art",
+    "thedriftmag.com",
+    "etymology.substack.com",
+    "pratt.edu",
+    "pinuphome.com",
+    "internetanthropologists.substack.com",
+    "variety.com",
+    "slate.com",
+    "avclub.com",
+    "indiewire.com",
+    "032c.com",
+    "polyesterzine.com",
+    "family.style",
+    "vittlesmagazine.com"
+  ],
+  "sources_dropped_or_problematic": {
+    "holiday-magazine.com": "Print-only portfolio site, no dated online articles. Unfetchable.",
+    "thisismold.com": "DEFUNCT — magazine ceased publication 2025-06-20.",
+    "etymologynerd.com": "Wrong URL — actual editorial at etymology.substack.com (URL fix applied).",
+    "pitchfork.com": "HARD BLOCKED at user-agent level by Anthropic web tooling. Outlier; other 4 entertainment sources (Variety/Slate/AV Club/IndieWire) all fetched cleanly in Batch 3.",
+    "thingtesting.com": "Returns 403 to WebFetch; WebSearch surfaces only brand-directory pages, not editorial.",
+    "pinupmagazine.org": "URL fix to pinuphome.com applied; homepage is e-commerce, articles only discoverable via publication overview.",
+    "vittles.substack.com": "301-redirects to vittlesmagazine.com (URL fix applied).",
+    "dailydot.com": "Technically fetchable but content fails quality bar — clickbait/viral-discourse register, not cultural criticism. 0 signals retained from 12 returned items."
+  },
+  "per_source_counts": {
+    "elephant.art": 12,
+    "thedriftmag.com": 11,
+    "etymology.substack.com": 10,
+    "pratt.edu": 9,
+    "pinuphome.com": 4,
+    "internetanthropologists.substack.com": 2,
+    "variety.com": 8,
+    "slate.com": 10,
+    "avclub.com": 10,
+    "indiewire.com": 11,
+    "032c.com": 15,
+    "polyesterzine.com": 5,
+    "family.style": 12,
+    "vittlesmagazine.com": 10
+  },
+  "notes": [
+    "elephant.art: dates not on listing pages; '2026-04 (approx)' items based on listing order, not confirmed reads. Sample fetch (Cruzvillegas, 2026-04-27) confirms listing is current.",
+    "thedriftmag.com: Issue 17 (2026-04-21) — quarterly cadence means 11 items per issue is the realistic per-run density.",
+    "032c.com: HOMEPAGE DOES NOT EXPOSE INDIVIDUAL ARTICLE URLS — all 15 items below carry the same magazine root URL. Title-based search would be needed to backfill specific URLs before Phase 2 can cite them. The summaries are strong; the citation issue is structural.",
+    "pratt.edu via /prattfolio/ skews to alumni career-advice profiles, not thesis work. /pratt-shows/ has thesis exhibitions but as event listings, not articles.",
+    "pinuphome.com only surfaced 4 articles from the publication overview; no obvious articles archive page. Below density target.",
+    "internetanthropologists.substack.com: 2 items in 90-day window; substack has only published 4 posts since launching late September 2025. Realistic harvest density is ~2-3 per quarter.",
+    "polyesterzine.com: only 5 articles surfaced from homepage. Below density target — harvest method may need to discover beyond first-screen.",
+    "variety.com: skewed toward celebrity-publicity-cycle interviews. Selected 8 with stronger structural reads (Keke Palmer on child stardom, Disney CEO + AI, production-design pieces).",
+    "slate.com: scoped to /culture path; large portion of homepage was dominated by Michael Jackson biopic coverage (4 of 10 items)."
+  ],
+  "signals": [
+    {
+      "id": "elephant_art_2026_04_27_001",
+      "source": "elephant.art",
+      "title": "Abraham Cruzvillegas is Always Learning",
+      "url": "https://elephant.art/abraham-cruzvillegas-is-always-learning/",
+      "date": "2026-04-27",
+      "summary": "Profile by Meka Boyle of Mexico City-based artist Abraham Cruzvillegas, framed around his commission for Louis M. Martini Winery at Art Basel Miami Beach 2025 (a label made from crushed pigment and water) and his role directing the inaugural Bienal de Yucatán. The piece traces his autoconstrucción practice as place-based research that absorbs indigenous history, terrain, and local making traditions before generating any object."
+    },
+    {
+      "id": "elephant_art_2026_04_02_002",
+      "source": "elephant.art",
+      "title": "Milena Gorum Keeps It All",
+      "url": "https://elephant.art/milena-gorum-keeps-it-all/",
+      "date": "2026-04-02",
+      "summary": "Interview with set designer Milena Gorum, in conversation with Gwyneth Giller for the Girl Talk series, on what the magazine calls 'the art of holding on a little too long.' Gorum is framed as practising hoarding-as-discipline — collecting as artistic method rather than personality trait."
+    },
+    {
+      "id": "elephant_art_2026_03_06_003",
+      "source": "elephant.art",
+      "title": "The Glamour and the Glitch: Inside Hannah Murray's 'Charm' at Ginny on Frederick",
+      "url": "https://elephant.art/the-glamour-and-the-glitch-inside-hannah-murrays-charm-at-ginny-on-frederick/",
+      "date": "2026-03-06",
+      "summary": "Exhibition feature on Hannah Murray's show 'Charm' at Ginny on Frederick (London). The framing pairs glamour and glitch as a single visual register rather than opposites."
+    },
+    {
+      "id": "elephant_art_2026_02_26_004",
+      "source": "elephant.art",
+      "title": "Mortality in Color: Anna Tuori's First Berlin Solo Exhibition",
+      "url": "https://elephant.art/mortality-in-color-anna-tuoris-first-berlin-solo-exhibition/",
+      "date": "2026-02-26",
+      "summary": "Review of Finnish painter Anna Tuori's first Berlin solo, 'Paradise Room' — twelve newly commissioned paintings that take mortality, transience, and perception as a chromatic problem rather than a thematic one."
+    },
+    {
+      "id": "elephant_art_2026_04_005",
+      "source": "elephant.art",
+      "title": "\"Virtuosity Can Exist with Awkwardness\": Alexa West & Adam Charlap Hyman on Jawbreaker",
+      "url": "https://elephant.art/virtuosity-can-exist-with-awkwardness-alexa-west-adam-charlap-hyman-on-jawbreaker/",
+      "date": "2026-04 (approx)",
+      "summary": "Conversation between artists Alexa West and Adam Charlap Hyman around their collaborative project 'Jawbreaker' — making the case that technical mastery and intentional awkwardness are co-present in the work, not a stage-by-stage progression."
+    },
+    {
+      "id": "elephant_art_2026_04_006",
+      "source": "elephant.art",
+      "title": "\"How Deep Does Your Love Reach?\": Del Valle's 'Mundos Rotos'",
+      "url": "https://elephant.art/how-deep-does-your-love-reach-del-valles-mundos-rotos/",
+      "date": "2026-04 (approx)",
+      "summary": "Critical reading of Del Valle's exhibition 'Mundos Rotos' (broken worlds), which uses fractured emotional and relational material as the structural device of the show rather than as subject matter."
+    },
+    {
+      "id": "elephant_art_2026_04_007",
+      "source": "elephant.art",
+      "title": "Arch Hades Wants You to Have an Existential Crisis in Venice",
+      "url": "https://elephant.art/arch-hades-wants-you-to-have-an-existential-crisis-in-venice/",
+      "date": "2026-04 (approx)",
+      "summary": "Interview with the artist Arch Hades around a Venice exhibition that frames the visit itself as a designed existential prompt — the work's effect is the viewer's destabilisation, not the object."
+    },
+    {
+      "id": "elephant_art_2026_04_008",
+      "source": "elephant.art",
+      "title": "Producing Legibility with Sable Elyse Smith",
+      "url": "https://elephant.art/producing-legibility-with-sable-elyse-smith/",
+      "date": "2026-04 (approx)",
+      "summary": "Conversation with sculptor Sable Elyse Smith on how she engineers legibility into conceptually dense work — what techniques she uses to make complex ideas land without flattening them."
+    },
+    {
+      "id": "elephant_art_2026_04_009",
+      "source": "elephant.art",
+      "title": "Emma Kohlmann on Internet Nostalgia, Intuition, and the Zines That Started It All",
+      "url": "https://elephant.art/emma-kohlmann-on-internet-nostalgia-intuition-and-zines/",
+      "date": "2026-04 (approx)",
+      "summary": "Interview with artist Emma Kohlmann on how early-internet zine culture continues to shape her intuitive practice — zines treated as the formative aesthetic infrastructure rather than as nostalgic reference."
+    },
+    {
+      "id": "elephant_art_2026_04_010",
+      "source": "elephant.art",
+      "title": "On (and In) Love with Rene Matić: Britain's Youngest Ever Turner Prize Nominee",
+      "url": "https://elephant.art/on-and-in-love-with-rene-matic-britains-youngest-ever-turner-prize-nominee/",
+      "date": "2026-04 (approx)",
+      "summary": "Profile of Rene Matić, the youngest-ever Turner Prize nominee. The piece reads romantic and conceptual frameworks as overlapping vocabularies in their work, not separate registers."
+    },
+    {
+      "id": "elephant_art_2026_04_011",
+      "source": "elephant.art",
+      "title": "The Florida Man is Dead. Long Live the \"Florida Boys\"",
+      "url": "https://elephant.art/the-florida-man-is-dead-long-live-the-florida-boys/",
+      "date": "2026-04 (approx)",
+      "summary": "Cultural commentary tracking the shift from the 'Florida Man' archetype (chaotic, news-cycle-driven) to a 'Florida Boys' artistic identity emerging from the state's contemporary art scene — meme as fading frame, practice as new frame."
+    },
+    {
+      "id": "elephant_art_2026_04_012",
+      "source": "elephant.art",
+      "title": "Lutz Bacher Never Offered Easy Readings: 'Burning the Days' at WIELS",
+      "url": "https://elephant.art/burning-the-days-a-lutz-bacher-retrospective-opens-at-wiels/",
+      "date": "2026-04 (approx)",
+      "summary": "Retrospective review of the late artist Lutz Bacher's 'Burning the Days' at WIELS (Brussels). Argues her refusal of legible interpretation is the through-line of decades of practice, not a feature of any one work."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_001",
+      "source": "thedriftmag.com",
+      "title": "Editors' Note: The House Never Chickens Out",
+      "url": "https://www.thedriftmag.com/editors-note-17/",
+      "date": "2026-04-21",
+      "summary": "Issue 17 editor's note from The Drift, framing the issue around political dynamics and what they call 'courage in decision-making' as an ambient condition of the moment."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_002",
+      "source": "thedriftmag.com",
+      "title": "The Ultimate Conspiracy of Patriarchy",
+      "url": "https://www.thedriftmag.com/the-ultimate-conspiracy-of-patriarchy/",
+      "date": "2026-04-21",
+      "summary": "Roundtable conversation with Brace Belden, Daniel Boguslaw, Alexandra Brodsky, and Anand Giridharadas examining how systemic gender dynamics persist as infrastructure rather than ideology."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_003",
+      "source": "thedriftmag.com",
+      "title": "Roman-Flood: Karl Ove Knausgaard's Diabolic Realism",
+      "url": "https://www.thedriftmag.com/roman-flood/",
+      "date": "2026-04-21",
+      "summary": "Max Norman on Knausgaard, arguing his realism is 'diabolic' — i.e. unflinching to the point of cruelty — and that this is the specific aesthetic operation, not a side effect of the autobiographical mode."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_004",
+      "source": "thedriftmag.com",
+      "title": "Into the Right-Wing Dreamworld: DHS's Regime of Images",
+      "url": "https://www.thedriftmag.com/into-the-right-wing-dreamworld/",
+      "date": "2026-04-21",
+      "summary": "Mitch Therieau examines the Department of Homeland Security's visual output as a coordinated propaganda regime — not just messaging but a constructed image-world designed to be inhabited."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_005",
+      "source": "thedriftmag.com",
+      "title": "History Has Its Eyes on You: 'Slam Frank' and Musical Theater's 'Hamilton' Bind",
+      "url": "https://www.thedriftmag.com/history-has-its-eyes-on-you/",
+      "date": "2026-04-21",
+      "summary": "Emma Adler reads the new musical 'Slam Frank' against Hamilton's continuing influence over what musical theater is allowed to do with history — every history-as-musical now has to negotiate the Hamilton template."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_006",
+      "source": "thedriftmag.com",
+      "title": "The Myth of Green Germany: Energiewende Runs Out of Fuel",
+      "url": "https://www.thedriftmag.com/the-myth-of-green-germany/",
+      "date": "2026-04-21",
+      "summary": "Stephen Milder's investigation into the German Energiewende, arguing the renewable-transition narrative has materially stalled and that the gap between the storytelling and the grid is now too large to ignore."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_007",
+      "source": "thedriftmag.com",
+      "title": "Fraud with Benefits: How Breaking the Rules Makes Welfare Work",
+      "url": "https://www.thedriftmag.com/fraud-with-benefits/",
+      "date": "2026-04-21",
+      "summary": "Maia Silber argues that the welfare system as designed only functions because recipients informally route around its rules — 'fraud' is doing the maintenance work the policy refuses to do."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_008",
+      "source": "thedriftmag.com",
+      "title": "ESOP Fables: The False Promise of Employee Ownership",
+      "url": "https://www.thedriftmag.com/esop-fables/",
+      "date": "2026-04-21",
+      "summary": "Francis Northwood's critique of Employee Stock Ownership Plans, arguing they have been mis-sold as worker empowerment when their actual function is succession planning and tax engineering for owners."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_009",
+      "source": "thedriftmag.com",
+      "title": "A Nicely Situated Ideal: On the Public Sphere",
+      "url": "https://www.thedriftmag.com/a-nicely-situated-ideal/",
+      "date": "2026-04-21",
+      "summary": "Multi-author dispatch on the state of the public sphere — written as a deliberately polyphonic format to refuse a single editorial line."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_010",
+      "source": "thedriftmag.com",
+      "title": "Devochka",
+      "url": "https://www.thedriftmag.com/devochka/",
+      "date": "2026-04-21",
+      "summary": "Short story by Caroline Porter on identity and displacement in a Russian-American context; the title is the diminutive 'little girl' and the story uses it as a contested address."
+    },
+    {
+      "id": "thedriftmag_2026_04_21_011",
+      "source": "thedriftmag.com",
+      "title": "Independent Living",
+      "url": "https://www.thedriftmag.com/independent-living/",
+      "date": "2026-04-21",
+      "summary": "Short story by Hannah Kingsley-Ma examining autonomy and relationships in the literal context of an independent-living facility — the title doing double duty as architectural description and ethical question."
+    },
+    {
+      "id": "etymology_substack_com_2026_04_22_001",
+      "source": "etymology.substack.com",
+      "title": "moloch and the machines",
+      "url": "https://etymology.substack.com/p/moloch-and-the-machines",
+      "date": "2026-04-22",
+      "summary": "Aleksic uses the Ginsberg-derived line 'I saw the best minds of my generation destroyed by brainrot, gooning doomscrolling bedrotting' as the analytical anchor, treating brainrot as a Moloch-shaped sacrificial logic rather than a personal failure."
+    },
+    {
+      "id": "etymology_substack_com_2026_04_18_002",
+      "source": "etymology.substack.com",
+      "title": "how to look at brainrot",
+      "url": "https://etymology.substack.com/p/how-to-look-at-brainrot",
+      "date": "2026-04-18",
+      "summary": "A visual-analysis post asking readers to compare two images and notice their own emotional response, making the case that brainrot has to be understood phenomenologically (how it feels to look at) before it can be understood semantically."
+    },
+    {
+      "id": "etymology_substack_com_2026_04_05_003",
+      "source": "etymology.substack.com",
+      "title": "symbiotic virality",
+      "url": "https://etymology.substack.com/p/symbiotic-virality",
+      "date": "2026-04-05",
+      "summary": "Argues a current 'goondemic' shows viral content moving symbiotically across interconnected online communities — virality as ecological network effect rather than single-vector contagion."
+    },
+    {
+      "id": "etymology_substack_com_2026_03_31_004",
+      "source": "etymology.substack.com",
+      "title": "are we vibing too much?",
+      "url": "https://etymology.substack.com/p/are-we-vibing-too-much",
+      "date": "2026-03-31",
+      "summary": "Meditation on online validation cycles, anchored by Goya's 'the sleep of reason produces monsters' — the suggestion that the vibes register has become a sedative that reasons can't wake from."
+    },
+    {
+      "id": "etymology_substack_com_2026_03_23_005",
+      "source": "etymology.substack.com",
+      "title": "regarding the consumption of fruit",
+      "url": "https://etymology.substack.com/p/regarding-the-consumption-of-fruit",
+      "date": "2026-03-23",
+      "summary": "Connects AI-generated 'fruit slop' content to compulsive doomscrolling, arguing the metaphor of consumption (as in 'consuming media') has stopped being a metaphor and become the actual mechanism."
+    },
+    {
+      "id": "etymology_substack_com_2026_03_04_006",
+      "source": "etymology.substack.com",
+      "title": "brainrot, buddhism, and radical meaning",
+      "url": "https://etymology.substack.com/p/brainrot-is-a-radical-act",
+      "date": "2026-03-04",
+      "summary": "Reads internet brainrot through Buddhist accounts of linguistic repetition and meaning dissolution — proposes brainrot as a (perhaps accidental) practice of radical decontextualisation."
+    },
+    {
+      "id": "etymology_substack_com_2026_02_22_007",
+      "source": "etymology.substack.com",
+      "title": "you also need the stuffed monkey",
+      "url": "https://etymology.substack.com/p/you-also-need-the-stuffed-monkey",
+      "date": "2026-02-22",
+      "summary": "Uses Harry Harlow's 1957 wire-mother / cloth-mother monkey experiments to argue that emotional attachment requirements are stable across contexts — including digital ones, where users are still selecting for the cloth-mother surface."
+    },
+    {
+      "id": "etymology_substack_com_2026_02_12_008",
+      "source": "etymology.substack.com",
+      "title": "the future is gambling on your attention",
+      "url": "https://etymology.substack.com/p/the-future-is-gambling-on-your-attention",
+      "date": "2026-02-12",
+      "summary": "Argues that prediction markets like Polymarket are restructuring the information environment — once attention becomes a market-priced commodity, the line between forecasting and incentivising collapses."
+    },
+    {
+      "id": "etymology_substack_com_2026_02_03_009",
+      "source": "etymology.substack.com",
+      "title": "human infohazards",
+      "url": "https://etymology.substack.com/p/human-infohazards",
+      "date": "2026-02-03",
+      "summary": "Theory of parasitic memetics: certain ideas spread through human networks the way pathogens do, with hosts whose behaviour changes to favour further transmission. Names this category as a separate object from 'misinformation' or 'propaganda'."
+    },
+    {
+      "id": "etymology_substack_com_2026_01_27_010",
+      "source": "etymology.substack.com",
+      "title": "why I enjoy conveyor belt advertisements",
+      "url": "https://etymology.substack.com/p/why-i-enjoy-conveyor-belt-advertisements",
+      "date": "2026-01-27",
+      "summary": "Personal essay on a Dutch conveyor-belt company's Instagram account as a refuge from typical online content — proposes that radical specificity of subject (industrial conveyor belts, no metaphor) is a form of attentional hygiene."
+    },
+    {
+      "id": "pratt_edu_2026_04_001",
+      "source": "pratt.edu",
+      "title": "Mill, Melt, Press, Shape",
+      "url": "https://www.pratt.edu/prattfolio/stories/shops-labs/",
+      "date": "2026-04 (approx)",
+      "summary": "Inside-look feature on five Pratt students across different majors working in the school's fabrication and lab spaces — the piece treats the shops/labs as a cross-disciplinary infrastructure that is itself doing pedagogical work, not merely a tool."
+    },
+    {
+      "id": "pratt_edu_2026_04_002",
+      "source": "pratt.edu",
+      "title": "\"Whatever Is Happening Now Is Never Going to Happen Again\"",
+      "url": "https://www.pratt.edu/prattfolio/stories/architecture-and-ai/",
+      "date": "2026-04 (approx)",
+      "summary": "By Allison C. Meier. Explores how AI is opening new visions for architecture and how architects can shape AI rather than be shaped by it — frames the moment as a window, not a steady state."
+    },
+    {
+      "id": "pratt_edu_2026_04_003",
+      "source": "pratt.edu",
+      "title": "Seek the Critique: Career Advice from Brand Designer Yvette Yoon '23",
+      "url": "https://www.pratt.edu/prattfolio/stories/yvette-yoon/",
+      "date": "2026-04 (approx)",
+      "summary": "Brand designer Yvette Yoon ('23) on actively seeking feedback as a discipline rather than tolerating it — frames critique-seeking as a core practice of early-career design rather than a stage."
+    },
+    {
+      "id": "pratt_edu_2026_04_004",
+      "source": "pratt.edu",
+      "title": "Patience, Persistence, and a Pivot: Career Advice from Creative Technologist Ananda Ray '24",
+      "url": "https://www.pratt.edu/prattfolio/stories/ananda-ray/",
+      "date": "2026-04 (approx)",
+      "summary": "Digital arts grad Ananda Ray on the pivot to creative technology at advertising agency Doner — describes the pivot itself as the design move, not a deviation from one."
+    },
+    {
+      "id": "pratt_edu_2026_04_005",
+      "source": "pratt.edu",
+      "title": "Design with Purpose: Júlia Martinez '25 on Finding a Meaningful Career",
+      "url": "https://www.pratt.edu/prattfolio/stories/julia-martinez/",
+      "date": "2026-04 (approx)",
+      "summary": "Júlia Martinez ('25, MS Packaging, Identities, and Systems Design) on her work at OXMAN, a lab focused on biologically informed design — packaging-as-biological-system rather than packaging-as-shell."
+    },
+    {
+      "id": "pratt_edu_2026_04_006",
+      "source": "pratt.edu",
+      "title": "Project Team Member Catherine Chattergoon '24 on Landing Her Dream Job",
+      "url": "https://www.pratt.edu/prattfolio/stories/catherine-chattergoon/",
+      "date": "2026-04 (approx)",
+      "summary": "Catherine Chattergoon (BArch '24) on how mentorship and community structured her transition from graduation to value-aligned creative practice — the transition is described as community-mediated rather than individual."
+    },
+    {
+      "id": "pratt_edu_2026_04_007",
+      "source": "pratt.edu",
+      "title": "Professionalizing Artistic Passion: Career Advice from Painter Leda Tsoutreli '25",
+      "url": "https://www.pratt.edu/prattfolio/stories/career-advice-leda-tsoutreli/",
+      "date": "2026-04 (approx)",
+      "summary": "MFA Fine Arts student Leda Tsoutreli on converting her thesis exhibition into gallery representation and a U.S. solo show — the thesis-as-pitch model, with the school exhibition functioning as the first commercial showroom."
+    },
+    {
+      "id": "pratt_edu_2026_04_008",
+      "source": "pratt.edu",
+      "title": "The Art of Connection: Career Advice from Visual Artist Suhyeon Lee '24",
+      "url": "https://www.pratt.edu/prattfolio/stories/suhyeon-lee/",
+      "date": "2026-04 (approx)",
+      "summary": "Suhyeon Lee (BFA Fine Arts '24) on building a career across creative practice and global sales account management — frames interpersonal skill as a creative-industry asset, not an adjacent capability."
+    },
+    {
+      "id": "pratt_edu_2026_04_009",
+      "source": "pratt.edu",
+      "title": "Redesigning Your Path: Tips on Career Pivots from Vonetta DeVonish '22",
+      "url": "https://www.pratt.edu/prattfolio/stories/career-pivots-vonetta-devonish/",
+      "date": "2026-04 (approx)",
+      "summary": "Vonetta DeVonish (MS Information Experience Design '22) on going back to design school mid-tech-career — frames mid-career return as a re-tooling for sector translation rather than a course correction."
+    },
+    {
+      "id": "pinuphome_com_2026_04_001",
+      "source": "pinuphome.com",
+      "title": "Celebrating PIN–UP 40 During Milan Design Week",
+      "url": "https://pinuphome.com/articles/pinup-40-dinner-milan",
+      "date": "2026-04 (approx)",
+      "summary": "Event coverage of PIN–UP's 20th-anniversary dinner at Milan Design Week, marking Issue 40 (S/S 2026) — packaged as ten interlinked issues exploring early 21st-century architecture and design."
+    },
+    {
+      "id": "pinuphome_com_2026_04_002",
+      "source": "pinuphome.com",
+      "title": "Prada Frames Takes on the Image at Milan Design Week",
+      "url": "https://pinuphome.com/articles/prada-frames-2026-milan-design-week",
+      "date": "2026-04 (approx)",
+      "summary": "Rachel Hahn on Prada Frames at Milan Design Week 2026 — the brand's design-research strand, framed as the image (rather than the object) being its 2026 organising problem."
+    },
+    {
+      "id": "pinuphome_com_2026_03_003",
+      "source": "pinuphome.com",
+      "title": "Isa Genzken, Architect",
+      "url": "https://pinuphome.com/articles/isa-genzken-architect-david-zwirner-galerie-bucholz",
+      "date": "2026-03 (approx)",
+      "summary": "David Lê profiles Isa Genzken's practice through the architectural lens — argues her sculptural work has always been doing architecture's job, and that the 'architect' designation is a re-reading not a re-categorization."
+    },
+    {
+      "id": "pinuphome_com_2026_03_004",
+      "source": "pinuphome.com",
+      "title": "Frank Gehry Reflects on His Legacy",
+      "url": "https://pinuphome.com/articles/frank-gehry-interview",
+      "date": "2026-03 (approx)",
+      "summary": "Mimi Zeiger's extended interview with Frank Gehry on his career and legacy — the piece pushes against the canonization frame and toward what's still unresolved in his thinking."
+    },
+    {
+      "id": "internetanthropologists_substack_com_2026_02_25_001",
+      "source": "internetanthropologists.substack.com",
+      "title": "Internet Artifacts On American Psychos",
+      "url": "https://internetanthropologists.substack.com/p/internet-artifacts-on-american-psychos",
+      "date": "2026-02-25",
+      "summary": "Examines how consumer connoisseurship — the kind cultivated by deep product knowledge online — may diminish genuine appreciation rather than enhance it. The argument: knowing more about a thing can crowd out the capacity to be moved by it."
+    },
+    {
+      "id": "internetanthropologists_substack_com_2026_01_14_002",
+      "source": "internetanthropologists.substack.com",
+      "title": "Internet Artifacts On The State of Gathering",
+      "url": "https://internetanthropologists.substack.com/p/internet-artifacts-on-the-state-of",
+      "date": "2026-01-14",
+      "summary": "Reads contemporary gathering practices and event culture as a lens on present-day cultural attitudes — what people gather for, how, and what kinds of gatherings have become legible vs illegible."
+    },
+    {
+      "id": "variety_com_2026_04_27_001",
+      "source": "variety.com",
+      "title": "Keke Palmer Fights the System: 'I Love Boosters' Star on Getting Political with Boots Riley and the 'Dehumanizing Machinery' of Child Stardom",
+      "url": "https://variety.com/2026/film/features/keke-palmer-i-love-boosters-nickeoldeon-child-stars-1236677702/",
+      "date": "2026-04-27",
+      "summary": "Keke Palmer on her childhood in entertainment and her Boots Riley collaboration on 'I Love Boosters' — names child stardom as 'dehumanizing machinery,' a structural critique rather than a personal lament. The Riley pairing positions the political read as integrated to the project rather than commentary on it."
+    },
+    {
+      "id": "variety_com_2026_04_27_002",
+      "source": "variety.com",
+      "title": "Can New Disney CEO Josh D'Amaro Weather AI, Revitalize 'Star Wars' and Marvel and Save the Magic Kingdom?",
+      "url": "https://variety.com/2026/film/features/disney-ceo-josh-damaro-star-wars-marvel-ai-1236671533/",
+      "date": "2026-04-27",
+      "summary": "Profile of Disney's new CEO framed around three simultaneous failures: AI integration, franchise fatigue at Marvel and Star Wars, and theme-park identity. The piece treats these as a single management problem about whether IP-as-empire still scales."
+    },
+    {
+      "id": "variety_com_2026_04_27_003",
+      "source": "variety.com",
+      "title": "'I Wasn't Trying to Kill Hannah Montana Off': Miley Cyrus on Reclaiming the Disney Icon After 20 Years",
+      "url": "https://variety.com/2026/tv/features/miley-cyrus-hannah-montana-anniversary-interview-1236690938/",
+      "date": "2026-04-27",
+      "summary": "Cyrus on the 20-year mark of Hannah Montana, sobriety, and reconciliation with Billy Ray — frames 'reclaiming' a Disney IP self as a personal-recovery move, blurring the line between asset management and identity work."
+    },
+    {
+      "id": "variety_com_2026_04_27_004",
+      "source": "variety.com",
+      "title": "Priyanka Chopra Jonas on 'Blowing Up' Her Acting Career, Ignoring Marriage Backlash and 'Coming Back to Indian Movies'",
+      "url": "https://variety.com/2026/film/features/priyanka-chopra-nick-jonas-the-bluff-varanasi-1236657119/",
+      "date": "2026-04-27",
+      "summary": "Chopra Jonas on pivoting back to Indian cinema for the RRR director's new film — framed as a deliberate career-reset against a Western career trajectory she's calling 'blowing up.' Treats the return as creative rather than retreat."
+    },
+    {
+      "id": "variety_com_2026_04_005",
+      "source": "variety.com",
+      "title": "Lesli Linka Glatter Talks Decades-Spanning Career, Working with Anti-Trump Robert De Niro on 'Zero Day' — and Why Everyone Needs a Moose Head on the Table",
+      "url": "https://variety.com/2026/tv/global/lesli-linka-glatter-anti-trump-robert-de-niro-zero-day-1236731537/",
+      "date": "2026-04 (approx)",
+      "summary": "Veteran director Lesli Linka Glatter on her career and collaborating with politically-vocal De Niro on a thriller series — the moose-head detail reads as a philosophy of preserving idiosyncrasy on set as a form of working discipline."
+    },
+    {
+      "id": "variety_com_2026_04_006",
+      "source": "variety.com",
+      "title": "'Waiting for Godot's' Production Designer on How a Subway Ride Inspired the Tunnel-Like Set",
+      "url": "https://variety.com/2026/artisans/news/waiting-for-godot-production-design-tunnel-set-1236726854/",
+      "date": "2026-04 (approx)",
+      "summary": "Behind-the-scenes on the Godot revival's set design — the designer locates the show's spatial logic in NYC subway architecture, an inversion of the play's 'nowhere' staging tradition into a specific civic-infrastructure metaphor."
+    },
+    {
+      "id": "variety_com_2026_04_007",
+      "source": "variety.com",
+      "title": "Creating a Fictional Pop Diva: How the 'Mother Mary' Artisans Crafted Anne Hathaway's Musical Alter Ego",
+      "url": "https://variety.com/2026/artisans/features/mother-mary-anne-hathaway-pop-star-1236722917/",
+      "date": "2026-04 (approx)",
+      "summary": "On the construction of Anne Hathaway's fictional pop-icon character in 'Mother Mary' — treats the character as a manufactured cultural artifact, walking through the costume/sound/persona engineering as if building a real-world pop brand."
+    },
+    {
+      "id": "variety_com_2026_04_008",
+      "source": "variety.com",
+      "title": "Finneas Breaks Down 'Beef' Season 2 Music: Oscar Isaac's 'Amateurish' Score, Those Billie Eilish Needle Drops",
+      "url": "https://variety.com/2026/tv/news/finneas-beef-season-2-music-oscar-isaac-billie-eilish-songs-1236712987/",
+      "date": "2026-04 (approx)",
+      "summary": "Finneas on the music supervision of Beef S2 — defends Oscar Isaac's intentionally 'amateurish' score as a craft choice, treating amateurism as a deliberate aesthetic register rather than a failure mode."
+    },
+    {
+      "id": "slate_com_2026_04_27_001",
+      "source": "slate.com",
+      "title": "Even If the Michael Jackson Movie Didn't Have a Responsibility to Address the Allegations, There's a Bigger Issue",
+      "url": "https://slate.com/culture/2026/04/michael-jackson-movie-2026-new-biopic-reviews-jaafar.html",
+      "date": "2026-04-27",
+      "summary": "Sam Adams argues that the new MJ biopic's bigger problem isn't whether it engages with abuse allegations, but a critical failure beneath that debate — the framing relocates the controversy from ethics to craft."
+    },
+    {
+      "id": "slate_com_2026_04_26_002",
+      "source": "slate.com",
+      "title": "There Are Two Types of Gardening Shows. The Superior Kind Can Be Found on YouTube.",
+      "url": "https://slate.com/culture/2026/04/zach-galifianakis-netflix-best-gardening-shows-streaming-youtube.html",
+      "date": "2026-04-26",
+      "summary": "Laura Miller argues YouTube gardening content has surpassed broadcast/streaming peers — the implicit thesis is that high production value is now actively a creative liability for certain genres."
+    },
+    {
+      "id": "slate_com_2026_04_25_003",
+      "source": "slate.com",
+      "title": "I Was Wrong About Lena Dunham",
+      "url": "https://slate.com/culture/2026/04/lena-dunham-girls-famesick-book-memoir-critic-weight-body-image.html",
+      "date": "2026-04-25",
+      "summary": "Sonia Saraiya's public revision of her own critical stance on Dunham following her memoir 'Famesick' — treats critic-recantation as a legitimate genre rather than a betrayal of position."
+    },
+    {
+      "id": "slate_com_2026_04_24_004",
+      "source": "slate.com",
+      "title": "What's Fact and What's Fiction in the Michael Jackson Biopic",
+      "url": "https://slate.com/culture/2026/04/michael-jackson-movie-biopic-2026-jaafar-true-story.html",
+      "date": "2026-04-24",
+      "summary": "Ellin Stein's piece-by-piece audit of the biopic's historical accuracy — methodologically interesting as a model for what audiences want from biopic factchecking, beyond just gotcha journalism."
+    },
+    {
+      "id": "slate_com_2026_04_24_005",
+      "source": "slate.com",
+      "title": "Why So Many Older Black Fans Will Never Give Michael Jackson Up",
+      "url": "https://slate.com/culture/2026/04/michael-jackson-movie-2026-mj-biopic-allegations-black-fans.html",
+      "date": "2026-04-24",
+      "summary": "Nadira Goffe on the durability of MJ fandom in older Black audiences despite ongoing allegations — frames continued attachment as a community-historical question rather than an individual moral one."
+    },
+    {
+      "id": "slate_com_2026_04_23_006",
+      "source": "slate.com",
+      "title": "The Real Problem With the Michael Jackson Movie",
+      "url": "https://slate.com/culture/2026/04/michael-jackson-movie-2026-review-new-biopic-jaafar-jackson.html",
+      "date": "2026-04-23",
+      "summary": "Jack Hamilton's pan of the megabudget biopic as 'morally and cinematically' flawed — argues commercial success is independent of these failures, an inversion of the usual critic-vs-market tension."
+    },
+    {
+      "id": "slate_com_2026_04_23_007",
+      "source": "slate.com",
+      "title": "He Made One of 2024's Breakout Hits. His New HBO Series Is Another Magnum Opus.",
+      "url": "https://slate.com/culture/2026/04/half-man-hbo-show-baby-reindeer-richard-gadd.html",
+      "date": "2026-04-23",
+      "summary": "Imogen West-Knights on Richard Gadd's 'Half Man' as a follow-up to 'Baby Reindeer' — argues the second project successfully extends the autobiographical-confessional mode without depleting it."
+    },
+    {
+      "id": "slate_com_2026_04_22_008",
+      "source": "slate.com",
+      "title": "No One Saw Trump's A.I. Jesus Post Coming. Except for One TV Show.",
+      "url": "https://slate.com/culture/2026/04/trump-jesus-ai-post-pope-the-boys-season-5-homelander.html",
+      "date": "2026-04-22",
+      "summary": "Rebecca Onion reads The Boys S5 as having anticipated Trump's AI Jesus image — treats the show as an unusually accurate predictive model for political-religious imagery, not just satire."
+    },
+    {
+      "id": "slate_com_2026_04_22_009",
+      "source": "slate.com",
+      "title": "A Bombshell Claim Just Upended Every Theory About America's Most Infamous Murder",
+      "url": "https://slate.com/culture/2026/04/california-crime-history-black-dahlia-news-book.html",
+      "date": "2026-04-22",
+      "summary": "Evan McGarvey on new evidence in the Black Dahlia case and its cultural aftermath — the piece argues true-crime cultural memory recalibrates faster than public discourse can absorb."
+    },
+    {
+      "id": "slate_com_2026_04_19_010",
+      "source": "slate.com",
+      "title": "What the Hell Happened to Sydney Sweeney's Character on 'Euphoria'?",
+      "url": "https://slate.com/culture/2026/04/euphoria-season-3-sydney-sweeney-cassie-baby-dog-onlyfans-nate-hbo.html",
+      "date": "2026-04-19",
+      "summary": "Rebecca Onion tracks Cassie's S3 trajectory as a character-arc post-mortem — uses one character's degeneration as a proxy for asking what Euphoria's writing room values now."
+    },
+    {
+      "id": "avclub_com_2026_04_28_001",
+      "source": "avclub.com",
+      "title": "Animal Farm Movies Have a Long History of Missing the Point",
+      "url": "https://www.avclub.com/animal-farm-adaptations-always-miss-the-point-cia-angel-studios",
+      "date": "2026-04-28",
+      "summary": "Argues every cinematic adaptation of Orwell's novella has misread its political critique — including the new Angel Studios version. The structural read is that Animal Farm's allegory resists film translation specifically because films need protagonists."
+    },
+    {
+      "id": "avclub_com_2026_04_28_002",
+      "source": "avclub.com",
+      "title": "From Señorita to Moonglow, Director Isabel Sandoval Weaves Stories of Passion and Mystery",
+      "url": "https://www.avclub.com/isabel-sandoval-moonglow",
+      "date": "2026-04-28",
+      "summary": "Career-spanning profile of Sandoval treating desire and narrative complexity as a single creative practice across films — frames her as a director who refuses to separate sensuality from storytelling architecture."
+    },
+    {
+      "id": "avclub_com_2026_04_28_003",
+      "source": "avclub.com",
+      "title": "Billy Magnussen and Jonathan Glatzer on Empathizing with The Audacity's 'Broken People'",
+      "url": "https://www.avclub.com/the-audacity-interview-billy-magnussen-jonathan-glatzer",
+      "date": "2026-04-28",
+      "summary": "Star and showrunner on building empathy for morally compromised characters — explicitly position 'broken' as a starting condition rather than a flaw to be repaired."
+    },
+    {
+      "id": "avclub_com_2026_04_28_004",
+      "source": "avclub.com",
+      "title": "May Film Preview: From Devil Wears Prada to Mandalorian, Summer Sequel Season Is Here",
+      "url": "https://www.avclub.com/new-movies-in-theaters-may-2026",
+      "date": "2026-04-28",
+      "summary": "May 2026 release calendar dominated by sequels and franchise installments — implicitly raises whether the 'sequel summer' label has any meaning when sequels are now the mode rather than the exception."
+    },
+    {
+      "id": "avclub_com_2026_04_27_005",
+      "source": "avclub.com",
+      "title": "True-Crime Podcast Empire On Blood Finds Unexpected Depth Among Its Pulpy Thrills",
+      "url": "https://www.avclub.com/podcast-canon-empire-on-blood-true-crime",
+      "date": "2026-04-27",
+      "summary": "Argues 'Empire On Blood' achieves substance within the sensationalist true-crime form rather than against it — the depth is in the genre execution, not in escaping the genre."
+    },
+    {
+      "id": "avclub_com_2026_04_27_006",
+      "source": "avclub.com",
+      "title": "Musical Biopics Have Been Making a Killing Off Audiences Who Don't Want the Truth",
+      "url": "https://www.avclub.com/musical-biopics-history-lying-for-money-play-the-hits-for-fans",
+      "date": "2026-04-27",
+      "summary": "Essay on the biopic genre's commercial success despite historical inaccuracy — argues audiences are paying specifically for the comforting fiction, not buying the fiction in spite of itself."
+    },
+    {
+      "id": "avclub_com_2026_04_27_007",
+      "source": "avclub.com",
+      "title": "Criminologists Baffled by Arc Raiders Players' Behavior: They're Being Nice",
+      "url": "https://www.avclub.com/arc-raiders-marathon-criminologists-player-behavior",
+      "date": "2026-04-27",
+      "summary": "Cordial community culture in a multiplayer game frustrating researcher expectations — surfaces a real anomaly in online behavior research worth following: when does a game's social design actually produce niceness?"
+    },
+    {
+      "id": "avclub_com_2026_04_27_008",
+      "source": "avclub.com",
+      "title": "May 2026 TV Preview: Nic Cage in Spider-Noir, The Boroughs, and a Yellowstone Sequel",
+      "url": "https://www.avclub.com/may-2026-tv-preview-spider-noir-the-boroughs-dutton-ranch",
+      "date": "2026-04-27",
+      "summary": "TV preview headlined by sequel/spin-off projects — the headline trio (Spider-Noir Nic Cage, Yellowstone successor) reflects the platform-incentive shift toward established-IP risk."
+    },
+    {
+      "id": "avclub_com_2026_04_009",
+      "source": "avclub.com",
+      "title": "Widow's Bay Is a Wild, Genre-Mashing Ride",
+      "url": "https://www.avclub.com/widows-bay-review-apple-tv",
+      "date": "2026-04 (approx)",
+      "summary": "A- review of Apple TV's Widow's Bay — uses 'genre-mashing' as praise rather than as a critic's complaint, indicating a register shift in TV criticism around hybrid forms."
+    },
+    {
+      "id": "avclub_com_2026_04_26_010",
+      "source": "avclub.com",
+      "title": "Valerie Navigates a World Without Writers in a Very Satisfying The Comeback",
+      "url": "https://www.avclub.com/the-comeback-recap-season-3-episode-6",
+      "date": "2026-04-26",
+      "summary": "Recap of The Comeback S3E6 — uses the show's fictional writer-strike-aftermath setting as a metacommentary on the actual labor dispute in entertainment."
+    },
+    {
+      "id": "indiewire_com_2026_04_001",
+      "source": "indiewire.com",
+      "title": "That Euphoria Wedding Was Always Meant to Be a Disaster",
+      "url": "https://www.indiewire.com/features/craft/euphoria-season-3-wedding-production-designer-1235190227/",
+      "date": "2026-04 (approx)",
+      "summary": "Production designer interview revealing that the disastrous-wedding sequence was an architectural goal from the start — treats catastrophe staging as a design discipline with its own conventions."
+    },
+    {
+      "id": "indiewire_com_2026_04_002",
+      "source": "indiewire.com",
+      "title": "Sam Levinson on Season 3's Western Connection and Why They Shot on 65mm Film Stock",
+      "url": "https://www.indiewire.com/features/interviews/euphoria-western-season-3-65mm-film-stock-1235189757/",
+      "date": "2026-04 (approx)",
+      "summary": "Levinson on Euphoria S3's Western thematic and 65mm choice — frames a teen drama as a Western, then defends the format choice as the only one that lets that frame land."
+    },
+    {
+      "id": "indiewire_com_2026_04_003",
+      "source": "indiewire.com",
+      "title": "A Music Biopic Supply Crisis Is Looming",
+      "url": "https://www.indiewire.com/features/commentary/hollywood-running-out-of-music-biopic-subjects-1235190095/",
+      "date": "2026-04 (approx)",
+      "summary": "Commentary on Hollywood running out of A-list catalog artists for biopic adaptations — the supply-crisis framing recasts a creative-industries question as an inventory problem."
+    },
+    {
+      "id": "indiewire_com_2026_04_004",
+      "source": "indiewire.com",
+      "title": "They've Seen the Same Movie 1,000 Times, and They're Not Stopping",
+      "url": "https://www.indiewire.com/features/interviews/cult-classic-movies-fans-keep-them-alive-1235190429/",
+      "date": "2026-04 (approx)",
+      "summary": "Profile of devoted fans who watch single films 1,000+ times — reads obsessive repetition as a form of cinema preservation, not a pathology."
+    },
+    {
+      "id": "indiewire_com_2026_04_005",
+      "source": "indiewire.com",
+      "title": "What 'The Pitt' Gets Right (and Wrong) About 'Pittsburghese'",
+      "url": "https://www.indiewire.com/features/interviews/the-pitt-pittsburghese-accent-katherine-lanasa-1235188754/",
+      "date": "2026-04 (approx)",
+      "summary": "Regional dialect representation in the medical drama — pieces apart what authentic Pittsburghese sounds like vs. what TV approximates, treating dialect as a craft problem."
+    },
+    {
+      "id": "indiewire_com_2026_04_006",
+      "source": "indiewire.com",
+      "title": "How 'The Pitt' Production Team Keeps Up That Meticulous Continuity",
+      "url": "https://www.indiewire.com/features/craft/the-pitt-season-2-production-design-interview-1235187974/",
+      "date": "2026-04 (approx)",
+      "summary": "Continuity protocols on a hospital procedural — frames continuity-maintenance as the hidden labor that determines whether a long-running show feels coherent."
+    },
+    {
+      "id": "indiewire_com_2026_04_007",
+      "source": "indiewire.com",
+      "title": "Pete Ohs Wants Filmmaking to Be Fun — and for You to Edit His Movies",
+      "url": "https://www.indiewire.com/features/interviews/pete-ohs-director-interview-erupcja-charli-xcx-1235189495/",
+      "date": "2026-04 (approx)",
+      "summary": "Director on his collaborative/audience-participatory filmmaking approach — including his Charli XCX project where audiences edit. Treats authorial relinquishment as the design principle, not the threat."
+    },
+    {
+      "id": "indiewire_com_2026_04_008",
+      "source": "indiewire.com",
+      "title": "'Beef' Season 2's Production Design Tells You Exactly Where Each Couple Stands",
+      "url": "https://www.indiewire.com/features/craft/beef-season-2-carey-mulligan-wallpapers-production-design-1235189901/",
+      "date": "2026-04 (approx)",
+      "summary": "Reads Beef S2's wallpapers, color, and interior choices as the show's primary device for character-relationship signaling — argues set decoration is doing the dramatic work usually given to dialogue."
+    },
+    {
+      "id": "indiewire_com_2026_04_009",
+      "source": "indiewire.com",
+      "title": "How the 'Blue Heron' Editor Turned the Director's Childhood Into One of 2026's Best Films",
+      "url": "https://www.indiewire.com/features/craft/blue-heron-interview-editor-kurt-walker-1235189687/",
+      "date": "2026-04 (approx)",
+      "summary": "Editor Kurt Walker on assembling a biographical indie film from director's childhood memories — reads editing as memory-work, the editor as the one shaping personal-history-into-narrative."
+    },
+    {
+      "id": "indiewire_com_2026_04_010",
+      "source": "indiewire.com",
+      "title": "Jorma Taccone on His Break from Filmmaking — but First, Al Pacino Impersonations",
+      "url": "https://www.indiewire.com/features/interviews/jorma-taccone-break-filmmaking-over-your-dead-body-1235190078/",
+      "date": "2026-04 (approx)",
+      "summary": "Taccone on a creative hiatus and return — treats the sabbatical itself as part of a filmmaking practice, not an absence from one."
+    },
+    {
+      "id": "indiewire_com_2026_04_011",
+      "source": "indiewire.com",
+      "title": "'Euphoria' Built a Giant Leg in the Desert for Season 3's Silver Slipper Strip Club",
+      "url": "https://www.indiewire.com/features/craft/euphoria-season-3-silver-slipper-strip-club-interview-1235189055/",
+      "date": "2026-04 (approx)",
+      "summary": "Behind the practical desert set construction for a strip-club location featuring an oversized sculptural element — physical-world spectacle in a streaming-era show, an inversion of digital effects."
+    },
+    {
+      "id": "032c_com_2026_04_001",
+      "source": "032c.com",
+      "title": "The Agony of Defeat: Giulio Bertelli on Sports and War",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Filmmaker Giulio Bertelli on his debut feature 'Agon' — reads sports and war as visual languages that share more than usually admitted, treating athletic competition as warfare's adjacent grammar.",
+      "url_note": "032c homepage does not expose individual article URLs; this URL is the magazine root. Title-search needed to backfill the canonical article URL."
+    },
+    {
+      "id": "032c_com_2026_04_002",
+      "source": "032c.com",
+      "title": "Euphoria Holds a Mirror to Our Unrealities",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Photo essay by Ela Klingler and Franka Rosa Maria Klaproth tracking Euphoria S3 characters into young adulthood — frames the show as a mirror of cultural unrealities that are themselves real, not as escapism.",
+      "url_note": "Same URL caveat as item 1."
+    },
+    {
+      "id": "032c_com_2026_04_003",
+      "source": "032c.com",
+      "title": "Ultrace: \"A Car Is an Object of Applied Art\"",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Polish car collective Ultrace's founder Adrian Kapica on automotive culture as high culture — argues that the modification community has the discipline of an applied-arts movement and should be read as one.",
+      "url_note": "Same URL caveat as item 1."
+    },
+    {
+      "id": "032c_com_2026_04_004",
+      "source": "032c.com",
+      "title": "Fantasies of Blood: Ulrike Ottinger and Isabelle Huppert",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Director Ulrike Ottinger and Isabelle Huppert on their Berlinale collaboration 'The Blood Countess' — defends genre filmmaking (horror/transgressive) as artistic terrain rather than a register an art film slums in.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_005",
+      "source": "032c.com",
+      "title": "Chxrry's Hall of Fame",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Toronto artist Chxrry and director Jasmine Johnson on iconography and manifestation in the 'Hall of Fame' video — reads music-video iconography as a manifestation practice, not a styling exercise.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_006",
+      "source": "032c.com",
+      "title": "Christelle Oyiri: \"All Life Comes from Rupture\"",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Artist Christelle Oyiri on Memphis rap conspiracies, French neo-fascism ideology, and her New York show — places rupture (rather than continuity) as the generative condition of cultural production. The strongest single-line frame in this batch.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_007",
+      "source": "032c.com",
+      "title": "Everything Still Counts",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Editorial by Alma Leandra and Ras Bartram on 032c Readytowear and Workshop pieces — argues 'difference renders meaning' in material culture, i.e. signal arises from contrast, not from quality.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_008",
+      "source": "032c.com",
+      "title": "\"Consciousness and What Lies Beneath It\": Exhibiting David Lynch (1946-2025)",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Pace Gallery's Oliver Shultz on the Berlin Lynch exhibition — treats curating Lynch as a problem of exhibiting consciousness itself, not just artwork associated with a director.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_009",
+      "source": "032c.com",
+      "title": "After Woman",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Essay engaging Beauvoir's Second Sex (1949) and the constructedness-of-womanhood argument — asks what comes after woman as a category, treating the question as live again rather than settled.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_010",
+      "source": "032c.com",
+      "title": "Jonathan Saunders: \"Aspiration is Great, Snobbishness Isn't\"",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "& Other Stories creative director Jonathan Saunders on cultural impact and creative leadership — distinguishes aspiration (as cultural fuel) from snobbishness (as cultural toll booth), a useful translation move for any consumer-aspirational brand.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_011",
+      "source": "032c.com",
+      "title": "Frost Children: \"Our Objective Is Ageless\"",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Sibling project Frost Children on Grey Gardens, Russian dolls, and sisterhood politics — treats sibling-as-collaborator as a structural form of art-making, not a biographical detail.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_012",
+      "source": "032c.com",
+      "title": "The Internet is Air with Maya Man",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Artist Maya Man on mass culture, competition dance, and neo-Luddism — names the internet as 'air,' not a place you go. Implies cultural-strategic moves built around the internet-as-place model are misaligned with how it's actually inhabited.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_013",
+      "source": "032c.com",
+      "title": "Kim Petras: \"Reinvent Yourself and Start Over\"",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Pop artist Kim Petras on departing 'commercial perfection' for new sound directions and her Berghain DJ debut — treats reinvention as a practiced discipline, not a publicity reset.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_014",
+      "source": "032c.com",
+      "title": "After Euphoria, Mozart: Eren M. Güvercin",
+      "url": "https://magazine.032c.com/magazine",
+      "date": "2026-04 (approx)",
+      "summary": "Actor Eren M. Güvercin on Euphoria, classical performance, queer masculinity, and a Fatih Akin film — career trajectory from prestige TV to classical music as a specific artistic choice, not a pivot.",
+      "url_note": "Same URL caveat."
+    },
+    {
+      "id": "032c_com_2026_04_015",
+      "source": "032c.com",
+      "title": "Shaping Courrèges: Farewell, Nicolas Di Felice",
+      "url": "https://www.032c.com/collections/magazines",
+      "date": "2026-04 (approx)",
+      "summary": "Retrospective on Nicolas Di Felice's exit from Courrèges (republished from Issue #48) — reads creative-director departures as design decisions in their own right, not personnel changes."
+    },
+    {
+      "id": "polyesterzine_com_2026_04_001",
+      "source": "polyesterzine.com",
+      "title": "MARO on \"So Much Has Changed,\" Being In a Band with Your Besties, and Playing a Hometown Show",
+      "url": "https://www.polyesterzine.com/features/maro-on-so-much-has-changed-being-in-a-band-with-your-besties-and-playing-a-hometown-show",
+      "date": "2026-04 (approx)",
+      "summary": "Indie band MARO on collaborative making among close friends — treats friendship as the structural foundation of the music rather than a side benefit."
+    },
+    {
+      "id": "polyesterzine_com_2026_04_002",
+      "source": "polyesterzine.com",
+      "title": "Culture Slut: Excuse Me, the Dancefloor Isn't Dead",
+      "url": "https://www.polyesterzine.com/features/culture-slut-excuse-me-the-dancefloor-isnt-dead",
+      "date": "2026-04 (approx)",
+      "summary": "Defends contemporary club culture against the recurring obituary genre — argues the dancefloor's rumoured death is the genre, and the dancefloor itself is fine."
+    },
+    {
+      "id": "polyesterzine_com_2026_04_003",
+      "source": "polyesterzine.com",
+      "title": "Romaisa Baddar on Middle East Archive: Women النساء, Embracing Multiple Aesthetics and Shifting Focus",
+      "url": "https://www.polyesterzine.com/features/middle-east-archive-women",
+      "date": "2026-04 (approx)",
+      "summary": "Artist Romaisa Baddar on her archival project of Middle Eastern women's visual culture — frames archive-building as a creative-political act and aesthetic multiplicity as the project's organising principle, not a gloss."
+    },
+    {
+      "id": "polyesterzine_com_2026_04_004",
+      "source": "polyesterzine.com",
+      "title": "'Madeline Argy's Arms' and What TikTok Got Wrong About Thalidomide",
+      "url": "https://www.polyesterzine.com/features/madeline-argys-arms-and-what-tiktok-got-wrong-about-thalidomide",
+      "date": "2026-04 (approx)",
+      "summary": "Critique of TikTok discourse around an influencer's body and a misidentification with thalidomide — the piece names a specific failure mode of casual disability-representation discourse on the platform."
+    },
+    {
+      "id": "polyesterzine_com_2026_04_005",
+      "source": "polyesterzine.com",
+      "title": "Samara Weaving on Being Emo, Pregnancy and Returning for the Sequel",
+      "url": "https://www.polyesterzine.com/features/samara-weaving-cover-2026",
+      "date": "2026-04 (approx)",
+      "summary": "Cover feature with Samara Weaving on emo aesthetics, motherhood, and franchise return — reads emo as a continuing sensibility through life-stage shifts, not a youth-coded posture left behind."
+    },
+    {
+      "id": "family_style_2026_04_001",
+      "source": "family.style",
+      "title": "In Situ (Pierre Yovanovitch + Francesco Clemente)",
+      "url": "https://www.family.style/articles/pierre-yovanovitch-francesco-clemente-conversation",
+      "date": "2026-04 (approx)",
+      "summary": "Designer Pierre Yovanovitch and painter Francesco Clemente on how wanderlust shapes both bespoke interiors and frescoes — treats travel not as research but as the source-material of the practice itself."
+    },
+    {
+      "id": "family_style_2026_04_002",
+      "source": "family.style",
+      "title": "Starting Point (Julie Mehretu at Marian Goodman 2026)",
+      "url": "https://www.family.style/articles/julie-mehretu-marian-goodman-2026",
+      "date": "2026-04 (approx)",
+      "summary": "Julie Mehretu on mark-making practice under contemporary pressure — frames mark-making as a stress test of the painter's relationship to time, not a stylistic signature."
+    },
+    {
+      "id": "family_style_2026_04_003",
+      "source": "family.style",
+      "title": "What If? (Keiken Artist Collective on VR)",
+      "url": "https://www.family.style/articles/keiken-artist-collective-virtual-reality",
+      "date": "2026-04 (approx)",
+      "summary": "Polymath collective Keiken on VR as a porous-reality medium and globally distributed collaboration — argues collaboration-across-distance is the form, not just the production model."
+    },
+    {
+      "id": "family_style_2026_04_004",
+      "source": "family.style",
+      "title": "Pin Drop with Harry Nuriev (Milan)",
+      "url": "https://www.family.style/articles/pin-drop-harry-nuriev-milan",
+      "date": "2026-04 (approx)",
+      "summary": "Designer Harry Nuriev's Milan locations during Salone — uses an aperitivo-spot-as-aesthetic-proxy logic, treating bar-selection as a personal design statement."
+    },
+    {
+      "id": "family_style_2026_04_005",
+      "source": "family.style",
+      "title": "Good Company (Bruce Weber Retrospective at Fahey/Klein)",
+      "url": "https://www.family.style/articles/bruce-weber-fahey-klein-gallery-2026",
+      "date": "2026-04 (approx)",
+      "summary": "Five-decade Bruce Weber retrospective in LA — surfaces the question of what to do with his complicated legacy now, not just the work itself."
+    },
+    {
+      "id": "family_style_2026_04_006",
+      "source": "family.style",
+      "title": "Groundwork (Resolve Collective)",
+      "url": "https://www.family.style/articles/resolve-collective-design-london-interview",
+      "date": "2026-04 (approx)",
+      "summary": "London design collective Resolve, profiled by Aruna D'Souza — frames design practice as community-infrastructure work rather than as object-making."
+    },
+    {
+      "id": "family_style_2026_04_007",
+      "source": "family.style",
+      "title": "Notes for Living (Poliform at Milan Design Week 2026)",
+      "url": "https://www.family.style/articles/poliform-milan-design-week-2026",
+      "date": "2026-04 (approx)",
+      "summary": "Meka Boyle on Poliform at Milan — domestic-furniture as a position-statement on how to live, not a catalog refresh."
+    },
+    {
+      "id": "family_style_2026_04_008",
+      "source": "family.style",
+      "title": "Dream Machine (Nick Doyle at Perrotin)",
+      "url": "https://www.family.style/articles/nick-doyle-perrotin-gallery-2026",
+      "date": "2026-04 (approx)",
+      "summary": "Sahir Ahmed reviews Nick Doyle at Perrotin — treats the show as a specific reading of the American dream-as-machine, the metaphor literalised into objects."
+    },
+    {
+      "id": "family_style_2026_04_009",
+      "source": "family.style",
+      "title": "Ghetto Gastro (Bronx Culinary Collective)",
+      "url": "https://www.family.style/articles/ghetto-gastro-culinary-collective-bronx",
+      "date": "2026-04 (approx)",
+      "summary": "Profile of the Bronx-based culinary collective Ghetto Gastro — treats cooking as cultural-political practice tied to a specific borough, not as portable cuisine."
+    },
+    {
+      "id": "family_style_2026_04_010",
+      "source": "family.style",
+      "title": "Spring 2026 Art Commissions",
+      "url": "https://www.family.style/articles/spring-2026-art-commissions",
+      "date": "2026-04 (approx)",
+      "summary": "Qingyuan Deng surveys Spring 2026 art commissions — treats commission-as-form, surveying who's commissioning what and the constraints that produces."
+    },
+    {
+      "id": "family_style_2026_04_011",
+      "source": "family.style",
+      "title": "Building Blocks (Kelly Wearstler × H&M Home at Milan)",
+      "url": "https://www.family.style/articles/kelly-wearstler-hm-milan-design-week-2026",
+      "date": "2026-04 (approx)",
+      "summary": "Ann Binlot on Kelly Wearstler's H&M Home collaboration at Milan — high-design-meets-mass-retail collaboration as its own genre, with its own success conditions distinct from each parent practice."
+    },
+    {
+      "id": "family_style_2026_04_012",
+      "source": "family.style",
+      "title": "Lost Worlds (Lucia Eames × nanimarquina at Milan)",
+      "url": "https://www.family.style/articles/lucia-eames-nanimarquina-milan-design-week-2026",
+      "date": "2026-04 (approx)",
+      "summary": "Miranda Wollen on Lucia Eames' nanimarquina collaboration — heritage-design (Eames archive) translated by a contemporary house, the translation rather than reverence as the design move."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_27_001",
+      "source": "vittlesmagazine.com",
+      "title": "Patrick: An Illustrated Essay",
+      "url": "https://www.vittlesmagazine.com/p/patrick-an-illustrated-essay",
+      "date": "2026-04-27",
+      "summary": "Ella Bucknall's graphic essay arguing 'food became a shared language when words failed' between adult siblings — treats meals as non-verbal communication infrastructure within family relationships."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_24_002",
+      "source": "vittlesmagazine.com",
+      "title": "Six Unexpectedly Exceptional Breakfasts",
+      "url": "https://www.vittlesmagazine.com/p/six-unexpectedly-exceptional-breakfasts",
+      "date": "2026-04-24",
+      "summary": "Six writers on unconventional breakfasts they take seriously — uses the most-routine meal as a test case for whether food writing can avoid cliche when the subject is mundane."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_22_003",
+      "source": "vittlesmagazine.com",
+      "title": "Nick Bramham's Spanakorizo",
+      "url": "https://www.vittlesmagazine.com/p/nick-bramhams-spanakorizo",
+      "date": "2026-04-22",
+      "summary": "Greek spinach-rice recipe positioned as a spring meal that balances minimal effort with maximum sensory satisfaction — recipe as argument about what spring food should be."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_20_004",
+      "source": "vittlesmagazine.com",
+      "title": "Eat This, Not That",
+      "url": "https://www.vittlesmagazine.com/p/eat-this-not-that",
+      "date": "2026-04-20",
+      "summary": "Robin Craig on the intersection of food preferences and kink practices as expressions of desire and control — treats taste as a vocabulary of want, not a personality marker."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_15_005",
+      "source": "vittlesmagazine.com",
+      "title": "'Once Queensway Market is Gone, There Won't Be Anything Like It Left'",
+      "url": "https://www.vittlesmagazine.com/p/once-queensway-market-is-gone-there",
+      "date": "2026-04-15",
+      "summary": "Zoe Suen on redevelopment threatening Queensway Market as a critical food space serving immigrant communities — reads market-loss as community-infrastructure loss, not real-estate change."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_13_006",
+      "source": "vittlesmagazine.com",
+      "title": "How Hurricane Melissa Affected Food and Farming in Jamaica",
+      "url": "https://www.vittlesmagazine.com/p/how-hurricane-melissa-affected-food",
+      "date": "2026-04-13",
+      "summary": "Dora Taylor on climate disaster's impact on Jamaican farmers and chefs — uses cuisine-disruption as the lens for tracking climate-economy effects, more granular than aggregate damage figures."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_10_007",
+      "source": "vittlesmagazine.com",
+      "title": "At Dalston's Ridley Road Indoor Market, a Community Fights for Its Survival",
+      "url": "https://www.vittlesmagazine.com/p/at-dalstons-ridley-road-indoor-market",
+      "date": "2026-04-10",
+      "summary": "Coverage of community resistance to market eviction following similar closures in Elephant and Castle, Brixton, and Shepherd's Bush — names a pattern across London's market closures."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_07_008",
+      "source": "vittlesmagazine.com",
+      "title": "Hospitality Has a Wage Theft Problem",
+      "url": "https://www.vittlesmagazine.com/p/hospitality-has-a-wage-theft-problem",
+      "date": "2026-04-07",
+      "summary": "Emiliano Mellino and Ero Partsakoulaki investigate a restaurant chain that lost twenty-one wage tribunal claims without paying any settlements — names enforcement-failure as the structural condition that enables sectoral theft."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_05_009",
+      "source": "vittlesmagazine.com",
+      "title": "Spring Soups: A Vittles Cooking Supplement",
+      "url": "https://www.vittlesmagazine.com/p/spring-soups-a-vittles-cooking-supplement",
+      "date": "2026-04-05",
+      "summary": "Recipe collection by Melek Erdal, Songsoo Kim, Ixta Belfrage on three distinct spring-soup traditions — each soup positioned as a tradition's spring-greeting, treating seasonality across cuisines as a comparative method."
+    },
+    {
+      "id": "vittlesmagazine_com_2026_04_05_010",
+      "source": "vittlesmagazine.com",
+      "title": "Songsoo Kim's Rapini Doenjang Guk (Flowering Spring Greens Soup)",
+      "url": "https://www.vittlesmagazine.com/p/songsoo-kims-rapini-doenjang-guk",
+      "date": "2026-04-05",
+      "summary": "Korean fermented-soybean-paste soup with spring rapini — recipe as essay on umami as comfort, using a single dish to argue what a spring soup should do."
+    }
+  ]
+}
