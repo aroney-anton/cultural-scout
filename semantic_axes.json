@@ -1,0 +1,14 @@
+{
+  "_note": "Interpreted bipolar axes for each need's semantic-range matrix in the geology-globe callout (Task 5, 'Divergence Surface'). HAND-INTERPRETED by reading the signals at each pole of the two dominant PCA directions inside each need (run `python build_semantic_range.py --poles \"<need>\"` to redump the poles). We deliberately trade a little rigor for legibility (design call 2026-07-02): the axes distill each theme's two dominant semantic directions into a simple bipolar pair rather than raw cluster terms. x = PC1, y = PC2; each pair is [negative-pole label, positive-pole label] matching low->high projection. RE-INTERPRET EACH HARVEST: PCA sign/structure shifts as the corpus grows, so re-read the poles and update these labels before rebuilding, then bump _generated_against.",
+  "_generated_against": "2026-06-22 corpus (860 signals, 4 runs)",
+  "needs": {
+    "Naming the Machine": {"x": ["Political", "Economic"], "y": ["Infrastructure", "Spectacle"]},
+    "Settling Accounts": {"x": ["Aesthetic", "Historical"], "y": ["Judgment", "Heritage"]},
+    "Self-Authorship": {"x": ["Artist", "Algorithm"], "y": ["Roots", "Fame"]},
+    "Certified Human": {"x": ["Object", "Discourse"], "y": ["Craft", "Slop"]},
+    "Kinship": {"x": ["Intimate", "Institutional"], "y": ["Collaboration", "Courtship"]},
+    "Appetite": {"x": ["Diet", "Desire"], "y": ["Food", "Form"]},
+    "Ballast": {"x": ["Sanctuary", "Survival"], "y": ["Comfort", "Defiance"]},
+    "unsettled": {"x": ["Object", "Narrative"], "y": ["Art", "Tech"]}
+  }
+}

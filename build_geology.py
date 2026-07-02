@@ -203,6 +203,20 @@ def compute_geo():
         nd = build_need(name, by_need[name], df, total, codes.get(name))
         nd["pct"] = round(nd["n"] / total * 100, 1) if total else 0
         needs.append(nd)
+
+    # per-need semantic-range matrix ("Divergence Surface"): lexical clusters
+    # plotted on the need's two dominant (hand-interpreted) axes, as inline SVG.
+    try:
+        import build_semantic_range
+        colors = {k: v["color"] for k, v in NEED_META.items()}
+        svgs = build_semantic_range.svgs_by_need(colors)
+        for nd in needs:
+            nd["range"] = svgs.get(nd["key"])
+    except Exception as e:
+        print("  [semantic-range] skipped:", e)
+        for nd in needs:
+            nd.setdefault("range", None)
+
     return {"needs": needs, "total": total}
 
 

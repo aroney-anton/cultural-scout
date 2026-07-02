@@ -85,6 +85,11 @@
   .t-body{font-size:13.5px;line-height:1.66;color:#b6b0a4;margin:0}
   .lyr-cap{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6b665c;margin-bottom:4px}
 
+  /* semantic-range matrix (the "Divergence Surface") inside the deep stratum */
+  .range-cap{font-size:11px;letter-spacing:.06em;color:#9b958a;margin:18px 0 6px}
+  .t-range svg{width:100%;height:auto;display:block;border:1px solid var(--line);
+    border-radius:8px;background:#14110d}
+
   /* B — look & feel (middle layer) */
   .lf-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
   .lf-title{font-size:18px;font-weight:600;margin:6px 0 2px}
@@ -180,6 +185,8 @@
       <div class="t-share" id="t-share"></div>
       <p class="t-one" id="t-one"></p>
       <p class="t-body" id="t-body"></p>
+      <div class="range-cap" id="range-cap" style="display:none">Semantic range · where this territory's lexical clusters sit</div>
+      <div class="t-range" id="t-range"></div>
     </section>
 
     <section class="sec" id="sec-lf" data-layer="1">
@@ -608,6 +615,11 @@ function fillCallout(nd){
   one.style.display = nd.one ? '' : 'none';
   body.textContent = nd.body || '';
   body.style.display = nd.body ? '' : 'none';
+
+  // semantic-range matrix — only for real territories (needs), not query-themes
+  const rng=document.getElementById('t-range'), rcap=document.getElementById('range-cap');
+  if(!isC && nd.range){ rng.innerHTML=nd.range; rng.style.display=''; if(rcap)rcap.style.display=''; }
+  else { rng.innerHTML=''; rng.style.display='none'; if(rcap)rcap.style.display='none'; }
 
   // look & feel — hidden entirely for query-themes (they have no semiotic codebook)
   const secLf=document.getElementById('sec-lf');

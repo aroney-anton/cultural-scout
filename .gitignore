@@ -18,6 +18,10 @@ Thumbs.db
 # --- stray permission-test artifact (never track) ---
 .__perm_test
 
+# --- scratch preview artifacts from the semantic-range prototype (never track) ---
+_semrange_*
+_semantic_range_*
+
 # NOTE: intentionally TRACKED (not ignored):
 #   .emb_cache.npz      — int8 embedding cache; expensive to regenerate
 #                         (HF model hosts are firewalled on the build machine)
