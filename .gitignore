@@ -15,6 +15,9 @@ Thumbs.db
 # --- deprecated / scratch ---
 *.deprecated
 
+# --- stray permission-test artifact (never track) ---
+.__perm_test
+
 # NOTE: intentionally TRACKED (not ignored):
 #   .emb_cache.npz      — int8 embedding cache; expensive to regenerate
 #                         (HF model hosts are firewalled on the build machine)
