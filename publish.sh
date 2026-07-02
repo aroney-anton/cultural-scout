@@ -8,7 +8,10 @@ set -e
 cd "$(dirname "$0")"
 
 echo "▸ Rebuilding corpus + site…"
-python3 build_corpus.py
+# Use the project venv's interpreter (has numpy for build_semantic_range.py's
+# PCA/k-means); fall back to system python3 only if the venv is absent.
+PY="./.venv/bin/python"; [ -x "$PY" ] || PY="python3"
+"$PY" build_corpus.py
 
 echo "▸ Deploying to Cloudflare Pages…"
 # --branch main pins this to PRODUCTION. Wrangler always prints a hashed

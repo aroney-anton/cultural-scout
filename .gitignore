@@ -12,6 +12,10 @@ Thumbs.db
 # --- Cloudflare Pages / Wrangler local cache ---
 .wrangler/
 
+# --- nested repo: the /cultural-scout skill has its OWN .git; never track it
+#     here (git add -A would otherwise stage it as a broken gitlink) ---
+cultural-scout/
+
 # --- deprecated / scratch ---
 *.deprecated
 
