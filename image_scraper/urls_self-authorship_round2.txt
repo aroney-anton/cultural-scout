@@ -1,0 +1,15 @@
+# Self-Authorship round-2 gap-fill URLs (WebSearch-found; NEVER crawled).
+# Targeting the thin candidate codes; prefer sources NOT already in that code.
+
+# --- Code 2: The Self Staged as the Work (self-portraiture as practice) ---
+https://outland.art/avatar-as-subject-artist-as-avatar/
+https://aperture.org/editorial/11-exhibitions-to-see-this-spring-2026/
+https://hyperallergic.com/how-do-artists-see-themselves-self-portraits-national-museum-cardiff/
+
+# --- Code 5: Against the Algorithm (the hand/voice vs the model) ---
+https://www.hauserwirth.com/ursula/post-ai-painting-avery-singer-dieter-buchhart/
+
+# --- Code 3: Heritage Re-Signed (new sources) ---
+https://www.artsy.net/article/artsy-editorial-6-rising-contemporary-artists-traditional-craft-techniques
+https://www.artsy.net/article/artsy-editorial-artists-asian-diaspora-drawing-traditions-heritage
+https://www.wallpaper.com/design-interiors/five-artisans-from-caribbean-diaspora

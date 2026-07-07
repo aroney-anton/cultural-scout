@@ -4,10 +4,12 @@ run.py — the single entry point for the image-collection subsystem.
 
 Three subcommands:
 
-  python run.py scrape --need "Certified Human" [--days 90] [--limit 40]
+  python run.py scrape --need "Certified Human" [--days 90] [--limit 60]
       Pulls article URLs for one need out of ../corpus.json, fetches each
       article, extracts images + captions + context, and writes one JSON
-      file into output/.
+      file into output/. Two balance caps (defaults): max 15 images kept
+      per article (--max-per-article), and scraping stops once the pool
+      hits 250 images (--target-images), the collection target per code.
 
   python run.py scrape --urls extra_urls.txt --need "Certified Human"
       Same, but the URLs come from a plain text file (one URL per line) —
@@ -229,8 +231,13 @@ def cmd_scrape(args):
              len(final), len(worklist) - len(final))
 
     # 3. Scrape, one article at a time, never letting one failure kill the run.
+    #    Two caps keep the pool balanced (added 2026-07-02 after the 1granary
+    #    853-photo gallery flood):
+    #      --max-per-article (default 15): one article can never swamp the pool.
+    #      --target-images   (default 250): the collection target per code/run;
+    #        scraping stops early once the pool is full. 0 = no target.
     limiter = RateLimiter(seconds_between=args.rate)
-    articles, ok = [], 0
+    articles, ok, pool = [], 0, 0
     for i, (url, meta) in enumerate(final, 1):
         log.info("[%d/%d] %s", i, len(final), url)
         try:
@@ -244,13 +251,33 @@ def cmd_scrape(args):
                       "signal_id": meta.get("signal_id"),
                       "need": meta.get("need") or "",
                       "fetch_method": "failed", "images": []}
+
+        # Per-article cap: keep the first N in document order (the article's
+        # own editorial priority), log what was dropped.
+        found = len(record["images"])
+        if args.max_per_article > 0 and found > args.max_per_article:
+            record["images"] = record["images"][:args.max_per_article]
+            record["images_found"] = found  # keep the true count on the record
+            log.info("  capped: %d images found, keeping first %d (--max-per-article)",
+                     found, args.max_per_article)
+
         articles.append(record)
+        pool += len(record["images"])
         ledger[url] = {"scraped": datetime.now().strftime("%Y-%m-%d"),
                        "fetch_method": record["fetch_method"],
                        "images": len(record["images"])}
         if record["fetch_method"] != "failed":
             ok += 1
-        log.info("  -> %s, %d images", record["fetch_method"], len(record["images"]))
+        log.info("  -> %s, %d images (pool: %d/%s)", record["fetch_method"],
+                 len(record["images"]), pool,
+                 args.target_images if args.target_images > 0 else "no target")
+
+        # Collection target: stop early once the pool is full.
+        if args.target_images > 0 and pool >= args.target_images:
+            log.info("TARGET REACHED: %d images collected after %d of %d articles "
+                     "— stopping early. Un-scraped articles stay OUT of the "
+                     "ledger and will be picked up next run.", pool, i, len(final))
+            break
 
     # 4. Write the run's output JSON + update the ledger.
     OUTPUT_DIR.mkdir(exist_ok=True)
@@ -267,8 +294,16 @@ def cmd_scrape(args):
     total_images = sum(len(a["images"]) for a in articles)
     log.info("DONE: %d/%d articles fetched, %d images extracted -> %s",
              ok, len(articles), total_images, out_path)
-    log.info("Next step:  python run.py sheets --input %s",
-             out_path.relative_to(HERE))
+    if args.target_images > 0 and total_images < args.target_images:
+        log.warning("SHORT OF TARGET: %d/%d images. The worklist ran out before "
+                    "the pool filled — re-run with a higher --limit, widen --days, "
+                    "or feed more URLs via --urls (round-2 gap-fill).",
+                    total_images, args.target_images)
+    try:
+        shown = out_path.relative_to(HERE)
+    except ValueError:  # output dir redirected elsewhere (e.g. in tests)
+        shown = out_path
+    log.info("Next step:  python run.py sheets --input %s", shown)
 
 
 # ---------------------------------------------------------------------------
@@ -344,8 +379,17 @@ def main():
                           help="only signals dated within the last N days")
     p_scrape.add_argument("--run", default=None,
                           help="only signals from this harvest run, e.g. 2026-06-22")
-    p_scrape.add_argument("--limit", type=int, default=40,
-                          help="max articles to scrape (default 40)")
+    p_scrape.add_argument("--limit", type=int, default=60,
+                          help="max articles to scrape (default 60; the "
+                               "--target-images stop usually fires first)")
+    p_scrape.add_argument("--max-per-article", type=int, default=15,
+                          help="max images kept per article, first-N in document "
+                               "order (default 15; 0 = uncapped). Added after a "
+                               "single 853-photo gallery flooded round 1.")
+    p_scrape.add_argument("--target-images", type=int, default=250,
+                          help="collection target per code/run: stop scraping "
+                               "once this many images are pooled (default 250; "
+                               "0 = no target)")
     p_scrape.add_argument("--corpus", default=str(DEFAULT_CORPUS),
                           help="path to corpus.json (default: ../corpus.json)")
     p_scrape.add_argument("--urls", default=None,

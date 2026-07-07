@@ -1,0 +1,550 @@
+{
+  "need": "Self-Authorship",
+  "updated": "2026-07-05",
+  "runs_covered": [
+    "2026-07-05"
+  ],
+  "images_observed": 322,
+  "articles_viewed": 53,
+  "method_note": "Round-1 + round-2 + round-3 baseline coding per SEMIOTIC_CODEBOOK.md via the image_scraper contact-sheet method. Round 1: 38 corpus articles scraped, 253 images extracted, composited into 15 numbered 12-up sheets (~176 slots) read against sidecar JSONs. Round 2 (WebSearch gap-fill for the thin candidate codes): 7 URLs, 6 productive (69 images), re-composited to 20 sheets / 239 slots. Round 3 (deeper gap-fill for the two thinnest codes, remix-self and against-the-algorithm): 9 URLs, all productive (84 images), 7 sheets / 83 slots. Palette hexes are observational approximations from article imagery, not brand-spec values. This need's divergence axis (per build_semantic_range.py) is Artist↔Algorithm / Roots↔Fame — the five codes distribute across it: authoring by proximity to a body of work, authoring the self as the work, authoring through inherited form (Roots), authoring in and out of the feed (Fame), and authoring against the machine (Algorithm).",
+  "method_note_pilot": "First pass for this need; gate NOT yet passed. Two codes coined dominant on broad round-1 evidence (author-among-work, self-as-work); three coined emergent (heritage-re-signed, remix-self, against-the-algorithm), the last low-confidence and disciplined AGAINST Certified Human's provenance/anti-AI frame — here it is only the irreplaceable personal signature/persona, not made-by-humans provenance in general. Discipline note: the corpus's Ai Weiwei headshot and several social-share icons recur as impulsemagazine sidebar boilerplate across articles and were NOT cited as any article's own imagery.",
+  "codes": [
+    {
+      "id": "author-among-the-work",
+      "name": "Author Among the Work",
+      "status": "dominant",
+      "short_def": "The self certified by proximity to a body of made work: the artist photographed in the studio amid canvases, the maker at the worktable mid-craft, the writer at home framed by the library, the gallery wall standing in for the person. Authorship proven by the visible corpus behind the face. Verbally it runs on vocation and values — what one makes and why.",
+      "look": {"bg": "#2c2519", "text": "#f4ede0"},
+      "one_liner": "Show the maker inside the evidence of their making: studio, worktable, gallery wall, shelf of one's own output.",
+      "definition": "The most common pattern across the intake. Identity is authored by standing the person next to the accumulated proof of their practice: the artist cross-legged in a studio hung with their prints (Rama Duwaji), the painter beside a large self-portrait canvas (Russell Craig, Iréne Norén), the elder artist framed by her own quipu installation (Cecilia Vicuña), the Caribbean maker at a worktable of raw clay or woven fibre, the writer at home surrounded by the library and the word-tapestry. The room and its objects do the certifying; the sitter's authority is borrowed from the visible corpus. Register: available natural light, occupied interiors at human scale, the work co-equal with or larger than the body.",
+      "visual": {
+        "palette": [
+          {"hex": "#F3EFE7", "name": "studio white"},
+          {"hex": "#B98A4B", "name": "worktable wood"},
+          {"hex": "#C58A3D", "name": "canvas ochre"},
+          {"hex": "#5A4632", "name": "umber"},
+          {"hex": "#1A1A1A", "name": "ink"}
+        ],
+        "materials_textures": [
+          "raw canvas, wet clay, cut fibre, print paper",
+          "studio plaster and brick, pinned reference walls",
+          "gallery white cube; the plinth and the hang"
+        ],
+        "composition": [
+          "sitter placed off-centre, the work filling the frame behind",
+          "maker at the worktable, tools and half-made units in shot",
+          "environmental portrait: the room as biography"
+        ],
+        "typography": [
+          "minimal; captions credit the work by title/year, extending authorship"
+        ],
+        "casting_setting": [
+          "the specific named maker in their own space, mid- or post-practice; the studio, the gallery, the home-as-archive"
+        ]
+      },
+      "verbal": {
+        "lexicon": ["practice", "the work", "studio", "values", "vision", "undeniable", "extension of yourself", "vocation"],
+        "metaphors": ["the work as extension of the body", "the room as biography", "mastery as self-possession"],
+        "register": "vocational, first-person, quietly authoritative; the maker accounting for a life's output",
+        "sample_phrases": [
+          {"quote": "The work is an extension of yourself.", "source": "Russell Craig, Impulse", "url": "https://impulsemagazine.com/articles/beyond-cell-doors-russell-craigs-vision"},
+          {"quote": "I care only, honestly, that you enjoy my writing—that's the point of it", "source": "Alicia Kennedy", "url": "https://www.aliciakennedy.news/p/on-values"}
+        ]
+      },
+      "tensions": "Against the faceless brand, the anonymous feed, the CV without a body of work. Internal risk: the corpus behind the sitter can be borrowed or staged, so the code keeps reaching for the studio caught mid-mess (paint, clay, pinned references) rather than the clean gallery, where set-dressing is cheaper to fake.",
+      "execution_notes": "For brands: put the actual maker inside the actual evidence of the making — the worktable, the wall of prior work — and credit the work as designed form, not caption fine-print. Misuse: an executive posed in front of art they didn't make reads instantly as borrowed authority to this audience, which parses the room before the face.",
+      "evidence": [
+        {
+          "signal_id": null,
+          "source": "hyperallergic.com",
+          "url": "https://hyperallergic.com/art-talk-with-rama-duwaji/",
+          "note": "the illustrator seated among her own bold figurative prints, the studio wall of work standing in for the biography",
+          "image_refs": [
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/04/RAMA-18-3-1.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "impulsemagazine.com",
+          "url": "https://impulsemagazine.com/articles/beyond-cell-doors-russell-craigs-vision",
+          "note": "Russell Craig seated beside a large self-portrait; the patinated works carrying his old prison ID reclaimed as authored form",
+          "image_refs": [
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69d2d16fde2b2ca67e92ee32_RC%20Identity.webp",
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69d2d1a21f09a0185e5ae1ac_RC%200017.webp",
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69d2d109c925982071ab4dba_RC%20Armory%20Show.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "impulsemagazine.com",
+          "url": "https://impulsemagazine.com/articles/reclaiming-the-sacred-in-conversation-with-irene-noren",
+          "note": "the painter amid her faux-naif figurative canvases; personal-mythology paintings hung as the field around the maker"
+        },
+        {
+          "signal_id": null,
+          "source": "culturedmag.com",
+          "url": "https://www.culturedmag.com/article/2026/04/10/art-cecilia-vicuna-poetry-chile-sculpture/",
+          "note": "the elder artist portrait set against her own hanging quipu/thread installations, a lifetime's corpus as backdrop (culturedmag blocks WebFetch; imagery observed on the contact sheet)",
+          "image_refs": [
+            "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/10144608/CV-portrait-2025-by-Julia-Toro-e1775847156213.jpg",
+            "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/10151854/CV-IMMA-2025-install-01-hr-scaled.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "wallpaper.com",
+          "url": "https://www.wallpaper.com/design-interiors/five-artisans-from-caribbean-diaspora",
+          "note": "Caribbean-diaspora makers photographed at their worktables and kilns among the raw craft — the maker inside the evidence of making",
+          "image_refs": [
+            "https://cdn.mos.cms.futurecdn.net/JvSoBFb6NACRrpEmYG82fN-1920-80.jpg.webp",
+            "https://cdn.mos.cms.futurecdn.net/WgZzVpoAsBoJYxBrW7iEgN-1920-80.jpg.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "anothermag.com",
+          "url": "https://www.anothermag.com/fashion-beauty/17237/paula-einfalt-interview-spring-summer-2027",
+          "note": "the young designer's authored signature carried by the work itself — sculptural silhouettes shot in her own muted, atelier-lit register",
+          "image_refs": [
+            "https://images-prod.anothermag.com/2319/azure/another-prod/470/4/474195.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "aliciakennedy.news",
+          "url": "https://www.aliciakennedy.news/p/on-values",
+          "note": "the writer authoring a self by naming her own values against external expectation (text-tier source, imagery thin)"
+        }
+      ],
+      "confidence": "high",
+      "first_coded": "2026-07-05",
+      "history": [
+        {"run": "2026-07-05", "change": "coined", "note": "pilot baseline; the dominant pattern across art/fashion/intellectual/museum sources — the maker certified by proximity to a visible body of work."}
+      ]
+    },
+    {
+      "id": "self-as-the-work",
+      "name": "The Self Staged as the Work",
+      "status": "dominant",
+      "short_def": "The persona and the body ARE the medium: the artist is simultaneously author, director, subject and material. Theatrical, high-control self-portraiture — the performer in costume and gel light, the contact-sheet of poses, hands over the face, the mirror and the timecode. Distinct from a documentary portrait: nothing here is caught, everything is staged by the sitter as their own image-maker.",
+      "look": {"bg": "#171012", "text": "#f6e6ea"},
+      "one_liner": "Author, director, and subject collapse into one: the body performed for the camera as the artwork itself.",
+      "definition": "Identity authored by taking total control of one's own image. The artist casts, styles, lights, and shoots themselves across a suite of guises (Martine Gutierrez), draws herself into her own web-works (Maya Man), poses as her own sculptural silhouette. It inherits the whole lineage of the performative self-portrait — Cahun-style masking, the hands-over-face, the mirror-and-reflection, the contact-sheet of near-identical takes with timecodes left visible as proof of authorship. Register: high-contrast black-and-white or saturated stage-gel colour, deliberate theatrical framing, the seams of the staging shown on purpose.",
+      "visual": {
+        "palette": [
+          {"hex": "#EDE9E4", "name": "flash white"},
+          {"hex": "#141414", "name": "stage black"},
+          {"hex": "#5A2430", "name": "oxblood"},
+          {"hex": "#1F5E8C", "name": "gel blue"},
+          {"hex": "#C88A2E", "name": "amber wash"}
+        ],
+        "materials_textures": [
+          "silver-gelatin grain, contact-sheet strips, timecode overlays",
+          "costume, wig, opera glove, prosthetic; the mirror and its reflection",
+          "coloured gel light, hard studio flash"
+        ],
+        "composition": [
+          "the single figure centre-frame, directing the camera",
+          "grid/contact-sheet of poses — authorship by repetition",
+          "hands or props framing the face; mirror shots and reflections"
+        ],
+        "typography": [
+          "timecodes, frame numbers, title cards left in as evidence of construction"
+        ],
+        "casting_setting": [
+          "the artist as their own model, in guises they built; the set is a stage they control end-to-end"
+        ]
+      },
+      "verbal": {
+        "lexicon": ["persona", "staging", "performance", "acrobatics", "self-portrait", "guise", "the character", "curation"],
+        "metaphors": ["the self as cast and crew of one", "identity as a role directed, not confessed", "the mirror as studio"],
+        "register": "knowing, theatrical, self-aware; the sitter narrating their own construction",
+        "sample_phrases": [
+          {"quote": "Everything I make is about understanding the acrobatics we perform", "source": "Maya Man, 032c", "url": "https://magazine.032c.com/magazine/the-internet-is-air-with-maya-man"},
+          {"quote": "The era in which we treated our screen-lives as fake is ending.", "source": "Katherine Dee, default.blog", "url": "https://default.blog/p/the-machine-looks-back"}
+        ]
+      },
+      "tensions": "Against the candid, the documentary, the 'authentic' unstaged snapshot — and against being cast by someone else. Internal risk: total self-staging can read as vanity or brand-building unless the constructed-ness is itself the subject; the strongest work shows the rig (timecode, mirror, seam) so the performance reads as authorship rather than illusion.",
+      "execution_notes": "For brands: hand the subject the direction — let the person build and perform their own image, and leave the seams of that control visible, rather than casting them into someone else's fantasy. Misuse: a 'be yourself' campaign that is actually art-directed to a house look reproduces exactly the imposed image this code exists to seize back.",
+      "evidence": [
+        {
+          "signal_id": null,
+          "source": "culturedmag.com",
+          "url": "https://www.culturedmag.com/article/2026/04/07/art-lottery-ryan-lee-gallery-martine-gutierrez/",
+          "note": "Martine Gutierrez as author-director-subject: B&W performance self-portraits with timecodes and gel light, the artist staging every guise (culturedmag blocks WebFetch; imagery observed on the contact sheet)",
+          "image_refs": [
+            "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/06122139/MARTINE_LOTTERY_417.jpg",
+            "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/06123152/MARTINE_LOTTERY_545.jpg",
+            "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/06124801/MARTINE_LOTTERY_022.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "aperture.org",
+          "url": "https://aperture.org/editorial/11-exhibitions-to-see-this-spring-2026/",
+          "note": "the performative-self-portrait canon gathered: hands-over-face masking, mirror-sphere reflections, the contact-sheet of poses, Nhu Xuan Hua restaging archival family scenes as her own image",
+          "image_refs": [
+            "https://aperture.org/wp-content/uploads/2026/04/12-Nhu-Xuan-Hua-Little-Super-in-Versailles-%E2%80%93-Archive-from-the-year-88-2026.-Commissioned-by-Autograph-London-scaled.jpg",
+            "https://aperture.org/wp-content/uploads/2026/04/262MAG937_Agenda_Turbeville_HR.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "032c.com",
+          "url": "https://magazine.032c.com/magazine/the-internet-is-air-with-maya-man",
+          "note": "Maya Man authoring herself into her own works — the artist drawing a heart on the mirrored elevator, staging the 'dream girl' self as medium",
+          "image_refs": [
+            "https://cdn.sanity.io/images/wmq4hf8k/production/0100373fbcbe0cca6d0b8ad4bbe7a14e9b280ecb-3000x2400.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "gardnermuseum.org",
+          "url": "https://www.gardnermuseum.org/calendar/exhibition/persona-photography-and-re-imagined-self",
+          "note": "the 'Persona' show gathers the self-as-icon lineage: Morimura inhabiting Frida Kahlo, Samuel Fosso staging himself as Angela Davis, Narcissister masked — the artist casting and performing every role (round-3 gap-fill)",
+          "image_refs": [
+            "https://www.gardnermuseum.org/sites/default/files/styles/portrait_large/public/2025-12/Skull%20Ring.jpg",
+            "https://www.gardnermuseum.org/sites/default/files/styles/portrait_large/public/2025-12/Fasso_AD.jpg",
+            "https://www.gardnermuseum.org/sites/default/files/styles/portrait_large/public/2025-12/Narcissister_Pink%20Nails.JPG"
+          ]
+        }
+      ],
+      "confidence": "high",
+      "first_coded": "2026-07-05",
+      "history": [
+        {"run": "2026-07-05", "change": "coined", "note": "pilot baseline; round-2 aperture gap-fill added the performative-self-portrait lineage (Cahun/mirror/contact-sheet) behind the corpus's Gutierrez and Maya Man work. Round-3 added the Gardner 'Persona' show (Morimura/Fosso/Narcissister self-as-icon)."}
+      ]
+    },
+    {
+      "id": "heritage-re-signed",
+      "name": "Heritage Re-Signed",
+      "status": "emergent",
+      "short_def": "Inherited cultural form re-authored in a personal, contemporary register — roots without nostalgia. Traditional Kurdish weaving redrawn in neon; the Andean quipu hung as sculpture; ancestral embroidery stitched onto a documentary photograph of one's own family; even an imposed identity (a prison number, an ethnic label) reclaimed and re-signed as authored art. The self written by rewriting what was given.",
+      "look": {"bg": "#5b1a14", "text": "#f7e6d8"},
+      "one_liner": "Take the inherited form — weave, quipu, embroidery, the label you were handed — and re-sign it in your own hand.",
+      "definition": "An emergent, strongly cross-cultural code: authorship performed by metabolising an inheritance rather than displaying it under glass. Roda Medhat traces Kurdish loom motifs in neon and pixel-grid weave, asking what happens when stories are 'translated into new, synthetic languages'; Cecilia Vicuña re-authors the Andean quipu as contemporary installation; Spandita Malik stitches gold-thread embroidery directly onto photographic portraits of women in their own homes; Shahzia Sikander reworks Indo-Persian miniature; a 'How Asian Is It?' abstract-painting show interrogates the ethnic label itself; Russell Craig re-signs his prison ID number as painting. The given form is the raw material; the personal re-signing is the authorship. Register: madder reds and indigos of traditional textile, the acid of neon, natural fibre and hand-stitch, set against the white cube that reframes them as authored art.",
+      "visual": {
+        "palette": [
+          {"hex": "#A6231C", "name": "madder red"},
+          {"hex": "#243B6B", "name": "indigo"},
+          {"hex": "#3BE0A0", "name": "neon green"},
+          {"hex": "#E14FAE", "name": "neon magenta"},
+          {"hex": "#C9A15A", "name": "gold thread / raw fibre"}
+        ],
+        "materials_textures": [
+          "hand-loom weave, pixelated jacquard, fringe and selvedge",
+          "neon tube tracing a traditional motif",
+          "gold-thread embroidery over a photographic ground; tufting, appliqué"
+        ],
+        "composition": [
+          "the traditional object hung/lit as contemporary artwork",
+          "the ancestral motif redrawn at a new scale or in a new medium",
+          "the self (or a community sitter) embedded inside the inherited pattern"
+        ],
+        "typography": [
+          "heritage script (Kurdish, Arabic) set as image; the assigned number reclaimed as form"
+        ],
+        "casting_setting": [
+          "diaspora and heritage makers re-authoring an inherited technique; the loom, the studio, the home interior as ground"
+        ]
+      },
+      "verbal": {
+        "lexicon": ["heritage", "roots", "tradition", "translate", "carry", "reclaim", "lineage", "ancestral", "re-signed"],
+        "metaphors": ["stories translated into new languages", "the inheritance as raw material", "visibility versus authorship"],
+        "register": "grounded, first-person-plural at times ('how we carry our stories'); reclamatory, not nostalgic",
+        "sample_phrases": [
+          {"quote": "what happens when those stories are translated into new, synthetic languages?", "source": "Roda Medhat, via Colossal", "url": "https://www.thisiscolossal.com/2026/05/roda-medhat-from-the-loom/"},
+          {"quote": "representation gets talked about as if visibility is the finish line", "source": "Leiya Salis, Polyester", "url": "https://www.polyesterzine.com/features/wasians-and-the-limits-of-representation-notes-from-a-blasian-in-japan"},
+          {"quote": "get my skills up to the point where I can be undeniable with it", "source": "Russell Craig, Impulse", "url": "https://impulsemagazine.com/articles/beyond-cell-doors-russell-craigs-vision"}
+        ]
+      },
+      "tensions": "Against both the museum-vitrine version of heritage (fixed, past-tense, someone else's frame) and against tokenised 'representation' where mere visibility substitutes for authorship. Internal watch: the inherited form can tip into decoration if the personal re-signing is thin; the code lives in the tension between fidelity to the source and the maker's own hand.",
+      "execution_notes": "For brands working with culture: commission the re-signing, not the reproduction — let a maker metabolise an inherited form into something present-tense and theirs, credited as authorship. Misuse: lifting a traditional motif as surface pattern without the maker or the metabolising move is exactly the 'visibility as finish line' tokenism this code names and rejects.",
+      "evidence": [
+        {
+          "signal_id": null,
+          "source": "thisiscolossal.com",
+          "url": "https://www.thisiscolossal.com/2026/05/roda-medhat-from-the-loom/",
+          "note": "Kurdish loom motifs re-authored in neon and pixel-grid weave; traditional red textiles carrying figurative/archival imagery, the heritage form re-signed",
+          "image_refs": [
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/medhat-2.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/medhat-1.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/medhat-5.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "artsy.net",
+          "url": "https://www.artsy.net/article/artsy-editorial-6-rising-contemporary-artists-traditional-craft-techniques",
+          "note": "Spandita Malik's gold-thread embroidery stitched onto photographic portraits of women in their homes — the sitter re-authored inside an inherited craft",
+          "image_refs": [
+            "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FNrV4drz-advyuKcgcYuTGA%252FParweenDevi_SpanditaMalik.jpg&width=1820",
+            "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Frg77iKpkBWL5-6f7Erklmw%252FRukmeshKumari_SpanditaMalik.jpg&width=1820"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "artsy.net",
+          "url": "https://www.artsy.net/article/artsy-editorial-artists-asian-diaspora-drawing-traditions-heritage",
+          "note": "Asian-diaspora artists (Shahzia Sikander and peers) reworking Indo-Persian miniature and ancestral motif into contemporary authorship",
+          "image_refs": [
+            "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FhSp-4pBnQgoql-fNWJTGPg%252FShS-WP.18.080_Empire%2BFollows%2BArt%2BStates%2Bof%2BAgitation%2B4%252C%2B2018.jpg&width=900",
+            "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FeAqxI9sDDtVKXX3LWFsSlg%252Fmoon%2Bgarden%2Bpunjabi%2Bbirds.jpeg&width=900"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "impulsemagazine.com",
+          "url": "https://impulsemagazine.com/articles/how-asian-is-it-at-milton-resnick-and-pat-passlof-foundation",
+          "note": "an abstract-painting show interrogating the ethnic label as an inherited category to be re-authored rather than accepted",
+          "image_refs": [
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/6a0fbffa65cf2316df08c215_MR2-6-263573.jpeg",
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/6a0fc0a119098269983e1d7c_MR2-6-263535.jpeg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "polyesterzine.com",
+          "url": "https://www.polyesterzine.com/features/wasians-and-the-limits-of-representation-notes-from-a-blasian-in-japan",
+          "note": "Blasian/Wasian identity authored against inherited categories of race and belonging; self-fashioning as reclamation",
+          "image_refs": [
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/c22572ce-6062-4683-b2cb-f8c6260b9bd5/wasians.png?format=2500w"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "milleworld.com",
+          "url": "https://www.milleworld.com/sabrina-carpenter-zaghrouta/",
+          "note": "the zaghrouta as an inherited cultural expression whose meaning its community insists on authoring for itself (text-tier; scraper returned only a preloader, imagery not captured)"
+        }
+      ],
+      "confidence": "medium",
+      "first_coded": "2026-07-05",
+      "history": [
+        {"run": "2026-07-05", "change": "coined", "note": "pilot baseline; round-2 gap-fill (Artsy craft-techniques + Asian-diaspora, Wallpaper Caribbean-diaspora) confirmed multi-region breadth — Kurdish, Andean, South-Asian, Caribbean makers all re-signing inherited form."}
+      ]
+    },
+    {
+      "id": "remix-self",
+      "name": "The Remix Self",
+      "status": "emergent",
+      "short_def": "Identity assembled and broadcast from digital fragments: Y2K glitter maximalism, filters, affirmations, translucent 'jelly' surfaces, the feed itself as raw material. The self is authored in and out of the platform — a collage of pop-culture shards, screenshots, and internet-native femininity, hyper-saturated and half-ironic. It treats the online self not as a fake mask over a real person but as a genuine, buildable authorship surface.",
+      "look": {"bg": "#c01a7a", "text": "#fdeef7"},
+      "one_liner": "Author the self out of the feed's own materials: glitter, filters, affirmations, screenshots, jelly-translucent pop shards.",
+      "definition": "An emergent code native to the platform generation. The self is composed like a mood-board: Y2K glitter and star-stickers, kissy-lip and butterfly graphics, translucent 'jelly' product-shots, affirmation text laid over comment feeds, the 'dream girl world' bedroom. Maya Man's practice theorises it directly — 'the internet is air,' the online self no longer treated as fake — while Polyester's Wasians and Summer-of-the-Jelly features perform it in hyper-pink digital collage. Register: maximalist, saturated, sticker-and-sparkle layering, deliberately synthetic; the opposite of the analog-sanctuary warmth, and it wears that syntheticness as authorship rather than apologising for it.",
+      "visual": {
+        "palette": [
+          {"hex": "#FF2E9A", "name": "hot pink"},
+          {"hex": "#33C9F0", "name": "cyber blue"},
+          {"hex": "#9FE53A", "name": "acid green"},
+          {"hex": "#8CE0C0", "name": "jelly translucent"},
+          {"hex": "#FFD84A", "name": "sticker gold"}
+        ],
+        "materials_textures": [
+          "glitter fields, star and heart stickers, sparkle overlays",
+          "translucent 'jelly' plastic, gloss and refraction",
+          "screenshot chrome, comment-feed text, filter smear"
+        ],
+        "composition": [
+          "mood-board collage: pop shards assembled into one figure",
+          "affirmation/caption text laid over the image",
+          "the bedroom / dream-girl interior as self-portrait set"
+        ],
+        "typography": [
+          "handwritten-script affirmations, meme caption faces, emoji-as-language"
+        ],
+        "casting_setting": [
+          "internet-native femininity; the self curated from and for the feed, part sincere, part ironic"
+        ]
+      },
+      "verbal": {
+        "lexicon": ["the internet is air", "dream girl", "affirmation", "vibe", "transparency", "curation", "acrobatics", "online self"],
+        "metaphors": ["the feed as air/atmosphere one lives inside", "the self as remix of pop shards", "transparency as both material and confession"],
+        "register": "hyper-online, sincere-ironic, affirmational; fluent in platform vernacular",
+        "sample_phrases": [
+          {"quote": "the internet is air.", "source": "Maya Man, 032c", "url": "https://magazine.032c.com/magazine/the-internet-is-air-with-maya-man"},
+          {"quote": "The era in which we treated our screen-lives as fake is ending.", "source": "Katherine Dee, default.blog", "url": "https://default.blog/p/the-machine-looks-back"}
+        ]
+      },
+      "tensions": "Against the analog-authenticity register (warm wood, film grain, 'realness') and against the idea that the online self is inherently inauthentic. Internal risk: the remix can collapse into pure aesthetic slickness with no authored point of view — the same 'tasteslop' the culture already mocks; the code survives only where the assembly carries a genuine argument about the self.",
+      "execution_notes": "For brands courting the platform generation: build the self out of the feed's real materials with an actual point of view, and let it be knowingly synthetic rather than faux-analog. Misuse: bolting Y2K sparkle onto a product with no authored idea reads as trend-chasing slop to an audience that authors this language natively.",
+      "evidence": [
+        {
+          "signal_id": null,
+          "source": "032c.com",
+          "url": "https://magazine.032c.com/magazine/the-internet-is-air-with-maya-man",
+          "note": "Maya Man's 'dream girl world', affirmation web-works and StarQuest — internet femininity authored as medium, the online self treated as real",
+          "image_refs": [
+            "https://cdn.sanity.io/images/wmq4hf8k/production/0c7e9ff8fff482da13805162db6f4f1c492e0cea-5631x3521.jpg",
+            "https://cdn.sanity.io/images/wmq4hf8k/production/e07881a64f8ac9638b99d4f96fbffe955d0ed909-5760x3840.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "polyesterzine.com",
+          "url": "https://www.polyesterzine.com/features/the-summer-of-the-jelly-what-our-obsession-with-transparency-really-reveals",
+          "note": "hyper-pink digital collage of translucent 'jelly' Birkins with stars and butterflies — transparency and gloss as self-fashioning surface",
+          "image_refs": [
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/e156db70-5201-4711-8f71-bcb548c30e7a/jelly+firkin+1.png?format=2500w",
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/1c79f4c5-a3a3-4d25-99d9-07897af77f31/jelly+firkin+2.png?format=2500w"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "polyesterzine.com",
+          "url": "https://www.polyesterzine.com/features/wasians-and-the-limits-of-representation-notes-from-a-blasian-in-japan",
+          "note": "glittered Y2K collage of teen self-fashioning (ice-cream, Miss Universe sash, kissy-lips, hearts) — identity assembled from pop shards"
+        },
+        {
+          "signal_id": null,
+          "source": "aperture.org",
+          "url": "https://aperture.org/editorial/11-exhibitions-to-see-this-spring-2026/",
+          "note": "the liquified/digitally-smeared self-portrait (face melting into checkerboard) — the photographic self remixed to the point of dissolution",
+          "image_refs": [
+            "https://aperture.org/wp-content/uploads/2026/04/1990-Lettre-a-St.-Loup25-scaled.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "somersethouse.org.uk",
+          "url": "https://www.somersethouse.org.uk/channel/editorial-essay/from-the-selfie-to-the-avatar-beauty-bias-and-the-digital-self",
+          "note": "'From the Selfie to the Avatar': Arvida Byström's filtered self, Angelfire's rendered persona, and Lil Miquela's CGI 'Re-birth of Venus' — identity authored as an editable digital avatar (round-3 gap-fill)",
+          "image_refs": [
+            "https://admin.somersethouse.org.uk/images/GESxoWNPqVxcQt9_Wf0j-CU3Qb0=/5025/format-webp%7Cwidth-3200/Arvida_Bystrom_-_coexist_2022_-__Courtesy_of_the_artist.jpg",
+            "https://admin.somersethouse.org.uk/images/l5Gp3PhvJHZd2pZnKITXPLxQph0=/5027/format-webp%7Cwidth-3200/Angelfire_XENA_2021._Courtesy_of_the_artist.jpeg",
+            "https://admin.somersethouse.org.uk/images/y5rG8xnrxZGr8vhMCe_gf3reDsM=/5034/format-webp%7Cwidth-3200/Lil_Miquela_-_Re-birth_of_Venus_-_courtesy_of_artist_and_brud.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "artsy.net",
+          "url": "https://www.artsy.net/article/artsy-editorial-molly-soda-social-media-changes-irl",
+          "note": "Molly Soda's webcam-grid self-portraits, the framed DM screenshot, the livestream-with-comments — the self authored natively inside the platform's own formats (round-3 gap-fill)",
+          "image_refs": [
+            "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F8z-2ggaZS3JtyrF-hnFNjQ%2Fnormalized.jpg&width=1820",
+            "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FSqvD4RWUjsw2vSVdzLrvyQ%2Fnormalized.jpg&width=1820"
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "first_coded": "2026-07-05",
+      "history": [
+        {"run": "2026-07-05", "change": "coined", "note": "pilot baseline; round-2 gave ~4 sources (032c, Polyester x2, Aperture). Round-3 gap-fill added Somerset House ('Selfie to Avatar' — Byström/Angelfire/Lil Miquela) and Artsy (Molly Soda), taking it to 5 distinct sources / ~10 images — now on solid footing as emergent."}
+      ]
+    },
+    {
+      "id": "against-the-algorithm",
+      "name": "Against the Algorithm",
+      "status": "emergent",
+      "short_def": "The self asserted as precisely what a model cannot generate: the wavering hand, the specific voice, the signature that is a person and not a statistical average. Painters work over and through the image-glut by hand; writers insist the screen-life is authored, not automated; the anti-AI placard and the sameness of a machine-portrait grid appear as the enemy. Held DISCIPLINED — this is not Certified Human's provenance/anti-slop frame, but the narrower claim that YOUR authorship is unrepeatable.",
+      "look": {"bg": "#5a5a5a", "text": "#f3f1ec"},
+      "one_liner": "The unrepeatable hand and voice, asserted against a machine that can only average: authorship as the one thing that can't be generated.",
+      "definition": "The thinnest and most contested emergent code, and deliberately fenced off from Certified Human. Where that need argues made-by-humans provenance in general, this one is specifically about self-authorship surviving the generative model: the artist's own hand reworking the photographic image-flood into a single overpainted figure (post-AI painting), the writer arguing our screen-lives are authored rather than fake, the flatly-generated 'art by [famous artist]' portrait grid held up as the negative example of a voice with no self behind it, the placard 'AI steals from artists'. The claim is not 'a human made this' but 'this authorship is mine and cannot be averaged out of a training set'. Register: grisaille and overpaint, the visible brush, warning-red protest, the machine-smooth grid as foil.",
+      "visual": {
+        "palette": [
+          {"hex": "#6E6E6E", "name": "grisaille grey"},
+          {"hex": "#C8102E", "name": "protest red"},
+          {"hex": "#EDEAE3", "name": "paper white"},
+          {"hex": "#1C1C1C", "name": "brush black"},
+          {"hex": "#B98A4B", "name": "worked-earth ochre"}
+        ],
+        "materials_textures": [
+          "hand-overpaint dragged across collaged photographic source",
+          "the visible, wavering brushstroke; scraped and reworked ground",
+          "flat machine-smooth render as deliberate contrast"
+        ],
+        "composition": [
+          "a single figure reconstituted by hand from an image-mass",
+          "the machine-portrait grid: many near-identical outputs, no self",
+          "the placard / slogan asserting the artist against the tool"
+        ],
+        "typography": [
+          "protest hand-lettering; the prompt-string 'art by [name]' as caption of the foil"
+        ],
+        "casting_setting": [
+          "the painter/writer as the irreplaceable author; the studio and the essay against the generator"
+        ]
+      },
+      "verbal": {
+        "lexicon": ["by hand", "voice", "signature", "authored", "the machine", "generated", "undeniable", "unrepeatable"],
+        "metaphors": ["the hand versus the average", "the model looking back at us", "the signature as the last unforgeable self"],
+        "register": "defiant, essayistic, occasionally polemical; the author drawing a line the model can't cross",
+        "sample_phrases": [
+          {"quote": "The era in which we treated our screen-lives as fake is ending.", "source": "Katherine Dee, default.blog", "url": "https://default.blog/p/the-machine-looks-back"},
+          {"quote": "get my skills up to the point where I can be undeniable with it", "source": "Russell Craig, Impulse", "url": "https://impulsemagazine.com/articles/beyond-cell-doors-russell-craigs-vision"}
+        ]
+      },
+      "tensions": "Against the generative model and its statistical sameness — but also against Certified Human's territory, into which it easily collapses. Internal risk: most 'anti-AI' imagery in the intake is generic editorial illustration (badges, stock), not self-authorship; the code is only real where the specific, unrepeatable authorship of a named person is the payload. Coined low-confidence for exactly this reason.",
+      "execution_notes": "For brands: if you invoke the human-vs-AI line, it must attach to a specific, named author's unrepeatable voice — not a generic 'handmade' badge, which belongs to Certified Human and which this audience reads as hollow. Misuse: 'authentically human' messaging with no actual author behind it is the emptiest move available and is mocked on sight.",
+      "evidence": [
+        {
+          "signal_id": null,
+          "source": "hauserwirth.com",
+          "url": "https://www.hauserwirth.com/ursula/post-ai-painting-avery-singer-dieter-buchhart/",
+          "note": "post-AI painting: large works where a figure is reconstituted by hand out of a mass of overlaid photographic source — the brush reasserting authorship over the image-glut (site 429s WebFetch; imagery observed on the contact sheet)",
+          "image_refs": [
+            "https://media.hauserwirth.com/asset/95e65ad2-d3f4-448b-84ac-2467975a913b/17-Conversation-1.jpg",
+            "https://media.hauserwirth.com/transform/015e493d-ddef-439f-808c-7465a53cd76e/17-Conversation-HWAVERYSINGER_26-02-19_00227_52L"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "default.blog",
+          "url": "https://default.blog/p/the-machine-looks-back",
+          "note": "Katherine Dee on the machine as a mirror that shapes the stories we tell about ourselves — authorship of the screen-self against automation (text-tier; imagery thin)"
+        },
+        {
+          "signal_id": null,
+          "source": "aeon.co",
+          "url": "https://aeon.co/essays/could-ai-replace-human-art-experts-in-attributing-paintings",
+          "note": "the negative example, held as foil: the 'art by [famous artist]' machine-portrait grid whose outputs are all average and none authored; the 'AI steals from artists' placard as the polemic's shorthand (essay grab-bag illustration, low semiotic weight — flagged)"
+        },
+        {
+          "signal_id": null,
+          "source": "metropolitanreview.com",
+          "url": "https://metropolitanreview.com/the-power-of-art-in-the-ai-age/",
+          "note": "the code's clearest image: Megan Gafford's graphite self-portrait caught mid-drawing — the hand's own wavering mark making the self, set against an AI-generated foil in the same essay",
+          "image_refs": [
+            "https://metropolitanreview.com/wp-content/uploads/2025/09/Megan-Gafford-2.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "davidrevoy.com",
+          "url": "https://www.davidrevoy.com/article1007/my-brushstrokes-against-ai-art",
+          "note": "a working illustrator's manifesto: his own hand-painted characters posted as the unrepeatable authored line the model can only imitate",
+          "image_refs": [
+            "https://www.davidrevoy.com/data/images/blog/2023/2023-12-02_young-wasabi.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "creativebloq.com",
+          "url": "https://www.creativebloq.com/art/why-gen-z-artists-are-rediscovering-anatomy-gesture-and-plein-air-painting-in-2026",
+          "note": "the generational turn: Gen-Z artists returning to life-drawing, anatomy and plein-air painting — the visible human gesture reasserted as authorship against AI perfection",
+          "image_refs": [
+            "https://cdn.mos.cms.futurecdn.net/UNiVpVpcLwByVdcskzAboc-1000-80.jpg.webp",
+            "https://cdn.mos.cms.futurecdn.net/gQ4bHPT5oNitCquGvqqXTV-1280-80.jpg.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "news.artnet.com",
+          "url": "https://news.artnet.com/art-world/artificial-intelligence-robot-painting-2644496",
+          "note": "the nuanced case: Gretta Louw paints WITH the e-David robot, the human gesture recorded and co-authored rather than surrendered — authorship as direction of the machine, not replacement by it",
+          "image_refs": [
+            "https://news.artnet.com/app/news-upload/2025/05/LOUW_Orchid-series-1-2048x1363.jpg",
+            "https://news.artnet.com/app/news-upload/2025/05/LOUW_eDavid_setup-2048x1489.jpg"
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "first_coded": "2026-07-05",
+      "history": [
+        {"run": "2026-07-05", "change": "coined", "note": "pilot baseline, LOW confidence: only ~2 clean self-authorship visual sources (Hauser & Wirth the anchor; most other anti-AI imagery is generic and belongs to Certified Human)."},
+        {"run": "2026-07-05", "change": "evidence", "note": "round-3 gap-fill lifted this from thin to real: added Metropolitan Review (Megan Gafford's graphite self-portrait mid-draw — the anchor image), David Revoy (hand-painted line vs AI), Creative Bloq (Gen-Z gesture/plein-air revival), and Artnet (Gretta Louw painting WITH the e-David robot, the nuanced co-authorship case). Now 7 distinct sources; confidence LOW→MEDIUM. Still fenced hard against Certified Human's provenance frame — this code is only about a named author's unrepeatable signature, not made-by-humans in general."}
+      ]
+    }
+  ],
+  "image_ref_note": "image_refs are HOTLINK REFERENCES to images served from the publishers' own servers (collected 2026-07-05). Nothing is stored or copied; each reference renders live from the source and links back to the article, credited, referrerpolicy=no-referrer, broken links self-hide. Internal gate-review use only; re-assess before any public/client-facing deploy (EU-embedding caveat per CLAUDE.md). culturedmag.com and hauserwirth.com block WebFetch and artsy.net/032c serve via image proxies — those refs were read from the contact sheets and their live URLs verified in the scrape output; spot-check on render."
+}

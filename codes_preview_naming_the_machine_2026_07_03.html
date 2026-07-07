@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Look &amp; Feel — Certified Human (prototype)</title>
+<style>
+  :root{--ink:#141414;--mute:#6b665c;--line:#e6e3db;--card:#fcfbf9}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:#fff}
+  .wrap{max-width:880px;margin:0 auto;padding:56px 24px 120px}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+  h1{font-family:Georgia,serif;font-weight:600;font-size:40px;margin:0 0 10px;letter-spacing:-.01em}
+  .lede{color:#3a382f;max-width:68ch;margin:0 0 6px}
+  .statline{font-size:13px;color:var(--mute);margin-bottom:34px}
+  .proto{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid #e2cb96;color:#9a6b1a;border-radius:20px;padding:2px 9px;margin-bottom:14px}
+  .code{border:1px solid var(--line);border-radius:4px;background:var(--card);margin:22px 0;padding:24px 28px}
+  .c-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .c-head h2{font-family:Georgia,serif;font-size:25px;font-weight:600;margin:0}
+  .status{font-size:10px;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--line);border-radius:20px;padding:2.5px 10px;color:var(--mute)}
+  .status.emergent{color:#2f6f3e;border-color:#bcd6c3;background:#f2f8f3}
+  .status.dominant{color:#3a5a9b;border-color:#b9c6e2;background:#f3f6fb}
+  .status.residual{color:#8a6d3b;border-color:#e2d6b6;background:#faf7ee}
+  .one{font-family:Georgia,serif;font-size:16.5px;color:#2e2c26;margin:10px 0 4px;line-height:1.45}
+  .def{font-size:14px;color:#33312c;margin:8px 0 18px;max-width:74ch}
+  .collage{display:flex;flex-wrap:wrap;gap:4px;margin:14px 0 4px}
+  .collage a{display:block;height:150px;overflow:hidden;border-radius:2px;background:#eeebe3;position:relative}
+  .collage img{height:150px;width:auto;display:block}
+  .collage a:hover::after{content:attr(data-src);position:absolute;left:0;right:0;bottom:0;font-size:9.5px;letter-spacing:.04em;color:#fff;background:rgba(20,20,20,.62);padding:2px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .collage-note{font-size:10.5px;color:var(--mute);margin:0 0 14px}
+  .swatches{display:flex;gap:0;margin:6px 0 18px;border:1px solid var(--line);border-radius:3px;overflow:hidden;height:54px}
+  .sw{flex:1;position:relative}
+  .sw span{position:absolute;left:7px;bottom:5px;font-size:9px;letter-spacing:.03em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);white-space:nowrap}
+  .sw.light span{color:#444;text-shadow:none}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 30px}
+  @media(max-width:640px){.cols{grid-template-columns:1fr}}
+  h4{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:14px 0 6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+  .chips{display:flex;flex-wrap:wrap;gap:5px}
+  .chip{font-size:11.5px;border:1px solid var(--line);background:#fff;border-radius:20px;padding:2.5px 10px;color:#33312c}
+  ul{margin:4px 0;padding-left:17px;font-size:13px;color:#33312c}
+  li{margin:2.5px 0}
+  blockquote{margin:8px 0;padding:7px 13px;border-left:3px solid var(--line);font-family:Georgia,serif;font-style:italic;font-size:14px;color:#3a372f}
+  blockquote a{font-style:normal;font-size:11.5px;color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line)}
+  .note{font-size:13px;color:#4a473e;background:#fff;border:1px solid var(--line);border-radius:3px;padding:10px 14px;margin:8px 0}
+  .note b{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:3px;font-weight:600}
+  .ev{font-size:12.5px;color:var(--mute);margin:3px 0}
+  .ev a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  .ev a:hover{border-color:var(--ink)}
+  .hist{font-size:11.5px;color:var(--mute);margin-top:14px;border-top:1px dashed var(--line);padding-top:9px}
+  .fnote{font-size:11.5px;color:var(--mute);margin-top:40px;border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="proto">Flat prototype — gate review, not deployed</span>
+  <p class="kicker">Look &amp; Feel · Semiotic Codes</p>
+  <h1 id="t-need"></h1>
+  <p class="lede">How this need currently signifies: the recurring visual and verbal patterns independent cultural actors keep reaching for. Evidence imagery is hotlinked live from each publisher's own servers and credited — nothing is stored or copied; everything clicks through to its source.</p>
+  <p class="statline" id="t-stat"></p>
+  <div id="codes"></div>
+  <p class="fnote" id="t-method"></p>
+</div>
+<script>
+const D = /*__CODES__*/{
+  "need": "Naming the Machine",
+  "updated": "2026-07-03",
+  "runs_covered": [
+    "2026-07-03"
+  ],
+  "images_observed": 368,
+  "articles_viewed": 60,
+  "method_note": "Round-1 baseline coding per SEMIOTIC_CODEBOOK.md via the image_scraper contact-sheet method: 11 numbered 12-up sheets (132 grid slots) read by Fable against sidecar JSONs; ~110 substantive images after logos/avatars/headshot furniture (~22 slots). Genre-confound discipline applied per CLAUDE.md: a pattern was coded only where the imagery's work IS the unmasking of a system/machine/incentive, not mere tech-adjacency. Palette hexes are observational approximations from article imagery, not brand-spec values. Two candidates were NOT coined for falling below the 4-source bar: the-system-as-cheerful-diagram (axonometric/flat-illustration renderings of invisible infrastructure; 3 clean sources: dezeen SVA school show, Rest of World editorial illustration, Aeon) and the-ghost-workforce (hidden-labor exposés pairing platform UI with factory imagery; visually thin, newsletter sources carried it in text only). Both flagged for round-2 targeted search. ROUND-2 (2026-07-03, same day): a targeted WebSearch gap-fill scrape (33 URLs, 32 fetched) fed sheets 12-31 (images 133-368) read against sidecars to ENRICH the four existing codes only (per Michael: no new codes coined this round; the two candidates above remain candidates). Net: evidence appended to all four codes from new distinct sources, no descriptions rewritten, no status downgrades. The two un-coined candidates DID reach the 4-source bar in round-2 imagery (ghost-workforce: weirdpressphoto/famsf/npr-Dataland/equidem; cheerful-diagram: +archdaily) but were deliberately NOT coined at Michael's instruction; recorded here for a future session.",
+  "codes": [
+    {
+      "id": "receipts-as-image",
+      "name": "The Receipt Dump",
+      "status": "dominant",
+      "short_def": "The unmasking is performed by publishing the system's own paperwork as the article's imagery: raw spreadsheets, pricing tables, margin heatmaps, leaked projection charts, and platform screenshots with redaction bars. The interface artifact replaces photography; the black redaction bar and the conditional-formatting red cell are the genre's punctum.",
+      "look": {"bg": "#16181d", "text": "#e8f0e9"},
+      "one_liner": "The machine indicted with its own paperwork: spreadsheets, margin tables, and redacted screenshots published as the picture.",
+      "definition": "The strongest pattern in the corpus. Criticism of tech and platform economics does not illustrate its argument, it exhibits the evidence: an Excel grid of GPU capex line items, a subscription-margin heatmap shading from green to catastrophic red, The Information's leaked cash-flow bars republished as exhibits, a LinkedIn 'thought leadership' post screenshotted with the executive's name under a black redaction bar, a TikTok or Instagram embed kept inside its like-count chrome. The screenshot's UI furniture (follow buttons, timestamps, like counts) functions as a chain-of-custody claim: this is the machine, captured in situ. Verbally it runs on forensic accounting: burn rate, gross margin, unit economics, doing the math they hoped you wouldn't.",
+      "visual": {
+        "palette": [
+          {"hex": "#FFFFFF", "name": "spreadsheet white"},
+          {"hex": "#16181D", "name": "dark-mode slate"},
+          {"hex": "#E4574F", "name": "margin-alarm red"},
+          {"hex": "#4CAF7D", "name": "conditional green"},
+          {"hex": "#111111", "name": "redaction black"}
+        ],
+        "materials_textures": [
+          "native UI chrome kept intact (like counts, follow buttons, timestamps)",
+          "cell-grid hairlines and conditional-formatting fills",
+          "black redaction bars and gaussian-blurred avatars",
+          "chart furniture reproduced whole: axis labels, source lines, footnotes"
+        ],
+        "composition": [
+          "the table or screenshot presented full-bleed as the article's image, uncropped",
+          "escalation reads left-to-right / top-to-bottom into red",
+          "no photography at all in the article's evidentiary core"
+        ],
+        "typography": [
+          "system monospace and spreadsheet default faces",
+          "FT/The Information chart typography republished verbatim",
+          "platform sans (LinkedIn, Instagram, TikTok) as found material"
+        ],
+        "casting_setting": [
+          "no humans; the machine's back office is the scene",
+          "where a person appears they are redacted or blurred — anonymity as evidence-handling"
+        ]
+      },
+      "verbal": {
+        "lexicon": ["gross margin", "burn rate", "unit economics", "capex", "leaked projections", "content mill", "receipts", "subsidized", "brokenomics"],
+        "metaphors": ["opening the books", "the audit", "the leak", "arithmetic as indictment"],
+        "register": "forensic-accountant deadpan escalating to mock incredulity at the numbers",
+        "sample_phrases": [
+          {
+            "quote": "I estimate Abilene's rough gross margin is around 37.47%",
+            "source": "Ed Zitron, Where's Your Ed At",
+            "url": "https://www.wheresyoured.at/ais-economics-dont-make-sense/"
+          },
+          {
+            "quote": "It's all AI comments by fake people",
+            "source": "Alex, quoted in Rest of World",
+            "url": "https://restofworld.org/2026/virtual-assistant-linkedin-engagement/"
+          },
+          {
+            "quote": "The Bounty Economy Is Breaking Reality",
+            "source": "Taylor Lorenz, User Mag",
+            "url": "https://www.usermag.co/p/the-bounty-economy-is-breaking-reality-pump-fun-polymarket-ugc-marketing-attention-economy"
+          }
+        ]
+      },
+      "tensions": "Defines itself against the vendor keynote render and the glossy 'AI transformation' stock image: no synthetic optimism, only the ledger. Internal risk the corpus itself names: once receipts become the house style, the spreadsheet aesthetic can be worn as costume by anyone, including the companies being audited.",
+      "execution_notes": "For a client, executing in this code means showing your own back office voluntarily: real numbers, real interface, no art direction on top. It photographs badly and converts strongly. Misuse: staged 'transparency' dashboards with pre-cleaned numbers read instantly as PR; the code only works when the artifact looks found, not designed.",
+      "evidence": [
+        {
+          "signal_id": null,
+          "source": "wheresyoured.at",
+          "url": "https://www.wheresyoured.at/ais-economics-dont-make-sense/",
+          "note": "raw capex/margin spreadsheet published as the image (credit: Ed Zitron), plus The Information's revenue-ambitions and cash-flow-paths charts republished as exhibits",
+          "image_refs": [
+            "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/04/data-src-image-290e7a2c-4417-4570-bb39-e0f6d7dd58ee.png",
+            "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/04/data-src-image-64c4d4d7-59e2-45ff-a58b-9a9c5c3862b6.png",
+            "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/04/data-src-image-ad8d7795-f792-4c5b-b382-8f423e73a2e6.png"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "wheresyoured.at",
+          "url": "https://www.wheresyoured.at/brokenomics/",
+          "note": "subscription pricing tables and a margin-by-utilization heatmap shading green into deep red — conditional formatting doing the rhetorical work (credit: Ed Zitron / SemiAnalysis)",
+          "image_refs": [
+            "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/06/data-src-image-186c8e97-c425-41e4-bdb6-df0a766ba4da.png",
+            "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/06/data-src-image-4d2554f2-4a45-4d53-9c0b-88fa2f16206c.png"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "restofworld.org",
+          "url": "https://restofworld.org/2026/virtual-assistant-linkedin-engagement/",
+          "note": "LinkedIn thought-leadership post screenshotted with the executive's name under a black redaction bar and avatar blurred; paired with stacked car-chassis factory imagery for the 'content mill' (credit: Rest of World / LinkedIn)",
+          "image_refs": [
+            "https://fastly.restofworld.org/uploads/2026/05/screenshot_linkfluencers_blur_final.jpg?width=1900&dpr=2",
+            "https://fastly.restofworld.org/uploads/2026/06/iStock-154924807.jpg?width=340&dpr=2&crop=3:2"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "garbageday.email",
+          "url": "https://www.garbageday.email/p/the-clear-channel-internet",
+          "note": "Instagram post embedded whole with like-count and profile chrome intact — the platform artifact as found evidence of the homogenized feed (credit: Garbage Day)",
+          "image_refs": [
+            "https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/a3da6aa5-ad86-43cb-937b-3902b3b47a69/instagram_screenshot_DWCItAKEbU3_1780927030_383dd12f.jpeg?t=1780927032"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "afterschool.substack.com",
+          "url": "https://afterschool.substack.com/p/zitfluencers-and-meaf-promax",
+          "note": "vertical TikTok screenshot with caption chrome ('New Slang Alert!') kept intact — teen-internet mechanics decoded through the captured interface (credit: After School)",
+          "image_refs": [
+            "https://substackcdn.com/image/fetch/$s_!WCdS!,w_640,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe751cf5e-a080-43d5-94d5-8397ba3dab9f_1080x1920.jpeg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "epoch.ai",
+          "url": "https://epoch.ai/data-insights/ai-datacenter-share-gdp",
+          "note": "round-2 gap-fill: the macroeconomic receipt — a stacked-area chart of AI-infrastructure components as a share of US nominal GDP, source-lined to the Bureau of Economic Analysis / FRED / Census and published as the whole image; the econ-chart variant of the audit (credit: Epoch AI, CC-BY)",
+          "image_refs": [
+            "https://epoch.ai/assets/images/data-insights/ai-datacenter-share-gdp/ai-datacenter-share-gdp.png"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "statista.com",
+          "url": "https://www.statista.com/chart/35046/capital-expenditure-of-meta-alphabet-amazon-and-microsoft/",
+          "note": "round-2 gap-fill: the polished-infographic variant of the receipt — a suite of AI-economy data charts ($725B Big Tech capex bars, 'SpaceX is the odd one out' price-to-sales, 'Is Nvidia a bargain' P/E vs revenue-growth) rendered as the article's image, the Statista wordmark functioning as chain-of-custody (credit: Statista)",
+          "image_refs": [
+            "https://cdn.statcdn.com/Infographic/images/normal/35046.jpeg",
+            "https://cdn.statcdn.com/Infographic/images/teaser/36314.jpeg",
+            "https://cdn.statcdn.com/Infographic/images/teaser/34865.jpeg"
+          ]
+        }
+      ],
+      "confidence": "high",
+      "first_coded": "2026-07-03",
+      "history": [
+        {
+          "run": "2026-07-03",
+          "change": "coined",
+          "note": "Round-1 contact sheets: 4 independent sources across tech-criticism, global tech reporting, and internet-culture newsletter categories. Status dominant, not emergent: the audit/detection register consolidated 2023-2025 as the mainstream grammar of tech criticism (Zitron's tables, Lorenz's dataset audits, redaction-bar screenshots); it is now the expected look of the genre."
+        },
+        {
+          "run": "2026-07-03",
+          "change": "evidence",
+          "note": "Round-2 gap-fill: +2 distinct sources (epoch.ai macro GDP-share chart; Statista AI-economy infographic suite), extending the code from Zitron's raw Excel into the polished data-journalism variant of the same forensic move. Status held dominant. Note: the 404 Media round-2 imagery (stock-photo-plus-logo editorial collage) was observed but NOT added — it is not a found interface artifact and fails the code's chain-of-custody test."
+        }
+      ]
+    },
+    {
+      "id": "seams-showing-dossier",
+      "name": "The Cut-and-Paste Dossier",
+      "status": "residual",
+      "short_def": "System critique rendered as collage that keeps its seams visible: taped corners, torn edges, halftone archival scraps, duotone clip-art, fold creases, and degraded rescans. The visible cut is the argument — someone assembled this case file by hand, against a machine that produces seamlessness.",
+      "look": {"bg": "#7c6bd9", "text": "#f6f1e4"},
+      "one_liner": "The case against the system assembled with visible tape, torn edges, halftone scraps, and duotone clip-art.",
+      "definition": "The inherited grammar of anti-capitalist image-making, still doing frontline work. A 1950s housewife clip-out drowns in YSL shopping bags against a field of office cubicles; manicured nails holding a crypto chart are pasted among pink digicams and a cash-counting machine; an archival class photo is rescanned in halftone with rough paper edges and taped corners; supply-chain exposés run B&W industrial photography under flat duotone circles. The refusal of seamlessness is the point: where the platform aesthetic is frictionless, the dossier is conspicuously hand-assembled, and its reproduction damage (folds, grain, tape) certifies that a human built the indictment.",
+      "visual": {
+        "palette": [
+          {"hex": "#F2A0BE", "name": "bubblegum pink"},
+          {"hex": "#C9C9C4", "name": "cubicle grey"},
+          {"hex": "#C8B98E", "name": "halftone sepia"},
+          {"hex": "#7C6BD9", "name": "duotone violet"},
+          {"hex": "#E86A3C", "name": "alarm orange"}
+        ],
+        "materials_textures": [
+          "visible tape, torn and rough-cut paper edges",
+          "halftone dots and photocopier grain on archival material",
+          "fold creases and rescan damage worn openly",
+          "flat duotone fills over B&W photography"
+        ],
+        "composition": [
+          "collision montage: kitsch past pasted against financialized present",
+          "cut-out figures floating over repeating fields (cubicles, product grids)",
+          "the pasted-document frame: image presented as a file in a case"
+        ],
+        "typography": [
+          "ransom-note and zine cut-out lettering",
+          "tabloid slab shouts on degraded scans",
+          "handwritten annotation over found material"
+        ],
+        "casting_setting": [
+          "found figures, not models: stock housewives, archival crowds, anonymous manicured hands",
+          "the platform economy appears as props — shopping bags, phones, cash machines"
+        ]
+      },
+      "verbal": {
+        "lexicon": ["girlboss", "second wave", "hustle", "meritocracy", "post-reality", "aesthetic audits", "deja vu"],
+        "metaphors": ["the tide coming back in", "the case file", "history repeating as trend cycle"],
+        "register": "arch, weary, feminist-essayistic; irony with a body count",
+        "sample_phrases": [
+          {
+            "quote": "The tide of girl boss feminism is rising for a second wave.",
+            "source": "Polyester",
+            "url": "https://www.polyesterzine.com/features/the-second-wave-of-girl-boss-feminism-still-wont-save-usnbsp"
+          },
+          {
+            "quote": "an entrance into the “we must” genre of aesthetic audits",
+            "source": "Alana Pockros, Dirt",
+            "url": "https://dirt.fyi/article/2026/05/panic-at-the-post-reality"
+          },
+          {
+            "quote": "Can a festival meaningfully applaud African creativity while its sponsor profits from African death?",
+            "source": "Africa Is a Country",
+            "url": "https://africasacountry.com/2026/05/how-to-read-postcolonial-writing"
+          }
+        ]
+      },
+      "tensions": "Defines itself against algorithmic seamlessness and stock-image gloss; also against the Receipt Dump's cold interface artifacts — the dossier is hot, handmade, and openly partisan. Risk: the photomontage lineage is so established (Heartfield to punk zine to riot-grrrl) that it can read as nostalgia for critique rather than critique.",
+      "execution_notes": "Cheap, fast, and instantly legible as dissent — which is why brands keep borrowing it and why it curdles fastest. A client using this code must actually name a system and take a side; collage aesthetics wrapped around no indictment read as Urban Outfitters zine-wash. The tell of authentic use: the specific archival source material matters and is credited.",
+      "evidence": [
+        {
+          "signal_id": null,
+          "source": "polyesterzine.com",
+          "url": "https://www.polyesterzine.com/features/the-second-wave-of-girl-boss-feminism-still-wont-save-usnbsp",
+          "note": "girlboss-2.0 collages: manicured nails with a BTC chart pasted among pink digicams and a cash counter; a 1950s housewife clip-out buried in YSL bags over a cubicle field (credit: Polyester)",
+          "image_refs": [
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/ccf96b33-8b1d-48d4-b744-5cbb2697a169/girlboss1.png?format=2500w",
+            "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/a49e3a45-dd4a-46da-ac0c-3f5d10af5ace/girlboss.png?format=2500w"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "africasacountry.com",
+          "url": "https://africasacountry.com/2026/05/how-to-read-postcolonial-writing",
+          "note": "archival class photo rendered as a pasted historical document — halftone, rough paper edges, taped corners — for a piece naming the canon-and-sponsorship machinery of African literature (credit: Africa Is a Country)",
+          "image_refs": [
+            "https://media.africasacountry.com/images/2026/5/330165057280-card.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "restofworld.org",
+          "url": "https://restofworld.org/2026/virtual-assistant-linkedin-engagement/",
+          "note": "supply-chain and platform dispatches run as duotone collage: orange/blue quadrant split on the Temu piece, B&W robotic-arm battery imagery under flat violet circles (credit: Rest of World)",
+          "image_refs": [
+            "https://fastly.restofworld.org/uploads/2026/06/RoW_Dispatch_25Jun2026.jpg?width=340&dpr=2&crop=3:2",
+            "https://fastly.restofworld.org/uploads/2026/06/EV-Battery-divergence-2.jpg?width=340&dpr=2&crop=3:2"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "dirt.fyi",
+          "url": "https://dirt.fyi/article/2026/05/panic-at-the-post-reality",
+          "note": "degraded rescan aesthetic for a post-reality essay: VHS-grade still with visible fold creases and tabloid 'STILL ALIVE!' slab type — reproduction damage worn as the image of media unreality (credit: Dirt)",
+          "image_refs": [
+            "https://images.ctfassets.net/5p1u9t4r48s4/7fOttbs0aMG7JHoRC0gAOy/dee02abbbd88712bef5f2b6e480bd477/Alana_Pockros.png?w=1500&q=60&fm=avif"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "kolajmagazine.com / kolajinstitute.org",
+          "url": "https://www.kolajmagazine.com/exhibition/politics-in-collage.html",
+          "note": "round-2 gap-fill: the 'Politics in Collage' exhibition — ransom-note cut lettering over a tribunal photomontage ('YOU WHO JUDGE me / for ME, you are NOTHING'), a torn-paper suburbia montage stencilled 'WE WANT WHITE TENANTS IN OUR WHITE COMMUNITIES', a punk-zine 'ECOLOGICAL GRIEF' cut-out, a collage-scrap protest fist — the visible hand-cut seam as the indictment (credit: Kolaj Magazine / Kolaj Institute; counted as one organization)",
+          "image_refs": [
+            "https://www.kolajmagazine.com/exhibition/politics/images/mori-anderson-hitchcock.jpg",
+            "https://www.kolajmagazine.com/exhibition/politics/images/phyllis-famiglietti.jpg",
+            "https://www.kolajmagazine.com/exhibition/politics/images/Arras-Ecological-grief.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "norton.org",
+          "url": "https://www.norton.org/exhibitions/cut-upcut-out-photomontage-and-collage",
+          "note": "round-2 gap-fill: the museum canon of the code — 'Cut-Up/Cut-Out' gathers Martha Rosler's 'Beauty Rest' (soldiers on a mattress in a bombed room, from 'Bringing the War Home'), Barbara Kruger's 'Surveillance Is Your Busywork', and Romare Bearden's 'Pittsburgh Memory': visible-seam photomontage explicitly naming the war / surveillance / industrial-labor machine (credit: Norton Museum of Art)",
+          "image_refs": [
+            "https://www.norton.org/storage/app/uploads/public/435/ed9/8a6/thumb__1130_0_0_0_auto.jpg",
+            "https://www.norton.org/storage/app/uploads/public/135/bee/b2b/thumb__1130_0_0_0_auto.jpg",
+            "https://www.norton.org/storage/app/uploads/public/8fb/c01/31c/thumb__1130_0_0_0_auto.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "eyeondesign.aiga.org",
+          "url": "https://eyeondesign.aiga.org/how-feminist-movements-co-opt-graphic-design-to-express-themselves/",
+          "note": "round-2 gap-fill (date-flag: ~2020 feature): feminist protest graphics naming patriarchy as a system — the 1911 'Votes for Women' poster, the woodcut 'Fuck housework', a riot-grrrl 'Overthrow Cockrock and Idolize Your Girlfriend' flyer, ransom-cut magazine covers — the residual protest-graphic lineage the code descends from (credit: AIGA Eye on Design)",
+          "image_refs": [
+            "https://eyeondesign.aiga.org/wp-content/uploads/2017/09/Votes_for_Women.jpg",
+            "https://eyeondesign.aiga.org/wp-content/uploads/2017/09/collections.museumca.jpg",
+            "https://eyeondesign.aiga.org/wp-content/uploads/2017/09/Images-from-the-Gayle-Wald-Riot-Grrrl-Collection-and-the-Kill-Rock-Stars-Collection-file-on-Bikini-Kill_.jpg"
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "first_coded": "2026-07-03",
+      "history": [
+        {
+          "run": "2026-07-03",
+          "change": "coined",
+          "note": "Round-1 contact sheets: 4 independent sources spanning feminist culture mag, global intellectual, global tech reporting, and media-criticism categories. Status residual, honestly: this is the photomontage lineage (Heartfield → punk zine → riot-grrrl collage) redeployed against platform capitalism with phone chrome and crypto charts pasted in. Formed in the past, still actively signifying, and the default look clients reach for when briefed 'system critique'."
+        },
+        {
+          "run": "2026-07-03",
+          "change": "evidence",
+          "note": "Round-2 gap-fill: +3 distinct sources (Kolaj 'Politics in Collage' exhibition; Norton Museum 'Cut-Up/Cut-Out' — Rosler/Kruger/Bearden; AIGA Eye on Design feminist protest graphics). The material's museum-canonization is itself evidence FOR the residual reading, so status held residual. Discipline note: kept strictly to works that explicitly indict a system (surveillance / war machine / housework economy / segregation), not collage-as-a-medium survey, to hold the anchor to Naming the Machine; artsy.net (Martha Rosler feature) and artforum.com ('Collage Impulse Today') were also scraped but left out of image_refs — artsy not visually confirmed this pass, artforum's sheet was mixed with related-content thumbnails."
+        }
+      ]
+    },
+    {
+      "id": "rigging-in-shot",
+      "name": "The Rigging in Shot",
+      "status": "dominant",
+      "short_def": "Documentary and wire photography framed so the spectacle's machinery is the subject: sponsor boards and accreditation numbers, banks of photographers, LED walls and lasers dwarfing the performer, the octagon staged on the White House lawn. The camera steps back far enough that the apparatus can't hide.",
+      "look": {"bg": "#1b2a55", "text": "#e9f3ef"},
+      "one_liner": "Shoot the spectacle so its rigging shows: sponsor boards, press banks, LED walls, and the stage on the state's lawn.",
+      "definition": "Where the Receipt Dump exhibits paperwork, this code exhibits staging. Critical features select press photography in which the system's own furniture does the unmasking: adidas boards and VISA hoardings framing the pitch, a wall of accredited lenses shooting praying players, a pundit lit by a heat-map LED wall, Drake and DJ Khaled under a green laser as an 'authenticity test' is administered, UFC's octagon erected on the Ellipse with the White House glowing behind it, the 1961 Salone photographed as men in suits shopping a market. The image grammar is wide, saturated, and machine-lit; the human is deliberately small against the branded infrastructure of attention.",
+      "visual": {
+        "palette": [
+          {"hex": "#35D07F", "name": "LED/laser green"},
+          {"hex": "#E8552F", "name": "hot-set orange"},
+          {"hex": "#3F9B4C", "name": "stadium turf"},
+          {"hex": "#F5F7F7", "name": "floodlight white"},
+          {"hex": "#1B2A55", "name": "night-branding blue"}
+        ],
+        "materials_textures": [
+          "LED volume glow and stage-laser bloom",
+          "printed sponsor hoardings and perimeter boards",
+          "broadcast-grade floodlight flatness",
+          "archival B&W silver grain for the historical version of the same shot"
+        ],
+        "composition": [
+          "wide enough that the apparatus frames or dwarfs the human subject",
+          "the watchers watched: photographer banks and camera rigs inside the frame",
+          "brand marks kept legible at the edges rather than cropped out"
+        ],
+        "typography": [
+          "in-frame found type: sponsor logos, accreditation numbers, protest-slogan shirts, arena signage"
+        ],
+        "casting_setting": [
+          "performers, pundits, and crowds on branded infrastructure: stadiums, galas, TV studios, state lawns",
+          "the archival variant: trade fairs and podiums shot plainly, decades before the critique"
+        ]
+      },
+      "verbal": {
+        "lexicon": ["spectacle", "clout", "authenticity test", "hype problem", "elite spectacle", "apolitical", "sponsor"],
+        "metaphors": ["the machine wearing the event as a costume", "the stage as showroom", "bread and circuses run by procurement"],
+        "register": "reported, scene-setting, letting the staging incriminate itself",
+        "sample_phrases": [
+          {
+            "quote": "The World Cup was born from imperial rivalry and nationalist aspiration.",
+            "source": "Africa Is a Country",
+            "url": "https://africasacountry.com/2026/06/a-world-cup-without-the-world"
+          },
+          {
+            "quote": "What was once cool is now a big-box clout store",
+            "source": "Amy Odell, Back Row",
+            "url": "https://www.backrow.net/p/the-met-gala-is-now-the-tech-gala"
+          },
+          {
+            "quote": "Drake, DJ Khaled and Palestine’s Authenticity Test",
+            "source": "New Lines Magazine",
+            "url": "https://newlinesmag.com/spotlight/drake-dj-khaled-and-palestines-authenticity-test/"
+          }
+        ]
+      },
+      "tensions": "Defines itself against the tight hero crop — the official image that hides the rigging. Also against the Cut-and-Paste Dossier: no collage needed, the machine incriminates itself in a straight photograph. Tension inside the code: these are often the same Getty frames the machine sells; only editorial selection and caption turn them into indictment.",
+      "execution_notes": "For clients this is the most dangerous code to touch: it is the aesthetic used to expose sponsors, and any brand executing it is volunteering for the wide shot. Legitimate use: show your own apparatus on purpose (staging, logistics, money) before someone else frames it for you. Misuse: 'behind-the-scenes' content art-directed to look candid reads as the machine cosplaying its own exposure.",
+      "evidence": [
+        {
+          "signal_id": null,
+          "source": "africasacountry.com",
+          "url": "https://africasacountry.com/2026/06/what-bafana-bafana-teaches-south-africa-about-itself",
+          "note": "the nationalism-through-football essays run wire photography where the apparatus is legible: adidas perimeter boards framing play, a bank of accredited photographers shooting praying players, a 'No Illegal Immigration' slogan worn at a march (credit: Africa Is a Country / agency photographers)",
+          "image_refs": [
+            "https://media.africasacountry.com/images/2026/1/603156651935-card.jpg",
+            "https://media.africasacountry.com/images/2026/6/669598096159-card.jpg",
+            "https://media.africasacountry.com/images/2026/6/277322486948-card.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "africasacountry.com",
+          "url": "https://africasacountry.com/2026/06/a-world-cup-without-the-world",
+          "note": "UFC Freedom 250 staged on the Ellipse with the illuminated White House as backdrop — state and spectacle machinery in a single frame; paired with the 1968 Smith/Carlos podium as the archival counter-image inside the same apparatus (credit: Africa Is a Country / agency photographers)",
+          "image_refs": [
+            "https://media.africasacountry.com/images/2026/6/018426373922-card.jpg",
+            "https://media.africasacountry.com/images/2026/6/805529114868-card.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "thebaffler.com",
+          "url": "https://thebaffler.com/latest/groypthink-brennan",
+          "note": "ideologue framed against a heat-map LED studio wall, gesturing in suit and tie — the broadcast machine's lighting as the portrait's true subject (credit: The Baffler)",
+          "image_refs": [
+            "https://thebaffler.com/wp-content/uploads/2026/06/02-1.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "newlinesmag.com",
+          "url": "https://newlinesmag.com/spotlight/drake-dj-khaled-and-palestines-authenticity-test/",
+          "note": "Drake and DJ Khaled on stage under a green laser (Kevin Winter/Getty) — the pop machine's lighting rig kept dominant while the piece administers its authenticity test (credit: New Lines Magazine / Getty Images)",
+          "image_refs": [
+            "https://newlinesmag.com/wp-content/uploads/GettyImages-117479512.jpg-web.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "sightunseen.com",
+          "url": "https://www.sightunseen.com/2026/04/milan-in-review-pt-i-salones-big-hype-problem-plus-monicas-top-picks/",
+          "note": "the archival variant: 1961 Salone del Mobile photographed plainly as men in suits working a trade floor, deployed in a piece naming the fair's hype machine (credit: Sight Unseen)",
+          "image_refs": [
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/04/2026_OldSalonePic.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "lamag.com",
+          "url": "https://lamag.com/sports/how-are-brands-reacting-to-fifas-debranding-requirement-as-the-world-cup-unfolds/",
+          "note": "round-2 gap-fill: the 2026 World Cup's commercial machinery made the subject — a lone figure dwarfed by the LED-branded 'WE ARE 26' SoFi bowl, spectators in a monetized 'On Location' hospitality suite watching through glass, the opening ceremony's flag-graphic LED ribbons — apparatus over athlete (credit: LAmag / agency photographers)",
+          "image_refs": [
+            "https://lamag.com/wp-content/uploads/2026/06/20250313_LAWC_SoFi_NV_312-copy-1200x675.jpg",
+            "https://lamag.com/wp-content/uploads/2026/07/FWC26_CWC_CC_JC_IMG_0164-1200x675.jpg",
+            "https://lamag.com/wp-content/uploads/2026/06/IMG_5895-scaled-e1782924630983-1200x675.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "pulitzercenter.org",
+          "url": "https://pulitzercenter.org/stories/photo-essay-seeing-political",
+          "note": "round-2 gap-fill: the photo-op apparatus deconstructed in reportage B&W (Kodak film-rebate frames left in) — a crouched bank of TV cameras staking out a committee-room door, a press scrum around a politician at the mic on Capitol Hill, the 'no public or media access' SCIF door — the watchers watched, the machinery of the political image itself (credit: Pulitzer Center)",
+          "image_refs": [
+            "https://pulitzercenter.org/sites/default/files/styles/orig_optimized/public/inline-images/Seeing%20Political%202.jpg.webp?itok=5JzqgaoN",
+            "https://pulitzercenter.org/sites/default/files/styles/orig_optimized/public/inline-images/Seeing%20Political%204.jpg.webp?itok=T-fRJRT2",
+            "https://pulitzercenter.org/sites/default/files/styles/orig_optimized/public/inline-images/Seeing%20Political%203.jpg.webp?itok=qFh7lpqQ"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "thefootballweek.com",
+          "url": "https://thefootballweek.com/2026/05/27/world-cup-stadium-names/",
+          "note": "round-2 gap-fill: the debranding move made literal — MetLife Stadium shot with the sponsor signage FIFA requires 'commercially cleaned' to 'New York New Jersey Stadium'; the machine is revealed precisely by being covered over (credit: The Football Week)",
+          "image_refs": [
+            "https://cdn.thefootballweek.com/wp-content/uploads/2026/05/Metlife-Stadium.jpg"
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "first_coded": "2026-07-03",
+      "history": [
+        {
+          "run": "2026-07-03",
+          "change": "coined",
+          "note": "Round-1 contact sheets: 5 independent sources spanning global, intellectual, entertainment, and design categories. Status dominant: the wide-shot-with-sponsors is standard press-photography grammar that system-naming editorial now systematically selects for; nothing about the register is still forming. Caveat recorded: the frames are often agency stock — editorial selection and caption do the unmasking."
+        },
+        {
+          "run": "2026-07-03",
+          "change": "evidence",
+          "note": "Round-2 gap-fill: +3 distinct sources (LAmag — 2026 World Cup commercial/hospitality machinery; Pulitzer Center 'Seeing Political' — the press-bank / photo-op apparatus in B&W reportage; The Football Week — MetLife debranding signage). The Pulitzer set adds a fresh register to the code: the political-media apparatus (camera banks, mic scrums, secured rooms), not just sponsored spectacle. HELD-BUT-NOT-FORCED: the NPR / NPPA World Press Photo immigration-enforcement material was observed on the sheets but sits in a documentary-witness register (intimate frames of detention and family separation) rather than apparatus-visible spectacle, so it was deliberately NOT coded in — thin honest evidence over a forced fit. Status held dominant."
+        }
+      ]
+    },
+    {
+      "id": "icon-assembly-line",
+      "name": "The Icon Assembly Line",
+      "status": "dominant",
+      "short_def": "Fame and canon shown as manufacture: the same face or work replicated across formats (painting to lotería print to beer can to kids' cartoon), prize ceremonies and press conferences photographed as canon machinery, chart records annotated with the question of who profits. The multiplication itself is the exposé.",
+      "look": {"bg": "#2f7d4f", "text": "#f7ecdf"},
+      "one_liner": "The fame machine exposed by lining up its output: one icon replicated across painting, print, merch, and cartoon.",
+      "definition": "Institutions and critics now unmask canon-manufacture by exhibiting the production run. Tate's 'Frida: The Making of an Icon' shows the Muray Kodachrome, the Morimura appropriation, the lotería print, and — in the same scroll — the tie-in beer cans, set menus, and Tate Kids cartoon, so the article's own image set performs the assembly line it names. The literary version photographs the Nobel press conference and asks how prizes 'construct what we think of and buy as African literature'; the music version counts Stanley Okorie's thousands of Nollywood songs or annotates Drake's record-breaking with a torn-paper sticker asking why the song is No. 1. The recurring visual move is serial reproduction made visible: one image, many formats, value accruing somewhere off-frame.",
+      "visual": {
+        "palette": [
+          {"hex": "#2F7D4F", "name": "Kodachrome viridian"},
+          {"hex": "#E8608A", "name": "blossom pink"},
+          {"hex": "#E0A13A", "name": "marigold"},
+          {"hex": "#C9B896", "name": "archival sepia"},
+          {"hex": "#EDE8DF", "name": "museum-wall neutral"}
+        ],
+        "materials_textures": [
+          "saturated Kodachrome and folk-print surfaces beside mass-produced merch finishes",
+          "aluminum cans, menu cards, and app screens carrying the icon's face",
+          "archival grain on the origin image; retail gloss on the copies"
+        ],
+        "composition": [
+          "the replication series: same figure restated across mediums within one image set",
+          "press-conference and podium framing for canon events (laureate at the mic, branded backdrop)",
+          "annotation gestures — stickers, overlays — interrogating the chart or record"
+        ],
+        "typography": [
+          "museum caption grammar colliding with retail promo type in the same scroll",
+          "torn-sticker editorial annotations ('WHY IS THIS SONG NO. 1?')"
+        ],
+        "casting_setting": [
+          "the icon as raw material: Frida, Drake, the laureate — present everywhere, consulted never",
+          "settings alternate between gallery, press room, and gift shop"
+        ]
+      },
+      "verbal": {
+        "lexicon": ["the making of", "icon", "canon", "records", "prize", "brand", "authenticity", "collective id"],
+        "metaphors": ["the assembly line of fame", "canon as procurement", "the gift shop at the end of the retrospective"],
+        "register": "curatorial narration shading into complicity-aware critique",
+        "sample_phrases": [
+          {
+            "quote": "Frida: The Making of an Icon",
+            "source": "Tate Modern",
+            "url": "https://www.tate.org.uk/whats-on/tate-modern/frida-kahlo-the-making-of-an-icon"
+          },
+          {
+            "quote": "the vocalisation of the collective id",
+            "source": "Mary Chiney, The Quietus",
+            "url": "https://thequietus.com/subscriber-area/low-culture-essay/low-culture-essay-mary-chiney-on-stanley-okories-nollywood-soundtracks/"
+          },
+          {
+            "quote": "how they construct what we think of and buy as African literature",
+            "source": "Africa Is a Country",
+            "url": "https://africasacountry.com/2026/05/how-to-read-postcolonial-writing"
+          }
+        ]
+      },
+      "tensions": "Defines itself against the hagiographic retrospective that hides the merch table. Its live contradiction is self-implication: the institution exhibiting the making-of is the machine still making — Tate sells the Frida beer in the same scroll that names icon-manufacture. The unmasking and the monetization share a page.",
+      "execution_notes": "Powerful for brands with archives: show the production run honestly (original, copies, merch, profit) and audiences credit the candor. The trap is the Tate move executed without self-awareness — narrating the machine while operating it reads as cynicism the moment anyone screenshots the juxtaposition. If a client can't survive the gift-shop-next-to-the-critique screenshot, this code is not for them.",
+      "evidence": [
+        {
+          "signal_id": null,
+          "source": "tate-modern",
+          "url": "https://www.tate.org.uk/whats-on/tate-modern/frida-kahlo-the-making-of-an-icon",
+          "note": "the replication chain in one exhibition scroll: Muray's Kodachrome portrait, the lotería folk print, and tie-in beer cans styled with Frida-coded florals — origin, mass print, merch (credit: Tate Modern / Nickolas Muray Photo Archives)",
+          "image_refs": [
+            "https://media.tate.org.uk/aztate-prd-ew-dg-wgtail-st1-ctr-data/images/Nickolas_Muray_Frida_Kahlo_on_a_White_Bench_N_.width-840.jpg",
+            "https://media.tate.org.uk/aztate-prd-ew-dg-wgtail-st1-ctr-data/images/Richard_Duardo_Frida_Grandisima_2003_Courtesy.width-1440.jpg",
+            "https://media.tate.org.uk/aztate-prd-ew-dg-wgtail-st1-ctr-data/images/Tate_teaster_v3.width-420.png"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "africasacountry.com",
+          "url": "https://africasacountry.com/2026/05/how-to-read-postcolonial-writing",
+          "note": "canon machinery photographed at its ceremonies: Gurnah at the press table, Daoud at the prize event — the laureate as output of the LitNobel construction line (credit: Africa Is a Country / agency photographers)",
+          "image_refs": [
+            "https://media.africasacountry.com/images/2021/10/778559390648-card.jpeg",
+            "https://media.africasacountry.com/images/2024/11/021328553987-card.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "slate.com",
+          "url": "https://slate.com/culture/2026/05/drake-iceman-kendrick-lamar-billboard-michael-jackson-janice.html",
+          "note": "Drake on stage with a torn-paper sticker annotation ('WHY IS THIS SONG NO. 1?') pasted onto the photo illustration — the chart machine interrogated on its own image (credit: Slate; photos Simone Joyner/Getty Images)",
+          "image_refs": [
+            "https://compote.slate.com/images/297f6373-f447-4e4a-b0bf-dae4cf15695c.jpeg?crop=1560%2C1040%2Cx0%2Cy0&width=2200"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "thequietus.com",
+          "url": "https://thequietus.com/subscriber-area/low-culture-essay/low-culture-essay-mary-chiney-on-stanley-okories-nollywood-soundtracks/",
+          "note": "the industrial composer given a plain portrait — one man against an output of thousands of Nollywood songs, scale as the story (credit: The Quietus)",
+          "image_refs": [
+            "https://thequietus.com/app/uploads/2026/05/stanley.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "popmatters.com",
+          "url": "https://www.popmatters.com/recomposed-kyle-devine-ecology-music",
+          "note": "'Recomposed' cover: the vinyl record presented as industrial object for a book naming music's material production machine (credit: PopMatters / publisher artwork)",
+          "image_refs": [
+            "https://www.popmatters.com/wp-content/uploads/2026/05/Recomposed-Kyle-Devine-196x300.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "frieze.com",
+          "url": "https://www.frieze.com/article/frida-kahlo-tate-2026-review",
+          "note": "round-2 gap-fill: the replication signature round-1 asked for — Mary McCartney's 'Being Frida' restages the icon onto another body (Tracey Emin in the pose, the framed family photos behind), set beside the origin 'thorn necklace and hummingbird' self-portrait: the face as a template others wear (credit: Frieze / Mary McCartney / Tate)",
+          "image_refs": [
+            "https://static.frieze.com/files/inline-images/Mary%20McCartney%20-%20Being%20Frida%20London.jpg?VersionId=yUxXG0Ntaym2FDxgZlVAhJtrMX.OZRmh",
+            "https://static.frieze.com/files/inline-images/Frida%20Kahlo%20-%20Untitled%20Self-portrait%20with%20thorn%20necklace%20and%20hummingbird%20%281%29.jpg?VersionId=CXcG.rNmXM1UAVozQ9OEuIk4Pe0UxGsq"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "timeout.com",
+          "url": "https://www.timeout.com/london/news/frida-kahlo-tate-modern-london-review-062426",
+          "note": "round-2 gap-fill: the machine operating in plain sight — a visitor face-to-face with a single framed Frida on the institutional blue wall, and the wide 'Making of an Icon' installation view with a Frida-coded mannequin on a plinth amid the circulating crowd: the retrospective as production line (credit: Time Out / Larina Annora Fernandes © Tate)",
+          "image_refs": [
+            "https://media.timeout.com/images/106419503/image.webp",
+            "https://media.timeout.com/images/106419504/image.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "wallpaper.com",
+          "url": "https://www.wallpaper.com/art/exhibitions-shows/tate-modern-frida-kahlo-review",
+          "note": "round-2 gap-fill: the same icon stacked across formats in one review — the Julien Levy photograph beside painted self-portraits and the McCartney restaging. Finding: the identical Tate courtesy images recur VERBATIM across Frieze / Wallpaper* / Time Out / FAD — the press circulation itself performs the assembly line the code names (credit: Wallpaper* / Tate / Julien Levy)",
+          "image_refs": [
+            "https://cdn.mos.cms.futurecdn.net/kwpwGmt9DvPBccCbhPT4KP-1920-80.jpg.webp",
+            "https://cdn.mos.cms.futurecdn.net/BnxxDJTiZVLyqMqs6uDmaR-1920-80.jpg.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "news.artnet.com",
+          "url": "https://news.artnet.com/art-world/art-merchandise-market-2080427",
+          "note": "round-2 gap-fill: the monetization end of the line, shown without the artwork — 'market research' in a MoMA gift shop (museum mug, Kusama book), a branded V&A pop-up cocktail bar, the 'Art Market Minute' column furniture: the merch machine the icon feeds (credit: Artnet News)",
+          "image_refs": [
+            "https://news.artnet.com/app/news-upload/2022/03/Author-Image-1024x971.jpg",
+            "https://news.artnet.com/app/news-upload/2022/03/%E2%80%98The-Grand-Time-Hotel%E2%80%99-VA-1024x683.jpg",
+            "https://news.artnet.com/app/news-upload/2026/06/2026_06_29_ARTNET_AMM_THUMBNAIL_3000x3000_TEMPLATE-600x480.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "blooloop.com",
+          "url": "https://blooloop.com/museum/opinion/art-museum-gift-shop-merchandise/",
+          "note": "round-2 gap-fill: the icon manufactured into product — the Mona Lisa reissued as a buildable pixel-brick kit with a spec sheet, staged as retail; the gift-shop-at-the-end-of-the-retrospective become its own object (credit: Blooloop / Pix Brix)",
+          "image_refs": [
+            "https://blooloop.com/media-library/monalisa-pix-brix.jpg?id=56477622&width=1245&height=700&quality=95&coordinates=0%2C53%2C0%2C54"
+          ]
+        }
+      ],
+      "confidence": "high",
+      "first_coded": "2026-07-03",
+      "history": [
+        {
+          "run": "2026-07-03",
+          "change": "coined",
+          "note": "Round-1 contact sheets: 5 independent sources spanning museum, global, entertainment, and music-criticism categories. Status dominant: making-of-the-icon critique is a established register (Warhol onward) now operated at blockbuster scale by the institutions themselves. Watch item: the self-implicating variant — the machine narrating its own making while monetizing it (Tate's beer cans beside the critique) — may deserve an emergent split if it recurs next run. Caveat: the serial-reproduction visual signature is grounded most densely in the single Tate image set; other sources carry it in ceremony/annotation form. Round-2 should target more replication-series imagery."
+        },
+        {
+          "run": "2026-07-03",
+          "change": "evidence",
+          "note": "Round-2 gap-fill directly resolving the round-1 shortfall (signature too Tate-dependent): +5 distinct sources (Frieze — McCartney 'Being Frida' restaging + origin self-portrait; Time Out — install views of the 'Making of an Icon' machine; Wallpaper* — multi-format stacking; Artnet — MoMA gift shop / V&A bar / Art Market Minute; Blooloop — Mona Lisa pixel-brick merch). FINDING: the identical Tate courtesy images recur verbatim across Frieze / Wallpaper* / Time Out / FAD — the press circulation itself enacts the assembly line, turning round-1's recycling caveat into positive evidence."
+        },
+        {
+          "run": "2026-07-03",
+          "change": "status",
+          "note": "Confidence raised medium -> high. The serial-reproduction signature is now grounded across many independent publications (Frieze, Time Out, Wallpaper*, Artnet, Blooloop) rather than the single Tate image set that limited round-1 confidence. Status stays dominant. FLAGGED, NOT ACTED: the self-implicating merch variant (institution monetizing the icon it canonizes) recurred strongly in round-2 (Artnet gift shop / V&A bar, Blooloop brick-Mona-Lisa, Time Out mannequin-on-plinth) and is now a strong candidate for a future EMERGENT SPLIT — but splitting a code is a structural change reserved for a human-supervised session per SEMIOTIC_CODEBOOK.md, and Michael scoped this round to enriching the existing four. Recorded for that session."
+        }
+      ]
+    }
+  ]
+}/*__END__*/;
+const esc=t=>(t||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const lum=h=>{const n=parseInt(h.slice(1),16);return (0.299*(n>>16)+0.587*((n>>8)&255)+0.114*(n&255))/255;};
+document.getElementById("t-need").textContent=D.need;
+document.getElementById("t-stat").textContent=`${D.codes.length} codes · ${D.images_observed} images observed across ${D.articles_viewed} articles · runs ${D.runs_covered.join(", ")} · updated ${D.updated}`;
+document.getElementById("t-method").textContent=D.method_note;
+document.getElementById("codes").innerHTML=D.codes.map(c=>`
+  <div class="code">
+    <div class="c-head"><h2>${esc(c.name)}</h2><span class="status ${esc(c.status)}">${esc(c.status)}</span><span style="font-size:11px;color:var(--mute)">confidence: ${esc(c.confidence)}</span></div>
+    <p class="one">${esc(c.one_liner)}</p>
+    ${(()=>{/* per-source display cap (2026-07-02): max 3 images per source per code, so one strong article can't swamp the collage */
+      const perSrc={},imgs=[];let capped=0;
+      c.evidence.forEach(e=>(e.image_refs||[]).forEach(u=>{const s=e.source;perSrc[s]=(perSrc[s]||0)+1;if(perSrc[s]<=3)imgs.push({u,s,a:e.url});else capped++;}));
+      return imgs.length?`<div class="collage">${imgs.map(i=>`<a href="${esc(i.a)}" target="_blank" rel="noopener" data-src="${esc(i.s)}"><img loading="lazy" referrerpolicy="no-referrer" src="${esc(i.u)}" alt="evidence imagery — ${esc(i.s)}" onerror="this.parentElement.style.display='none'"></a>`).join("")}</div>
+      <p class="collage-note">${imgs.length} evidence images (max 3 per source${capped?`; ${capped} more from already-shown sources are in the evidence links below`:""}), embedded live from the publishers' own servers — nothing stored. Hover for source, click through to the article.</p>`:"";})()}
+    <p class="def">${esc(c.definition)}</p>
+    <div class="swatches">${c.visual.palette.map(p=>`<div class="sw ${lum(p.hex)>.62?"light":""}" style="background:${esc(p.hex)}" title="${esc(p.hex)}"><span>${esc(p.name)} ${esc(p.hex)}</span></div>`).join("")}</div>
+    <div class="cols">
+      <div>
+        <h4>Materials &amp; textures</h4><div class="chips">${c.visual.materials_textures.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div>
+        <h4>Composition</h4><ul>${c.visual.composition.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+        <h4>Typography</h4><ul>${c.visual.typography.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+        <h4>Casting &amp; setting</h4><ul>${c.visual.casting_setting.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+      </div>
+      <div>
+        <h4>Lexicon</h4><div class="chips">${c.verbal.lexicon.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div>
+        <h4>Metaphors</h4><ul>${c.verbal.metaphors.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+        <h4>Register</h4><ul><li>${esc(c.verbal.register)}</li></ul>
+        <h4>In their words</h4>${c.verbal.sample_phrases.map(q=>`<blockquote>“${esc(q.quote)}” <a href="${esc(q.url)}" target="_blank" rel="noopener">${esc(q.source)} →</a></blockquote>`).join("")}
+      </div>
+    </div>
+    <div class="note"><b>Defines itself against</b>${esc(c.tensions)}</div>
+    <div class="note"><b>Execution notes</b>${esc(c.execution_notes)}</div>
+    <h4>Evidence (${c.evidence.length})</h4>
+    ${c.evidence.map(e=>`<p class="ev"><a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)}</a> — ${esc(e.note)}</p>`).join("")}
+    <div class="hist">Trajectory: ${c.history.map(h=>`${esc(h.run)} · ${esc(h.change)} — ${esc(h.note)}`).join(" → ")}</div>
+  </div>`).join("");
+</script>
+</body>
+</html>

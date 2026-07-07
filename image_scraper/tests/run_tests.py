@@ -129,6 +129,56 @@ sel_run = runner.select_from_corpus(corpus_path, "Certified Human",
 check("--run filter works", [m["signal_id"] for _, m in sel_run] == ["e"])
 
 # ---------------------------------------------------------------------------
+print("scrape caps: --max-per-article and --target-images (stubbed, no network)")
+import argparse  # noqa: E402
+
+with tempfile.TemporaryDirectory() as tmp:
+    tmpdir = Path(tmp)
+    # Point the runner's file targets at the temp dir so the real ledger/output
+    # are never touched by tests.
+    _orig = (runner.LEDGER_PATH, runner.OUTPUT_DIR, runner.scrape_article,
+             runner.select_from_urls_file)
+    runner.LEDGER_PATH = tmpdir / "seen_urls.json"
+    runner.OUTPUT_DIR = tmpdir / "output"
+
+    # Stub: every article "returns" 20 images instantly.
+    def fake_scrape(url, limiter, signal_meta=None, allow_playwright=True):
+        return {"site": "stub", "url": url, "title": "t", "date": "",
+                "author": "", "tags": [], "text": "x" * 300,
+                "signal_id": None, "need": "Certified Human",
+                "fetch_method": "static",
+                "images": [{"url": f"{url}/img{n}.jpg", "alt": "", "caption": "",
+                            "context": ""} for n in range(20)]}
+    runner.scrape_article = fake_scrape
+    runner.select_from_urls_file = lambda p, need: [
+        (f"https://stub.example/art-{n}", {"signal_id": None, "source": "stub",
+                                           "need": need, "date": None})
+        for n in range(5)]
+
+    args = argparse.Namespace(urls="fake.txt", need="Certified Human",
+                              corpus="unused", days=None, run=None, limit=60,
+                              force=False, rate=0.0, no_playwright=True,
+                              max_per_article=15, target_images=45)
+    runner.cmd_scrape(args)
+
+    out_files = list((tmpdir / "output").glob("scrape_*.json"))
+    check("scrape output written to redirected dir", len(out_files) == 1)
+    out = json.loads(out_files[0].read_text())
+    arts = out["articles"]
+    check("per-article cap trims 20 -> 15",
+          all(len(a["images"]) == 15 for a in arts), f"got {[len(a['images']) for a in arts]}")
+    check("true found-count preserved on record",
+          all(a.get("images_found") == 20 for a in arts))
+    check("target 45 stops the run after 3 of 5 articles",
+          len(arts) == 3, f"got {len(arts)}")
+    ledger = json.loads((tmpdir / "seen_urls.json").read_text())
+    check("un-scraped articles stay out of the ledger", len(ledger) == 3,
+          f"got {len(ledger)}")
+
+    (runner.LEDGER_PATH, runner.OUTPUT_DIR, runner.scrape_article,
+     runner.select_from_urls_file) = _orig
+
+# ---------------------------------------------------------------------------
 print("contact sheets (Pillow-generated placeholders, nothing downloaded)")
 from PIL import Image  # noqa: E402
 

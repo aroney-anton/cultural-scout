@@ -72,9 +72,11 @@ document.getElementById("codes").innerHTML=D.codes.map(c=>`
   <div class="code">
     <div class="c-head"><h2>${esc(c.name)}</h2><span class="status ${esc(c.status)}">${esc(c.status)}</span><span style="font-size:11px;color:var(--mute)">confidence: ${esc(c.confidence)}</span></div>
     <p class="one">${esc(c.one_liner)}</p>
-    ${(()=>{const imgs=c.evidence.flatMap(e=>(e.image_refs||[]).map(u=>({u,s:e.source,a:e.url})));
+    ${(()=>{/* per-source display cap (2026-07-02): max 3 images per source per code, so one strong article can't swamp the collage */
+      const perSrc={},imgs=[];let capped=0;
+      c.evidence.forEach(e=>(e.image_refs||[]).forEach(u=>{const s=e.source;perSrc[s]=(perSrc[s]||0)+1;if(perSrc[s]<=3)imgs.push({u,s,a:e.url});else capped++;}));
       return imgs.length?`<div class="collage">${imgs.map(i=>`<a href="${esc(i.a)}" target="_blank" rel="noopener" data-src="${esc(i.s)}"><img loading="lazy" referrerpolicy="no-referrer" src="${esc(i.u)}" alt="evidence imagery — ${esc(i.s)}" onerror="this.parentElement.style.display='none'"></a>`).join("")}</div>
-      <p class="collage-note">${imgs.length} evidence images, embedded live from the publishers' own servers — nothing stored. Hover for source, click through to the article.</p>`:"";})()}
+      <p class="collage-note">${imgs.length} evidence images (max 3 per source${capped?`; ${capped} more from already-shown sources are in the evidence links below`:""}), embedded live from the publishers' own servers — nothing stored. Hover for source, click through to the article.</p>`:"";})()}
     <p class="def">${esc(c.definition)}</p>
     <div class="swatches">${c.visual.palette.map(p=>`<div class="sw ${lum(p.hex)>.62?"light":""}" style="background:${esc(p.hex)}" title="${esc(p.hex)}"><span>${esc(p.name)} ${esc(p.hex)}</span></div>`).join("")}</div>
     <div class="cols">

@@ -35,6 +35,10 @@ image_scraper/sheets/
 image_scraper/output/
 image_scraper/logs/
 image_scraper/seen_urls.json
+# archived-aside cache/sheets from a prior need's run (e.g. .cache_ch_backup,
+# sheets_ch_backup) — same imagery, same copyright rule, never commit
+image_scraper/.cache_*/
+image_scraper/*_backup/
 
 # NOTE: intentionally TRACKED (not ignored):
 #   .emb_cache.npz      — int8 embedding cache; expensive to regenerate

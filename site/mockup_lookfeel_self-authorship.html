@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Look &amp; Feel — Self-Authorship (mockup)</title>
+<style>
+  :root { --ease: cubic-bezier(.22,.61,.36,1); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #141414;
+    background: #fafaf8;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  #bg { position: fixed; inset: 0; z-index: -2; background: #fafaf8; transition: background-color .15s linear; }
+  #grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .055;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .mockup-flag {
+    position: fixed; top: 14px; right: 16px; z-index: 50; font-size: 10px; letter-spacing: .18em;
+    text-transform: uppercase; padding: 5px 9px; border: 1px solid currentColor; border-radius: 3px;
+    opacity: .5; mix-blend-mode: difference; color: #fff;
+  }
+  .backbtn {
+    position: fixed; top: 14px; left: 16px; z-index: 50; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    background: rgba(0,0,0,.06); color: inherit; border: 1px solid rgba(0,0,0,.18); mix-blend-mode: difference;
+  }
+
+  /* ---------- INTRO ---------- */
+  #intro { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8vh 7vw; }
+  #intro .eyebrow { font-size: 12px; letter-spacing: .32em; text-transform: uppercase; opacity: .5; margin-bottom: 28px; }
+  #intro h1 { font-size: clamp(20px, 2.4vw, 30px); font-weight: 500; opacity: .55; margin-bottom: 6vh; max-width: 40ch; line-height: 1.45; }
+  .codelist { display: flex; flex-direction: column; gap: clamp(8px, 1.6vh, 20px); }
+  .codelist a {
+    text-decoration: none; color: #141414; font-size: clamp(30px, 6.2vw, 86px); font-weight: 650;
+    line-height: 1.02; letter-spacing: -.02em; display: flex; align-items: baseline; gap: 18px;
+    opacity: .92; transition: opacity .2s, transform .25s var(--ease);
+  }
+  .codelist a:hover { opacity: 1; transform: translateX(10px); }
+  .codelist .num { font-size: clamp(12px,1vw,15px); font-weight: 500; opacity: .4; letter-spacing: 0; }
+  .codelist .dot { width: .42em; height: .42em; border-radius: 50%; display: inline-block; align-self: center; }
+  .scrollhint { margin-top: 7vh; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; animation: bob 2.2s infinite ease-in-out; }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+  /* ---------- CODE: HERO ---------- */
+  .code { position: relative; }
+  .hero { display: grid; grid-template-columns: 26% 74%; align-items: stretch; min-height: 100vh; }
+  .hero .text {
+    position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 6vh 2.2vw 6vh 7vw; z-index: 2;
+  }
+  .hero .num { font-size: 12px; letter-spacing: .26em; opacity: .6; margin-bottom: 18px; }
+  .hero .status {
+    display: inline-block; align-self: flex-start; font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 4px 9px; border: 1px solid currentColor; border-radius: 999px; opacity: .7; margin-bottom: 22px;
+  }
+  .hero h2 { font-size: clamp(28px, 3.1vw, 52px); font-weight: 650; line-height: 1.04; letter-spacing: -.02em; margin-bottom: 22px; }
+  .hero .oneliner { font-size: clamp(14px, 1.15vw, 18px); line-height: 1.5; opacity: .82; max-width: 30ch; }
+  .hero .palette { display: flex; gap: 7px; margin-top: 30px; }
+  .hero .palette span { width: 26px; height: 26px; border-radius: 4px; box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset; }
+  .scrollon { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; margin-top: 34px; }
+
+  .collage { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 11.5vw; gap: 10px; padding: 9vh 0 9vh 1.5vw; align-content: start; }
+  .collage figure { overflow: hidden; position: relative; border-radius: 3px; background: rgba(0,0,0,.12); }
+  .collage img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.02); }
+  .collage figure.tall { grid-row: span 2; }
+  .collage figure.wide { grid-column: span 2; }
+  .collage figure.big { grid-column: span 2; grid-row: span 2; }
+
+  /* ---------- CODE: ANALYSIS ---------- */
+  .analysis { padding: 4vh 7vw 12vh; max-width: 1200px; }
+  .analysis .def { font-size: clamp(17px, 1.5vw, 23px); line-height: 1.5; max-width: 56ch; opacity: .95; margin-bottom: 7vh; font-weight: 450; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5vh 6vw; }
+  .block { border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent); padding-top: 16px; }
+  .block.full { grid-column: 1 / -1; }
+  .label { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; opacity: .55; margin-bottom: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 13px; padding: 5px 11px; border-radius: 999px; line-height: 1.2;
+    background: color-mix(in srgb, var(--tx) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tx) 26%, transparent);
+  }
+  .quotes { margin-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .quote { font-size: 15px; line-height: 1.45; }
+  .quote .q { font-style: italic; }
+  .quote a, .ev a, .def a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .quote .src { display: inline-block; font-size: 12px; opacity: .7; margin-top: 3px; }
+  .body { font-size: 15px; line-height: 1.55; opacity: .92; max-width: 54ch; }
+  .ev { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; }
+  .meta { grid-column: 1 / -1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+          margin-top: 5vh; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent);
+          font-size: 12px; opacity: .6; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero .text { position: relative; height: auto; min-height: 60vh; padding: 12vh 7vw 4vh; }
+    .collage { grid-template-columns: repeat(2,1fr); grid-auto-rows: 32vw; padding: 0 0 6vh; }
+    .codelist a { font-size: 40px; }
+    .grid2 { grid-template-columns: 1fr; }
+    .analysis { padding: 4vh 7vw 9vh; }
+  }
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="grain"></div>
+<div class="backbtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</div>
+
+<section id="intro">
+  <div class="eyebrow">Self-Authorship · Look &amp; Feel</div>
+  <h1>Five visual-verbal codes the corpus uses to author a self — standing among the work, staging the body as the work, re-signing what was inherited, remixing the feed, and holding out against the machine. Scroll to enter each one.</h1>
+  <nav class="codelist" id="codelist"></nav>
+  <div class="scrollhint">Scroll ↓</div>
+</section>
+
+<main id="codes"></main>
+
+<script>
+const IMG_NOTE = "Imagery embedded live from the publishers' servers — nothing stored.";
+const CODES = [
+{
+  "id": "author-among-the-work",
+  "name": "Author Among the Work",
+  "status": "dominant",
+  "oneliner": "Show the maker inside the evidence of their making: studio, worktable, gallery wall, shelf of one's own output.",
+  "bg": "#2c2519",
+  "text": "#f4ede0",
+  "palette": [
+    "#F3EFE7",
+    "#B98A4B",
+    "#C58A3D",
+    "#5A4632",
+    "#1A1A1A"
+  ],
+  "def": "The most common pattern across the intake. Identity is authored by standing the person next to the accumulated proof of their practice: the artist cross-legged in a studio hung with their prints (Rama Duwaji), the painter beside a large self-portrait canvas (Russell Craig, Iréne Norén), the elder artist framed by her own quipu installation (Cecilia Vicuña), the Caribbean maker at a worktable of raw clay or woven fibre, the writer at home surrounded by the library and the word-tapestry. The room and its objects do the certifying; the sitter's authority is borrowed from the visible corpus. Register: available natural light, occupied interiors at human scale, the work co-equal with or larger than the body.",
+  "visual": [
+    "sitter placed off-centre, the work filling the frame behind",
+    "maker at the worktable, tools and half-made units in shot",
+    "environmental portrait: the room as biography",
+    "raw canvas, wet clay, cut fibre, print paper",
+    "studio plaster and brick, pinned reference walls",
+    "gallery white cube; the plinth and the hang",
+    "the specific named maker in their own space, mid- or post-practice; the studio, the gallery, the home-as-archive"
+  ],
+  "verbal": [
+    "practice",
+    "the work",
+    "studio",
+    "values",
+    "vision",
+    "undeniable",
+    "extension of yourself",
+    "vocation"
+  ],
+  "quotes": [
+    {
+      "q": "The work is an extension of yourself.",
+      "src": "Russell Craig, Impulse",
+      "url": "https://impulsemagazine.com/articles/beyond-cell-doors-russell-craigs-vision"
+    },
+    {
+      "q": "I care only, honestly, that you enjoy my writing—that's the point of it",
+      "src": "Alicia Kennedy",
+      "url": "https://www.aliciakennedy.news/p/on-values"
+    }
+  ],
+  "against": "Against the faceless brand, the anonymous feed, the CV without a body of work. Internal risk: the corpus behind the sitter can be borrowed or staged, so the code keeps reaching for the studio caught mid-mess (paint, clay, pinned references) rather than the clean gallery, where set-dressing is cheaper to fake.",
+  "execution": "For brands: put the actual maker inside the actual evidence of the making — the worktable, the wall of prior work — and credit the work as designed form, not caption fine-print. Misuse: an executive posed in front of art they didn't make reads instantly as borrowed authority to this audience, which parses the room before the face.",
+  "evidence": [
+    {
+      "s": "hyperallergic.com",
+      "u": "https://hyperallergic.com/art-talk-with-rama-duwaji/"
+    },
+    {
+      "s": "impulsemagazine.com",
+      "u": "https://impulsemagazine.com/articles/beyond-cell-doors-russell-craigs-vision"
+    },
+    {
+      "s": "impulsemagazine.com",
+      "u": "https://impulsemagazine.com/articles/reclaiming-the-sacred-in-conversation-with-irene-noren"
+    },
+    {
+      "s": "culturedmag.com",
+      "u": "https://www.culturedmag.com/article/2026/04/10/art-cecilia-vicuna-poetry-chile-sculpture/"
+    },
+    {
+      "s": "wallpaper.com",
+      "u": "https://www.wallpaper.com/design-interiors/five-artisans-from-caribbean-diaspora"
+    },
+    {
+      "s": "anothermag.com",
+      "u": "https://www.anothermag.com/fashion-beauty/17237/paula-einfalt-interview-spring-summer-2027"
+    },
+    {
+      "s": "aliciakennedy.news",
+      "u": "https://www.aliciakennedy.news/p/on-values"
+    }
+  ],
+  "trajectory": "2026-07-05 coined",
+  "imgs": [
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/04/RAMA-18-3-1.jpg",
+    "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69d2d16fde2b2ca67e92ee32_RC%20Identity.webp",
+    "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69d2d1a21f09a0185e5ae1ac_RC%200017.webp",
+    "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69d2d109c925982071ab4dba_RC%20Armory%20Show.webp",
+    "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/10144608/CV-portrait-2025-by-Julia-Toro-e1775847156213.jpg",
+    "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/10151854/CV-IMMA-2025-install-01-hr-scaled.jpg",
+    "https://cdn.mos.cms.futurecdn.net/JvSoBFb6NACRrpEmYG82fN-1920-80.jpg.webp",
+    "https://cdn.mos.cms.futurecdn.net/WgZzVpoAsBoJYxBrW7iEgN-1920-80.jpg.webp",
+    "https://images-prod.anothermag.com/2319/azure/another-prod/470/4/474195.jpg"
+  ]
+},
+{
+  "id": "self-as-the-work",
+  "name": "The Self Staged as the Work",
+  "status": "dominant",
+  "oneliner": "Author, director, and subject collapse into one: the body performed for the camera as the artwork itself.",
+  "bg": "#171012",
+  "text": "#f6e6ea",
+  "palette": [
+    "#EDE9E4",
+    "#141414",
+    "#5A2430",
+    "#1F5E8C",
+    "#C88A2E"
+  ],
+  "def": "Identity authored by taking total control of one's own image. The artist casts, styles, lights, and shoots themselves across a suite of guises (Martine Gutierrez), draws herself into her own web-works (Maya Man), poses as her own sculptural silhouette. It inherits the whole lineage of the performative self-portrait — Cahun-style masking, the hands-over-face, the mirror-and-reflection, the contact-sheet of near-identical takes with timecodes left visible as proof of authorship. Register: high-contrast black-and-white or saturated stage-gel colour, deliberate theatrical framing, the seams of the staging shown on purpose.",
+  "visual": [
+    "the single figure centre-frame, directing the camera",
+    "grid/contact-sheet of poses — authorship by repetition",
+    "hands or props framing the face; mirror shots and reflections",
+    "silver-gelatin grain, contact-sheet strips, timecode overlays",
+    "costume, wig, opera glove, prosthetic; the mirror and its reflection",
+    "coloured gel light, hard studio flash",
+    "the artist as their own model, in guises they built; the set is a stage they control end-to-end"
+  ],
+  "verbal": [
+    "persona",
+    "staging",
+    "performance",
+    "acrobatics",
+    "self-portrait",
+    "guise",
+    "the character",
+    "curation"
+  ],
+  "quotes": [
+    {
+      "q": "Everything I make is about understanding the acrobatics we perform",
+      "src": "Maya Man, 032c",
+      "url": "https://magazine.032c.com/magazine/the-internet-is-air-with-maya-man"
+    },
+    {
+      "q": "The era in which we treated our screen-lives as fake is ending.",
+      "src": "Katherine Dee, default.blog",
+      "url": "https://default.blog/p/the-machine-looks-back"
+    }
+  ],
+  "against": "Against the candid, the documentary, the 'authentic' unstaged snapshot — and against being cast by someone else. Internal risk: total self-staging can read as vanity or brand-building unless the constructed-ness is itself the subject; the strongest work shows the rig (timecode, mirror, seam) so the performance reads as authorship rather than illusion.",
+  "execution": "For brands: hand the subject the direction — let the person build and perform their own image, and leave the seams of that control visible, rather than casting them into someone else's fantasy. Misuse: a 'be yourself' campaign that is actually art-directed to a house look reproduces exactly the imposed image this code exists to seize back.",
+  "evidence": [
+    {
+      "s": "culturedmag.com",
+      "u": "https://www.culturedmag.com/article/2026/04/07/art-lottery-ryan-lee-gallery-martine-gutierrez/"
+    },
+    {
+      "s": "aperture.org",
+      "u": "https://aperture.org/editorial/11-exhibitions-to-see-this-spring-2026/"
+    },
+    {
+      "s": "032c.com",
+      "u": "https://magazine.032c.com/magazine/the-internet-is-air-with-maya-man"
+    },
+    {
+      "s": "gardnermuseum.org",
+      "u": "https://www.gardnermuseum.org/calendar/exhibition/persona-photography-and-re-imagined-self"
+    }
+  ],
+  "trajectory": "2026-07-05 coined",
+  "imgs": [
+    "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/06122139/MARTINE_LOTTERY_417.jpg",
+    "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/06123152/MARTINE_LOTTERY_545.jpg",
+    "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/06124801/MARTINE_LOTTERY_022.jpg",
+    "https://aperture.org/wp-content/uploads/2026/04/12-Nhu-Xuan-Hua-Little-Super-in-Versailles-%E2%80%93-Archive-from-the-year-88-2026.-Commissioned-by-Autograph-London-scaled.jpg",
+    "https://aperture.org/wp-content/uploads/2026/04/262MAG937_Agenda_Turbeville_HR.jpg",
+    "https://cdn.sanity.io/images/wmq4hf8k/production/0100373fbcbe0cca6d0b8ad4bbe7a14e9b280ecb-3000x2400.jpg",
+    "https://www.gardnermuseum.org/sites/default/files/styles/portrait_large/public/2025-12/Skull%20Ring.jpg",
+    "https://www.gardnermuseum.org/sites/default/files/styles/portrait_large/public/2025-12/Fasso_AD.jpg",
+    "https://www.gardnermuseum.org/sites/default/files/styles/portrait_large/public/2025-12/Narcissister_Pink%20Nails.JPG"
+  ]
+},
+{
+  "id": "heritage-re-signed",
+  "name": "Heritage Re-Signed",
+  "status": "emergent",
+  "oneliner": "Take the inherited form — weave, quipu, embroidery, the label you were handed — and re-sign it in your own hand.",
+  "bg": "#5b1a14",
+  "text": "#f7e6d8",
+  "palette": [
+    "#A6231C",
+    "#243B6B",
+    "#3BE0A0",
+    "#E14FAE",
+    "#C9A15A"
+  ],
+  "def": "An emergent, strongly cross-cultural code: authorship performed by metabolising an inheritance rather than displaying it under glass. Roda Medhat traces Kurdish loom motifs in neon and pixel-grid weave, asking what happens when stories are 'translated into new, synthetic languages'; Cecilia Vicuña re-authors the Andean quipu as contemporary installation; Spandita Malik stitches gold-thread embroidery directly onto photographic portraits of women in their own homes; Shahzia Sikander reworks Indo-Persian miniature; a 'How Asian Is It?' abstract-painting show interrogates the ethnic label itself; Russell Craig re-signs his prison ID number as painting. The given form is the raw material; the personal re-signing is the authorship. Register: madder reds and indigos of traditional textile, the acid of neon, natural fibre and hand-stitch, set against the white cube that reframes them as authored art.",
+  "visual": [
+    "the traditional object hung/lit as contemporary artwork",
+    "the ancestral motif redrawn at a new scale or in a new medium",
+    "the self (or a community sitter) embedded inside the inherited pattern",
+    "hand-loom weave, pixelated jacquard, fringe and selvedge",
+    "neon tube tracing a traditional motif",
+    "gold-thread embroidery over a photographic ground; tufting, appliqué",
+    "diaspora and heritage makers re-authoring an inherited technique; the loom, the studio, the home interior as ground"
+  ],
+  "verbal": [
+    "heritage",
+    "roots",
+    "tradition",
+    "translate",
+    "carry",
+    "reclaim",
+    "lineage",
+    "ancestral",
+    "re-signed"
+  ],
+  "quotes": [
+    {
+      "q": "what happens when those stories are translated into new, synthetic languages?",
+      "src": "Roda Medhat, via Colossal",
+      "url": "https://www.thisiscolossal.com/2026/05/roda-medhat-from-the-loom/"
+    },
+    {
+      "q": "representation gets talked about as if visibility is the finish line",
+      "src": "Leiya Salis, Polyester",
+      "url": "https://www.polyesterzine.com/features/wasians-and-the-limits-of-representation-notes-from-a-blasian-in-japan"
+    },
+    {
+      "q": "get my skills up to the point where I can be undeniable with it",
+      "src": "Russell Craig, Impulse",
+      "url": "https://impulsemagazine.com/articles/beyond-cell-doors-russell-craigs-vision"
+    }
+  ],
+  "against": "Against both the museum-vitrine version of heritage (fixed, past-tense, someone else's frame) and against tokenised 'representation' where mere visibility substitutes for authorship. Internal watch: the inherited form can tip into decoration if the personal re-signing is thin; the code lives in the tension between fidelity to the source and the maker's own hand.",
+  "execution": "For brands working with culture: commission the re-signing, not the reproduction — let a maker metabolise an inherited form into something present-tense and theirs, credited as authorship. Misuse: lifting a traditional motif as surface pattern without the maker or the metabolising move is exactly the 'visibility as finish line' tokenism this code names and rejects.",
+  "evidence": [
+    {
+      "s": "thisiscolossal.com",
+      "u": "https://www.thisiscolossal.com/2026/05/roda-medhat-from-the-loom/"
+    },
+    {
+      "s": "artsy.net",
+      "u": "https://www.artsy.net/article/artsy-editorial-6-rising-contemporary-artists-traditional-craft-techniques"
+    },
+    {
+      "s": "artsy.net",
+      "u": "https://www.artsy.net/article/artsy-editorial-artists-asian-diaspora-drawing-traditions-heritage"
+    },
+    {
+      "s": "impulsemagazine.com",
+      "u": "https://impulsemagazine.com/articles/how-asian-is-it-at-milton-resnick-and-pat-passlof-foundation"
+    },
+    {
+      "s": "polyesterzine.com",
+      "u": "https://www.polyesterzine.com/features/wasians-and-the-limits-of-representation-notes-from-a-blasian-in-japan"
+    },
+    {
+      "s": "milleworld.com",
+      "u": "https://www.milleworld.com/sabrina-carpenter-zaghrouta/"
+    }
+  ],
+  "trajectory": "2026-07-05 coined",
+  "imgs": [
+    "https://www.thisiscolossal.com/wp-content/uploads/2026/05/medhat-2.jpg",
+    "https://www.thisiscolossal.com/wp-content/uploads/2026/05/medhat-1.jpg",
+    "https://www.thisiscolossal.com/wp-content/uploads/2026/05/medhat-5.jpg",
+    "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FNrV4drz-advyuKcgcYuTGA%252FParweenDevi_SpanditaMalik.jpg&width=1820",
+    "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2Frg77iKpkBWL5-6f7Erklmw%252FRukmeshKumari_SpanditaMalik.jpg&width=1820",
+    "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FhSp-4pBnQgoql-fNWJTGPg%252FShS-WP.18.080_Empire%2BFollows%2BArt%2BStates%2Bof%2BAgitation%2B4%252C%2B2018.jpg&width=900",
+    "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2FeAqxI9sDDtVKXX3LWFsSlg%252Fmoon%2Bgarden%2Bpunjabi%2Bbirds.jpeg&width=900",
+    "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/6a0fbffa65cf2316df08c215_MR2-6-263573.jpeg",
+    "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/6a0fc0a119098269983e1d7c_MR2-6-263535.jpeg",
+    "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/c22572ce-6062-4683-b2cb-f8c6260b9bd5/wasians.png?format=2500w"
+  ]
+},
+{
+  "id": "remix-self",
+  "name": "The Remix Self",
+  "status": "emergent",
+  "oneliner": "Author the self out of the feed's own materials: glitter, filters, affirmations, screenshots, jelly-translucent pop shards.",
+  "bg": "#c01a7a",
+  "text": "#fdeef7",
+  "palette": [
+    "#FF2E9A",
+    "#33C9F0",
+    "#9FE53A",
+    "#8CE0C0",
+    "#FFD84A"
+  ],
+  "def": "An emergent code native to the platform generation. The self is composed like a mood-board: Y2K glitter and star-stickers, kissy-lip and butterfly graphics, translucent 'jelly' product-shots, affirmation text laid over comment feeds, the 'dream girl world' bedroom. Maya Man's practice theorises it directly — 'the internet is air,' the online self no longer treated as fake — while Polyester's Wasians and Summer-of-the-Jelly features perform it in hyper-pink digital collage. Register: maximalist, saturated, sticker-and-sparkle layering, deliberately synthetic; the opposite of the analog-sanctuary warmth, and it wears that syntheticness as authorship rather than apologising for it.",
+  "visual": [
+    "mood-board collage: pop shards assembled into one figure",
+    "affirmation/caption text laid over the image",
+    "the bedroom / dream-girl interior as self-portrait set",
+    "glitter fields, star and heart stickers, sparkle overlays",
+    "translucent 'jelly' plastic, gloss and refraction",
+    "screenshot chrome, comment-feed text, filter smear",
+    "internet-native femininity; the self curated from and for the feed, part sincere, part ironic"
+  ],
+  "verbal": [
+    "the internet is air",
+    "dream girl",
+    "affirmation",
+    "vibe",
+    "transparency",
+    "curation",
+    "acrobatics",
+    "online self"
+  ],
+  "quotes": [
+    {
+      "q": "the internet is air.",
+      "src": "Maya Man, 032c",
+      "url": "https://magazine.032c.com/magazine/the-internet-is-air-with-maya-man"
+    },
+    {
+      "q": "The era in which we treated our screen-lives as fake is ending.",
+      "src": "Katherine Dee, default.blog",
+      "url": "https://default.blog/p/the-machine-looks-back"
+    }
+  ],
+  "against": "Against the analog-authenticity register (warm wood, film grain, 'realness') and against the idea that the online self is inherently inauthentic. Internal risk: the remix can collapse into pure aesthetic slickness with no authored point of view — the same 'tasteslop' the culture already mocks; the code survives only where the assembly carries a genuine argument about the self.",
+  "execution": "For brands courting the platform generation: build the self out of the feed's real materials with an actual point of view, and let it be knowingly synthetic rather than faux-analog. Misuse: bolting Y2K sparkle onto a product with no authored idea reads as trend-chasing slop to an audience that authors this language natively.",
+  "evidence": [
+    {
+      "s": "032c.com",
+      "u": "https://magazine.032c.com/magazine/the-internet-is-air-with-maya-man"
+    },
+    {
+      "s": "polyesterzine.com",
+      "u": "https://www.polyesterzine.com/features/the-summer-of-the-jelly-what-our-obsession-with-transparency-really-reveals"
+    },
+    {
+      "s": "polyesterzine.com",
+      "u": "https://www.polyesterzine.com/features/wasians-and-the-limits-of-representation-notes-from-a-blasian-in-japan"
+    },
+    {
+      "s": "aperture.org",
+      "u": "https://aperture.org/editorial/11-exhibitions-to-see-this-spring-2026/"
+    },
+    {
+      "s": "somersethouse.org.uk",
+      "u": "https://www.somersethouse.org.uk/channel/editorial-essay/from-the-selfie-to-the-avatar-beauty-bias-and-the-digital-self"
+    },
+    {
+      "s": "artsy.net",
+      "u": "https://www.artsy.net/article/artsy-editorial-molly-soda-social-media-changes-irl"
+    }
+  ],
+  "trajectory": "2026-07-05 coined",
+  "imgs": [
+    "https://cdn.sanity.io/images/wmq4hf8k/production/0c7e9ff8fff482da13805162db6f4f1c492e0cea-5631x3521.jpg",
+    "https://cdn.sanity.io/images/wmq4hf8k/production/e07881a64f8ac9638b99d4f96fbffe955d0ed909-5760x3840.jpg",
+    "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/e156db70-5201-4711-8f71-bcb548c30e7a/jelly+firkin+1.png?format=2500w",
+    "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/1c79f4c5-a3a3-4d25-99d9-07897af77f31/jelly+firkin+2.png?format=2500w",
+    "https://aperture.org/wp-content/uploads/2026/04/1990-Lettre-a-St.-Loup25-scaled.jpg",
+    "https://admin.somersethouse.org.uk/images/GESxoWNPqVxcQt9_Wf0j-CU3Qb0=/5025/format-webp%7Cwidth-3200/Arvida_Bystrom_-_coexist_2022_-__Courtesy_of_the_artist.jpg",
+    "https://admin.somersethouse.org.uk/images/l5Gp3PhvJHZd2pZnKITXPLxQph0=/5027/format-webp%7Cwidth-3200/Angelfire_XENA_2021._Courtesy_of_the_artist.jpeg",
+    "https://admin.somersethouse.org.uk/images/y5rG8xnrxZGr8vhMCe_gf3reDsM=/5034/format-webp%7Cwidth-3200/Lil_Miquela_-_Re-birth_of_Venus_-_courtesy_of_artist_and_brud.webp",
+    "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F8z-2ggaZS3JtyrF-hnFNjQ%2Fnormalized.jpg&width=1820",
+    "https://d7hftxdivxxvm.cloudfront.net?quality=85&resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FSqvD4RWUjsw2vSVdzLrvyQ%2Fnormalized.jpg&width=1820"
+  ]
+},
+{
+  "id": "against-the-algorithm",
+  "name": "Against the Algorithm",
+  "status": "emergent",
+  "oneliner": "The unrepeatable hand and voice, asserted against a machine that can only average: authorship as the one thing that can't be generated.",
+  "bg": "#5a5a5a",
+  "text": "#f3f1ec",
+  "palette": [
+    "#6E6E6E",
+    "#C8102E",
+    "#EDEAE3",
+    "#1C1C1C",
+    "#B98A4B"
+  ],
+  "def": "The thinnest and most contested emergent code, and deliberately fenced off from Certified Human. Where that need argues made-by-humans provenance in general, this one is specifically about self-authorship surviving the generative model: the artist's own hand reworking the photographic image-flood into a single overpainted figure (post-AI painting), the writer arguing our screen-lives are authored rather than fake, the flatly-generated 'art by [famous artist]' portrait grid held up as the negative example of a voice with no self behind it, the placard 'AI steals from artists'. The claim is not 'a human made this' but 'this authorship is mine and cannot be averaged out of a training set'. Register: grisaille and overpaint, the visible brush, warning-red protest, the machine-smooth grid as foil.",
+  "visual": [
+    "a single figure reconstituted by hand from an image-mass",
+    "the machine-portrait grid: many near-identical outputs, no self",
+    "the placard / slogan asserting the artist against the tool",
+    "hand-overpaint dragged across collaged photographic source",
+    "the visible, wavering brushstroke; scraped and reworked ground",
+    "flat machine-smooth render as deliberate contrast",
+    "the painter/writer as the irreplaceable author; the studio and the essay against the generator"
+  ],
+  "verbal": [
+    "by hand",
+    "voice",
+    "signature",
+    "authored",
+    "the machine",
+    "generated",
+    "undeniable",
+    "unrepeatable"
+  ],
+  "quotes": [
+    {
+      "q": "The era in which we treated our screen-lives as fake is ending.",
+      "src": "Katherine Dee, default.blog",
+      "url": "https://default.blog/p/the-machine-looks-back"
+    },
+    {
+      "q": "get my skills up to the point where I can be undeniable with it",
+      "src": "Russell Craig, Impulse",
+      "url": "https://impulsemagazine.com/articles/beyond-cell-doors-russell-craigs-vision"
+    }
+  ],
+  "against": "Against the generative model and its statistical sameness — but also against Certified Human's territory, into which it easily collapses. Internal risk: most 'anti-AI' imagery in the intake is generic editorial illustration (badges, stock), not self-authorship; the code is only real where the specific, unrepeatable authorship of a named person is the payload. Coined low-confidence for exactly this reason.",
+  "execution": "For brands: if you invoke the human-vs-AI line, it must attach to a specific, named author's unrepeatable voice — not a generic 'handmade' badge, which belongs to Certified Human and which this audience reads as hollow. Misuse: 'authentically human' messaging with no actual author behind it is the emptiest move available and is mocked on sight.",
+  "evidence": [
+    {
+      "s": "hauserwirth.com",
+      "u": "https://www.hauserwirth.com/ursula/post-ai-painting-avery-singer-dieter-buchhart/"
+    },
+    {
+      "s": "default.blog",
+      "u": "https://default.blog/p/the-machine-looks-back"
+    },
+    {
+      "s": "aeon.co",
+      "u": "https://aeon.co/essays/could-ai-replace-human-art-experts-in-attributing-paintings"
+    },
+    {
+      "s": "metropolitanreview.com",
+      "u": "https://metropolitanreview.com/the-power-of-art-in-the-ai-age/"
+    },
+    {
+      "s": "davidrevoy.com",
+      "u": "https://www.davidrevoy.com/article1007/my-brushstrokes-against-ai-art"
+    },
+    {
+      "s": "creativebloq.com",
+      "u": "https://www.creativebloq.com/art/why-gen-z-artists-are-rediscovering-anatomy-gesture-and-plein-air-painting-in-2026"
+    },
+    {
+      "s": "news.artnet.com",
+      "u": "https://news.artnet.com/art-world/artificial-intelligence-robot-painting-2644496"
+    }
+  ],
+  "trajectory": "2026-07-05 coined",
+  "imgs": [
+    "https://media.hauserwirth.com/asset/95e65ad2-d3f4-448b-84ac-2467975a913b/17-Conversation-1.jpg",
+    "https://media.hauserwirth.com/transform/015e493d-ddef-439f-808c-7465a53cd76e/17-Conversation-HWAVERYSINGER_26-02-19_00227_52L",
+    "https://metropolitanreview.com/wp-content/uploads/2025/09/Megan-Gafford-2.jpg",
+    "https://www.davidrevoy.com/data/images/blog/2023/2023-12-02_young-wasabi.jpg",
+    "https://cdn.mos.cms.futurecdn.net/UNiVpVpcLwByVdcskzAboc-1000-80.jpg.webp",
+    "https://cdn.mos.cms.futurecdn.net/gQ4bHPT5oNitCquGvqqXTV-1280-80.jpg.webp",
+    "https://news.artnet.com/app/news-upload/2025/05/LOUW_Orchid-series-1-2048x1363.jpg",
+    "https://news.artnet.com/app/news-upload/2025/05/LOUW_eDavid_setup-2048x1489.jpg"
+  ]
+}
+];
+
+const INTRO_BG = [250,250,248];
+function hexRgb(h){ h=h.replace('#',''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
+function mix(a,b,t){ return `rgb(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)})`; }
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+// intro list
+const cl = document.getElementById('codelist');
+CODES.forEach((c,i)=>{
+  const a = document.createElement('a');
+  a.href = '#'+c.id;
+  a.innerHTML = `<span class="num">0${i+1}</span><span class="dot" style="background:${c.palette[c.palette.length-1]}"></span>${c.name}`;
+  cl.appendChild(a);
+});
+
+// code sections
+const main = document.getElementById('codes');
+const spanPattern = ['big','','tall','','wide','','tall','','','wide','','tall'];
+CODES.forEach((c,i)=>{
+  const sec = document.createElement('section');
+  sec.className = 'code';
+  sec.id = c.id;
+  sec.dataset.bg = c.bg;
+  sec.style.color = c.text;
+  sec.style.setProperty('--tx', c.text);
+
+  const tiles = c.imgs.map((src,j)=>{
+    const k = spanPattern[j % spanPattern.length];
+    return `<figure class="${k}"><img src="${src}" loading="lazy" referrerpolicy="no-referrer" alt="" onerror="this.closest('figure').remove()"></figure>`;
+  }).join('');
+  const sw = c.palette.map(p=>`<span style="background:${p}"></span>`).join('');
+  const visualChips = c.visual.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const verbalChips = c.verbal.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const quotes = c.quotes.map(q=>`<div class="quote"><span class="q">“${esc(q.q)}”</span> <a href="${q.url}" target="_blank" rel="noopener">${esc(q.src)} →</a></div>`).join('');
+  const ev = c.evidence.map(e=>`<a href="${e.u}" target="_blank" rel="noopener">${esc(e.s)} →</a>`).join('');
+
+  sec.innerHTML = `
+    <div class="hero">
+      <div class="text">
+        <div class="num">0${i+1} / 05</div>
+        <span class="status">${c.status}</span>
+        <h2>${c.name}</h2>
+        <p class="oneliner">${c.oneliner}</p>
+        <div class="palette">${sw}</div>
+        <div class="scrollon">Scroll for the analysis ↓</div>
+      </div>
+      <div class="collage">${tiles}</div>
+    </div>
+    <div class="analysis">
+      <p class="def">${esc(c.def)}</p>
+      <div class="grid2">
+        <div class="block"><div class="label">Visual register</div><div class="chips">${visualChips}</div></div>
+        <div class="block"><div class="label">Verbal register</div><div class="chips">${verbalChips}</div><div class="quotes">${quotes}</div></div>
+        <div class="block"><div class="label">Against</div><div class="body">${esc(c.against)}</div></div>
+        <div class="block"><div class="label">Execution</div><div class="body">${esc(c.execution)}</div></div>
+        <div class="block full"><div class="label">Evidence</div><div class="ev">${ev}</div></div>
+        <div class="meta"><span>${esc(IMG_NOTE)}</span><span>Trajectory · ${esc(c.trajectory)}</span></div>
+      </div>
+    </div>`;
+  main.appendChild(sec);
+});
+
+// scroll color morph
+const bg = document.getElementById('bg');
+const stops = [...document.querySelectorAll('.code')].map(s=>({el:s, rgb:hexRgb(s.dataset.bg)}));
+function paint(){
+  const vh = window.innerHeight;
+  const mid = window.scrollY + vh*0.5;
+  const introH = document.getElementById('intro').offsetHeight;
+  if(mid < stops[0].el.offsetTop){
+    const t = Math.max(0, Math.min(1, (mid - introH*0.4) / (introH*0.6)));
+    bg.style.backgroundColor = mix(INTRO_BG, stops[0].rgb, t);
+    return;
+  }
+  let idx = 0;
+  for(let i=0;i<stops.length;i++){ if(mid >= stops[i].el.offsetTop) idx = i; }
+  const cur = stops[idx];
+  const next = stops[idx+1] || cur;
+  const start = cur.el.offsetTop;
+  const end = stops[idx+1] ? stops[idx+1].el.offsetTop : start + cur.el.offsetHeight;
+  const t = Math.max(0, Math.min(1, (mid - start) / (end - start)));
+  const tt = t < 0.7 ? 0 : (t - 0.7) / 0.3;
+  bg.style.backgroundColor = mix(cur.rgb, next.rgb, tt);
+}
+let ticking=false;
+window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(()=>{paint();ticking=false;}); ticking=true; } },{passive:true});
+window.addEventListener('resize',paint);
+paint();
+</script>
+</body>
+</html>

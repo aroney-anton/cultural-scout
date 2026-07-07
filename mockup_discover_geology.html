@@ -135,7 +135,10 @@
     text-align:center;padding:40px;color:var(--mute);font-size:14px;line-height:1.7}
 
   /* search-reconstitution: type and the sphere re-forms into query themes */
-  #geosearch{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:9;
+  /* top offset cleared past the parent page's fixed tab switcher (nav sits at
+     top:18px, ~44px tall, in site/template.html) so the geo search bar no
+     longer overlaps it (2026-07-07) */
+  #geosearch{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:9;
     display:flex;align-items:center;gap:6px;background:rgba(20,17,13,.82);
     border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 8px 6px 16px;
     backdrop-filter:blur(8px);box-shadow:0 6px 24px rgba(0,0,0,.35)}
@@ -144,7 +147,7 @@
   #geoclear{background:rgba(255,255,255,.1);border:0;color:#e8e0d2;border-radius:999px;
     width:24px;height:24px;cursor:pointer;font-size:12px;line-height:1}
   #geoclear:hover{background:rgba(255,255,255,.22)}
-  #geomode{position:fixed;top:56px;left:50%;transform:translateX(-50%);z-index:9;
+  #geomode{position:fixed;top:116px;left:50%;transform:translateX(-50%);z-index:9;
     color:#d6cdbc;font-size:12px;background:rgba(20,17,13,.72);padding:5px 14px;border-radius:999px;
     display:none;max-width:82vw;text-align:center;backdrop-filter:blur(6px)}
 </style>
@@ -214,16 +217,16 @@ const GEO = /*__GEO__*/{"needs":[{"key":"Naming the Machine","n":193,"pct":22.4,
 
 /* ===== helpers ===== */
 const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-/* Consistent naming: every territory named as the cultural MOVE (gerund register),
-   matching the two anchor names. Canonical keys in the data are unchanged. */
+/* Display labels, renamed 2026-07-07 to single-word verbs (Michael's call).
+   Canonical keys in the data (and everywhere colors/lookups key off them) are unchanged. */
 const LABEL={
-  "Naming the Machine":"Naming the Machine",
-  "Settling Accounts":"Settling Accounts",
-  "Self-Authorship":"Authoring the Self",
-  "Certified Human":"Proving the Human",
-  "Kinship":"Building the Room",
-  "Appetite":"Reclaiming Appetite",
-  "Ballast":"Carrying the Weight",
+  "Naming the Machine":"Dismantle",
+  "Settling Accounts":"Reclaim",
+  "Self-Authorship":"Author",
+  "Certified Human":"Encounter",
+  "Kinship":"Convene",
+  "Appetite":"Feel",
+  "Ballast":"Fortify",
   "unsettled":"Unsettled"
 };
 const NAME=k=>LABEL[k]||k;
@@ -580,10 +583,13 @@ function deselect(){
 }
 
 /* ===== in-callout look & feel panel ===== */
+/* Per-need pages come from geology_codes.json (`page` on each need's code block);
+   LF_PAGE remains as the fallback for the coded pilot. */
 const LF_PAGE="mockup_lookfeel_certified_human.html";
+let lfPage=LF_PAGE;
 function openLookFeel(){
   const fr=document.getElementById('lf-frame');
-  if(!fr.getAttribute('src')) fr.setAttribute('src',LF_PAGE);   // load once
+  if(fr.getAttribute('src')!==lfPage) fr.setAttribute('src',lfPage);   // load per need, cached until it changes
   fr.classList.add('show');
   document.getElementById('co-scroll').style.display='none';
   document.getElementById('lf-back').style.display='';
@@ -630,6 +636,7 @@ function fillCallout(nd){
     secLf.style.display='';
     if(nd.code){
       const c=nd.code;
+      lfPage=c.page||LF_PAGE;
       lf.innerHTML=`
         <div class="lf-code" style="background:${esc(c.bg)}">
           <img class="lf-img" src="${esc(c.img)}" referrerpolicy="no-referrer"
@@ -644,7 +651,7 @@ function fillCallout(nd){
         </div>
         <button class="lf-explore" onclick="openLookFeel()">Explore look &amp; feel <span>&rarr;</span></button>`;
     } else {
-      lf.innerHTML=`<div class="lf-empty">Look &amp; feel codes not yet excavated for this territory. Certified Human is the coded pilot; the others get their codebooks as the semiotic pass rolls out.</div>`;
+      lf.innerHTML=`<div class="lf-empty">Look &amp; feel codes not yet excavated for this territory. ${esc(NAME('Certified Human'))}, ${esc(NAME('Naming the Machine'))} and ${esc(NAME('Self-Authorship'))} are coded; the others get their codebooks as the semiotic pass rolls out.</div>`;
     }
   }
 
@@ -653,7 +660,7 @@ function fillCallout(nd){
   if(isC){
     ab.innerHTML=`
       <div class="grp">
-        <div class="grp-label">${esc(nd.key)}</div>
+        <div class="grp-label">${esc(NAME(nd.key))}</div>
         ${nd.items.map(artLink).join("")}
       </div>`;
   } else {

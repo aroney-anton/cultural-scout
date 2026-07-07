@@ -150,6 +150,13 @@ def main():
     else:
         print("  [universe] NOTE: mockup_discover_universe.html not present yet — universe toggle will 404 until it's added.")
 
+    # Per-need look & feel pages (loaded into the globe callout's iframe; the
+    # page filename lives on each need's code block in geology_codes.json).
+    # Copy every mockup_lookfeel_*.html so new coded needs ship automatically.
+    for lf in sorted(_glob.glob(os.path.join(HERE, "mockup_lookfeel_*.html"))):
+        shutil.copy(lf, os.path.join(HERE, "site", os.path.basename(lf)))
+        print(f"  Copied look & feel page -> site/{os.path.basename(lf)}")
+
     # Also re-bake the geology globe (Explore view) from the same corpus so it
     # never drifts stale behind the Search tab. Degrades gracefully if absent.
     geo_builder = os.path.join(HERE, "build_geology.py")

@@ -1,0 +1,73 @@
+# Round-2 gap-fill URLs — Naming the Machine (compiled 2026-07-03 via WebSearch)
+# Run from image_scraper/ with venv active:
+#   python run.py scrape --urls ../urls_naming_the_machine_round2.txt --need "Naming the Machine"
+#   python run.py sheets --input output/<the new file>.json
+# Per playbook: paywalled sources will log as skipped, never defeated. seen_urls.json dedupes cross-run.
+
+# ---------------------------------------------------------------
+# CODE 1: The Receipt Dump (receipts-as-image) — needs chart/table/screenshot imagery
+# from sources beyond wheresyoured.at / restofworld / garbageday / afterschool
+# ---------------------------------------------------------------
+https://www.404media.co/the-tokenpocalypse-is-here-companies-are-scrambling-to-stop-spending-so-much-on-ai/
+https://www.404media.co/companies-are-throttling-employees-ai-use-because-its-too-expensive/
+https://epoch.ai/data-insights/ai-datacenter-share-gdp
+https://www.statista.com/chart/35046/capital-expenditure-of-meta-alphabet-amazon-and-microsoft/
+https://aiweekly.co/alerts/ai-data-center-buildout-is-stoking-inflation-economists-warn
+
+# ---------------------------------------------------------------
+# CODE 2: The Cut-and-Paste Dossier (seams-showing-dossier) — needs visible-seams
+# collage/photomontage imagery beyond polyester / africasacountry / restofworld / dirt
+# ---------------------------------------------------------------
+https://www.kolajmagazine.com/exhibition/politics-in-collage.html
+https://kolajinstitute.org/politics-in-collage/
+https://www.artsy.net/article/artsy-editorial-martha-roslers-powerful-collages-wake-up-call-america
+https://www.artforum.com/features/cut-and-paste-the-collage-impulse-today-190356/
+https://www.norton.org/exhibitions/cut-upcut-out-photomontage-and-collage
+https://www.itsnicethat.com/articles/spillll-collective-graphic-design-discover-250326
+# older (2020-era) but dense with feminist protest-graphics imagery; date-flag on intake:
+https://eyeondesign.aiga.org/how-feminist-movements-co-opt-graphic-design-to-express-themselves/
+
+# ---------------------------------------------------------------
+# CODE 3: The Rigging in Shot (rigging-in-shot) — apparatus-visible spectacle photography.
+# The FIFA 2026 stadium DEBRANDING story is a gift for this code: sponsor machinery made
+# visible precisely by being covered up ($1M to "commercially clean" one stadium).
+# ---------------------------------------------------------------
+https://www.fastcompany.com/91557934/debranded-world-cup-stadiums
+https://lamag.com/sports/how-are-brands-reacting-to-fifas-debranding-requirement-as-the-world-cup-unfolds/
+https://www.coliseum-online.com/fifa-2026-spectacle-clean-venue-policies/
+https://thefootballweek.com/2026/05/27/world-cup-stadium-names/
+https://petapixel.com/2026/04/23/world-press-photo-of-the-year-2026-shows-the-impact-of-immigration-enforcement/
+https://www.npr.org/sections/the-picture-show/2026/04/23/nx-s1-5793922/world-press-photo-announces-photo-of-the-year-2026
+# deconstructing-the-photo-op essay (pulls back to show lighting/backdrop/rearranged furniture):
+https://pulitzercenter.org/stories/photo-essay-seeing-political
+# NPPA Best of Photojournalism 2026 gallery — may be image-heavy, cap will handle it:
+https://bop.nppa.org/2026/
+
+# ---------------------------------------------------------------
+# CODE 4: The Icon Assembly Line (icon-assembly-line) — replication-series imagery beyond
+# the single Tate set. CAUTION: the Frida reviews below may recycle Tate courtesy images;
+# they count as distinct publications but check the imagery is actually distinct at coding.
+# ---------------------------------------------------------------
+https://www.frieze.com/article/frida-kahlo-tate-2026-review
+https://fadmagazine.com/2026/06/26/frida-the-making-of-an-icon-review-tate-modern/
+https://www.wallpaper.com/art/exhibitions-shows/tate-modern-frida-kahlo-review
+https://www.timeout.com/london/news/frida-kahlo-tate-modern-london-review-062426
+https://hyperallergic.com/how-chronicling-street-art-works-against-a-culture-of-commodification/
+https://news.artnet.com/art-world/art-merchandise-market-2080427
+https://blooloop.com/museum/opinion/art-museum-gift-shop-merchandise/
+
+# ---------------------------------------------------------------
+# UN-COINED CANDIDATE A: the-system-as-cheerful-diagram (3 sources in round 1: dezeen,
+# restofworld, aeon — needs a 4th independent source to coin)
+# ---------------------------------------------------------------
+https://www.archdaily.com/1037623/decomposition-as-expression-disassembled-axonometry-as-design-tool
+# the "anti-renders" piece: raw axonometric linework, labor mappings, infrastructural data fields:
+https://www.archdaily.com/1036773/how-2025-turned-architectural-visuals-into-disputed-media
+
+# ---------------------------------------------------------------
+# UN-COINED CANDIDATE B: the-ghost-workforce (text-only in round 1 — needs any visual sources)
+# ---------------------------------------------------------------
+https://weirdpressphoto.org/2024/ghost-workers
+https://www.famsf.org/exhibitions/uncanny-valley
+https://www.npr.org/2026/04/25/nx-s1-5799511/dataland-refik-anadol-los-angeles-ai-art-museum
+https://equidem.org/reports/scroll-click-suffer-the-hidden-human-cost-of-content-moderation-and-data-labelling/

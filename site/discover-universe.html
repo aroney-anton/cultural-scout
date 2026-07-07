@@ -340,6 +340,20 @@ window.__initExplore=async function(){
   loading.style.display="none";
 
   const DATA=window.DATA, NEEDS=window.NEEDS, COL=window.NEED_DARK;
+  // Display labels, renamed 2026-07-07 to single-word verbs (Michael's call),
+  // matching mockup_discover_geology.html. Canonical keys (used for every
+  // color/anchor/NEEDS lookup) are unchanged — this only affects rendered text.
+  const LABEL={
+    "Naming the Machine":"Dismantle",
+    "Settling Accounts":"Reclaim",
+    "Self-Authorship":"Author",
+    "Certified Human":"Encounter",
+    "Kinship":"Convene",
+    "Appetite":"Feel",
+    "Ballast":"Fortify",
+    "unsettled":"Unsettled"
+  };
+  const NAME=k=>LABEL[k]||k;
   const cv=document.getElementById("cv");
   const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -566,14 +580,14 @@ window.__initExplore=async function(){
 
   // anchor labels (HTML, projected each frame) — each sun's name floats above it
   const labels={};
-  for(const k in anchors){const d=document.createElement("div");d.className="anchor-label";d.textContent=k==="unsettled"?"Unsettled":k;d.style.color=COL[k];document.getElementById("view-explore").appendChild(d);labels[k]=d;}
+  for(const k in anchors){const d=document.createElement("div");d.className="anchor-label";d.textContent=NAME(k);d.style.color=COL[k];document.getElementById("view-explore").appendChild(d);labels[k]=d;}
   const sunLabel=document.createElement("div");
   sunLabel.className="anchor-label sun-label";sunLabel.style.display="none";
   document.getElementById("view-explore").appendChild(sunLabel);
 
   // legend
   const lg=document.getElementById("legend");lg.innerHTML="";
-  [...NEEDS].forEach(k=>{const row=document.createElement("div");row.className="row";row.innerHTML=`<span class="dot" style="background:${COL[k]};color:${COL[k]}"></span>${k}`;
+  [...NEEDS].forEach(k=>{const row=document.createElement("div");row.className="row";row.innerHTML=`<span class="dot" style="background:${COL[k]};color:${COL[k]}"></span>${esc(NAME(k))}`;
     row.onmouseenter=()=>highlight(k);row.onmouseleave=()=>highlight(null);
     row.onclick=()=>{  // click a theme → focus animation + the theme's description panel, like clicking its sun
       if(focusedTheme===k){release();panel.classList.remove("open");}
@@ -735,8 +749,8 @@ window.__initExplore=async function(){
     const m=idx.length;
     idx.forEach((i,kk)=>{rel[i]=m===1?1:1-0.65*(kk/(m-1));});
     focusedTheme=k;window.__focusedTheme=k;
-    focusOn(idx,k==="unsettled"?"Unsettled":k,COL[k],
-      m+" "+(k==="unsettled"?"unsettled":k)+" signals in orbit · click the theme again to release");
+    focusOn(idx,NAME(k),COL[k],
+      m+" "+NAME(k).toLowerCase()+" signals in orbit · click the theme again to release");
     try{history.replaceState(null,"","#explore&need="+encodeURIComponent(k));}catch(e){}
   }
   let exdeb;
@@ -820,7 +834,7 @@ window.__initExplore=async function(){
   window.addEventListener("resize",positionLabels);
   function esc(t){return (t||"").replace(/[&<>"']/g,x=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]));}
   function fmtDate(d){d=d||"";return /\(approx\)/.test(d)?("~"+d.replace(/\s*\(approx\)\s*/,"")):d;}
-  function openPanel(s,sub){pbody.innerHTML=`<div class="psub" style="color:${COL[sub]}">${sub}</div><div class="pmeta">${esc(s.source)} · ${esc(fmtDate(s.date))}${(s._runs||[]).length>1?` · seen in ${s._runs.length} runs`:""}</div><h3>${esc(s.title)}</h3><p>${esc(s.summary)}</p>${s.novelty_note?`<div class="pnote"><b>Novelty:</b> ${esc(s.novelty_note)}</div>`:""}${s.cross_substrate_notes?`<div class="pnote"><b>Crosscurrents:</b> ${esc(s.cross_substrate_notes)}</div>`:""}<a class="go" href="${esc(s.url)}" target="_blank" rel="noopener">Read the source →</a>`;panel.classList.remove("wide");panel.classList.add("open");}
+  function openPanel(s,sub){pbody.innerHTML=`<div class="psub" style="color:${COL[sub]}">${esc(NAME(sub))}</div><div class="pmeta">${esc(s.source)} · ${esc(fmtDate(s.date))}${(s._runs||[]).length>1?` · seen in ${s._runs.length} runs`:""}</div><h3>${esc(s.title)}</h3><p>${esc(s.summary)}</p>${s.novelty_note?`<div class="pnote"><b>Novelty:</b> ${esc(s.novelty_note)}</div>`:""}${s.cross_substrate_notes?`<div class="pnote"><b>Crosscurrents:</b> ${esc(s.cross_substrate_notes)}</div>`:""}<a class="go" href="${esc(s.url)}" target="_blank" rel="noopener">Read the source →</a>`;panel.classList.remove("wide");panel.classList.add("open");}
   document.getElementById("panel-close").onclick=()=>panel.classList.remove("open");
 
   // ---- theme suns: descriptions + click-to-read (from NEED_TAXONOMY.md) ----
@@ -846,7 +860,7 @@ window.__initExplore=async function(){
   function openThemePanel(k){
     const d=NEED_DESC[k]||{one:k,body:""};
     const focused=(focusedTheme===k);
-    pbody.innerHTML=`<div class="psub" style="color:${COL[k]}">${esc(k==="unsettled"?"Unsettled":k)}</div>
+    pbody.innerHTML=`<div class="psub" style="color:${COL[k]}">${esc(NAME(k))}</div>
       <div class="pmeta">${themeCount[k]||0} signals in this system · one of the 7 needs (+ residue)</div>
       <h3>${esc(d.one)}</h3><p>${esc(d.body)}</p>
       <div class="gobtns">
@@ -925,7 +939,7 @@ window.__initExplore=async function(){
     });
     scene.add(group);
     interiorParts={group,nodes,core,coreGlow};
-    pui.querySelector("#pui-h").textContent=k+" — look & feel";
+    pui.querySelector("#pui-h").textContent=NAME(k)+" — look & feel";
     pui.querySelector("#pui-sub").textContent=cdata.codes.length+" semiotic codes · "+cdata.images_observed+" images observed · updated "+cdata.updated+" · click a code to open its board";
   }
   function disposeInterior(){

@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Look &amp; Feel — Naming the Machine (mockup)</title>
+<style>
+  :root { --ease: cubic-bezier(.22,.61,.36,1); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #141414;
+    background: #fafaf8;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  #bg { position: fixed; inset: 0; z-index: -2; background: #fafaf8; transition: background-color .15s linear; }
+  #grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .055;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .mockup-flag {
+    position: fixed; top: 14px; right: 16px; z-index: 50; font-size: 10px; letter-spacing: .18em;
+    text-transform: uppercase; padding: 5px 9px; border: 1px solid currentColor; border-radius: 3px;
+    opacity: .5; mix-blend-mode: difference; color: #fff;
+  }
+  .backbtn {
+    position: fixed; top: 14px; left: 16px; z-index: 50; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    background: rgba(0,0,0,.06); color: inherit; border: 1px solid rgba(0,0,0,.18); mix-blend-mode: difference;
+  }
+
+  /* ---------- INTRO ---------- */
+  #intro { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8vh 7vw; }
+  #intro .eyebrow { font-size: 12px; letter-spacing: .32em; text-transform: uppercase; opacity: .5; margin-bottom: 28px; }
+  #intro h1 { font-size: clamp(20px, 2.4vw, 30px); font-weight: 500; opacity: .55; margin-bottom: 6vh; max-width: 40ch; line-height: 1.45; }
+  .codelist { display: flex; flex-direction: column; gap: clamp(8px, 1.6vh, 20px); }
+  .codelist a {
+    text-decoration: none; color: #141414; font-size: clamp(30px, 6.2vw, 86px); font-weight: 650;
+    line-height: 1.02; letter-spacing: -.02em; display: flex; align-items: baseline; gap: 18px;
+    opacity: .92; transition: opacity .2s, transform .25s var(--ease);
+  }
+  .codelist a:hover { opacity: 1; transform: translateX(10px); }
+  .codelist .num { font-size: clamp(12px,1vw,15px); font-weight: 500; opacity: .4; letter-spacing: 0; }
+  .codelist .dot { width: .42em; height: .42em; border-radius: 50%; display: inline-block; align-self: center; }
+  .scrollhint { margin-top: 7vh; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; animation: bob 2.2s infinite ease-in-out; }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+  /* ---------- CODE: HERO ---------- */
+  .code { position: relative; }
+  .hero { display: grid; grid-template-columns: 26% 74%; align-items: stretch; min-height: 100vh; }
+  .hero .text {
+    position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 6vh 2.2vw 6vh 7vw; z-index: 2;
+  }
+  .hero .num { font-size: 12px; letter-spacing: .26em; opacity: .6; margin-bottom: 18px; }
+  .hero .status {
+    display: inline-block; align-self: flex-start; font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 4px 9px; border: 1px solid currentColor; border-radius: 999px; opacity: .7; margin-bottom: 22px;
+  }
+  .hero h2 { font-size: clamp(28px, 3.1vw, 52px); font-weight: 650; line-height: 1.04; letter-spacing: -.02em; margin-bottom: 22px; }
+  .hero .oneliner { font-size: clamp(14px, 1.15vw, 18px); line-height: 1.5; opacity: .82; max-width: 30ch; }
+  .hero .palette { display: flex; gap: 7px; margin-top: 30px; }
+  .hero .palette span { width: 26px; height: 26px; border-radius: 4px; box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset; }
+  .scrollon { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; margin-top: 34px; }
+
+  .collage { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 11.5vw; gap: 10px; padding: 9vh 0 9vh 1.5vw; align-content: start; }
+  .collage figure { overflow: hidden; position: relative; border-radius: 3px; background: rgba(0,0,0,.12); }
+  .collage img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.02); }
+  .collage figure.tall { grid-row: span 2; }
+  .collage figure.wide { grid-column: span 2; }
+  .collage figure.big { grid-column: span 2; grid-row: span 2; }
+
+  /* ---------- CODE: ANALYSIS ---------- */
+  .analysis { padding: 4vh 7vw 12vh; max-width: 1200px; }
+  .analysis .def { font-size: clamp(17px, 1.5vw, 23px); line-height: 1.5; max-width: 56ch; opacity: .95; margin-bottom: 7vh; font-weight: 450; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5vh 6vw; }
+  .block { border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent); padding-top: 16px; }
+  .block.full { grid-column: 1 / -1; }
+  .label { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; opacity: .55; margin-bottom: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 13px; padding: 5px 11px; border-radius: 999px; line-height: 1.2;
+    background: color-mix(in srgb, var(--tx) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tx) 26%, transparent);
+  }
+  .quotes { margin-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .quote { font-size: 15px; line-height: 1.45; }
+  .quote .q { font-style: italic; }
+  .quote a, .ev a, .def a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .quote .src { display: inline-block; font-size: 12px; opacity: .7; margin-top: 3px; }
+  .body { font-size: 15px; line-height: 1.55; opacity: .92; max-width: 54ch; }
+  .ev { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; }
+  .meta { grid-column: 1 / -1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+          margin-top: 5vh; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent);
+          font-size: 12px; opacity: .6; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero .text { position: relative; height: auto; min-height: 60vh; padding: 12vh 7vw 4vh; }
+    .collage { grid-template-columns: repeat(2,1fr); grid-auto-rows: 32vw; padding: 0 0 6vh; }
+    .codelist a { font-size: 40px; }
+    .grid2 { grid-template-columns: 1fr; }
+    .analysis { padding: 4vh 7vw 9vh; }
+  }
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="grain"></div>
+<div class="backbtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</div>
+
+<section id="intro">
+  <div class="eyebrow">Naming the Machine · Look &amp; Feel</div>
+  <h1>Four visual-verbal codes the corpus uses to unmask how systems, machines and incentives operate. Scroll to enter each one.</h1>
+  <nav class="codelist" id="codelist"></nav>
+  <div class="scrollhint">Scroll ↓</div>
+</section>
+
+<main id="codes"></main>
+
+<script>
+const IMG_NOTE = "Imagery embedded live from the publishers' servers — nothing stored.";
+const CODES = [
+  {
+    "id": "receipts-as-image",
+    "name": "The Receipt Dump",
+    "status": "dominant",
+    "oneliner": "The machine indicted with its own paperwork: spreadsheets, margin tables, and redacted screenshots published as the picture.",
+    "bg": "#16181d",
+    "text": "#e8f0e9",
+    "palette": [
+      "#FFFFFF",
+      "#16181D",
+      "#E4574F",
+      "#4CAF7D",
+      "#111111"
+    ],
+    "def": "The unmasking is performed by publishing the system's own paperwork as the article's imagery: raw spreadsheets, pricing tables, margin heatmaps, leaked projection charts, and platform screenshots with redaction bars. The interface artifact replaces photography; the black redaction bar and the conditional-formatting red cell are the genre's punctum.",
+    "visual": [
+      "native UI chrome kept intact (like counts, follow buttons, timestamps)",
+      "cell-grid hairlines and conditional-formatting fills",
+      "black redaction bars and gaussian-blurred avatars",
+      "chart furniture reproduced whole: axis labels, source lines, footnotes",
+      "the table or screenshot presented full-bleed as the article's image, uncropped",
+      "escalation reads left-to-right / top-to-bottom into red",
+      "no photography at all in the article's evidentiary core"
+    ],
+    "verbal": [
+      "gross margin",
+      "burn rate",
+      "unit economics",
+      "capex",
+      "leaked projections",
+      "content mill",
+      "receipts",
+      "subsidized",
+      "brokenomics"
+    ],
+    "quotes": [
+      {
+        "q": "I estimate Abilene's rough gross margin is around 37.47%",
+        "src": "Ed Zitron, Where's Your Ed At",
+        "url": "https://www.wheresyoured.at/ais-economics-dont-make-sense/"
+      },
+      {
+        "q": "It's all AI comments by fake people",
+        "src": "Alex, quoted in Rest of World",
+        "url": "https://restofworld.org/2026/virtual-assistant-linkedin-engagement/"
+      }
+    ],
+    "against": "Defines itself against the vendor keynote render and the glossy 'AI transformation' stock image: no synthetic optimism, only the ledger. Internal risk the corpus itself names: once receipts become the house style, the spreadsheet aesthetic can be worn as costume by anyone, including the companies being audited.",
+    "execution": "For a client, executing in this code means showing your own back office voluntarily: real numbers, real interface, no art direction on top. It photographs badly and converts strongly. Misuse: staged 'transparency' dashboards with pre-cleaned numbers read instantly as PR; the code only works when the artifact looks found, not designed.",
+    "evidence": [
+      {
+        "s": "wheresyoured.at",
+        "u": "https://www.wheresyoured.at/ais-economics-dont-make-sense/"
+      },
+      {
+        "s": "wheresyoured.at",
+        "u": "https://www.wheresyoured.at/brokenomics/"
+      },
+      {
+        "s": "restofworld.org",
+        "u": "https://restofworld.org/2026/virtual-assistant-linkedin-engagement/"
+      },
+      {
+        "s": "garbageday.email",
+        "u": "https://www.garbageday.email/p/the-clear-channel-internet"
+      },
+      {
+        "s": "afterschool.substack.com",
+        "u": "https://afterschool.substack.com/p/zitfluencers-and-meaf-promax"
+      },
+      {
+        "s": "epoch.ai",
+        "u": "https://epoch.ai/data-insights/ai-datacenter-share-gdp"
+      },
+      {
+        "s": "statista.com",
+        "u": "https://www.statista.com/chart/35046/capital-expenditure-of-meta-alphabet-amazon-and-microsoft/"
+      }
+    ],
+    "trajectory": "2026-07-03 coined · 2026-07-03 evidence",
+    "imgs": [
+      "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/04/data-src-image-290e7a2c-4417-4570-bb39-e0f6d7dd58ee.png",
+      "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/04/data-src-image-64c4d4d7-59e2-45ff-a58b-9a9c5c3862b6.png",
+      "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/04/data-src-image-ad8d7795-f792-4c5b-b382-8f423e73a2e6.png",
+      "https://fastly.restofworld.org/uploads/2026/05/screenshot_linkfluencers_blur_final.jpg?width=1900&dpr=2",
+      "https://fastly.restofworld.org/uploads/2026/06/iStock-154924807.jpg?width=340&dpr=2&crop=3:2",
+      "https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/a3da6aa5-ad86-43cb-937b-3902b3b47a69/instagram_screenshot_DWCItAKEbU3_1780927030_383dd12f.jpeg?t=1780927032",
+      "https://substackcdn.com/image/fetch/$s_!WCdS!,w_640,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe751cf5e-a080-43d5-94d5-8397ba3dab9f_1080x1920.jpeg",
+      "https://epoch.ai/assets/images/data-insights/ai-datacenter-share-gdp/ai-datacenter-share-gdp.png",
+      "https://cdn.statcdn.com/Infographic/images/normal/35046.jpeg",
+      "https://cdn.statcdn.com/Infographic/images/teaser/36314.jpeg",
+      "https://cdn.statcdn.com/Infographic/images/teaser/34865.jpeg"
+    ]
+  },
+  {
+    "id": "seams-showing-dossier",
+    "name": "The Cut-and-Paste Dossier",
+    "status": "residual",
+    "oneliner": "The case against the system assembled with visible tape, torn edges, halftone scraps, and duotone clip-art.",
+    "bg": "#7c6bd9",
+    "text": "#f6f1e4",
+    "palette": [
+      "#F2A0BE",
+      "#C9C9C4",
+      "#C8B98E",
+      "#7C6BD9",
+      "#E86A3C"
+    ],
+    "def": "System critique rendered as collage that keeps its seams visible: taped corners, torn edges, halftone archival scraps, duotone clip-art, fold creases, and degraded rescans. The visible cut is the argument — someone assembled this case file by hand, against a machine that produces seamlessness.",
+    "visual": [
+      "visible tape, torn and rough-cut paper edges",
+      "halftone dots and photocopier grain on archival material",
+      "fold creases and rescan damage worn openly",
+      "flat duotone fills over B&W photography",
+      "collision montage: kitsch past pasted against financialized present",
+      "cut-out figures floating over repeating fields (cubicles, product grids)",
+      "the pasted-document frame: image presented as a file in a case"
+    ],
+    "verbal": [
+      "girlboss",
+      "second wave",
+      "hustle",
+      "meritocracy",
+      "post-reality",
+      "aesthetic audits",
+      "deja vu"
+    ],
+    "quotes": [
+      {
+        "q": "The tide of girl boss feminism is rising for a second wave.",
+        "src": "Polyester",
+        "url": "https://www.polyesterzine.com/features/the-second-wave-of-girl-boss-feminism-still-wont-save-usnbsp"
+      },
+      {
+        "q": "an entrance into the “we must” genre of aesthetic audits",
+        "src": "Alana Pockros, Dirt",
+        "url": "https://dirt.fyi/article/2026/05/panic-at-the-post-reality"
+      }
+    ],
+    "against": "Defines itself against algorithmic seamlessness and stock-image gloss; also against the Receipt Dump's cold interface artifacts — the dossier is hot, handmade, and openly partisan. Risk: the photomontage lineage is so established (Heartfield to punk zine to riot-grrrl) that it can read as nostalgia for critique rather than critique.",
+    "execution": "Cheap, fast, and instantly legible as dissent — which is why brands keep borrowing it and why it curdles fastest. A client using this code must actually name a system and take a side; collage aesthetics wrapped around no indictment read as Urban Outfitters zine-wash. The tell of authentic use: the specific archival source material matters and is credited.",
+    "evidence": [
+      {
+        "s": "polyesterzine.com",
+        "u": "https://www.polyesterzine.com/features/the-second-wave-of-girl-boss-feminism-still-wont-save-usnbsp"
+      },
+      {
+        "s": "africasacountry.com",
+        "u": "https://africasacountry.com/2026/05/how-to-read-postcolonial-writing"
+      },
+      {
+        "s": "restofworld.org",
+        "u": "https://restofworld.org/2026/virtual-assistant-linkedin-engagement/"
+      },
+      {
+        "s": "dirt.fyi",
+        "u": "https://dirt.fyi/article/2026/05/panic-at-the-post-reality"
+      },
+      {
+        "s": "kolajmagazine.com / kolajinstitute.org",
+        "u": "https://www.kolajmagazine.com/exhibition/politics-in-collage.html"
+      },
+      {
+        "s": "norton.org",
+        "u": "https://www.norton.org/exhibitions/cut-upcut-out-photomontage-and-collage"
+      },
+      {
+        "s": "eyeondesign.aiga.org",
+        "u": "https://eyeondesign.aiga.org/how-feminist-movements-co-opt-graphic-design-to-express-themselves/"
+      }
+    ],
+    "trajectory": "2026-07-03 coined · 2026-07-03 evidence",
+    "imgs": [
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/ccf96b33-8b1d-48d4-b744-5cbb2697a169/girlboss1.png?format=2500w",
+      "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/a49e3a45-dd4a-46da-ac0c-3f5d10af5ace/girlboss.png?format=2500w",
+      "https://media.africasacountry.com/images/2026/5/330165057280-card.jpg",
+      "https://fastly.restofworld.org/uploads/2026/06/RoW_Dispatch_25Jun2026.jpg?width=340&dpr=2&crop=3:2",
+      "https://fastly.restofworld.org/uploads/2026/06/EV-Battery-divergence-2.jpg?width=340&dpr=2&crop=3:2",
+      "https://images.ctfassets.net/5p1u9t4r48s4/7fOttbs0aMG7JHoRC0gAOy/dee02abbbd88712bef5f2b6e480bd477/Alana_Pockros.png?w=1500&q=60&fm=avif",
+      "https://www.kolajmagazine.com/exhibition/politics/images/mori-anderson-hitchcock.jpg",
+      "https://www.kolajmagazine.com/exhibition/politics/images/phyllis-famiglietti.jpg",
+      "https://www.kolajmagazine.com/exhibition/politics/images/Arras-Ecological-grief.jpg",
+      "https://www.norton.org/storage/app/uploads/public/435/ed9/8a6/thumb__1130_0_0_0_auto.jpg",
+      "https://www.norton.org/storage/app/uploads/public/135/bee/b2b/thumb__1130_0_0_0_auto.jpg",
+      "https://www.norton.org/storage/app/uploads/public/8fb/c01/31c/thumb__1130_0_0_0_auto.jpg"
+    ]
+  },
+  {
+    "id": "rigging-in-shot",
+    "name": "The Rigging in Shot",
+    "status": "dominant",
+    "oneliner": "Shoot the spectacle so its rigging shows: sponsor boards, press banks, LED walls, and the stage on the state's lawn.",
+    "bg": "#1b2a55",
+    "text": "#e9f3ef",
+    "palette": [
+      "#35D07F",
+      "#E8552F",
+      "#3F9B4C",
+      "#F5F7F7",
+      "#1B2A55"
+    ],
+    "def": "Documentary and wire photography framed so the spectacle's machinery is the subject: sponsor boards and accreditation numbers, banks of photographers, LED walls and lasers dwarfing the performer, the octagon staged on the White House lawn. The camera steps back far enough that the apparatus can't hide.",
+    "visual": [
+      "LED volume glow and stage-laser bloom",
+      "printed sponsor hoardings and perimeter boards",
+      "broadcast-grade floodlight flatness",
+      "archival B&W silver grain for the historical version of the same shot",
+      "wide enough that the apparatus frames or dwarfs the human subject",
+      "the watchers watched: photographer banks and camera rigs inside the frame",
+      "brand marks kept legible at the edges rather than cropped out"
+    ],
+    "verbal": [
+      "spectacle",
+      "clout",
+      "authenticity test",
+      "hype problem",
+      "elite spectacle",
+      "apolitical",
+      "sponsor"
+    ],
+    "quotes": [
+      {
+        "q": "The World Cup was born from imperial rivalry and nationalist aspiration.",
+        "src": "Africa Is a Country",
+        "url": "https://africasacountry.com/2026/06/a-world-cup-without-the-world"
+      },
+      {
+        "q": "What was once cool is now a big-box clout store",
+        "src": "Amy Odell, Back Row",
+        "url": "https://www.backrow.net/p/the-met-gala-is-now-the-tech-gala"
+      }
+    ],
+    "against": "Defines itself against the tight hero crop — the official image that hides the rigging. Also against the Cut-and-Paste Dossier: no collage needed, the machine incriminates itself in a straight photograph. Tension inside the code: these are often the same Getty frames the machine sells; only editorial selection and caption turn them into indictment.",
+    "execution": "For clients this is the most dangerous code to touch: it is the aesthetic used to expose sponsors, and any brand executing it is volunteering for the wide shot. Legitimate use: show your own apparatus on purpose (staging, logistics, money) before someone else frames it for you. Misuse: 'behind-the-scenes' content art-directed to look candid reads as the machine cosplaying its own exposure.",
+    "evidence": [
+      {
+        "s": "africasacountry.com",
+        "u": "https://africasacountry.com/2026/06/what-bafana-bafana-teaches-south-africa-about-itself"
+      },
+      {
+        "s": "africasacountry.com",
+        "u": "https://africasacountry.com/2026/06/a-world-cup-without-the-world"
+      },
+      {
+        "s": "thebaffler.com",
+        "u": "https://thebaffler.com/latest/groypthink-brennan"
+      },
+      {
+        "s": "newlinesmag.com",
+        "u": "https://newlinesmag.com/spotlight/drake-dj-khaled-and-palestines-authenticity-test/"
+      },
+      {
+        "s": "sightunseen.com",
+        "u": "https://www.sightunseen.com/2026/04/milan-in-review-pt-i-salones-big-hype-problem-plus-monicas-top-picks/"
+      },
+      {
+        "s": "lamag.com",
+        "u": "https://lamag.com/sports/how-are-brands-reacting-to-fifas-debranding-requirement-as-the-world-cup-unfolds/"
+      },
+      {
+        "s": "pulitzercenter.org",
+        "u": "https://pulitzercenter.org/stories/photo-essay-seeing-political"
+      },
+      {
+        "s": "thefootballweek.com",
+        "u": "https://thefootballweek.com/2026/05/27/world-cup-stadium-names/"
+      }
+    ],
+    "trajectory": "2026-07-03 coined · 2026-07-03 evidence",
+    "imgs": [
+      "https://media.africasacountry.com/images/2026/1/603156651935-card.jpg",
+      "https://media.africasacountry.com/images/2026/6/669598096159-card.jpg",
+      "https://media.africasacountry.com/images/2026/6/277322486948-card.jpg",
+      "https://thebaffler.com/wp-content/uploads/2026/06/02-1.jpg",
+      "https://newlinesmag.com/wp-content/uploads/GettyImages-117479512.jpg-web.jpg",
+      "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/04/2026_OldSalonePic.jpg",
+      "https://lamag.com/wp-content/uploads/2026/06/20250313_LAWC_SoFi_NV_312-copy-1200x675.jpg",
+      "https://lamag.com/wp-content/uploads/2026/07/FWC26_CWC_CC_JC_IMG_0164-1200x675.jpg",
+      "https://lamag.com/wp-content/uploads/2026/06/IMG_5895-scaled-e1782924630983-1200x675.jpg",
+      "https://pulitzercenter.org/sites/default/files/styles/orig_optimized/public/inline-images/Seeing%20Political%202.jpg.webp?itok=5JzqgaoN",
+      "https://pulitzercenter.org/sites/default/files/styles/orig_optimized/public/inline-images/Seeing%20Political%204.jpg.webp?itok=T-fRJRT2",
+      "https://pulitzercenter.org/sites/default/files/styles/orig_optimized/public/inline-images/Seeing%20Political%203.jpg.webp?itok=qFh7lpqQ"
+    ]
+  },
+  {
+    "id": "icon-assembly-line",
+    "name": "The Icon Assembly Line",
+    "status": "dominant",
+    "oneliner": "The fame machine exposed by lining up its output: one icon replicated across painting, print, merch, and cartoon.",
+    "bg": "#2f7d4f",
+    "text": "#f7ecdf",
+    "palette": [
+      "#2F7D4F",
+      "#E8608A",
+      "#E0A13A",
+      "#C9B896",
+      "#EDE8DF"
+    ],
+    "def": "Fame and canon shown as manufacture: the same face or work replicated across formats (painting to lotería print to beer can to kids' cartoon), prize ceremonies and press conferences photographed as canon machinery, chart records annotated with the question of who profits. The multiplication itself is the exposé.",
+    "visual": [
+      "saturated Kodachrome and folk-print surfaces beside mass-produced merch finishes",
+      "aluminum cans, menu cards, and app screens carrying the icon's face",
+      "archival grain on the origin image; retail gloss on the copies",
+      "the replication series: same figure restated across mediums within one image set",
+      "press-conference and podium framing for canon events (laureate at the mic, branded backdrop)",
+      "annotation gestures — stickers, overlays — interrogating the chart or record"
+    ],
+    "verbal": [
+      "the making of",
+      "icon",
+      "canon",
+      "records",
+      "prize",
+      "brand",
+      "authenticity",
+      "collective id"
+    ],
+    "quotes": [
+      {
+        "q": "Frida: The Making of an Icon",
+        "src": "Tate Modern",
+        "url": "https://www.tate.org.uk/whats-on/tate-modern/frida-kahlo-the-making-of-an-icon"
+      },
+      {
+        "q": "the vocalisation of the collective id",
+        "src": "Mary Chiney, The Quietus",
+        "url": "https://thequietus.com/subscriber-area/low-culture-essay/low-culture-essay-mary-chiney-on-stanley-okories-nollywood-soundtracks/"
+      }
+    ],
+    "against": "Defines itself against the hagiographic retrospective that hides the merch table. Its live contradiction is self-implication: the institution exhibiting the making-of is the machine still making — Tate sells the Frida beer in the same scroll that names icon-manufacture. The unmasking and the monetization share a page.",
+    "execution": "Powerful for brands with archives: show the production run honestly (original, copies, merch, profit) and audiences credit the candor. The trap is the Tate move executed without self-awareness — narrating the machine while operating it reads as cynicism the moment anyone screenshots the juxtaposition. If a client can't survive the gift-shop-next-to-the-critique screenshot, this code is not for them.",
+    "evidence": [
+      {
+        "s": "tate-modern",
+        "u": "https://www.tate.org.uk/whats-on/tate-modern/frida-kahlo-the-making-of-an-icon"
+      },
+      {
+        "s": "africasacountry.com",
+        "u": "https://africasacountry.com/2026/05/how-to-read-postcolonial-writing"
+      },
+      {
+        "s": "slate.com",
+        "u": "https://slate.com/culture/2026/05/drake-iceman-kendrick-lamar-billboard-michael-jackson-janice.html"
+      },
+      {
+        "s": "thequietus.com",
+        "u": "https://thequietus.com/subscriber-area/low-culture-essay/low-culture-essay-mary-chiney-on-stanley-okories-nollywood-soundtracks/"
+      },
+      {
+        "s": "popmatters.com",
+        "u": "https://www.popmatters.com/recomposed-kyle-devine-ecology-music"
+      },
+      {
+        "s": "frieze.com",
+        "u": "https://www.frieze.com/article/frida-kahlo-tate-2026-review"
+      },
+      {
+        "s": "timeout.com",
+        "u": "https://www.timeout.com/london/news/frida-kahlo-tate-modern-london-review-062426"
+      },
+      {
+        "s": "wallpaper.com",
+        "u": "https://www.wallpaper.com/art/exhibitions-shows/tate-modern-frida-kahlo-review"
+      },
+      {
+        "s": "news.artnet.com",
+        "u": "https://news.artnet.com/art-world/art-merchandise-market-2080427"
+      },
+      {
+        "s": "blooloop.com",
+        "u": "https://blooloop.com/museum/opinion/art-museum-gift-shop-merchandise/"
+      }
+    ],
+    "trajectory": "2026-07-03 coined · 2026-07-03 evidence · 2026-07-03 status",
+    "imgs": [
+      "https://media.tate.org.uk/aztate-prd-ew-dg-wgtail-st1-ctr-data/images/Nickolas_Muray_Frida_Kahlo_on_a_White_Bench_N_.width-840.jpg",
+      "https://media.tate.org.uk/aztate-prd-ew-dg-wgtail-st1-ctr-data/images/Richard_Duardo_Frida_Grandisima_2003_Courtesy.width-1440.jpg",
+      "https://media.tate.org.uk/aztate-prd-ew-dg-wgtail-st1-ctr-data/images/Tate_teaster_v3.width-420.png",
+      "https://media.africasacountry.com/images/2021/10/778559390648-card.jpeg",
+      "https://media.africasacountry.com/images/2024/11/021328553987-card.jpg",
+      "https://compote.slate.com/images/297f6373-f447-4e4a-b0bf-dae4cf15695c.jpeg?crop=1560%2C1040%2Cx0%2Cy0&width=2200",
+      "https://thequietus.com/app/uploads/2026/05/stanley.jpg",
+      "https://www.popmatters.com/wp-content/uploads/2026/05/Recomposed-Kyle-Devine-196x300.webp",
+      "https://static.frieze.com/files/inline-images/Mary%20McCartney%20-%20Being%20Frida%20London.jpg?VersionId=yUxXG0Ntaym2FDxgZlVAhJtrMX.OZRmh",
+      "https://static.frieze.com/files/inline-images/Frida%20Kahlo%20-%20Untitled%20Self-portrait%20with%20thorn%20necklace%20and%20hummingbird%20%281%29.jpg?VersionId=CXcG.rNmXM1UAVozQ9OEuIk4Pe0UxGsq",
+      "https://media.timeout.com/images/106419503/image.webp",
+      "https://media.timeout.com/images/106419504/image.webp"
+    ]
+  }
+];
+
+const INTRO_BG = [250,250,248];
+function hexRgb(h){ h=h.replace('#',''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
+function mix(a,b,t){ return `rgb(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)})`; }
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+// intro list
+const cl = document.getElementById('codelist');
+CODES.forEach((c,i)=>{
+  const a = document.createElement('a');
+  a.href = '#'+c.id;
+  a.innerHTML = `<span class="num">0${i+1}</span><span class="dot" style="background:${c.palette[c.palette.length-1]}"></span>${c.name}`;
+  cl.appendChild(a);
+});
+
+// code sections
+const main = document.getElementById('codes');
+const spanPattern = ['big','','tall','','wide','','tall','','','wide','','tall'];
+CODES.forEach((c,i)=>{
+  const sec = document.createElement('section');
+  sec.className = 'code';
+  sec.id = c.id;
+  sec.dataset.bg = c.bg;
+  sec.style.color = c.text;
+  sec.style.setProperty('--tx', c.text);
+
+  const tiles = c.imgs.map((src,j)=>{
+    const k = spanPattern[j % spanPattern.length];
+    return `<figure class="${k}"><img src="${src}" loading="lazy" referrerpolicy="no-referrer" alt="" onerror="this.closest('figure').remove()"></figure>`;
+  }).join('');
+  const sw = c.palette.map(p=>`<span style="background:${p}"></span>`).join('');
+  const visualChips = c.visual.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const verbalChips = c.verbal.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const quotes = c.quotes.map(q=>`<div class="quote"><span class="q">“${esc(q.q)}”</span> <a href="${q.url}" target="_blank" rel="noopener">${esc(q.src)} →</a></div>`).join('');
+  const ev = c.evidence.map(e=>`<a href="${e.u}" target="_blank" rel="noopener">${esc(e.s)} →</a>`).join('');
+
+  sec.innerHTML = `
+    <div class="hero">
+      <div class="text">
+        <div class="num">0${i+1} / 0${CODES.length}</div>
+        <span class="status">${c.status}</span>
+        <h2>${c.name}</h2>
+        <p class="oneliner">${c.oneliner}</p>
+        <div class="palette">${sw}</div>
+        <div class="scrollon">Scroll for the analysis ↓</div>
+      </div>
+      <div class="collage">${tiles}</div>
+    </div>
+    <div class="analysis">
+      <p class="def">${esc(c.def)}</p>
+      <div class="grid2">
+        <div class="block"><div class="label">Visual register</div><div class="chips">${visualChips}</div></div>
+        <div class="block"><div class="label">Verbal register</div><div class="chips">${verbalChips}</div><div class="quotes">${quotes}</div></div>
+        <div class="block"><div class="label">Against</div><div class="body">${esc(c.against)}</div></div>
+        <div class="block"><div class="label">Execution</div><div class="body">${esc(c.execution)}</div></div>
+        <div class="block full"><div class="label">Evidence</div><div class="ev">${ev}</div></div>
+        <div class="meta"><span>${esc(IMG_NOTE)}</span><span>Trajectory · ${esc(c.trajectory)}</span></div>
+      </div>
+    </div>`;
+  main.appendChild(sec);
+});
+
+// scroll color morph
+const bg = document.getElementById('bg');
+const stops = [...document.querySelectorAll('.code')].map(s=>({el:s, rgb:hexRgb(s.dataset.bg)}));
+function paint(){
+  const vh = window.innerHeight;
+  const mid = window.scrollY + vh*0.5;
+  const introH = document.getElementById('intro').offsetHeight;
+  if(mid < stops[0].el.offsetTop){
+    const t = Math.max(0, Math.min(1, (mid - introH*0.4) / (introH*0.6)));
+    bg.style.backgroundColor = mix(INTRO_BG, stops[0].rgb, t);
+    return;
+  }
+  let idx = 0;
+  for(let i=0;i<stops.length;i++){ if(mid >= stops[i].el.offsetTop) idx = i; }
+  const cur = stops[idx];
+  const next = stops[idx+1] || cur;
+  const start = cur.el.offsetTop;
+  const end = stops[idx+1] ? stops[idx+1].el.offsetTop : start + cur.el.offsetHeight;
+  const t = Math.max(0, Math.min(1, (mid - start) / (end - start)));
+  const tt = t < 0.7 ? 0 : (t - 0.7) / 0.3;
+  bg.style.backgroundColor = mix(cur.rgb, next.rgb, tt);
+}
+let ticking=false;
+window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(()=>{paint();ticking=false;}); ticking=true; } },{passive:true});
+window.addEventListener('resize',paint);
+paint();
+</script>
+</body>
+</html>

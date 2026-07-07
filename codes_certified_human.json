@@ -1,14 +1,16 @@
 {
   "need": "Certified Human",
-  "updated": "2026-06-12",
+  "updated": "2026-07-02",
   "runs_covered": [
     "2026-04-29",
     "2026-06-01",
-    "2026-06-11"
+    "2026-06-11",
+    "2026-07-02"
   ],
-  "images_observed": 83,
-  "articles_viewed": 27,
+  "images_observed": 248,
+  "articles_viewed": 67,
   "method_note": "Pilot baseline coding per SEMIOTIC_CODEBOOK.md. Two visual passes (46 + 37 images, second pass run adversarially against first-pass candidates) + one verbal pass (14 texts). Palette hexes are observational approximations from article imagery, not brand-spec values.",
+  "method_note_2026_07_02": "Round-1 contact-sheet pass via the image_scraper subsystem: 40 corpus articles scraped, 192 images composited into 16 numbered 12-up sheets with sidecar JSONs, ~165 real images after junk slips, read by Fable against the sidecars. 1granary's 853-photo CSM gallery was deliberately down-sampled to 15 images, treat it as under-sampled, not thin. All statuses held; no new code coined (the strongest candidate, process-documents-published-as-the-work, has only 2 clean independent visual sources so far, below the 4-source bar; flagged for round-2 targeted search).",
   "codes": [
     {
       "id": "provenance-ledger",
@@ -172,6 +174,46 @@
             "https://static.dezeen.com/uploads/2026/05/uwe-bristol-dezeenschoolshows_dezeen_2364_col_1-852x1206.jpg",
             "https://static.dezeen.com/uploads/2026/05/uwe-bristol-dezeen-schoolshows_dezeen_2364_col_1-852x1157.jpg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "dezeen.com",
+          "url": "https://www.dezeen.com/2026/06/15/foraged-woven-fashion-collection-new-designers-2026-schoolshows/",
+          "note": "the Student/Course/School block persists at scale: every image at New Designers 2026 ships with its provenance chain as designed form",
+          "image_refs": [
+            "https://static.dezeen.com/uploads/2026/06/New-Designers_dezeen_2364_col_9-1704x2556.jpg",
+            "https://static.dezeen.com/uploads/2026/06/New-Designers_dezeen_2364_col_8-1704x2410.jpg",
+            "https://static.dezeen.com/uploads/2026/06/New-Designers_dezeen_2364_col_3-1704x987.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "thisiscolossal.com",
+          "url": "https://www.thisiscolossal.com/2026/05/adrienna-matzeg-embroidery-storefronts-travel-asia/",
+          "note": "After Hours series: 'Detail of…' pairing + 'courtesy of the artist, shared with permission' consent line, the full ledger grammar on a second Matzeg body of work",
+          "image_refs": [
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-4.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-10.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "impulsemagazine.com",
+          "url": "https://impulsemagazine.com/articles/soft-bodies-hard-tech",
+          "note": "full museum captions (materials, dimensions, photographer, courtesy line) on machine-knit sculpture, the ledger applied even where the making is computerized",
+          "image_refs": [
+            "https://cdn.prod.website-files.com/69308f400b470c6c45731e6d/69f576a65c8f3ded30a323c7_felix%20with%20dog.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "hyperallergic.com",
+          "url": "https://hyperallergic.com/my-queasy-forest-scented-stroll-through-las-new-ai-art-museum/",
+          "note": "counterexample, provenance theater at institutional scale: Dataland's AI museum wears the ledger's forms (Data.Token wristbands, dataset labels, 'ethical AI' and low-CO2 disclosure) around machine output",
+          "image_refs": [
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/06/Dataland3.jpg",
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/06/Dataland1.jpg"
+          ]
         }
       ],
       "confidence": "high",
@@ -181,6 +223,11 @@
           "run": "2026-06-12",
           "change": "coined",
           "note": "pilot baseline; strongest pattern across both visual batches and the verbal pass"
+        },
+        {
+          "run": "2026-07-02",
+          "change": "evidence",
+          "note": "contact-sheet round 1: grad-show provenance blocks confirmed at scale (dezeen x2), Matzeg consent-line grammar continues, Beaudry museum captions on machine-knit work; counterfeit escalated from products to institutions (Dataland wearing the ledger's forms). Status holds dominant."
         }
       ]
     },
@@ -346,6 +393,46 @@
             "https://www.thisiscolossal.com/wp-content/uploads/2026/05/ramos-4.jpeg",
             "https://www.thisiscolossal.com/wp-content/uploads/2026/05/ramos-2.jpeg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "dezeen.com",
+          "url": "https://www.dezeen.com/2026/05/14/zero-waste-textiles-project-among-work-featured-at-new-designers-2026/",
+          "note": "field-of-many-units twice over (green-glazed cup field, dye-recipe skein flat-lay) plus turned vessel and woven-seat chair, the code's full compositional kit in one grad show",
+          "image_refs": [
+            "https://static.dezeen.com/uploads/2026/05/new-designers-dezeen-schoolshows_dezeen_2364_col_3-1704x1137.jpg",
+            "https://static.dezeen.com/uploads/2026/05/new-designers-dezeen-schoolshows_dezeen_2364_col_6-1704x1136.jpg",
+            "https://static.dezeen.com/uploads/2026/05/new-designers-dezeen-schoolshows_dezeen_2364_col_7-1704x1550.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "thisiscolossal.com",
+          "url": "https://www.thisiscolossal.com/2026/05/adrienna-matzeg-embroidery-storefronts-travel-asia/",
+          "note": "After Hours continuation: the city's machine zones (7-Eleven, vending machine, photobooth, karaoke sign) hand-slowed stitch by stitch, full-work-then-detail pairing throughout",
+          "image_refs": [
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-2.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-11.jpg",
+            "https://www.thisiscolossal.com/wp-content/uploads/2026/05/matzeg-6.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "radii.co",
+          "url": "https://radii.co/article/vinyl-bars-film-cameras-and-the-rise-of-asias-analog-revival",
+          "note": "working hands return: hands mid-process pressing an incense seal (Scent of China feature tile), against the pilot's finding of 1 working-hand image in 83",
+          "image_refs": [
+            "https://imagedelivery.net/WLUarKbmUXuuhDC7PG5_Qw/radii.co/2026/07/radii-scent-of-china-docu-series-00.jpg/w=1511,h=1133"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "hyperallergic.com",
+          "url": "https://hyperallergic.com/my-queasy-forest-scented-stroll-through-las-new-ai-art-museum/",
+          "note": "counterexample: Dataland's Qualia, a robotic arm that 'paints one abstract data-driven painting each day', the enumeration form worn without the human referent",
+          "image_refs": [
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/06/DatalandQualia.jpg"
+          ]
         }
       ],
       "confidence": "high",
@@ -355,6 +442,11 @@
           "run": "2026-06-12",
           "change": "coined",
           "note": "pilot baseline; merges first-pass 'Loop-Level Proof' + 'Black-Linen Reliquary' (reframed by batch 2: gallery grammar, not black linen) + batch-2 'Enumerated Labor'"
+        },
+        {
+          "run": "2026-07-02",
+          "change": "evidence",
+          "note": "contact-sheet round 1: compositional kit confirmed (unit fields, stitch macros, detail pairing). NOTABLE SHIFT: working/using hands reappear (~5 of 165 images vs 1 of 83 in pilot: incense-seal hands, hoop hands, hand-on-toaster-dial, hand-holding-recorder), the counting is migrating back onto the body. Counterexample logged: robot arm performing dailiness at Dataland. Status holds dominant."
         }
       ]
     },
@@ -416,7 +508,9 @@
           "real",
           "witness",
           "ear",
-          "taste"
+          "taste",
+          "活人感 huo ren gan ('living-person feel', the uncurated self)",
+          "反精致 fan jing zhi (anti-polished)"
         ],
         "metaphors": [
           "body as credential: mortality, appetite, addiction as the unforgeable watermark",
@@ -438,6 +532,16 @@
             "quote": "However bad a writer you think you are, you are not worse than AI.",
             "source": "Sam Kriss",
             "url": "https://samkriss.substack.com/p/if-you-let-ai-do-your-writing-i-will"
+          },
+          {
+            "quote": "a new standard for authenticity, the quality of feeling genuinely, unpolishedly alive",
+            "source": "RADII Buzzwords (on 活人感)",
+            "url": "https://radii.co/article/radii-buzzwords-june-2026"
+          },
+          {
+            "quote": "反精致 is the pushback: intentionally rough, unstaged, and unbothered",
+            "source": "RADII Buzzwords",
+            "url": "https://radii.co/article/radii-buzzwords-june-2026"
           }
         ]
       },
@@ -504,7 +608,30 @@
           "signal_id": "restofworld_org_2026_06_11_001",
           "source": "restofworld.org",
           "url": "https://restofworld.org/2026/ai-agent-china-one-person-company/",
-          "note": "verification ends not in a tool but in finding the specific human in Guilin"
+          "note": "verification ends not in a tool but in finding the specific human in Guilin; 2026-07-02 adds the image itself: Shen Daojing photographed at his desk, the found human as the story's proof",
+          "image_refs": [
+            "https://fastly.restofworld.org/uploads/2026/04/handout_Shen-Daojing.jpg?width=1900&dpr=2"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "radii.co",
+          "url": "https://radii.co/article/radii-buzzwords-june-2026",
+          "note": "the code goes mass-vernacular: Chinese internet coins 活人感 ('living-person feel' / the uncurated self) and 反精致 (anti-polished, 'intentionally rough, unstaged, and unbothered') as named standards of authenticity",
+          "image_refs": [
+            "https://radii.co/wp-content/uploads/2026/06/radii-buzzword-june-2026-04.jpg",
+            "https://radii.co/wp-content/uploads/2026/06/radii-buzzword-june-2026-01.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "culturedmag.com",
+          "url": "https://www.culturedmag.com/article/2026/06/12/art-zero10-digital-art-basel-trevor-paglen/",
+          "note": "witness casting in art-world editorial: environmental portraits in a rooftop garden, formal frontal unsmiling group in an industrial corridor, every frame with named photographer credits",
+          "image_refs": [
+            "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/06/11125234/Eli-Scheinman-and-Trevor-Paglen-ArtBasel_Tompkins_0285-scaled.jpg",
+            "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/06/30113056/OMA_NewMuseum_AFradkin_1157.jpg"
+          ]
         },
         {
           "signal_id": null,
@@ -525,6 +652,11 @@
           "run": "2026-06-12",
           "change": "coined",
           "note": "pilot baseline; merges first-pass 'Face as Certificate' with batch-2 'Snapshot Vernacular'; absorbs the broken 'Tool-in-Hand' candidate (working hands appear in 1 of 83 images, labor-presence is carried by people and registration, not action shots)"
+        },
+        {
+          "run": "2026-07-02",
+          "change": "evidence",
+          "note": "strongest find of the run: the code crossed from niche editorial into mass vernacular, RADII documents Chinese-internet coinages 活人感 (the uncurated self) and 反精致 (anti-polished) as named authenticity standards; appended both to lexicon + two verbatim sample phrases. Visual: Shen Daojing found-human photo added to existing restofworld entry; culturedmag witness casting. Status holds dominant, and mass adoption suggests watching for exhaustion (when unpolish becomes the polish)."
         }
       ]
     },
@@ -684,6 +816,24 @@
           "source": "readmax.substack.com",
           "url": "https://maxread.substack.com/p/people-prefer-ai-art-because-people-811",
           "note": "the audience problem: people prefer the pleasing; this code is deliberately minoritarian"
+        },
+        {
+          "signal_id": null,
+          "source": "hyperallergic.com",
+          "url": "https://hyperallergic.com/my-queasy-forest-scented-stroll-through-las-new-ai-art-museum/",
+          "note": "counterexample, the mirror-fraud at institutional scale: Dataland wraps AI output in wellness, sustainability and museum language ('forest-scented', 'ethical AI'), the critic's register is 'queasy'",
+          "image_refs": [
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/06/Dataland12.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "restofworld.org",
+          "url": "https://restofworld.org/2026/ai-agent-china-one-person-company/",
+          "note": "counterexample: YiXiang, '3,000 years of wisdom, 3 seconds on your face', ancient-wisdom skin on agent-run slop; the platform is literally named Polsia, 'AI slop' spelled backwards",
+          "image_refs": [
+            "https://fastly.restofworld.org/uploads/2026/04/screenshot_yijing2.png?width=1900&dpr=2"
+          ]
         }
       ],
       "confidence": "medium",
@@ -693,6 +843,11 @@
           "run": "2026-06-12",
           "change": "coined",
           "note": "pilot baseline; reframed by batch 2 from internet-detritus-only to substrate-agnostic (cartons count); mirror-fraud counterexample logged"
+        },
+        {
+          "run": "2026-07-02",
+          "change": "evidence",
+          "note": "honest reading: no new independent expressions of the code itself this run (the Polyester works resurfaced, same source), while the counterfeit side scaled from CGI-wearing-craft-language to whole institutions (Dataland, YiXiang). Status stays emergent but unconfirmed by this intake; round 2 should target the code directly (meme-art shows, airbrush revival, riso culture) before the next status call."
         }
       ]
     },
@@ -823,6 +978,26 @@
           "image_refs": [
             "https://img.pastemagazine.com/wp-content/avuploads/2026/02/24101751/MixCollage-24-Feb-2026-10-16-AM-6079.jpg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "sightunseen.com",
+          "url": "https://www.sightunseen.com/2026/06/ceramic-burlwood-vintage-nightclub-chairs-bronze-reliefs-and-more-from-lisbon-design-week/",
+          "note": "the sanctuary extends from listening bars to lived-with design: designers showing new work in their own homes, in a decaying Baroque chapel, in Couelle's inhabited landscape house, domestic patina as the certification ground",
+          "image_refs": [
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/06/LDW_FurtherTher_1.jpg",
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/06/LDW_LusoCollective_1.jpg",
+            "https://www.sightunseen.com/wordpress/wp-content/uploads/2026/06/DragonHill_5.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "hyperallergic.com",
+          "url": "https://hyperallergic.com/my-queasy-forest-scented-stroll-through-las-new-ai-art-museum/",
+          "note": "counterexample: Dataland names a gallery 'The Sanctuary' and pipes in forest scent, the machine borrowing the sanctuary's own vocabulary",
+          "image_refs": [
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/06/Dataland14.jpg"
+          ]
         }
       ],
       "confidence": "high",
@@ -832,6 +1007,11 @@
           "run": "2026-06-12",
           "change": "coined",
           "note": "pilot baseline; deliberately tagged residual per codebook honesty rule, this is the client-default register"
+        },
+        {
+          "run": "2026-07-02",
+          "change": "evidence",
+          "note": "contact-sheet round 1: radii reading-cafe imagery re-confirmed (same article as pilot evidence); NEW carrier: lived-with design (home-as-showroom, ruin-as-venue) via Sight Unseen Lisbon. Watch-item: retro-COMPUTING entering the register (Tamagotchis, retro consoles, retro-Mac illustration), the sanctuary absorbing early digital objects. Counterexample: Dataland's 'The Sanctuary' gallery. Status holds residual."
         }
       ]
     }

@@ -25,7 +25,9 @@ The Playwright step downloads a headless Chromium (~150MB). You can skip it and 
 python run.py scrape --need "Certified Human"
 ```
 
-Useful flags: `--limit 40` (max articles, default 40), `--days 90` (only recent signals), `--run 2026-06-22` (only one harvest run), `--force` (re-scrape URLs already in the ledger), `--no-playwright`, `--rate 2` (seconds between hits to the same domain).
+Two balance caps are on by default (added 2026-07-02 after one 853-photo runway gallery flooded round 1): `--max-per-article 15` keeps at most 15 images per article (first 15 in document order, the true count is preserved as `images_found`; 0 = uncapped), and `--target-images 250` sets the collection target per code/run, scraping stops early once the pool hits it (un-scraped articles stay out of the ledger, so the next run picks them up). If a run ends short of target, it warns and suggests raising `--limit`, widening `--days`, or feeding round-2 URLs.
+
+Other flags: `--limit 60` (max articles, default 60), `--days 90` (only recent signals), `--run 2026-06-22` (only one harvest run), `--force` (re-scrape URLs already in the ledger), `--no-playwright`, `--rate 2` (seconds between hits to the same domain).
 
 Round 2, for URLs found via web search (one URL per line, `#` comments allowed):
 
