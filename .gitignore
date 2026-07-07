@@ -39,6 +39,8 @@ image_scraper/seen_urls.json
 # sheets_ch_backup) — same imagery, same copyright rule, never commit
 image_scraper/.cache_*/
 image_scraper/*_backup/
+# round-1 reference sheets kept locally for internal demo (2026-07-07) — same imagery, same copyright rule, never commit
+image_scraper/sheets_round1/
 
 # NOTE: intentionally TRACKED (not ignored):
 #   .emb_cache.npz      — int8 embedding cache; expensive to regenerate

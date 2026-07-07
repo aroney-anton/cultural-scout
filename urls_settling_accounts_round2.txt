@@ -1,0 +1,39 @@
+# Round-2 candidate URLs — Settling Accounts semiotic coding (2026-07-07)
+# Feed via: python run.py scrape --urls urls_settling_accounts_round2.txt
+# Grouped by the thin code each serves. Verify per-article fetchability at scrape time.
+
+# --- stitched-testimony (2 outlets round 1; needs source independence) ---
+https://mymodernmet.com/arleene-correa-valencia-codice-exhibition/
+https://buffaloakg.org/art/exhibitions/comunidades-visibles-materiality-migration
+https://craftcouncil.org/articles/in-a-chicago-exhibition-a-focus-on-migration-and-self-taught-artists/
+https://www.frieze.com/article/lauren-elkin-thread-of-dissent-241
+
+# --- inheritance-reactivated, photo wing (2 strong outlets round 1) ---
+https://www.1854.photography/2025/04/middle-east-archive-living-rooms-book/
+https://aperture.org/editorial/roi-saade-is-building-a-new-photobook-world/
+https://www.printedmatter.org/programs/events/1781
+
+# --- canon-corrected, outdoor wing (source-diverse, image-thin) ---
+https://www.london.gov.uk/programmes-strategies/arts-and-culture/current-culture-projects/fourth-plinth-trafalgar-square/fourth-plinth-winners-2026-and-2028
+https://news.artnet.com/art-world/confederate-monuments-brick-los-angeles-museum-contemporary-art-2701985
+https://artreview.com/can-we-imagine-public-art-beyond-toxic-monumentality/
+
+# --- girlhood-retrial (shadow candidate inside restaged-verdict; needs non-polyester imagery) ---
+https://www.dazeddigital.com/life-culture/article/66664/1/sophie-gilbert-girl-on-girl-pop-culture-book-author-interview
+https://newrepublic.com/article/196766/cant-quit-y2k-obsessions-alice-bolin-culture-creep
+https://goggler.com/toxic-revisiting-the-tabloid-2000s-and-societys-treatment-of-famous-women/
+
+# --- inheritance-reactivated, technique wing: NO URLs yet ---
+# Round-1 web pass returned only trend-blog listicles (fail distinctiveness gate).
+# Go named-subject at round 2: Loewe Craft Prize 2026, Bode, Cecilie Bahnsen, Diotima
+# (see GAP_REPORT_settling_accounts_round1.md for exact queries).
+#
+# Added 2026-07-07 (round-2 technique-wing gap-fill): named-subject WebSearch per the
+# gap report, then WebFetch-verified each as image-rich editorial (not listicle, not
+# grad-show), all about heritage craft technique re-run through contemporary making.
+# Two professional-house sources (Diotima crochet, Bahnsen lace) + Loewe Craft Prize
+# from two independent outlets — confirms the register exists outside student work.
+https://apollo-magazine.com/loewe-foundation-craft-prize-2026-shortlist-exhibition-preview/
+https://www.wallpaper.com/design-interiors/loewe-craft-prize-2026-shortlist
+https://www.wallpaper.com/fashion/diotima-brand-profile
+https://www.anothermag.com/fashion-beauty/17037/cecilie-bahnsen-autumn-winter-2026-show-review-interview

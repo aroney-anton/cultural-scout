@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Look &amp; Feel — Settling Accounts (mockup)</title>
+<style>
+  :root { --ease: cubic-bezier(.22,.61,.36,1); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #141414;
+    background: #fafaf8;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  #bg { position: fixed; inset: 0; z-index: -2; background: #fafaf8; transition: background-color .15s linear; }
+  #grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .055;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .mockup-flag {
+    position: fixed; top: 14px; right: 16px; z-index: 50; font-size: 10px; letter-spacing: .18em;
+    text-transform: uppercase; padding: 5px 9px; border: 1px solid currentColor; border-radius: 3px;
+    opacity: .5; mix-blend-mode: difference; color: #fff;
+  }
+  .backbtn {
+    position: fixed; top: 14px; left: 16px; z-index: 50; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    background: rgba(0,0,0,.06); color: inherit; border: 1px solid rgba(0,0,0,.18); mix-blend-mode: difference;
+  }
+
+  /* ---------- INTRO ---------- */
+  #intro { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8vh 7vw; }
+  #intro .eyebrow { font-size: 12px; letter-spacing: .32em; text-transform: uppercase; opacity: .5; margin-bottom: 28px; }
+  #intro h1 { font-size: clamp(20px, 2.4vw, 30px); font-weight: 500; opacity: .55; margin-bottom: 6vh; max-width: 40ch; line-height: 1.45; }
+  .codelist { display: flex; flex-direction: column; gap: clamp(8px, 1.6vh, 20px); }
+  .codelist a {
+    text-decoration: none; color: #141414; font-size: clamp(30px, 6.2vw, 86px); font-weight: 650;
+    line-height: 1.02; letter-spacing: -.02em; display: flex; align-items: baseline; gap: 18px;
+    opacity: .92; transition: opacity .2s, transform .25s var(--ease);
+  }
+  .codelist a:hover { opacity: 1; transform: translateX(10px); }
+  .codelist .num { font-size: clamp(12px,1vw,15px); font-weight: 500; opacity: .4; letter-spacing: 0; }
+  .codelist .dot { width: .42em; height: .42em; border-radius: 50%; display: inline-block; align-self: center; }
+  .scrollhint { margin-top: 7vh; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; animation: bob 2.2s infinite ease-in-out; }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+  /* ---------- CODE: HERO ---------- */
+  .code { position: relative; }
+  .hero { display: grid; grid-template-columns: 26% 74%; align-items: stretch; min-height: 100vh; }
+  .hero .text {
+    position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 6vh 2.2vw 6vh 7vw; z-index: 2;
+  }
+  .hero .num { font-size: 12px; letter-spacing: .26em; opacity: .6; margin-bottom: 18px; }
+  .hero .status {
+    display: inline-block; align-self: flex-start; font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 4px 9px; border: 1px solid currentColor; border-radius: 999px; opacity: .7; margin-bottom: 22px;
+  }
+  .hero h2 { font-size: clamp(28px, 3.1vw, 52px); font-weight: 650; line-height: 1.04; letter-spacing: -.02em; margin-bottom: 22px; }
+  .hero .oneliner { font-size: clamp(14px, 1.15vw, 18px); line-height: 1.5; opacity: .82; max-width: 30ch; }
+  .hero .palette { display: flex; gap: 7px; margin-top: 30px; }
+  .hero .palette span { width: 26px; height: 26px; border-radius: 4px; box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset; }
+  .scrollon { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; margin-top: 34px; }
+
+  .collage { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 11.5vw; gap: 10px; padding: 9vh 0 9vh 1.5vw; align-content: start; }
+  .collage figure { overflow: hidden; position: relative; border-radius: 3px; background: rgba(0,0,0,.12); }
+  .collage img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.02); }
+  .collage figure.tall { grid-row: span 2; }
+  .collage figure.wide { grid-column: span 2; }
+  .collage figure.big { grid-column: span 2; grid-row: span 2; }
+
+  /* ---------- CODE: ANALYSIS ---------- */
+  .analysis { padding: 4vh 7vw 12vh; max-width: 1200px; }
+  .analysis .def { font-size: clamp(17px, 1.5vw, 23px); line-height: 1.5; max-width: 56ch; opacity: .95; margin-bottom: 7vh; font-weight: 450; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5vh 6vw; }
+  .block { border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent); padding-top: 16px; }
+  .block.full { grid-column: 1 / -1; }
+  .label { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; opacity: .55; margin-bottom: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 13px; padding: 5px 11px; border-radius: 999px; line-height: 1.2;
+    background: color-mix(in srgb, var(--tx) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tx) 26%, transparent);
+  }
+  .quotes { margin-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .quote { font-size: 15px; line-height: 1.45; }
+  .quote .q { font-style: italic; }
+  .quote a, .ev a, .def a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .quote .src { display: inline-block; font-size: 12px; opacity: .7; margin-top: 3px; }
+  .body { font-size: 15px; line-height: 1.55; opacity: .92; max-width: 54ch; }
+  .ev { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; }
+  .meta { grid-column: 1 / -1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+          margin-top: 5vh; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent);
+          font-size: 12px; opacity: .6; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero .text { position: relative; height: auto; min-height: 60vh; padding: 12vh 7vw 4vh; }
+    .collage { grid-template-columns: repeat(2,1fr); grid-auto-rows: 32vw; padding: 0 0 6vh; }
+    .codelist a { font-size: 40px; }
+    .grid2 { grid-template-columns: 1fr; }
+    .analysis { padding: 4vh 7vw 9vh; }
+  }
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="grain"></div>
+<div class="backbtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</div>
+
+<section id="intro">
+  <div class="eyebrow">Settling Accounts · Look &amp; Feel</div>
+  <h1>Four visual-verbal codes the corpus uses to settle accounts — restaging the contested past until fidelity reads as the ruling, correcting the canon in place, sewing testimony into materials power cannot confiscate, and holding a loss by putting the inheritance back to work. Scroll to enter each one.</h1>
+  <nav class="codelist" id="codelist"></nav>
+  <div class="scrollhint">Scroll ↓</div>
+</section>
+
+<main id="codes"></main>
+
+<script>
+const IMG_NOTE = "Imagery embedded live from the publishers' servers — nothing stored.";
+const CODES = [
+{
+  "id": "restaged-verdict",
+  "name": "Restaged Verdict",
+  "status": "dominant",
+  "oneliner": "Re-enact the contested past beat for beat and let the fidelity read as the ruling.",
+  "bg": "#1d1712",
+  "text": "#f2e3c8",
+  "palette": [
+    "#E8B54A",
+    "#C0392B",
+    "#EE7FB4",
+    "#C9C9C9",
+    "#141414"
+  ],
+  "def": "The pool's strongest pattern. A disputed legacy is adjudicated by remaking its iconography exactly: Jaafar Jackson in the red Beat It jacket restaging Thriller shot for shot while the film 'positions itself as an official account'; Slate's split-frames of Dunham-then/Dunham-now and Jackson/nephew; Serkis's CG Animal Farm against the 1950 Foreign Office propaganda strip it re-politicises; n+1's feminists re-photographing The Liberated Woman's Songbook image by image. The register splits morally: warm stage-glow and chandelier light for the estate-approved recreation, cold available-light documentary stills (the un-restageable Leaving Neverland car photo) for the counter-record. A girlhood wing re-tries the 2000s' judgments on women in the scrapbook-glitter language of the girlhood itself: tramp-stamp collages, heart-sticker horror stills, the Girl on Girl cover built from tabloid crops.",
+  "visual": [
+    "the side-by-side: original and copy sharing one frame",
+    "restaged icon lit like the original (chandelier shafts, stage wash)",
+    "the counter-image: one cold candid the restaging cannot absorb",
+    "recreated costume and set, period-correct to the stitch",
+    "torn paper and scrapbook collage; glitter script, heart stickers",
+    "film grain and paparazzi flash against digital gloss",
+    "lookalike casting (family members as their own kin); rehearsal rooms, stages, courtroom-adjacent interiors; the 2000s re-shot in its own wardrobe"
+  ],
+  "verbal": [
+    "official account",
+    "estate-approved",
+    "beat for beat",
+    "the allegations",
+    "reappraisal",
+    "I was wrong about",
+    "side by side",
+    "the record"
+  ],
+  "quotes": [
+    {
+      "q": "The movie is sheer propaganda, but for what?",
+      "src": "Travis Diehl, ArtReview",
+      "url": "https://artreview.com/what-would-orwell-think-of-the-mormon-animal-farm-opinion-travis-diehl/"
+    },
+    {
+      "q": "the film positions itself as an official account",
+      "src": "Cultured",
+      "url": "https://www.culturedmag.com/article/2026/04/29/film-michael-jackson-biopic-review-things-to-watch/"
+    },
+    {
+      "q": "Steakhouse royalty, feminist icon, fungible tourism graphic—she deserves a proper title",
+      "src": "Rachel Ossip, n+1",
+      "url": "https://www.nplusonemag.com/online-only/online-only/finding-the-cattle-queen/"
+    }
+  ],
+  "against": "Against the adversarial documentary and the unflattering archive it must outshine — and internally against itself: the more faithful the restaging, the louder the question of what was left out. Fenced off Naming the Machine: the payload here is legacy adjudication, not exposing how the entertainment machine works.",
+  "execution": "For brands: revisiting a contested chapter demands the side-by-side, not the airbrush — audiences now read seamless recreation as verdict-avoidance. Show the original next to the retelling and name what changed. Misuse: borrowing restaging warmth to gloss an unresolved record reads as the Michael problem — official-account gloss minus the family's blessing.",
+  "evidence": [
+    {
+      "s": "culturedmag.com",
+      "u": "https://www.culturedmag.com/article/2026/04/29/film-michael-jackson-biopic-review-things-to-watch/"
+    },
+    {
+      "s": "slate.com",
+      "u": "https://slate.com/culture/2026/04/michael-jackson-movie-2026-mj-biopic-allegations-black-fans.html"
+    },
+    {
+      "s": "slate.com",
+      "u": "https://slate.com/culture/2026/04/lena-dunham-girls-famesick-book-memoir-critic-weight-body-image.html"
+    },
+    {
+      "s": "avclub.com",
+      "u": "https://www.avclub.com/leaving-neverland-michael-jackson-documentary-you-cant-see-estate-cant-hide"
+    },
+    {
+      "s": "artreview.com",
+      "u": "https://artreview.com/what-would-orwell-think-of-the-mormon-animal-farm-opinion-travis-diehl/"
+    },
+    {
+      "s": "nplusonemag.com",
+      "u": "https://www.nplusonemag.com/online-only/online-only/finding-the-cattle-queen/"
+    },
+    {
+      "s": "thedriftmag.com",
+      "u": "https://www.thedriftmag.com/history-has-its-eyes-on-you/"
+    },
+    {
+      "s": "dazeddigital.com",
+      "u": "https://www.dazeddigital.com/life-culture/article/66664/1/sophie-gilbert-girl-on-girl-pop-culture-book-author-interview"
+    },
+    {
+      "s": "polyesterzine.com",
+      "u": "https://www.polyesterzine.com/features/from-britney-spears-to-chappell-roan-the-fraught-history-of-the-tramp-stamp"
+    }
+  ],
+  "imgs": [
+    "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/28184444/JAAFAR_MJ_2.jpg",
+    "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/28184100/001_MKT_001_CIN_v0009_CNPT.1002-1-scaled.jpg",
+    "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/28184536/Maven_Promo_Trailer_SG_00001RC-scaled.jpg",
+    "https://compote.slate.com/images/0d63fd72-e5d0-4154-a9c2-aa43bfc5808f.jpeg?crop=1560%2C1040%2Cx0%2Cy0&width=2200",
+    "https://compote.slate.com/images/085a52c7-50c0-4f65-bdc4-a9e10be33b45.jpeg?crop=1424%2C949%2Cx0%2Cy0&width=2200",
+    "https://img.pastemagazine.com/wp-content/avuploads/2026/04/20091206/leaving-neverland-header.jpg",
+    "https://backend.artreview.com/wp-content/uploads/2026/05/Animal-Farm-2026-movie-still-1-1536x864.png",
+    "https://backend.artreview.com/wp-content/uploads/2026/05/Animal_Farm_artwork.jpg",
+    "https://www.nplusonemag.com/wp-content/uploads/2026/04/Cattle-Queen_Invaluable-Auction-scaled.jpg",
+    "https://www.thedriftmag.com/wp-content/uploads/2026/04/Emma-Adler_Scott-Howard_031926_1-1244x933.png",
+    "https://images-prod.dazeddigital.com/1843/azure/dazed-prod/1400/9/1409911.jpg",
+    "https://images-prod.dazeddigital.com/2301/0-578-2301-1534/azure/dazed-prod/1440/5/1445966.jpg",
+    "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/f8c60e63-905c-4091-9895-91a79bfc8a50/Tramp+Stamp+site+collage+2.png?format=2500w"
+  ],
+  "trajectory": "2026-07-07 · coined — pilot baseline; 8 outlets across entertainment/art/intellectual/internet. Absorbs the girlhood-retrial shadow candidate as a named wing (Dazed round-2 imagery confirmed it outside polyester)."
+},
+{
+  "id": "canon-corrected",
+  "name": "Canon Corrected",
+  "status": "dominant",
+  "oneliner": "Photograph the institution admitting the exclusion: the rehang, the retrospective at 93, the toppled bronze laid out as evidence.",
+  "bg": "#14161a",
+  "text": "#e9ece7",
+  "palette": [
+    "#F5F4F0",
+    "#6E8B74",
+    "#DDD8CB",
+    "#D98E5A",
+    "#D9548F"
+  ],
+  "def": "One gesture, two sites. Indoors, the white cube corrects the canon in real time: Joan Semmel's 1970s feminist nudes rehung wall-scale at the Jewish Museum while she sits in her studio chair at 93; Nigerian Modernism given the full Tate survey; Singapore's national gallery leading with 'Fear No Power: women imagining otherwise'; Bassman's fashion photography admitted to Photography-with-a-capital-P. Outdoors, the same admission in public space: the guerrilla feminist monument on the empty Columbus plinth, Berlin's removed statues shelved in depot storage, MOCA laying toppled Confederate bronzes horizontal in the gallery — graffiti intact — as annotated evidence. The toppling vocabulary itself (2015–2020) is now the residual edge clients default to; the live edge is annotation and custody: what the institution says, or refuses to say, next to the corrected object.",
+  "visual": [
+    "installation shot with a small viewer before an enormous corrected work",
+    "the monument dethroned: laid flat, warehoused, or replaced on its plinth",
+    "the elder artist environmental portrait inside her own life's archive",
+    "bronze and marble out of place: horizontal, crated, shelved, graffitied",
+    "wall-scale oil and tapestry under gallery light",
+    "the studio's accumulated decades — canvases, chairs, rugs",
+    "the long-overlooked artist, often elderly, in studio or museum; museum halls, depots, public plazas mid-contest"
+  ],
+  "verbal": [
+    "overdue",
+    "retrospective",
+    "canon",
+    "rehang",
+    "the plinth",
+    "guerrilla monument",
+    "long-overlooked",
+    "independence",
+    "restitution"
+  ],
+  "quotes": [
+    {
+      "q": "I never started out to be an inspiration.",
+      "src": "Joan Semmel, Hyperallergic",
+      "url": "https://hyperallergic.com/joan-semmel-is-doing-her-best-work-at-93/"
+    },
+    {
+      "q": "Feminist organizers later erected a guerrilla monument to victims of femicide on the plinth.",
+      "src": "Hyperallergic",
+      "url": "https://hyperallergic.com/mexican-cultural-workers-denounce-pedro-reyes-sculpture-at-lacma/"
+    }
+  ],
+  "against": "Against the untouched canon and the silent label. Internal tension: correction administered by the institutions that ran the exclusion — canonization as absorption, the survey show as settlement offer. The outdoor toppling image is residual; leaning on it reads 2020.",
+  "execution": "For brands: the credible move is annotation, not replacement — show the correction beside the corrected, name the exclusion, keep the graffiti. Misuse: the 'first ever' celebratory retrospective frame without naming who kept the work out, or defaulting to toppled-statue imagery, both read as borrowed absolution.",
+  "evidence": [
+    {
+      "s": "hyperallergic.com",
+      "u": "https://hyperallergic.com/joan-semmel-is-doing-her-best-work-at-93/"
+    },
+    {
+      "s": "hyperallergic.com",
+      "u": "https://hyperallergic.com/the-revolutionary-tapestry-of-nigerian-modernism/"
+    },
+    {
+      "s": "national-gallery-singapore",
+      "u": "https://www.nationalgallery.sg/sg/en/whats-on.html"
+    },
+    {
+      "s": "thebaffler.com",
+      "u": "https://thebaffler.com/latest/eyes-of-lillian-bassman-gefter"
+    },
+    {
+      "s": "artreview.com",
+      "u": "https://artreview.com/lynette-yiadom-boakye-many-a-moonlit-caveat-jack-shainman-gallery-new-york-review-marcus-civin/"
+    },
+    {
+      "s": "hyperallergic.com",
+      "u": "https://hyperallergic.com/mexican-cultural-workers-denounce-pedro-reyes-sculpture-at-lacma/"
+    },
+    {
+      "s": "news.artnet.com",
+      "u": "https://news.artnet.com/art-world/confederate-monuments-brick-los-angeles-museum-contemporary-art-2701985"
+    },
+    {
+      "s": "artreview.com",
+      "u": "https://artreview.com/can-we-imagine-public-art-beyond-toxic-monumentality/"
+    },
+    {
+      "s": "thisiscolossal.com",
+      "u": "https://www.thisiscolossal.com/2026/04/eduardo-robledo-linocuts-mexico-city/"
+    }
+  ],
+  "imgs": [
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/DSC08658.jpg",
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/DSC08733.jpg",
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/5.-Ben-Enwonwu--The-Durbar-of-Eid-ul-Fitr--Kano--Nigeria---1955---C--Ben-Enwonwu-Foundation-.jpg",
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/Nigerian-Modernism_Press_TM_2025_005.jpeg",
+    "https://www.nationalgallery.sg/content/dam/whats-on/featured-component/Fear%20No%20Power%202026-%20personalisation-866x420.png",
+    "https://thebaffler.com/wp-content/uploads/2026/04/Bassman_Exercises-for-Skeptics_2025.889.35.jpg",
+    "https://backend.artreview.com/wp-content/uploads/2026/06/LYB26.032-A-Cause-for-Pastoral-Concern-A-copy-2048x1543.jpg",
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/GettyImages-2026358833.jpg",
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/tlali.jpg",
+    "https://news.artnet.com/app/news-upload/2025/10/monuments-brick-la-moca-install-hank-willis-thomas-2048x1365.jpg",
+    "https://news.artnet.com/app/news-upload/2025/10/monuments-graffitied-la-moca-2048x1365.jpg",
+    "https://news.artnet.com/app/news-upload/2025/10/kara-walker-unmanned-drone-2023-ruben-diaz-1024x768.jpg",
+    "https://backend.artreview.com/wp-content/uploads/2022/01/zitadelle.jpg",
+    "https://www.thisiscolossal.com/wp-content/uploads/2019/07/teeter-totter-2.jpg"
+  ],
+  "trajectory": "2026-07-07 · coined — pilot baseline; merge of the overdue-retrospective and contested-plinth candidates (Michael's 4-code consolidation). Round-2 MOCA/depot imagery confirmed the live edge is annotation-and-custody, not toppling — the toppling image is flagged residual inside a dominant code."
+},
+{
+  "id": "stitched-testimony",
+  "name": "Stitched Testimony",
+  "status": "emergent",
+  "oneliner": "Sew the accusation into the cloth: humble materials carrying the record the archive refused to keep.",
+  "bg": "#241a12",
+  "text": "#f0e4d3",
+  "palette": [
+    "#8A6A4F",
+    "#C94436",
+    "#E9DFC9",
+    "#2B4A9B",
+    "#FF4FA3"
+  ],
+  "def": "Testimony that gets its authority from its medium. Correa Valencia renders undocumented families as faceless gray figures in serape stripe and papel-picado lace on amate-toned grounds, with the words stitched in — 'My Dad Is Not A Criminal He Is A Dreamer', a child's 'Papi no te vayas a olvidar de mi'. Pussy Riot's imprisoned artists testify in ballpoint on paper, censor stamps still attached. Robledo's linocuts carry Mexican communal memory in Posada's medium. Round 2 widened the frame: Buffalo AKG's Comunidades Visibles puts the migration record in neon text on brick, bottle-cap world maps, and embroidered chairs; the frieze feminist-textile lineage runs from Ringgold's story quilts to Emin's appliquéd protest banner. The wrong is named, in words, inside a medium anyone can hold.",
+  "visual": [
+    "faceless or anonymized figures — the pattern identifies, the face stays safe",
+    "handwritten or hand-stitched sentence as the work's center",
+    "frieze strips and medallion formats: the record laid out in rows",
+    "thread, appliqué, embroidered text; serape and quilt cotton",
+    "relief-print black on paper; ballpoint and graphite on prison stock",
+    "neon tube, bottle caps, found domestic objects as record-carriers",
+    "the maker as witness (immigrant, prisoner, community printmaker); domestic and carceral settings; the industrial hall re-lit by protest neon"
+  ],
+  "verbal": [
+    "testimony",
+    "sewn",
+    "in thread",
+    "dreamer",
+    "no borders",
+    "surviving",
+    "the record",
+    "by hand",
+    "dissent"
+  ],
+  "quotes": [
+    {
+      "q": "My Dad Is Not A Criminal He Is A Dreamer",
+      "src": "Arleene Correa Valencia (work title), Hyperallergic",
+      "url": "https://hyperallergic.com/daca-artist-uses-thread-to-weave-immigration-stories/"
+    },
+    {
+      "q": "There is something simple about the pen on paper, which already tells a story",
+      "src": "Nadya Tolokonnikova, Hyperallergic",
+      "url": "https://hyperallergic.com/pussy-riot-shows-art-by-russias-prisoners-in-new-protest-exhibition/"
+    }
+  ],
+  "against": "Against the official archive that excluded these lives AND the slick memorial commission. Fenced off Certified Human's countable-labor/provenance lane: the payload is the injustice recorded, not made-by-humans pride. Internal risk: the register is being institutionalized fast (museum shows, craft prizes) — watch for testimony aesthetics without a testifier.",
+  "execution": "For brands: this code cannot be borrowed without a real grievance and a real witness — commission the affected maker, keep the words legible, keep the medium humble. Misuse: 'craftwashed' cause campaigns (embroidered slogans, no testifier) collapse instantly; so does anonymizing the aesthetic while erasing the accusation.",
+  "evidence": [
+    {
+      "s": "hyperallergic.com",
+      "u": "https://hyperallergic.com/daca-artist-uses-thread-to-weave-immigration-stories/"
+    },
+    {
+      "s": "mymodernmet.com",
+      "u": "https://mymodernmet.com/arleene-correa-valencia-codice-exhibition/"
+    },
+    {
+      "s": "hyperallergic.com",
+      "u": "https://hyperallergic.com/pussy-riot-shows-art-by-russias-prisoners-in-new-protest-exhibition/"
+    },
+    {
+      "s": "thisiscolossal.com",
+      "u": "https://www.thisiscolossal.com/2026/04/eduardo-robledo-linocuts-mexico-city/"
+    },
+    {
+      "s": "buffaloakg.org",
+      "u": "https://buffaloakg.org/art/exhibitions/comunidades-visibles-materiality-migration"
+    },
+    {
+      "s": "craftcouncil.org",
+      "u": "https://craftcouncil.org/articles/in-a-chicago-exhibition-a-focus-on-migration-and-self-taught-artists/"
+    },
+    {
+      "s": "frieze.com",
+      "u": "https://www.frieze.com/article/lauren-elkin-thread-of-dissent-241"
+    },
+    {
+      "s": "thisiscolossal.com",
+      "u": "https://www.thisiscolossal.com/2026/04/7-artists-on-soft-sculptures-film/"
+    }
+  ],
+  "imgs": [
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/20260115-ArleeneCorrea-Artwork-5.jpg",
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/20251122-ArleeneCorrea-Artwork-1-1.jpg",
+    "https://mymodernmet.com/wp/wp-content/uploads/2026/03/arleene-correa-valencia-codice-exhibition-14-scaled.jpg",
+    "https://mymodernmet.com/wp/wp-content/uploads/2026/03/arleene-correa-valencia-codice-exhibition-1-scaled.jpg",
+    "https://mymodernmet.com/wp/wp-content/uploads/2026/03/arleene-correa-valencia-codice-exhibition-12-scaled.jpg",
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/Ludmila-Razumova---Untitled-3.jpg",
+    "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w2400/2026/04/Oleg-Navalny---Dostoevsky.jpg",
+    "https://www.thisiscolossal.com/wp-content/uploads/2026/04/robleno-6.jpg",
+    "https://www.thisiscolossal.com/wp-content/uploads/2026/04/robleno-1.jpg",
+    "https://www.thisiscolossal.com/wp-content/uploads/2026/04/robleno-9.jpg",
+    "https://buffaloakg.org/sites/default/files/styles/slideshow_large/public/2021.02.11-05.16_comunidadesvisibles_016.jpg?itok=qsQ5fIQ3",
+    "https://buffaloakg.org/sites/default/files/styles/slideshow_large/public/2021.02.11-05.16_comunidadesvisibles_011.jpg?itok=xopco2Js",
+    "https://buffaloakg.org/sites/default/files/styles/fixed_height_sm/public/ecortes_la_cordobesa.jpg?itok=Jmvq1Ne2",
+    "https://craftcouncil.org/wp-content/uploads/2026/07/DSC6925-crop.jpg",
+    "https://craftcouncil.org/wp-content/uploads/2026/06/craft-tierra-029-crop.jpg",
+    "https://static.frieze.com/files/inline-images/faith-ringgold-tar-beach-1990.jpg?VersionId=VpAynDyeIcDVb7x.3UCqM4pimEmoS8R8",
+    "https://static.frieze.com/files/inline-images/tracey-emin-no-chance-1999.jpg?VersionId=0rOFcql1zCJRClZ0Vx8GU8DFSXvY2TZV",
+    "https://static.frieze.com/files/inline-images/lj-roberts-ariel-speedwagon-chicago-figueroa-2012.jpg?VersionId=bbSnMQpk5t8s33ls05RcG8zwHNN.C5Q2",
+    "https://www.thisiscolossal.com/wp-content/uploads/2024/05/vanessa-b-4.jpg",
+    "https://www.thisiscolossal.com/wp-content/uploads/2025/04/golden-5.jpg"
+  ],
+  "trajectory": "2026-07-07 · coined — pilot baseline. Round 1 had the concept on 2 outlets; round-2 gap-fill (mymodernmet, buffaloakg, craftcouncil, frieze) took it to 6 independent outlets and widened the media from thread/linocut/ballpoint to neon, bottle caps and found objects. Confidence high accordingly."
+},
+{
+  "id": "inheritance-reactivated",
+  "name": "Inheritance Reactivated",
+  "status": "emergent",
+  "oneliner": "Hold the inheritance by using it: the family archive reprinted warm, the ancestral technique re-run on today's machines.",
+  "bg": "#1c1420",
+  "text": "#f2e6ea",
+  "palette": [
+    "#E8A7B7",
+    "#B08D5E",
+    "#2C4272",
+    "#F1EAD8",
+    "#A33B2E"
+  ],
+  "def": "Two media, one gesture: continuation as the way of holding a loss. The photo wing resurfaces vernacular archives in saturated warmth — Middle East Archive's women on pink-draped motorbikes and Beirut sunbathers before the bombed hotel, Kurdish living rooms where martyr portraits sit among lace curtains, Saade's photobooks rebuilding a Levantine visual memory — with the rotting Nollywood tape archive as the urgent edge. The technique wing re-runs inherited craft through the present tense: reticella lace specimen boards pinned beside laser cutters at CCS, family furs re-tailored at ACM, Loewe Craft Prize adire and eggshell inlay, Diotima's Caribbean crochet worn as eveningwear, Bahnsen's lace re-cut backstage. In both, the archive is presented as inheritance in use, not evidence under glass — the Heritage-pole complement to stitched-testimony's Judgment register.",
+  "visual": [
+    "vernacular group portrait re-centred and printed warm",
+    "the domestic interior as archive: portraits, clocks and lace arranged on one wall",
+    "lineage-and-remake pairing: historical plate or heirloom beside its contemporary re-run",
+    "snapshot grain, VHS bloom, album sepia; pink drape as backdrop",
+    "lace, crochet, macramé, adire indigo, eggshell inlay, family fur",
+    "the research wall: specimen boards, archival plates, CAD screens mid-process",
+    "grandmothers, aunts, neighbourhood groups from the found archive; ateliers, living rooms, photobook workshops; the runway as the archive's second life"
+  ],
+  "verbal": [
+    "archive",
+    "heirloom",
+    "lineage",
+    "technique",
+    "living fragments",
+    "memory and material",
+    "amplifying narratives",
+    "re-issued",
+    "roots"
+  ],
+  "quotes": [
+    {
+      "q": "Life may be short, but archives last forever.",
+      "src": "Family Style",
+      "url": "https://family.style/articles/lucia-eames-nanimarquina-milan-design-week-2026"
+    },
+    {
+      "q": "dedicated to amplifying narratives from the MENA region",
+      "src": "Polyester (on Middle East Archive)",
+      "url": "https://www.polyesterzine.com/features/middle-east-archive-women"
+    },
+    {
+      "q": "grounded in personal reference points, like family, place, subculture, and mythology",
+      "src": "1 Granary (CCS BA 2026)",
+      "url": "https://1granary.com/designers-3/graduate-shows/college-for-creative-studies-ba-2026-cultural-histories/"
+    },
+    {
+      "q": "The heavy humidity of Lagos is physically destroying the chaotic, hyper-literal Casio soundtracks",
+      "src": "The Quietus",
+      "url": "https://thequietus.com/opinion-and-essays/black-sky-thinking/nollywood-film-archive/"
+    }
+  ],
+  "against": "Against forensics and prosecution (that's stitched-testimony) and against nostalgia-as-product: the axis question — re-judged or just re-styled? — lives inside this code. MERGE WATCH: this is a deliberate consolidation of two wings; if their palettes and lexicons diverge in a future run, split back out.",
+  "execution": "For brands: show the lineage as part of the work — the archival plate next to the remake, the family photo credited and named, the technique's origin stated. Misuse: heritage print without custody (uncredited archive imagery, technique lifted without lineage) flips the code into extraction, exactly the wrong the need is settling.",
+  "evidence": [
+    {
+      "s": "polyesterzine.com",
+      "u": "https://www.polyesterzine.com/features/middle-east-archive-women"
+    },
+    {
+      "s": "1854.photography",
+      "u": "https://www.1854.photography/2025/04/middle-east-archive-living-rooms-book/"
+    },
+    {
+      "s": "aperture.org",
+      "u": "https://aperture.org/editorial/roi-saade-is-building-a-new-photobook-world/"
+    },
+    {
+      "s": "family.style",
+      "u": "https://family.style/articles/lucia-eames-nanimarquina-milan-design-week-2026"
+    },
+    {
+      "s": "thequietus.com",
+      "u": "https://thequietus.com/opinion-and-essays/black-sky-thinking/nollywood-film-archive/"
+    },
+    {
+      "s": "1granary.com",
+      "u": "https://1granary.com/designers-3/graduate-shows/college-for-creative-studies-ba-2026-cultural-histories/"
+    },
+    {
+      "s": "1granary.com",
+      "u": "https://1granary.com/designers-3/graduate-shows/accademia-costume-moda-ba-2026-memory-and-material/"
+    },
+    {
+      "s": "apollo-magazine.com",
+      "u": "https://apollo-magazine.com/loewe-foundation-craft-prize-2026-shortlist-exhibition-preview/"
+    },
+    {
+      "s": "wallpaper.com",
+      "u": "https://www.wallpaper.com/fashion/diotima-brand-profile"
+    },
+    {
+      "s": "anothermag.com",
+      "u": "https://www.anothermag.com/fashion-beauty/17037/cecilie-bahnsen-autumn-winter-2026-show-review-interview"
+    },
+    {
+      "s": "newlinesmag.com",
+      "u": "https://newlinesmag.com/essays/the-living-fragments-of-al-andalus/"
+    }
+  ],
+  "imgs": [
+    "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/451746cd-8506-4281-8144-208c662213f6/Farah+Al+Qasimi+_+United+Arab+Emirates++.jpg?format=2500w",
+    "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/fcdf8d72-4664-48bc-9eb6-a8fc9129b5d7/Najla+Said+_+Egypt+.jpg?format=2500w",
+    "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/b2417479-7965-4567-8960-e168effa979d/Hossein+Fatemi+_+Iran+.JPG?format=2500w",
+    "https://www.1854.photography/wp-content/uploads/2025/04/Yuksekova-Kurdistan-2015-Photographer-Miriam-Stanke.jpg",
+    "https://www.1854.photography/wp-content/uploads/2025/04/Damour-Lebanon-2020-Photographer-Rita-Kabalan.jpeg",
+    "https://aperture.org/wp-content/uploads/2024/11/256MAG034_Saade-HR.jpg",
+    "https://aperture.org/wp-content/uploads/2024/11/256MAG195_Saade-HR.jpg",
+    "https://cdn.family.style/Design/rug1.avif",
+    "https://cdn.family.style/Design/FORM%20Lucia%20Eames%20Archive%209.avif",
+    "https://thequietus.com/app/uploads/2026/05/maxresdefault-2.jpg",
+    "https://1granary.com/wp-content/uploads/2026/04/MAXWELL-HONEYCUTT-DETROIT-1GRANARY-42.jpg",
+    "https://1granary.com/wp-content/uploads/2026/04/MAXWELL-HONEYCUTT-DETROIT-1GRANARY-41.jpg",
+    "https://1granary.com/wp-content/uploads/2026/04/Maxwell-Honeycutt-5.jpg",
+    "https://1granary.com/wp-content/uploads/2026/04/Benedetta-Boidi-acm-2026-1granary-81.jpg",
+    "https://1granary.com/wp-content/uploads/2026/04/Benedetta-Boidi-acm-2026-1granary-73.jpg",
+    "https://apollo-magazine.com/wp-content/uploads/2026/05/smol-LOEWE-2026-CRAFT-PRIZE-ADEKEMI-OGUNSANYA2.jpg?w=790",
+    "https://apollo-magazine.com/wp-content/uploads/2026/02/lead-LOEWE-2026-CRAFT-PRIZE-ADELENE-KOH1.jpg?resize=400%2C400",
+    "https://cdn.mos.cms.futurecdn.net/6BvDUpNd59BiYvVngwChLT-629-80.jpg.webp",
+    "https://cdn.mos.cms.futurecdn.net/jMUwtrHmxtfjqDcutQf8t7-629-80.jpg.webp",
+    "https://images-prod.anothermag.com/480/0-283-1507-1004/azure/another-prod/470/0/470664.jpg",
+    "https://images-prod.anothermag.com/2091/azure/another-prod/470/0/470672.jpg",
+    "https://newlinesmag.com/wp-content/uploads/doors2.jpg-web.jpg"
+  ],
+  "trajectory": "2026-07-07 · coined — pilot baseline; merge of the archive-glow and heritage-re-patterned candidates (Michael's 4-code consolidation). Round 2 fixed both wings' gaps — photo wing to 5 outlets (added 1854, aperture), technique wing confirmed outside grad shows (apollo, wallpaper ×2, anothermag). Confidence medium not for evidence breadth but for the merge itself: two wings, one gesture, split-watch noted in tensions."
+}
+];
+
+const INTRO_BG = [250,250,248];
+function hexRgb(h){ h=h.replace('#',''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
+function mix(a,b,t){ return `rgb(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)})`; }
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+// intro list
+const cl = document.getElementById('codelist');
+CODES.forEach((c,i)=>{
+  const a = document.createElement('a');
+  a.href = '#'+c.id;
+  a.innerHTML = `<span class="num">0${i+1}</span><span class="dot" style="background:${c.palette[c.palette.length-1]}"></span>${c.name}`;
+  cl.appendChild(a);
+});
+
+// code sections
+const main = document.getElementById('codes');
+const spanPattern = ['big','','tall','','wide','','tall','','','wide','','tall'];
+CODES.forEach((c,i)=>{
+  const sec = document.createElement('section');
+  sec.className = 'code';
+  sec.id = c.id;
+  sec.dataset.bg = c.bg;
+  sec.style.color = c.text;
+  sec.style.setProperty('--tx', c.text);
+
+  const tiles = c.imgs.map((src,j)=>{
+    const k = spanPattern[j % spanPattern.length];
+    return `<figure class="${k}"><img src="${src}" loading="lazy" referrerpolicy="no-referrer" alt="" onerror="this.closest('figure').remove()"></figure>`;
+  }).join('');
+  const sw = c.palette.map(p=>`<span style="background:${p}"></span>`).join('');
+  const visualChips = c.visual.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const verbalChips = c.verbal.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const quotes = c.quotes.map(q=>`<div class="quote"><span class="q">“${esc(q.q)}”</span> <a href="${q.url}" target="_blank" rel="noopener">${esc(q.src)} →</a></div>`).join('');
+  const ev = c.evidence.map(e=>`<a href="${e.u}" target="_blank" rel="noopener">${esc(e.s)} →</a>`).join('');
+
+  sec.innerHTML = `
+    <div class="hero">
+      <div class="text">
+        <div class="num">0${i+1} / 04</div>
+        <span class="status">${c.status}</span>
+        <h2>${c.name}</h2>
+        <p class="oneliner">${c.oneliner}</p>
+        <div class="palette">${sw}</div>
+        <div class="scrollon">Scroll for the analysis ↓</div>
+      </div>
+      <div class="collage">${tiles}</div>
+    </div>
+    <div class="analysis">
+      <p class="def">${esc(c.def)}</p>
+      <div class="grid2">
+        <div class="block"><div class="label">Visual register</div><div class="chips">${visualChips}</div></div>
+        <div class="block"><div class="label">Verbal register</div><div class="chips">${verbalChips}</div><div class="quotes">${quotes}</div></div>
+        <div class="block"><div class="label">Against</div><div class="body">${esc(c.against)}</div></div>
+        <div class="block"><div class="label">Execution</div><div class="body">${esc(c.execution)}</div></div>
+        <div class="block full"><div class="label">Evidence</div><div class="ev">${ev}</div></div>
+        <div class="meta"><span>${esc(IMG_NOTE)}</span><span>Trajectory · ${esc(c.trajectory)}</span></div>
+      </div>
+    </div>`;
+  main.appendChild(sec);
+});
+
+// scroll color morph
+const bg = document.getElementById('bg');
+const stops = [...document.querySelectorAll('.code')].map(s=>({el:s, rgb:hexRgb(s.dataset.bg)}));
+function paint(){
+  const vh = window.innerHeight;
+  const mid = window.scrollY + vh*0.5;
+  const introH = document.getElementById('intro').offsetHeight;
+  if(mid < stops[0].el.offsetTop){
+    const t = Math.max(0, Math.min(1, (mid - introH*0.4) / (introH*0.6)));
+    bg.style.backgroundColor = mix(INTRO_BG, stops[0].rgb, t);
+    return;
+  }
+  let idx = 0;
+  for(let i=0;i<stops.length;i++){ if(mid >= stops[i].el.offsetTop) idx = i; }
+  const cur = stops[idx];
+  const next = stops[idx+1] || cur;
+  const start = cur.el.offsetTop;
+  const end = stops[idx+1] ? stops[idx+1].el.offsetTop : start + cur.el.offsetHeight;
+  const t = Math.max(0, Math.min(1, (mid - start) / (end - start)));
+  const tt = t < 0.7 ? 0 : (t - 0.7) / 0.3;
+  bg.style.backgroundColor = mix(cur.rgb, next.rgb, tt);
+}
+let ticking=false;
+window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(()=>{paint();ticking=false;}); ticking=true; } },{passive:true});
+window.addEventListener('resize',paint);
+paint();
+</script>
+</body>
+</html>
