@@ -44,6 +44,9 @@ README.md                  # newcomer orientation (points here)
 CLAUDE.md                  # this file
 ```
 
+## PULSE CHART REMOVED FROM SEARCH TAB (2026-07-07)
+Michael's call — the need-share-over-time chart at the top of the Search tab ("The pulse — share of cultural conversation by need") is gone. Removed from `site/template.html`: the `.pulse` CSS block, the `#pulse` HTML block, and the whole "PULSE (need distribution over time, Search headline)" IIFE. Left `window.NEEDHIST = /*__NEEDHIST__*/[]/*__END__*/;` and its build_site.py injection + build_corpus.py's `need_history`/`RUN_NOTES` computation alone — inert now, nothing else reads NEEDHIST, safe to leave rather than touch the data pipeline for a display-only ask. If the pulse chart is ever wanted back, the removed IIFE is in git history (pre-2026-07-07). Rebuilt via `build_site.py`; confirmed zero `pulse`/`p-chart` references in the built `site/index.html` and the inlined script still passes `node --check`.
+
 ## NEED DISPLAY-NAME RENAME + GEO SEARCH BAR MOVE (2026-07-07)
 Top-level need names shown in the Explore views (globe + universe) were renamed to single-word verbs, display-only — canonical `need` keys in the data/corpus/build scripts are UNCHANGED, so nothing downstream (tagging, scout.py, Search tab, pulse chart, colors) needed to touch. Mapping: Naming the Machine -> Dismantle, Settling Accounts -> Reclaim, Self-Authorship -> Author, Certified Human -> Encounter, Kinship -> Convene, Appetite -> Feel, Ballast -> Fortify (unsettled unchanged).
 - `mockup_discover_geology.html` already had a `LABEL`/`NAME()` display map (globe territories, legend, callout) — just updated the values there, plus one hardcoded sentence in the empty-look&feel message and one `nd.key` render that had bypassed `NAME()`.

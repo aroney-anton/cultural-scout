@@ -164,17 +164,6 @@
   .fg-item .fg-reach{color:var(--mute);font-size:12.5px}
   .fg-chip{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);border-radius:20px;padding:1px 6px;color:var(--mute);margin-left:6px}
 
-  /* ---- PULSE (need distribution over time, Search tab headline) ---- */
-  .pulse{border:1px solid var(--line);border-radius:3px;background:var(--card);padding:18px 20px 12px;margin:24px 0 4px}
-  .pulse .p-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .pulse h2{font-family:Georgia,serif;font-size:17px;font-weight:600;margin:0}
-  .pulse .p-sub{font-size:11.5px;color:var(--mute)}
-  .pulse svg{display:block;width:100%;height:auto;margin-top:10px}
-  .pulse svg text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
-  .pulse .p-note{font-size:11px;color:var(--mute);margin:8px 0 2px;line-height:1.5}
-  .pulse .p-copy{font-size:11px;letter-spacing:.04em;padding:5px 10px;border:1px solid var(--line);background:transparent;border-radius:2px;cursor:pointer;color:var(--mute)}
-  .pulse .p-copy:hover{border-color:var(--ink);color:var(--ink)}
-
   /* ---- RECEIPTS (Search-tab footer + modal) ---- */
   .foot{margin-top:54px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--mute);line-height:1.6}
   .foot a{color:var(--mute);text-decoration:underline;text-underline-offset:2px;cursor:pointer;white-space:nowrap}
@@ -368,15 +357,6 @@
       <p class="lede"><span class="label">Search for signals.</span>
         <span class="statline" id="statline">Loading…</span></p>
     </header>
-    <div class="pulse" id="pulse" style="display:none">
-      <div class="p-head">
-        <h2>The pulse — share of cultural conversation by need</h2>
-        <button class="p-copy" id="p-copy">Copy data ⧉</button>
-      </div>
-      <div class="p-sub" id="p-sub"></div>
-      <div id="p-chart"></div>
-      <div class="p-note" id="p-note"></div>
-    </div>
     <div class="search">
       <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="search for signals">
       <div class="subbar">
@@ -970,54 +950,6 @@ function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t
     navigator.clipboard.writeText(head).then(()=>toast(`Copied ${inds.length} indicators with citations`));
   };
   render();
-})();
-
-/* ---------- PULSE (need distribution over time, Search headline) ---------- */
-(function(){
-  const H=window.NEEDHIST||[];
-  const box=document.getElementById("pulse");
-  if(!box)return;
-  // Discipline: two points are a line, not a signal. Render only at 3+ harvests.
-  if(H.length<3){box.style.display="none";return;}
-  const NEEDS=window.NEEDS, COL=window.NEED_LIGHT;
-  const last=H.length-1;
-  const shares=H.map(h=>{const o={};for(const n of NEEDS)o[n]=(h.needs[n]||0)/h.n*100;return o;});
-  const maxV=Math.max(10,Math.ceil(Math.max(...shares.flatMap(s=>NEEDS.map(n=>s[n])))/5)*5);
-  const W=760,HT=240,padL=36,padR=186,padT=12,padB=26;
-  const pw=W-padL-padR,ph=HT-padT-padB;
-  const x=i=>padL+i*pw/last;
-  const y=v=>padT+ph*(1-v/maxV);
-  let g="";
-  for(let t=0;t<=maxV;t+=10){
-    g+=`<line x1="${padL}" y1="${y(t)}" x2="${padL+pw}" y2="${y(t)}" stroke="#eae7df" stroke-width="1"/>`+
-       `<text x="${padL-7}" y="${y(t)+3.5}" text-anchor="end" font-size="10" fill="#9c978a">${t}%</text>`;
-  }
-  H.forEach((h,i)=>{g+=`<text x="${x(i)}" y="${HT-8}" text-anchor="middle" font-size="10" fill="#9c978a">${h.run}</text>`;});
-  // order by latest share; nudge end-labels apart so they never overlap
-  const order=[...NEEDS].sort((a,b)=>shares[last][b]-shares[last][a]);
-  const lab=order.map(n=>({n,ty:y(shares[last][n])})).sort((a,b)=>a.ty-b.ty);
-  for(let i=1;i<lab.length;i++)if(lab[i].ty-lab[i-1].ty<13)lab[i].ty=lab[i-1].ty+13;
-  const labY={};lab.forEach(l=>labY[l.n]=l.ty);
-  for(const n of order){
-    const c=COL[n];
-    const pts=shares.map((s,i)=>`${x(i).toFixed(1)},${y(s[n]).toFixed(1)}`).join(" ");
-    const dash=n==="unsettled"?' stroke-dasharray="4 3"':"";
-    g+=`<polyline points="${pts}" fill="none" stroke="${c}" stroke-width="1.8"${dash}/>`;
-    shares.forEach((s,i)=>{g+=`<circle cx="${x(i).toFixed(1)}" cy="${y(s[n]).toFixed(1)}" r="2.6" fill="${c}"><title>${n} — ${s[n].toFixed(1)}% of ${H[i].n} signals (${H[i].run})</title></circle>`;});
-    const lv=shares[last][n];
-    g+=`<line x1="${(x(last)+4).toFixed(1)}" y1="${y(lv).toFixed(1)}" x2="${padL+pw+6}" y2="${labY[n].toFixed(1)}" stroke="${c}" stroke-width=".6" opacity=".45"/>`;
-    g+=`<text x="${padL+pw+10}" y="${(labY[n]+3.5).toFixed(1)}" font-size="11" fill="${c}">${n} ${lv.toFixed(0)}%</text>`;
-  }
-  document.getElementById("p-chart").innerHTML=`<svg viewBox="0 0 ${W} ${HT}" role="img" aria-label="Need distribution per harvest">${g}</svg>`;
-  document.getElementById("p-sub").textContent=`The forces underneath the signals: each line is one of the 7 needs (plus the unsettled residue, dashed) as a share of that harvest's tagged signals. ${H.length} harvests.`;
-  const notes=H.filter(h=>h.note).map(h=>`※ ${h.run}: ${h.note}.`);
-  document.getElementById("p-note").textContent=["Read shares, not counts — harvest sizes differ ("+H.map(h=>h.n).join(" / ")+" signals)."].concat(notes).join(" ");
-  box.style.display="block";
-  document.getElementById("p-copy").onclick=()=>{
-    const head=`Need distribution per harvest (share of each run's tagged signals) — Cultural Scout corpus.\nRuns: ${H.map(h=>`${h.run} (n=${h.n})`).join(", ")}.\n${notes.join(" ")}\n\n`+
-      order.map(n=>`${n}: ${shares.map((s,i)=>`${H[i].run} ${s[n].toFixed(1)}%`).join(" · ")}`).join("\n");
-    navigator.clipboard.writeText(head).then(()=>toast("Pulse data copied with run caveats"));
-  };
 })();
 
 /* ---------- RECEIPTS (footer line + modal) ---------- */
