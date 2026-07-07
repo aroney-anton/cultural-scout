@@ -483,6 +483,21 @@ window.NEED_DARK  = {"Certified Human":"#d9a84e","Kinship":"#3f9d96","Settling A
 /* ---------- SEARCH ---------- */
 (function(){
   const DATA=window.DATA, RUNS=window.RUNS, NEEDS=window.NEEDS, NCOL=window.NEED_LIGHT;
+  // Display labels, renamed 2026-07-07 to single-word verbs (Michael's call),
+  // matching mockup_discover_geology.html / mockup_discover_universe.html.
+  // Canonical need keys (used for filtering, hashes, colors) are unchanged —
+  // this only affects rendered text (need-mix chips, card eyebrow tags).
+  const LABEL={
+    "Naming the Machine":"Dismantle",
+    "Settling Accounts":"Reclaim",
+    "Self-Authorship":"Author",
+    "Certified Human":"Encounter",
+    "Kinship":"Convene",
+    "Appetite":"Feel",
+    "Ballast":"Fortify",
+    "unsettled":"Unsettled"
+  };
+  const NAME=k=>LABEL[k]||k;
   const STOP=new Set("the a an and or of to in on for with is are as at by it its about into that this what do you have any signals signal whats happening search".split(" "));
   const SHORT_OK=new Set(["ai","uk","us","tv","vr"]); // real 2-letter queries (exact-word match only)
   const W={title:3,summary:2,novelty_note:2,cross_substrate_notes:1,category:2,source:1,recommended_substrate:1,need:1};
@@ -590,19 +605,19 @@ window.NEED_DARK  = {"Certified Human":"#d9a84e","Kinship":"#3f9d96","Settling A
     // slim stacked bar over the visible (non-excluded) shares
     const bar=present.filter(n=>!excluded.has(n)).map(n=>{
       const pct=cntF[n]/totalF*100;
-      return pct>0?`<span style="width:${pct.toFixed(2)}%;background:${NCOL[n]}" title="${esc(n)} ${Math.round(pct)}%"></span>`:"";
+      return pct>0?`<span style="width:${pct.toFixed(2)}%;background:${NCOL[n]}" title="${esc(NAME(n))} ${Math.round(pct)}%"></span>`:"";
     }).join("");
     document.getElementById("nm-bar").innerHTML=bar||`<span style="width:100%;background:var(--line)"></span>`;
     document.getElementById("nm-chips").innerHTML=present.map(n=>{
       const ex=excluded.has(n);const pct=ex?0:Math.round(cntF[n]/totalF*100);
-      return `<span class="nm-chip${ex?' ex':''}" data-need="${esc(n)}" title="${ex?'click to add back':'click to hide this need'}"><span class="dot" style="background:${NCOL[n]}"></span>${esc(n)} <span class="pct">${ex?'excluded':pct+'% · '+cntF[n]}</span></span>`;
+      return `<span class="nm-chip${ex?' ex':''}" data-need="${esc(n)}" title="${ex?'click to add back':'click to hide this need'}"><span class="dot" style="background:${NCOL[n]}"></span>${esc(NAME(n))} <span class="pct">${ex?'excluded':pct+'% · '+cntF[n]}</span></span>`;
     }).join("");
     document.querySelectorAll("#nm-chips .nm-chip").forEach(el=>el.onclick=()=>toggleNeed(el.dataset.need));
     const act=document.getElementById("nm-act");
     const visible=present.filter(n=>!excluded.has(n));
     if(excluded.size){act.style.display="";act.textContent="Show all needs";act.onclick=()=>{excluded.clear();clusterFilter=null;render();};}
     else if(visible.length>1){const dom=visible.reduce((a,b)=>cntF[b]>cntF[a]?b:a,visible[0]);
-      act.style.display="";act.textContent="Outside “"+dom+"” →";act.onclick=()=>{excluded.add(dom);clusterFilter=null;render();};}
+      act.style.display="";act.textContent="Outside “"+NAME(dom)+"” →";act.onclick=()=>{excluded.add(dom);clusterFilter=null;render();};}
     else act.style.display="none";
   }
 
@@ -721,7 +736,7 @@ window.NEED_DARK  = {"Certified Human":"#d9a84e","Kinship":"#3f9d96","Settling A
   function cardHTML(s){
     const need=NEEDS.includes(s.need)?s.need:"unsettled";const col=NCOL[need];
     const runs=(s._runs||[]);const multi=runs.length>1;const note=s.novelty_note||s.cross_substrate_notes;
-    return `<div class="card" style="border-left-color:${col}"><div class="meta"><span class="sub" style="color:${col}">${esc(need)}</span><a class="src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.source)}</a><span>· ${esc(fmtDate(s.date))}</span>${s.forward_looking?'<span class="badge fwd">forward</span>':''}${multi?`<span class="badge runs">seen in ${runs.length} runs</span>`:''}</div><h3><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></h3><p class="summary">${esc(s.summary)}</p>${note?`<span class="toggle" onclick="this.nextElementSibling.classList.toggle('show')">why this matters ↓</span><div class="more">${s.novelty_note?`<p><b>Novelty:</b> ${esc(s.novelty_note)}</p>`:''}${s.cross_substrate_notes?`<p><b>Crosscurrents:</b> ${esc(s.cross_substrate_notes)}</p>`:''}</div>`:''}</div>`;
+    return `<div class="card" style="border-left-color:${col}"><div class="meta"><span class="sub" style="color:${col}">${esc(NAME(need))}</span><a class="src" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.source)}</a><span>· ${esc(fmtDate(s.date))}</span>${s.forward_looking?'<span class="badge fwd">forward</span>':''}${multi?`<span class="badge runs">seen in ${runs.length} runs</span>`:''}</div><h3><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></h3><p class="summary">${esc(s.summary)}</p>${note?`<span class="toggle" onclick="this.nextElementSibling.classList.toggle('show')">why this matters ↓</span><div class="more">${s.novelty_note?`<p><b>Novelty:</b> ${esc(s.novelty_note)}</p>`:''}${s.cross_substrate_notes?`<p><b>Crosscurrents:</b> ${esc(s.cross_substrate_notes)}</p>`:''}</div>`:''}</div>`;
   }
 
   // default (empty-query) state: the freshest signals from the latest run
