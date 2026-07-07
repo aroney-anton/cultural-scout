@@ -999,3 +999,16 @@ sources:
     base_url: https://www.noahpinion.blog
     recent_url: https://www.noahpinion.blog/archive
     note: "ADDED 2026-06-29 (Michael's scope-lock override). 'Noahpinion' — Noah Smith. Economics, technology, and geopolitics read as culture; the same macro-as-culture register as Adam Tooze's Chartbook (the stated rationale for inclusion). Custom domain noahpinion.blog (Substack-backed; /archive + /api/v1/archive?sort=new). HARVEST FILTER (mirror the Tooze rule): keep the argument/essay posts with real prose and a cultural read; DROP pure markets/policy explainers and link roundups. Per-post check; flag if it drifts off-milieu into trade/analyst content."
+
+  # --- expansion 2026-07-07: art fairs / institutional editorial (Michael's ask) ---
+  - name: frieze.com
+    category: art
+    base_url: https://www.frieze.com
+    recent_url: https://www.frieze.com/exhibition-reviews
+    note: "ADDED 2026-07-07. Leading international art magazine (London-based, part of Frieze/Endeavor; publisher of the Frieze London/LA/NY/Seoul fairs). VERIFIED 2026-07-07: homepage and /exhibition-reviews both fetch cleanly via WebFetch, dense with dated reviews, opinion, interviews, and critic's guides (e.g. 'Frida Kahlo: Tate Mistakes the Icon for the Artist', 26 Jun 26). HARVEST FILTER: prioritize Reviews/Opinion/Interviews/Thematic Essays over fair-announcement and ticket/programming content — those read more like the museum-wave exhibition exception than genuine criticism; use judgment on which fair-adjacent pieces carry real editorial payload."
+
+  - name: artbasel.com
+    category: art
+    base_url: https://www.artbasel.com
+    recent_url: https://www.artbasel.com/stories
+    note: "ADDED 2026-07-07. Art Basel's editorial arm ('Stories') — market insights, artist features, and fair-adjacent culture writing, published by the fair itself (Basel / MCH Group; institutional, not independent). VERIFIED 2026-07-07: /stories fetches cleanly via WebFetch, dated articles with bylines (e.g. 'MoMA PS1 chief curator has a vision for Art Basel's outsized sector, Unlimited', 26 May 26). Editorial voice skews closer to trade/market coverage than the corpus's usual critical register — apply the distinctiveness gate carefully; keep pieces with a genuine cultural argument (e.g. the Trevor Paglen AI-and-authorship piece), drop pure market-report summaries."

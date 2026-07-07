@@ -156,6 +156,8 @@
     "eatwithafia.substack.com": {"region": "Africa", "independent": true},
     "diasporadiary.substack.com": {"region": "South Asia (diaspora)", "independent": true},
     "jenhorn.substack.com": {"region": "Southeast Asia", "independent": true},
-    "noahpinion.substack.com": {"region": "US", "independent": true}
+    "noahpinion.substack.com": {"region": "US", "independent": true},
+    "frieze.com": {"region": "UK", "independent": false},
+    "artbasel.com": {"region": "Europe", "independent": false}
   }
 }
