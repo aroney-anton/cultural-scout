@@ -81,6 +81,7 @@
   .t-share{font-size:12px;letter-spacing:.1em;color:var(--mute);font-variant-numeric:tabular-nums;
     display:flex;align-items:center;gap:9px;margin-bottom:14px}
   .t-share i{width:9px;height:9px;border-radius:50%}
+  .t-byline{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8a8170;margin:4px 0 10px}
   .t-one{font-size:17px;line-height:1.45;font-style:italic;color:#e8e2d6;margin:0 0 12px}
   .t-body{font-size:13.5px;line-height:1.66;color:#b6b0a4;margin:0}
   .lyr-cap{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6b665c;margin-bottom:4px}
@@ -186,6 +187,7 @@
       <div class="lyr-cap">Deepest stratum · the territory</div>
       <div class="t-name" id="t-name"></div>
       <div class="t-share" id="t-share"></div>
+      <div class="t-byline" id="t-byline"></div>
       <p class="t-one" id="t-one"></p>
       <p class="t-body" id="t-body"></p>
       <div class="range-cap" id="range-cap" style="display:none">Semantic range · where this territory's lexical clusters sit</div>
@@ -616,6 +618,9 @@ function fillCallout(nd){
   document.getElementById('t-share').innerHTML=
     isC ? `<i style="background:${esc(nd.color)}"></i>${nd.n} signal${nd.n!==1?'s':''} · ${nd.pct}% of matches`
         : `<i style="background:${esc(nd.color)}"></i>${nd.n} signals · ${nd.pct}% of ${GEO.total}`;
+  const byline=document.getElementById('t-byline');
+  byline.textContent = isC ? '' : nd.key;
+  byline.style.display = isC ? 'none' : '';
   const one=document.getElementById('t-one'), body=document.getElementById('t-body');
   one.textContent = nd.one ? '“'+nd.one+'”' : '';
   one.style.display = nd.one ? '' : 'none';

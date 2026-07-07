@@ -1012,3 +1012,21 @@ sources:
     base_url: https://www.artbasel.com
     recent_url: https://www.artbasel.com/stories
     note: "ADDED 2026-07-07. Art Basel's editorial arm ('Stories') — market insights, artist features, and fair-adjacent culture writing, published by the fair itself (Basel / MCH Group; institutional, not independent). VERIFIED 2026-07-07: /stories fetches cleanly via WebFetch, dated articles with bylines (e.g. 'MoMA PS1 chief curator has a vision for Art Basel's outsized sector, Unlimited', 26 May 26). Editorial voice skews closer to trade/market coverage than the corpus's usual critical register — apply the distinctiveness gate carefully; keep pieces with a genuine cultural argument (e.g. the Trevor Paglen AI-and-authorship piece), drop pure market-report summaries."
+
+  # --- expansion 2026-07-07: art criticism / global-diaspora art, for semiotic-coding depth (Michael's ask) ---
+  - name: spikeartmagazine.com
+    category: art
+    base_url: https://www.spikeartmagazine.com
+    note: "ADDED 2026-07-07. Berlin/Vienna contemporary art magazine — sharp, theory-forward criticism (AI and authorship, post-internet cinema, institutional critique). VERIFIED 2026-07-07: homepage IS the listing and fetches cleanly via WebFetch, dense with dated/bylined content (Summer 2026 issue live at fetch time). Strong distinctiveness-gate fit — recurring named coinages (e.g. 'Shitpostmodernism: Understanding the Slopgeneration', 'slopulism'). WATCH: register leans hard into institutional-critique / AI-and-art-world territory, which is already Naming the Machine's genre-flattered lane — tag tightly (payload must BE the unmasking, not just AI-adjacent) rather than let it pad an already-near-ceiling need."
+
+  - name: moussemagazine.it
+    category: art
+    base_url: https://www.moussemagazine.it
+    recent_url: https://www.moussemagazine.it/magazine/
+    note: "ADDED 2026-07-07. Milan-based, widely regarded as one of the top international contemporary-art criticism/interview magazines; strong print-editorial image density. VERIFIED 2026-07-07 via domain-scoped WebSearch: dated reviews and long-form conversations through at least 30 Jun 2026. CAVEAT: /magazine/ resolves (200) but is JS-rendered — WebFetch returns an empty shell, same class as artreview.com. HARVEST METHOD: domain-scoped WebSearch to surface article URLs, then WebFetch/verify each article page individually before relying on it."
+
+  - name: contemporaryand.com
+    category: global
+    base_url: https://contemporaryand.com
+    recent_url: https://contemporaryand.com/en/c-and-magazine
+    note: "ADDED 2026-07-07. 'C&' — platform for international contemporary art centered on Africa and the African diaspora; also runs a separate C& América Latina magazine track (contemporaryand.com/en/america-latina-magazine). Genuinely non-Western-centered, extends the diaspora/global lane the way the museum wave did. VERIFIED 2026-07-07 via domain-scoped WebSearch: dated 2026 texts (Venice Biennale pavilion coverage, artist features). CAVEAT: /en/c-and-magazine resolves (200) but is a JS-rendered shell — WebFetch returns nav only, same class as artreview.com/moussemagazine.it. HARVEST METHOD: domain-scoped WebSearch for article URLs (check both magazine tracks), then WebFetch each article directly."

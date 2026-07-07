@@ -158,6 +158,9 @@
     "jenhorn.substack.com": {"region": "Southeast Asia", "independent": true},
     "noahpinion.substack.com": {"region": "US", "independent": true},
     "frieze.com": {"region": "UK", "independent": false},
-    "artbasel.com": {"region": "Europe", "independent": false}
+    "artbasel.com": {"region": "Europe", "independent": false},
+    "spikeartmagazine.com": {"region": "Europe", "independent": true},
+    "moussemagazine.it": {"region": "Europe", "independent": true},
+    "contemporaryand.com": {"region": "Africa (coverage)", "independent": false}
   }
 }

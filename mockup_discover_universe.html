@@ -261,6 +261,7 @@
   #panel .close{position:absolute;top:74px;right:22px;cursor:pointer;color:#8b8780;font-size:22px;line-height:1}
   #panel .psub{font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:700}
   #panel .pmeta{font-size:12px;color:#8b8780;margin:6px 0 12px}
+  #panel .p-byline{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8b8780;margin:0 0 10px}
   #panel h3{font-family:Georgia,serif;font-size:21px;line-height:1.25;margin:0 0 12px;color:#fff}
   #panel p{font-size:14px;color:#c9c6c0;margin:0 0 14px}
   #panel .pnote{font-size:13px;color:#9a968f;border-top:1px solid rgba(255,255,255,.1);padding-top:12px;margin-top:4px}
@@ -862,6 +863,7 @@ window.__initExplore=async function(){
     const focused=(focusedTheme===k);
     pbody.innerHTML=`<div class="psub" style="color:${COL[k]}">${esc(NAME(k))}</div>
       <div class="pmeta">${themeCount[k]||0} signals in this system · one of the 7 needs (+ residue)</div>
+      <div class="p-byline">${esc(k)}</div>
       <h3>${esc(d.one)}</h3><p>${esc(d.body)}</p>
       <div class="gobtns">
         <a class="go" href="#" id="focus-theme">${focused?"Release →":"Pull into orbit →"}</a>
