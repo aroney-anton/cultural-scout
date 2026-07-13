@@ -45,7 +45,9 @@ def inject(html, marker, value):
 def parse_sources(path):
     """Light parser for sources.yaml (system python has no PyYAML). Pulls the
     editorial source list — name / category / base_url / fetchable — out of the
-    `sources:` block."""
+    `sources:` block. Sources flagged `semiotic_only: true` are a codebook image
+    pool only (added 2026-07-09); they carry zero corpus signals and must NOT
+    appear in the site / Field Guide, so they are dropped here."""
     if not os.path.exists(path):
         return []
     out, cur, in_block = [], None, False
@@ -63,7 +65,7 @@ def parse_sources(path):
             if cur:
                 out.append(cur)
             cur = {"name": m.group(1).strip().strip('"'), "category": None,
-                   "base_url": None, "fetchable": True}
+                   "base_url": None, "fetchable": True, "semiotic_only": False}
             continue
         if cur is None:
             continue
@@ -73,9 +75,12 @@ def parse_sources(path):
                 cur[key] = mm.group(1).strip().strip('"')
         if re.match(r"\s+fetchable:\s*false", s):
             cur["fetchable"] = False
+        if re.match(r"\s+semiotic_only:\s*true", s):
+            cur["semiotic_only"] = True
     if cur:
         out.append(cur)
-    return out
+    # Drop semiotic-only image-pool sources: they never enter the corpus / Field Guide.
+    return [c for c in out if not c.get("semiotic_only")]
 
 
 def main():

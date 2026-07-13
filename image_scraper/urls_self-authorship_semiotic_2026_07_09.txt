@@ -1,0 +1,98 @@
+# Self-Authorship — semiotic enrichment URLs (visual-source wave, 2026-07-09)
+# Feed to: python run.py scrape --urls urls_self-authorship_semiotic_2026_07_09.txt --need "Self-Authorship"
+# Sources tagged [Playwright] are JS-rendered (SSENSE, SHOWstudio); [direct-only] = Document Journal (homepage hijacked, article URLs still serve).
+# [imgs lazy-load] = Sabukaru images lazy-load; Playwright fallback advisable for real <img> src.
+
+# --- author-among-the-work (12 urls) ---
+#   Highsnobiety — designer amid signature work
+https://www.highsnobiety.com/p/heikki-salonen-salomon-interview/
+#   Hypebeast — gallerist/artist in DIY space
+https://hypebeast.com/2025/11/adam-zhu-market-gallery-interview-feature
+#   Sabukaru [imgs lazy-load] — emerging artists in studio/scene
+https://sabukaru.online/articles/the-sabukaru-guide-to-the-17-young-artists-revolutionizing-tokyos-art-scene
+#   i-D — two designers, their own work
+https://i-d.co/article/simone-rocha-martine-rose-conversation/
+#   i-D — graduate designers debut collections
+https://i-d.co/article/class-of-2026-issue-376/
+#   i-D — photographer profiled with her images
+https://i-d.co/article/petra-collins-interview/
+#   Interview — painter among his work
+https://www.interviewmagazine.com/art/how-painter-anthony-cudahy-finds-intimacy-in-the-mundane
+#   Interview — artist in her LA studio
+https://www.interviewmagazine.com/art/claire-tabouret-on-self-portraiture-psychoanalysis-and-stained-glass
+#   Phroom — photographer, analog process
+https://phroomplatform.com/takashi-homma/
+#   Aperture — photographers on signature/influence
+https://aperture.org/editorial/6-photographers-on-lee-friedlanders-timeless-influence/
+#   BJP — photographer at work in studio
+https://www.1854.photography/2026/06/in-the-studio-with-scarlet-page/
+#   Document [direct-only] — studio self-portraiture (2023)
+https://www.documentjournal.com/2023/11/paul-sepuya-ryan-mcnamara-interview-portfolio/
+
+# --- self-as-the-work (15 urls) ---
+#   Highsnobiety — director persona/eyewear as identity
+https://www.highsnobiety.com/p/obsession-curry-barker-glasses/
+#   Perfect — actor persona staged
+https://www.theperfectmagazine.com/features/hamnet-st-noah-jupe-interviewed-by-paul-flynn-for-perfect-issue-10-b22z6-a74x8
+#   Perfect — musician self-portraiture zine
+https://www.theperfectmagazine.com/features/lilyallen-b8d6m
+#   Perfect — 'Rihanna in 12 Hours' persona shoot
+https://www.theperfectmagazine.com/features/discuss-zs4dd
+#   SSENSE [Playwright] — subjects in their homes/wardrobes
+https://www.ssense.com/en-us/editorial/fashion/ssense-2025-calendar-locations
+#   i-D — musician shot as persona
+https://i-d.co/article/bladee-sulfur-surfer-interview/
+#   i-D — model-as-medium, Inez & Vinoodh
+https://i-d.co/article/bhavitha-mandava-cover-inez-and-vinoodh-chanel/
+#   Interview — styled multi-look celebrity portraiture
+https://www.interviewmagazine.com/film/johnny-knoxville-has-16-concussions-and-zero-regrets
+#   Interview — Madonna staged as character
+https://www.interviewmagazine.com/music/madonna-confessions-on-a-dancefloor-nadia-lee-cohen
+#   Interview — body/persona as performance medium
+https://www.interviewmagazine.com/art/the-g-strings-dance-troupe-cabaret-burlesque-performance-art
+#   Phroom — contorted body, Rorschach symmetry
+https://phroomplatform.com/vincent-ferrane-2/
+#   Phroom — Togolese-diaspora self-portraits
+https://phroomplatform.com/silvia-rosi/
+#   Der Greif — 40+ images, illusion vs synthetic
+https://dergreif.org/guest-room/shana-lopes--aspen-mays/
+#   BJP — staged portraiture, queer identity
+https://www.1854.photography/2026/06/asa-johannesson-the-queering-of-photography
+#   Fisheye — Zhong Lin staged bold-hair series
+https://fisheyemagazine.fr/article/bighairdontlie-une-serie-coup-de-poing/
+
+# --- heritage-re-signed (6 urls) ---
+#   Sabukaru [imgs lazy-load] — gyaru subculture, magazine identity
+https://sabukaru.online/articles/gyaru-revolution-yone-san-and-the-influence-of-egg-magazine
+#   Phroom — Ghanaian memory staged portraiture
+https://phroomplatform.com/carlos-idun-tawiah/
+#   Der Greif — family archives, migration, autobiography
+https://dergreif.org/artist-feature/edward-gia/
+#   BJP — 'who is British?' inherited identity
+https://www.1854.photography/2026/04/shizza-majeed-babajis-britain-profile
+#   Foam — Morocco/diaspora 'Home', roots
+https://www.foam.org/events/home-mounir-raji
+#   Document [direct-only] — discarded material into art
+https://www.documentjournal.com/2023/04/lila-roo-sustainable-fashion-design-consumer-waste-plastic-bequia-grenadines-environmentalism/
+
+# --- remix-self (3 urls) ---
+#   SSENSE [Playwright] — digital-identity predictions
+https://www.ssense.com/en-us/editorial/culture/trend-forecast-2026
+#   i-D — digital/AI-native artists on identity
+https://i-d.co/article/meet-the-digital-artists-bending-our-minds-and-futures/
+#   Fisheye — staged remixed self-presentation
+https://fisheyemagazine.fr/article/bighairdontlie-une-serie-coup-de-poing/
+
+# --- against-the-algorithm (6 urls) ---
+#   SSENSE [Playwright] — designer/brand profile, hand
+https://www.ssense.com/en-us/editorial/fashion/post-archive-faction-is-ready-for-its-final-form
+#   SHOWstudio [Playwright] — AI-adjacent couture by Gaultier atelier
+https://www.showstudio.com/projects/yu-chi-lyra-kuo/transcript-in-conversation-with-yu-chi-lyra-kuo-and-nick-knight
+#   Foam — staged constructed imagery
+https://www.foam.org/events/blommers-schumm
+#   Aperture — improvised backyard still-life
+https://aperture.org/editorial/a-photographers-scavenged-still-lifes/
+#   Der Greif — deconstructing colonial landscape photo
+https://dergreif.org/article/earthly-fabulations-exhibition-photography-in-context/
+#   Unthinking — Burgin/Sluis on machinic/AI photography
+https://unthinking.photography/articles/thinking-photography-in-the-age-of-ai

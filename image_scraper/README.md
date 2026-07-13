@@ -51,11 +51,11 @@ python run.py sheets
 python run.py clean
 ```
 
-Deletes the image cache and the sheets. The `output/` JSONs stay (they contain no imagery).
+Deletes the raw image cache. The contact **sheets are archived** into `sheets_archive/` and retained for **6 months** (180 days), then auto-pruned on a later `clean` — an internal look-back window so a code's evidence can be re-examined without re-scraping. Pass `--purge` to delete the sheets outright instead. The `output/` JSONs stay (they contain no imagery).
 
 ## Copyright rules (hard)
 
-Downloaded images and contact sheets are **temporary analysis artifacts only**. They are never committed to git (the project `.gitignore` enforces this), never copied into `site/`, and never shipped in any deliverable. Published semiotic codes reference imagery **only as live hotlinks** to the publishers' own servers, exactly as the existing `codes_*.json` evidence collages do. The scraper never attempts to defeat paywalls, login walls, or bot challenges; a walled page is recorded as `fetch_method: "failed"` and skipped. Run `clean` when analysis is finished.
+Downloaded images and contact sheets are **analysis artifacts only** — the raw cache is temporary and the sheets are held for at most 6 months in the gitignored `sheets_archive/` then pruned. They are never committed to git (the project `.gitignore` enforces this, including `sheets_archive/`), never copied into `site/`, and never shipped in any deliverable. Published semiotic codes reference imagery **only as live hotlinks** to the publishers' own servers, exactly as the existing `codes_*.json` evidence collages do. The scraper never attempts to defeat paywalls, login walls, or bot challenges; a walled page is recorded as `fetch_method: "failed"` and skipped. Run `clean` when analysis is finished.
 
 ## What failure looks like (and why it's fine)
 

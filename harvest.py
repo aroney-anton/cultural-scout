@@ -148,7 +148,10 @@ def main():
     items_min = h.get("items_per_source_min", 8)
     items_max = h.get("items_per_source_max", 15)
 
-    fetchable = [s for s in config["sources"] if s.get("fetchable", True)]
+    # Exclude semiotic_only sources (added 2026-07-09): they are a codebook image
+    # pool for the semiotic stage, never harvested / tagged / merged into the corpus.
+    fetchable = [s for s in config["sources"]
+                 if s.get("fetchable", True) and not s.get("semiotic_only")]
 
     if args.subset:
         wanted = set(args.subset)

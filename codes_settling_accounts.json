@@ -1,10 +1,11 @@
 {
   "need": "Settling Accounts",
-  "updated": "2026-07-07",
+  "updated": "2026-07-09",
   "runs_covered": [
-    "2026-07-07"
+    "2026-07-07",
+    "2026-07-09-semiotic"
   ],
-  "images_observed": 359,
+  "images_observed": 526,
   "articles_viewed": 64,
   "method_note": "Round-1 + round-2 baseline coding per SEMIOTIC_CODEBOOK.md via the image_scraper contact-sheet method. Round 1: 48 corpus articles scraped, 217 images, 19 numbered 12-up sheets read against sidecar JSONs. Round 2 (WebSearch gap-fill per GAP_REPORT_settling_accounts_round1.md): 17 URLs, 16 productive (142 images), recomposited to 30 combined sheets / 359 slots. Michael's call 2026-07-07: exactly 4 codes — the original 6 candidates were consolidated (contested-plinth folded into canon-corrected; archive-glow + heritage-re-patterned merged as inheritance-reactivated). Palette hexes are observational approximations from article imagery, not brand-spec values. This need's divergence axes (per semantic_axes.json) are Aesthetic↔Historical / Judgment↔Heritage — the four codes sit two per pole: restaged-verdict and canon-corrected on Judgment, stitched-testimony and inheritance-reactivated on Heritage. COVERAGE AUDIT (2026-07-07): of 359 slots, 66 are page furniture (scraper by-catch: ads/logos/paywall/related rails); of the 293 substantive images, 251 (86%) code cleanly under the 4 codes (IR 110, ST 65, CC 42, RV 34) and 42 (14%) are residual — dispersed, no coherent 5th code (see coverage_audit).",
   "method_note_pilot": "First pass for this need; gate NOT yet passed. Theme-gravity fences applied: restaged-verdict excludes system-unmasking payloads (Naming the Machine's lane) and stitched-testimony excludes craft-pride/provenance in general (Certified Human's lane) — it takes only handmade media carrying a record of a wrong. inheritance-reactivated is a deliberate merge of two wings (photo-archive warmth / atelier technique-revival); if a future run shows their palettes and lexicons diverging, split them back out. Page-furniture excluded from evidence: NGS Instagram-caption ALTs, culturedmag sidebar/paywall slots, hyperallergic house-ad slots, frieze site chrome, colossal related-post images (Teeter-Totter Wall cited with that caveat).",
@@ -183,6 +184,61 @@
           "image_refs": [
             "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/f8c60e63-905c-4091-9895-91a79bfc8a50/Tramp+Stamp+site+collage+2.png?format=2500w"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "getty.edu",
+          "url": "https://www.getty.edu/art/exhibitions/photo_reenactment/index.html",
+          "note": "'Encore: Reenactment in Contemporary Photography' — the code's pure form: Fosso restaging MLK at the podium, Shonibare re-shooting Goya's 'Sleep of Reason' in African wax print, Morimura re-embodying Manet's Folies-Bergere barmaid. Faithful re-enactment presented as the re-judgment of the original.",
+          "image_refs": [
+            "https://www.getty.edu/art/exhibitions/photo_reenactment/images/371829EX1_x1024.jpg",
+            "https://www.getty.edu/art/exhibitions/photo_reenactment/images/371825EX1_x1024.jpg",
+            "https://www.getty.edu/art/exhibitions/photo_reenactment/images/31419901_x1024.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "1854.photography",
+          "url": "https://www.1854.photography/2026/04/decolonial-photography-museum-rietberg-exhibition-2026/",
+          "note": "'A Kind of Paradise' (Museum Rietberg) — artists re-forming the colonial archive: Yuki Kihara's staged 'First Impressions: Paul Gauguin', Tshepiso Moropa's ghostly 'Night Riders'. Restaging the colonial image to re-politicise it — fidelity swapped for reversal.",
+          "image_refs": [
+            "https://www.1854.photography/wp-content/uploads/2026/04/YUKI-KIHARA-First-Impressions-Paul-Gauguin-2018-PRODUCTION-STILL.jpg",
+            "https://www.1854.photography/wp-content/uploads/2026/04/Night-Riders-2025.jpg",
+            "https://www.1854.photography/wp-content/uploads/2026/04/2.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "1854.photography",
+          "url": "https://www.1854.photography/2025/12/hoda-afshar-the-fold-loose-joints-book-exhibition-paris-2025/",
+          "note": "Hoda Afshar 'The Fold' — restaging de Clerambault's colonial photographs of the veiled hayek in order to dismantle them; white-draped figures re-enact the archive 'against the images it references'. Second 1854 article (same host).",
+          "image_refs": [
+            "https://www.1854.photography/wp-content/uploads/2025/12/Hoda_Afshar_TheFold_Press07.jpg",
+            "https://www.1854.photography/wp-content/uploads/2025/12/Hoda_Afshar_TheFold_Press13.jpg",
+            "https://www.1854.photography/wp-content/uploads/2025/12/Hoda_Afshar_TheFold_Press20.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "hyperallergic.com",
+          "url": "https://hyperallergic.com/carrie-mae-weems-assesses-history-in-real-time/",
+          "note": "Carrie Mae Weems 'Cyclorama' — a 7-part film re-staging footage from the 19th century to now, plus votive red-lit dioramas ('It's Over'). The artist re-tries the historical record 'in real-time'. hyperallergic new to THIS code (was only in canon/stitched).",
+          "image_refs": [
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2022/02/img_6224-jpg.webp",
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2022/02/img_6289-jpg.webp",
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2022/02/img_6250-jpg.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "fraenkelgallery.com",
+          "url": "https://fraenkelgallery.com/exhibitions/carrie-mae-weems-2025",
+          "note": "Weems at Fraenkel — the Museum Series (Weems in black, back turned, before the institution's facade), 'Painting the Town' boarded/painted-over storefronts, and 'Blues and Pinks' tinted police-brutality prints: the record re-assessed and re-composed. Gallery page rendered thin/JS but images served live.",
+          "image_refs": [
+            "https://i0.wp.com/fraenkelgallery.com/wp-content/uploads/2024/12/CMW-0225.jpg?w=3000&quality=90&strip=all&ssl=1",
+            "https://i0.wp.com/fraenkelgallery.com/wp-content/uploads/2024/12/CMW-0215-Framed-Edit.jpg?w=3000&quality=90&strip=all&ssl=1",
+            "https://i0.wp.com/fraenkelgallery.com/wp-content/uploads/2024/12/CMW-0138-Framed.jpg?w=3000&quality=90&strip=all&ssl=1"
+          ]
         }
       ],
       "confidence": "high",
@@ -192,6 +248,11 @@
           "run": "2026-07-07",
           "change": "coined",
           "note": "pilot baseline; 8 outlets across entertainment/art/intellectual/internet. Absorbs the girlhood-retrial shadow candidate as a named wing (Dazed round-2 imagery confirmed it outside polyester)."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +4 distinct sources (getty.edu, 1854.photography, hyperallergic.com, fraenkelgallery.com) -> 12 distinct. Reenactment/returning-the-gaze register widened from biopic restaging into the photography-art canon (Fosso/Morimura/Shonibare, Weems, Afshar). Short of the 15 target: ocula.com (JS/proxy) did not capture and aperture was reserved for canon-corrected."
         }
       ]
     },
@@ -365,6 +426,61 @@
           "image_refs": [
             "https://www.thisiscolossal.com/wp-content/uploads/2019/07/teeter-totter-2.jpg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "aperture.org",
+          "url": "https://aperture.org/editorial/25-photobooks-that-define-america/",
+          "note": "'25 Photobooks That Define America' — canon-formation performed as correction: Robert Frank beside Dawoud Bey's 'Elegy', LaToya Ruby Frazier's 'Notion of Family', Ernest Cole, An-My Le. The list re-draws the American canon to seat the previously-excluded at full scale.",
+          "image_refs": [
+            "https://aperture.org/wp-content/uploads/2026/06/01_Americans.jpg",
+            "https://aperture.org/wp-content/uploads/2026/06/Bey_Elegy_004.jpg",
+            "https://aperture.org/wp-content/uploads/2026/06/Notion_11.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "aperture.org",
+          "url": "https://aperture.org/editorial/is-a-british-exhibition-about-resistance-stuck-in-the-past/",
+          "note": "'Resistance' at Turner Contemporary — the institutional survey re-hangs Britain's protest archive (Clause 28 kiss, miners' strike, Notting Hill Carnival) in a white-cube grid; the review's 'stuck in the past' charge IS the code's tension: the museum absorbing dissent. Second aperture article (same host).",
+          "image_refs": [
+            "https://aperture.org/wp-content/uploads/2025/08/8.-Resistance-How-protest-shaped-Britain-and-photography-shaped-protest-2025-Installation-View.-Courtesy-Turner-Contemporary.-Photo-©-Above-Ground-Studio.jpg",
+            "https://aperture.org/wp-content/uploads/2025/08/8.-Pam-Isherwood-Stop-Clause-28-march-Whitehall-London-9-January-1988-©-Bishopsgate-Institute-scaled.jpg",
+            "https://aperture.org/wp-content/uploads/2025/08/4.-Chris-Miles-Notting-Hill-Carnival-London-1974-©-Chris-Miles.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "dergreif.org",
+          "url": "https://dergreif.org/article/sisterhood-in-practice-exhibition-photography-in-context/",
+          "note": "'Sisterhood in Practice' — a group exhibition centering women photographers' work (Lucia Jost's 'Capital Daughters', Yufan Lu's annotated 'Cosmetic Surgery Diagnosis', Reid+Factor's 'pulling the tape from her mouth'); the institution correcting a gendered exclusion in the frame of a survey.",
+          "image_refs": [
+            "https://cdn.sanity.io/images/0dpggqwn/production/3e5f9837daf2346f539c2b2b7c67257da7a09561-1500x1500.jpg?w=2000&auto=format",
+            "https://cdn.sanity.io/images/0dpggqwn/production/40069b599c8e85103f921db93421dd025e40404f-1500x471.jpg?w=2000&auto=format",
+            "https://cdn.sanity.io/images/0dpggqwn/production/caf25c984c2f81a5fbbac878a47beda20c9da9be-1500x1125.jpg?w=2000&auto=format"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "phmuseum.com",
+          "url": "https://phmuseum.com/news/verdiana-albano-receives-the-1st-prize-of-the-phmuseum-2025-women-photographers-grant",
+          "note": "PhMuseum 2025 Women Photographers Grant (Verdiana Albano 1st prize, screened at Photo Vogue Festival) — an institutional prize built to redress the canon's gender exclusion; Albano's East-German family-attic archive collaged onto an 'Ausweis' ID, Irene Antonia Diane Reece's worn family miniatures.",
+          "image_refs": [
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvTXZibU9lWS9uZXdzaXRlbXMvZXJrcU5rYS9ibG9ja3MvYjRQajgwYiIsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjo2MDB9LCJyb3RhdGUiOm51bGx9fQ==",
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvTXZibU9lWS9uZXdzaXRlbXMvZXJrcU5rYS9ibG9ja3MvYjJRUFJQYSIsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjo2MDB9LCJyb3RhdGUiOm51bGx9fQ==",
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvTXZibU9lWS9uZXdzaXRlbXMvZXJrcU5rYS9ibG9ja3MvZTVYazhaZCIsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoyMDAwfSwicm90YXRlIjpudWxsfX0="
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "hyperallergic.com",
+          "url": "https://hyperallergic.com/france-rencontres-d-arles-2025-flips-the-history-of-photography-upside-down/",
+          "note": "Rencontres d'Arles 2025 'flips the history of photography' — cloisters and churches re-hung with anonymous/vernacular portraits, Indigenous-Australian cyanotype ('On Country'), Brazilian 'Ancestral Futures'; the festival expanding the canon by de-canonising it. hyperallergic already a canon source (enriches, no new distinct).",
+          "image_refs": [
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2025/09/arles-3.jpg",
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2025/09/arles-cyanotype.jpg",
+            "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2025/09/arles-church-cropped.jpg"
+          ]
         }
       ],
       "confidence": "high",
@@ -374,6 +490,11 @@
           "run": "2026-07-07",
           "change": "coined",
           "note": "pilot baseline; merge of the overdue-retrospective and contested-plinth candidates (Michael's 4-code consolidation). Round-2 MOCA/depot imagery confirmed the live edge is annotation-and-custody, not toppling — the toppling image is flagged residual inside a dominant code."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +3 distinct sources (aperture.org, dergreif.org, phmuseum.com) -> 9 distinct; also added a 2nd hyperallergic entry (Arles) for image richness, no new distinct. Register widened from rehang/plinth into canon-formation (photobook lists), women-photographer grants and festival de-canonisation. Short of 15: foam co-rentmeester and unthinking.photography did not capture this pass."
         }
       ]
     },
@@ -554,6 +675,11 @@
           "run": "2026-07-07",
           "change": "coined",
           "note": "pilot baseline. Round 1 had the concept on 2 outlets; round-2 gap-fill (mymodernmet, buffaloakg, craftcouncil, frieze) took it to 6 independent outlets and widened the media from thread/linocut/ballpoint to neon, bottle caps and found objects. Confidence high accordingly."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +0 distinct sources; stays at 6. SHORTFALL, recorded honestly per house rule. The wave's stitched candidates did not yield handmade-testimony imagery fitting this code's fence: phroomplatform.com/sheida-soleimani (host unreachable this pass, not captured), aperture.org/sakir-khader (not captured), dergreif Maryam Touzani 'Argania' (captured but coded to inheritance-reactivated as photographic family-history reconstruction, not humble handmade media carrying an accusation), phmuseum Verdiana Albano (coded to canon-corrected as an institutional grant). Melnitchenko's wall of handwritten front-line letters is testimony-adjacent but sits inside a collective-memory photo archive -> inheritance-reactivated. No pad added."
         }
       ]
     },
@@ -761,6 +887,61 @@
           "image_refs": [
             "https://newlinesmag.com/wp-content/uploads/doors2.jpg-web.jpg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "foam.org",
+          "url": "https://www.foam.org/events/de-ondergedoken-camera",
+          "note": "'The Underground Camera' — the WWII Dutch resistance photo archive resurfaced and re-activated by living artists (Broomberg & Chanarin strip-test, Nerhol), the opener a man hiding a camera inside his coat. The inherited resistance record treated as living material, not sealed evidence.",
+          "image_refs": [
+            "https://a.storyblok.com/f/113697/5793x6000/1206e7827c/de-ondergedoken-canera.jpg/m/400x0",
+            "https://a.storyblok.com/f/113697/3000x1800/8b8dde3337/strip-test-7-2012-c-adam-broomberg-_amp_-oliver-chanarin.jpg/m/400x0",
+            "https://a.storyblok.com/f/113697/3000x1800/b8dc54c18b/item-06-scene-to-know-daily-no-001-2013-c-nerhol.jpg/m/400x0"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "fisheyemagazine.fr",
+          "url": "https://fisheyemagazine.fr/article/les-photos-de-famille-de-katrin-koenning/",
+          "note": "Katrin Koenning 'Indefinitely' — the family album as living material: bleached, warm, grain-heavy snapshots of an ageing father, swimmers, home interiors, held as continuation of a migrating family rather than record of loss.",
+          "image_refs": [
+            "https://fisheyemagazine.fr/wp-content/uploads/2015/09/KOENNING_K_001-fisheyelemag.jpg",
+            "https://fisheyemagazine.fr/wp-content/uploads/2015/09/KOENNING_K_005-fisheyelemag.jpg",
+            "https://fisheyemagazine.fr/wp-content/uploads/2015/09/KOENNING_K_006-fisheyelemag.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "phmuseum.com",
+          "url": "https://phmuseum.com/news/dispatches-from-the-front-sergey-melnitchenkos-collective-memory-project",
+          "note": "Sergey Melnitchenko's Ukrainian 'collective memory' project — soldiers' disposable-camera archive re-gathered as inheritance: a wall of handwritten front-line letters and a grid of soldiers' carried talismans held as living memory of a war still underway. Second phmuseum article (canon holds the other).",
+          "image_refs": [
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvTERkd1JiMS9uZXdzaXRlbXMvZTBScnI1Yi9ibG9ja3MvYm1XeTJSZSIsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjo2MDB9LCJyb3RhdGUiOm51bGx9fQ==",
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvTERkd1JiMS9uZXdzaXRlbXMvZTBScnI1Yi9ibG9ja3MvZWxXN3BqZCIsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoyMDAwfSwicm90YXRlIjpudWxsfX0=",
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvTERkd1JiMS9uZXdzaXRlbXMvZTBScnI1Yi9ibG9ja3MvZWdXMmtyZSIsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoyMDAwfSwicm90YXRlIjpudWxsfX0="
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "dergreif.org",
+          "url": "https://dergreif.org/artist-feature/maryam-touzani/",
+          "note": "Maryam Touzani 'Argania: Lack of information is my family history' — an absent family history rebuilt from cyanotype maps ('Kaart van Afrika'), pinned snapshot contact-sheets and dental X-rays. The archive reconstructed under the sign of loss: inheritance held by re-making what the record never kept. Second dergreif article (canon holds the other).",
+          "image_refs": [
+            "https://cdn.sanity.io/images/0dpggqwn/production/f46fc958bbcf0277c5fc920c05ece51bceb09818-2500x2363.jpg?w=2000&auto=format",
+            "https://cdn.sanity.io/images/0dpggqwn/production/098f8322711a8eb0bbccf708948a1cb4cc940780-2500x1888.jpg?w=2000&auto=format",
+            "https://cdn.sanity.io/images/0dpggqwn/production/0dd67d34f3122c8a7116cafba3708ae8877b143e-2500x1913.jpg?w=2000&auto=format"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "aperture.org",
+          "url": "https://aperture.org/editorial/silvia-rosi-reimagines-the-family-album/",
+          "note": "Silvia Rosi 'reimagines the family album' — Togolese-Italian diaspora self-portraits restaging the mother/family archive (cabinet of framed photos, 'Self-Portrait as My Mother', boombox and AGFA-box heads). aperture already an inheritance source (enriches, no new distinct).",
+          "image_refs": [
+            "https://aperture.org/wp-content/uploads/2025/06/259MAG034_Rosi_HR.jpg",
+            "https://aperture.org/wp-content/uploads/2025/06/259MAG057_Rosi_HR.jpg",
+            "https://aperture.org/wp-content/uploads/2025/06/259MAG059_Rosi_HR.jpg"
+          ]
         }
       ],
       "confidence": "medium",
@@ -770,6 +951,11 @@
           "run": "2026-07-07",
           "change": "coined",
           "note": "pilot baseline; merge of the archive-glow and heritage-re-patterned candidates (Michael's 4-code consolidation). Round 2 fixed both wings' gaps — photo wing to 5 outlets (added 1854, aperture), technique wing confirmed outside grad shows (apollo, wallpaper ×2, anothermag). Confidence medium not for evidence breadth but for the merge itself: two wings, one gesture, split-watch noted in tensions."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +4 distinct sources (foam.org, fisheyemagazine.fr, phmuseum.com, dergreif.org) -> 14 distinct; also added a 2nd aperture entry (Silvia Rosi) for richness, no new distinct. Photo-wing deepened across resurfaced-resistance (foam), vernacular family album (fisheye/aperture), soldiers' collective-memory archive (phmuseum) and family-history-from-absence (dergreif). Near the 15 target; phroomplatform family-album URLs (Wang, Frigillana) did not capture (host unreachable this pass)."
         }
       ]
     }

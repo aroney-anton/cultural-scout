@@ -1,0 +1,101 @@
+# Certified Human — semiotic enrichment URLs (visual-source wave, 2026-07-09)
+# Feed to: python run.py scrape --urls urls_certified_human_semiotic_2026_07_09.txt --need "Certified Human"
+# Sources tagged [Playwright] are JS-rendered (SSENSE, SHOWstudio); [direct-only] = Document Journal (homepage hijacked, article URLs still serve).
+# [imgs lazy-load] = Sabukaru images lazy-load; Playwright fallback advisable for real <img> src.
+
+# --- provenance-ledger (4 urls) ---
+#   SSENSE [Playwright] — curated objects, captions-as-form
+https://www.ssense.com/en-us/editorial/market/ssense-staff-summer-picks-2025
+#   Aperture — darkroom master / archival provenance
+https://aperture.org/editorial/the-darkroom-artist-keeping-diane-arbuss-vision-alive/
+#   PHmuseum — photobooks as print/craft objects
+https://phmuseum.com/news/a-spring-guide-to-photobooks
+#   Der Greif — photobook festival, power/fragility staging
+https://dergreif.org/article/at-leipzig-photobook-festival/
+
+# --- countable-labor (1 urls) ---
+#   Highsnobiety — bootleg tee production, handwork
+https://www.highsnobiety.com/p/knicks-bootleg-tshirts/
+
+# --- unretouched-witness (21 urls) ---
+#   Sabukaru [imgs lazy-load] — photojournalist of the ordinary
+https://sabukaru.online/articles/kyoichi-tsuzuki
+#   Sabukaru [imgs lazy-load] — youth portrait photography
+https://sabukaru.online/articles/japans-youth-photographer-shooting-people-with-a-touch-of-coldness-tanase
+#   Perfect — Armani final interview, legacy portrait
+https://www.theperfectmagazine.com/features/giorgio-armani-in-conversation-with-alex-bilmes-5sf8l
+#   Interview — intimate analog portrait monograph
+https://www.interviewmagazine.com/fashion/inside-a-new-monograph-celebrating-the-legacy-of-david-armstrong
+#   Foam — 15 emerging image-makers
+https://www.foam.org/events/foam-talent-2026
+#   Foam — documentary life-witness retrospective
+https://www.foam.org/events/co-rentmeester
+#   Aperture — Malian studio-portrait canon
+https://aperture.org/editorial/seydou-keitas-revelatory-portraits-of-malian-life/
+#   Aperture — documentary Palestinian record
+https://aperture.org/editorial/sakir-khaders-portraits-of-palestinian-perseverance/
+#   Aperture — mural-scale social-type portraits
+https://aperture.org/editorial/heinkuhn-ohs-people-of-the-twenty-first-century/
+#   Phroom — Ghanaian memory/community portraiture
+https://phroomplatform.com/carlos-idun-tawiah/
+#   Phroom — Filipino-American family documentary
+https://phroomplatform.com/ryan-frigillana/
+#   Der Greif — 'Aftermath' portrait feature
+https://dergreif.org/artist-feature/julia-bohle/
+#   Fisheye — Feng Li China street-portrait
+https://fisheyemagazine.fr/article/feng-li-faille-spatio-temporelle/
+#   Fisheye — British-seaside documentary portraits
+https://fisheyemagazine.fr/en/article/british-seaside-round-animals-and-celine-sciamma-max-miechowskis-chinese-portrait/
+#   Fisheye — Feb 2026 photo picks, retiree portraits
+https://fisheyemagazine.fr/article/coups-de-coeur-photo-fevrier-2026/
+#   BJP — Ukraine-youth documentary series
+https://www.1854.photography/2026/02/on-the-cusp-female-in-focus-winners-2025
+#   BJP — 'The Lives We Dream in Passing'
+https://www.1854.photography/2026/02/kalpesh-lathigra-dream/
+#   BJP — 'Five Minutes After Birth', UK masculinity
+https://www.1854.photography/2026/05/ones-to-watch-2025-william-lakin
+#   PHmuseum — grant winner + shortlist portfolios
+https://phmuseum.com/grants/2025-photography-grant
+#   PHmuseum — 'Frontline Rolls' + grant galleries
+https://phmuseum.com/grants/2026-photography-grant
+#   PHmuseum — live feed of documentary stories
+https://phmuseum.com/projects
+
+# --- slop-repainted-slow (0 urls) ---
+#   (no URLs from this visual-source wave — see gap note)
+
+# --- analog-sanctuary (5 urls) ---
+#   Sabukaru [imgs lazy-load] — Japanese car-magazine print archive
+https://sabukaru.online/articles/autoprefecture-interview
+#   Sabukaru [imgs lazy-load] — film cameras, analog-photo ritual
+https://sabukaru.online/articles/tokyo-camera-style-through-the-eyes-of-john-sypal
+#   Interview — film-era photographer vs iPhone
+https://www.interviewmagazine.com/fashion/the-iphone-has-taken-over-arthur-elgort-on-the-fashion-and-photography-that-staked-his-legacy
+#   Phroom — Japanese photographer, analog process
+https://phroomplatform.com/takashi-homma/
+#   Unthinking — Kodak/Agfa film-industry material history
+https://unthinking.photography/articles/militant-chemistry-an-interview-with-alice-lovejoy
+
+# --- round-2 gap-fill: slop-repainted-slow (11 urls, added 2026-07-09) ---
+#   ARTnews — McKinniss oil paintings of viral images
+https://www.artnews.com/art-news/news/sam-mckinniss-jeffrey-deitch-review-1234756098/
+#   Wallpaper — pop-culture painted from JPEGs
+https://www.wallpaper.com/art/exhibitions-shows/sam-mckinniss-the-present-tense-david-kordansky-gallery-los-angeles
+#   Almine Rech [Playwright] — celebrity-JPEG paintings, install
+https://www.alminerech.com/exhibitions/677-sam-mckinniss-neverland
+#   4Columns — internet-image painting criticism
+https://4columns.org/kotecha-shiv/sam-mckinniss
+#   Frieze — tapestries of iPhone selfies/screenshots
+https://www.frieze.com/article/erin-m-riley-life-looks-like-a-house-for-a-few-hours-2025-review
+#   PPOW [Playwright] — woven screenshots, install
+https://www.ppowgallery.com/exhibitions/erin-m-riley3
+#   Juxtapoz [Playwright] — tapestry remakes of digital images
+https://www.juxtapoz.com/news/textiles/preview-erin-m-riley-s-life-looks-like-a-house-for-a-few-hours-ppow-gallery-nyc/
+#   Galerie — hand-woven pixelated digital imagery
+https://galeriemagazine.com/artist-to-watch-erin-m-riley/
+#   Dazed — online imagery woven slowly in wool
+https://www.dazeddigital.com/art-photography/article/40163/1/artist-erin-m-riley-weaves-tapestries-complex-beautiful-tapestries-sex-trauma
+#   W Magazine — sexts/screenshots turned into tapestries
+https://www.wmagazine.com/story/erin-m-riley-tapestries-brilliant-champions-studio-visit
+#   Artnet — painting in the image-saturated age
+https://news.artnet.com/art-world/contemporary-painting-trends-2025-2659653

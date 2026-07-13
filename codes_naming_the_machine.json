@@ -1,10 +1,11 @@
 {
   "need": "Naming the Machine",
-  "updated": "2026-07-03",
+  "updated": "2026-07-09",
   "runs_covered": [
-    "2026-07-03"
+    "2026-07-03",
+    "2026-07-09-semiotic"
   ],
-  "images_observed": 368,
+  "images_observed": 599,
   "articles_viewed": 60,
   "method_note": "Round-1 baseline coding per SEMIOTIC_CODEBOOK.md via the image_scraper contact-sheet method: 11 numbered 12-up sheets (132 grid slots) read by Fable against sidecar JSONs; ~110 substantive images after logos/avatars/headshot furniture (~22 slots). Genre-confound discipline applied per CLAUDE.md: a pattern was coded only where the imagery's work IS the unmasking of a system/machine/incentive, not mere tech-adjacency. Palette hexes are observational approximations from article imagery, not brand-spec values. Two candidates were NOT coined for falling below the 4-source bar: the-system-as-cheerful-diagram (axonometric/flat-illustration renderings of invisible infrastructure; 3 clean sources: dezeen SVA school show, Rest of World editorial illustration, Aeon) and the-ghost-workforce (hidden-labor exposés pairing platform UI with factory imagery; visually thin, newsletter sources carried it in text only). Both flagged for round-2 targeted search. ROUND-2 (2026-07-03, same day): a targeted WebSearch gap-fill scrape (33 URLs, 32 fetched) fed sheets 12-31 (images 133-368) read against sidecars to ENRICH the four existing codes only (per Michael: no new codes coined this round; the two candidates above remain candidates). Net: evidence appended to all four codes from new distinct sources, no descriptions rewritten, no status downgrades. The two un-coined candidates DID reach the 4-source bar in round-2 imagery (ghost-workforce: weirdpressphoto/famsf/npr-Dataland/equidem; cheerful-diagram: +archdaily) but were deliberately NOT coined at Michael's instruction; recorded here for a future session.",
   "codes": [
@@ -13,16 +14,34 @@
       "name": "The Receipt Dump",
       "status": "dominant",
       "short_def": "The unmasking is performed by publishing the system's own paperwork as the article's imagery: raw spreadsheets, pricing tables, margin heatmaps, leaked projection charts, and platform screenshots with redaction bars. The interface artifact replaces photography; the black redaction bar and the conditional-formatting red cell are the genre's punctum.",
-      "look": {"bg": "#16181d", "text": "#e8f0e9"},
+      "look": {
+        "bg": "#16181d",
+        "text": "#e8f0e9"
+      },
       "one_liner": "The machine indicted with its own paperwork: spreadsheets, margin tables, and redacted screenshots published as the picture.",
       "definition": "The strongest pattern in the corpus. Criticism of tech and platform economics does not illustrate its argument, it exhibits the evidence: an Excel grid of GPU capex line items, a subscription-margin heatmap shading from green to catastrophic red, The Information's leaked cash-flow bars republished as exhibits, a LinkedIn 'thought leadership' post screenshotted with the executive's name under a black redaction bar, a TikTok or Instagram embed kept inside its like-count chrome. The screenshot's UI furniture (follow buttons, timestamps, like counts) functions as a chain-of-custody claim: this is the machine, captured in situ. Verbally it runs on forensic accounting: burn rate, gross margin, unit economics, doing the math they hoped you wouldn't.",
       "visual": {
         "palette": [
-          {"hex": "#FFFFFF", "name": "spreadsheet white"},
-          {"hex": "#16181D", "name": "dark-mode slate"},
-          {"hex": "#E4574F", "name": "margin-alarm red"},
-          {"hex": "#4CAF7D", "name": "conditional green"},
-          {"hex": "#111111", "name": "redaction black"}
+          {
+            "hex": "#FFFFFF",
+            "name": "spreadsheet white"
+          },
+          {
+            "hex": "#16181D",
+            "name": "dark-mode slate"
+          },
+          {
+            "hex": "#E4574F",
+            "name": "margin-alarm red"
+          },
+          {
+            "hex": "#4CAF7D",
+            "name": "conditional green"
+          },
+          {
+            "hex": "#111111",
+            "name": "redaction black"
+          }
         ],
         "materials_textures": [
           "native UI chrome kept intact (like counts, follow buttons, timestamps)",
@@ -46,8 +65,23 @@
         ]
       },
       "verbal": {
-        "lexicon": ["gross margin", "burn rate", "unit economics", "capex", "leaked projections", "content mill", "receipts", "subsidized", "brokenomics"],
-        "metaphors": ["opening the books", "the audit", "the leak", "arithmetic as indictment"],
+        "lexicon": [
+          "gross margin",
+          "burn rate",
+          "unit economics",
+          "capex",
+          "leaked projections",
+          "content mill",
+          "receipts",
+          "subsidized",
+          "brokenomics"
+        ],
+        "metaphors": [
+          "opening the books",
+          "the audit",
+          "the leak",
+          "arithmetic as indictment"
+        ],
         "register": "forensic-accountant deadpan escalating to mock incredulity at the numbers",
         "sample_phrases": [
           {
@@ -138,6 +172,17 @@
             "https://cdn.statcdn.com/Infographic/images/teaser/36314.jpeg",
             "https://cdn.statcdn.com/Infographic/images/teaser/34865.jpeg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "unthinking.photography",
+          "url": "https://unthinking.photography/articles/its-a-face-eat-face-world",
+          "note": "2026-07-09 semiotic wave: the classification machine indicted with its own paperwork — a Shinzo Seigi physiognomy 'diagram of moles' overlaid on two faces, the 'Labeled Faces in the Wild' project webpage screenshotted whole (named-celebrity face grid with per-name counts), and an ML 'ground-truth' annotation grid pairing real faces with their flat colour segmentation maps. Found dataset/interface artifacts standing in for photography — the face-recognition variant of the receipt (credit: Unthinking Photography / cited sources).",
+          "image_refs": [
+            "https://unthinking.photography/media/pages/articles/its-a-face-eat-face-world/5460a1a851-1743092514/1-the-diagram-of-moles-from-shinzo-seigi-1498x.png",
+            "https://unthinking.photography/media/pages/articles/its-a-face-eat-face-world/5d7505cf71-1743094301/10-labeled-faces-in-the-wild-via-project-website-1498x.png",
+            "https://unthinking.photography/media/pages/articles/its-a-face-eat-face-world/4fba615108-1743094538/12-example-of-ground-truth-labels-via-doi-10-3390-s20020328-1498x.png"
+          ]
         }
       ],
       "confidence": "high",
@@ -152,6 +197,11 @@
           "run": "2026-07-03",
           "change": "evidence",
           "note": "Round-2 gap-fill: +2 distinct sources (epoch.ai macro GDP-share chart; Statista AI-economy infographic suite), extending the code from Zitron's raw Excel into the polished data-journalism variant of the same forensic move. Status held dominant. Note: the 404 Media round-2 imagery (stock-photo-plus-logo editorial collage) was observed but NOT added — it is not a found interface artifact and fails the code's chain-of-custody test."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +1 distinct source (unthinking.photography — physiognomy 'diagram of moles' + Labeled Faces in the Wild dataset screenshot + ML ground-truth annotation grid) -> 7 distinct sources. Extends the receipt into the face-recognition/dataset register. SHORTFALL: only 1 new source reached this code (the unthinking john-tagg article in the URL file did not appear in the sheets); well short of the 15-source target, as anticipated."
         }
       ]
     },
@@ -160,16 +210,34 @@
       "name": "The Cut-and-Paste Dossier",
       "status": "residual",
       "short_def": "System critique rendered as collage that keeps its seams visible: taped corners, torn edges, halftone archival scraps, duotone clip-art, fold creases, and degraded rescans. The visible cut is the argument — someone assembled this case file by hand, against a machine that produces seamlessness.",
-      "look": {"bg": "#7c6bd9", "text": "#f6f1e4"},
+      "look": {
+        "bg": "#7c6bd9",
+        "text": "#f6f1e4"
+      },
       "one_liner": "The case against the system assembled with visible tape, torn edges, halftone scraps, and duotone clip-art.",
       "definition": "The inherited grammar of anti-capitalist image-making, still doing frontline work. A 1950s housewife clip-out drowns in YSL shopping bags against a field of office cubicles; manicured nails holding a crypto chart are pasted among pink digicams and a cash-counting machine; an archival class photo is rescanned in halftone with rough paper edges and taped corners; supply-chain exposés run B&W industrial photography under flat duotone circles. The refusal of seamlessness is the point: where the platform aesthetic is frictionless, the dossier is conspicuously hand-assembled, and its reproduction damage (folds, grain, tape) certifies that a human built the indictment.",
       "visual": {
         "palette": [
-          {"hex": "#F2A0BE", "name": "bubblegum pink"},
-          {"hex": "#C9C9C4", "name": "cubicle grey"},
-          {"hex": "#C8B98E", "name": "halftone sepia"},
-          {"hex": "#7C6BD9", "name": "duotone violet"},
-          {"hex": "#E86A3C", "name": "alarm orange"}
+          {
+            "hex": "#F2A0BE",
+            "name": "bubblegum pink"
+          },
+          {
+            "hex": "#C9C9C4",
+            "name": "cubicle grey"
+          },
+          {
+            "hex": "#C8B98E",
+            "name": "halftone sepia"
+          },
+          {
+            "hex": "#7C6BD9",
+            "name": "duotone violet"
+          },
+          {
+            "hex": "#E86A3C",
+            "name": "alarm orange"
+          }
         ],
         "materials_textures": [
           "visible tape, torn and rough-cut paper edges",
@@ -193,8 +261,20 @@
         ]
       },
       "verbal": {
-        "lexicon": ["girlboss", "second wave", "hustle", "meritocracy", "post-reality", "aesthetic audits", "deja vu"],
-        "metaphors": ["the tide coming back in", "the case file", "history repeating as trend cycle"],
+        "lexicon": [
+          "girlboss",
+          "second wave",
+          "hustle",
+          "meritocracy",
+          "post-reality",
+          "aesthetic audits",
+          "deja vu"
+        ],
+        "metaphors": [
+          "the tide coming back in",
+          "the case file",
+          "history repeating as trend cycle"
+        ],
         "register": "arch, weary, feminist-essayistic; irony with a body count",
         "sample_phrases": [
           {
@@ -287,6 +367,17 @@
             "https://eyeondesign.aiga.org/wp-content/uploads/2017/09/collections.museumca.jpg",
             "https://eyeondesign.aiga.org/wp-content/uploads/2017/09/Images-from-the-Gayle-Wald-Riot-Grrrl-Collection-and-the-Kill-Rock-Stars-Collection-file-on-Bikini-Kill_.jpg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "phroomplatform.com",
+          "url": "https://phroomplatform.com/sheida-soleimani/",
+          "note": "2026-07-09 semiotic wave: Sheida Soleimani's staged photomontage tableaux with the seams fully exposed — cut-out figures and animals (a keffiyeh-clad petro-statesman kneeling with a falcon, a vulture in a gold chain and red mask, a hand and hawk bursting through torn collage layers) hung on visible strings against hand-painted desert backdrops, indicting OPEC / petrostate and state-violence machinery. The conspicuously hand-built, anti-seamless assembly IS the argument — textbook Cut-and-Paste Dossier (credit: PHROOM / Sheida Soleimani). NOTE: phroomplatform.com returned a TLS handshake error (WRONG_VERSION_NUMBER) at verification time 2026-07-09 from two egress paths; image_refs are the scraper-captured publisher hotlinks (fetched live when the sheets were built) but were UNVERIFIED-LIVE this pass — re-check before any client-facing deploy.",
+          "image_refs": [
+            "https://phroomplatform.com/wp-content/uploads/2021/03/ss20.jpg",
+            "https://phroomplatform.com/wp-content/uploads/2021/03/ss14.jpg",
+            "https://phroomplatform.com/wp-content/uploads/2021/03/ss12-1.jpg"
+          ]
         }
       ],
       "confidence": "medium",
@@ -301,6 +392,11 @@
           "run": "2026-07-03",
           "change": "evidence",
           "note": "Round-2 gap-fill: +3 distinct sources (Kolaj 'Politics in Collage' exhibition; Norton Museum 'Cut-Up/Cut-Out' — Rosler/Kruger/Bearden; AIGA Eye on Design feminist protest graphics). The material's museum-canonization is itself evidence FOR the residual reading, so status held residual. Discipline note: kept strictly to works that explicitly indict a system (surveillance / war machine / housework economy / segregation), not collage-as-a-medium survey, to hold the anchor to Naming the Machine; artsy.net (Martha Rosler feature) and artforum.com ('Collage Impulse Today') were also scraped but left out of image_refs — artsy not visually confirmed this pass, artforum's sheet was mixed with related-content thumbnails."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +1 distinct source (phroomplatform.com — Sheida Soleimani staged photomontage tableaux indicting petrostate/OPEC machinery) -> 8 distinct sources. SHORTFALL vs 15-target: dergreif.org ('Presence', Alessandro Silverj) was read but EXCLUDED as atmospheric pictorialist B&W that names no system (fails the anchor); unthinking 'NSFW Venus' was read but is degraded-archive photography, not visible-seam collage, so not counted here; foam.org did not appear in the sheets (JS/product page fetch miss). phroom image_refs are UNVERIFIED-LIVE (site returned a TLS WRONG_VERSION_NUMBER at verification) — re-check before client-facing deploy."
         }
       ]
     },
@@ -309,16 +405,34 @@
       "name": "The Rigging in Shot",
       "status": "dominant",
       "short_def": "Documentary and wire photography framed so the spectacle's machinery is the subject: sponsor boards and accreditation numbers, banks of photographers, LED walls and lasers dwarfing the performer, the octagon staged on the White House lawn. The camera steps back far enough that the apparatus can't hide.",
-      "look": {"bg": "#1b2a55", "text": "#e9f3ef"},
+      "look": {
+        "bg": "#1b2a55",
+        "text": "#e9f3ef"
+      },
       "one_liner": "Shoot the spectacle so its rigging shows: sponsor boards, press banks, LED walls, and the stage on the state's lawn.",
       "definition": "Where the Receipt Dump exhibits paperwork, this code exhibits staging. Critical features select press photography in which the system's own furniture does the unmasking: adidas boards and VISA hoardings framing the pitch, a wall of accredited lenses shooting praying players, a pundit lit by a heat-map LED wall, Drake and DJ Khaled under a green laser as an 'authenticity test' is administered, UFC's octagon erected on the Ellipse with the White House glowing behind it, the 1961 Salone photographed as men in suits shopping a market. The image grammar is wide, saturated, and machine-lit; the human is deliberately small against the branded infrastructure of attention.",
       "visual": {
         "palette": [
-          {"hex": "#35D07F", "name": "LED/laser green"},
-          {"hex": "#E8552F", "name": "hot-set orange"},
-          {"hex": "#3F9B4C", "name": "stadium turf"},
-          {"hex": "#F5F7F7", "name": "floodlight white"},
-          {"hex": "#1B2A55", "name": "night-branding blue"}
+          {
+            "hex": "#35D07F",
+            "name": "LED/laser green"
+          },
+          {
+            "hex": "#E8552F",
+            "name": "hot-set orange"
+          },
+          {
+            "hex": "#3F9B4C",
+            "name": "stadium turf"
+          },
+          {
+            "hex": "#F5F7F7",
+            "name": "floodlight white"
+          },
+          {
+            "hex": "#1B2A55",
+            "name": "night-branding blue"
+          }
         ],
         "materials_textures": [
           "LED volume glow and stage-laser bloom",
@@ -340,8 +454,20 @@
         ]
       },
       "verbal": {
-        "lexicon": ["spectacle", "clout", "authenticity test", "hype problem", "elite spectacle", "apolitical", "sponsor"],
-        "metaphors": ["the machine wearing the event as a costume", "the stage as showroom", "bread and circuses run by procurement"],
+        "lexicon": [
+          "spectacle",
+          "clout",
+          "authenticity test",
+          "hype problem",
+          "elite spectacle",
+          "apolitical",
+          "sponsor"
+        ],
+        "metaphors": [
+          "the machine wearing the event as a costume",
+          "the stage as showroom",
+          "bread and circuses run by procurement"
+        ],
         "register": "reported, scene-setting, letting the staging incriminate itself",
         "sample_phrases": [
           {
@@ -442,6 +568,28 @@
           "image_refs": [
             "https://cdn.thefootballweek.com/wp-content/uploads/2026/05/Metlife-Stadium.jpg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "magnumphotos.com",
+          "url": "https://www.magnumphotos.com/arts-culture/sport-arts-culture/harry-gruyaert-tv-shots-the-olympics/",
+          "note": "2026-07-09 semiotic wave: Harry Gruyaert's 'TV Shots' photograph the Olympic broadcast by photographing the television set itself — CRT scanlines and colour-bleed, an on-screen timing chyron, and a broadcast schedule caption ('11.30PM \"HOSTAGES ALL SAFE\" / 5.10AM DEATHS CONFIRMED', Munich 1972). The mediation apparatus, not the event, is the subject — a fresh 'the machine is the broadcast' register of the Rigging in Shot (credit: Magnum Photos / Harry Gruyaert). Magnum's Trump/election-spectacle and Super Bowl-stadium sets carry the same move; the article url holds the rest.",
+          "image_refs": [
+            "https://content.magnumphotos.com/wp-content/uploads/2016/08/cortex/par35347-teaser-story-big.jpg",
+            "https://content.magnumphotos.com/wp-content/uploads/2016/08/cortex/par302345-teaser-story-big.jpg",
+            "https://content.magnumphotos.com/wp-content/uploads/2016/08/cortex/par35338-teaser-story-big.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "dazeddigital.com",
+          "url": "https://www.dazeddigital.com/fashion/gallery/35965/24/backstage-at-burberry-ss26",
+          "note": "2026-07-09 semiotic wave: 'Backstage at Burberry SS26' shoots the fashion show as apparatus — models framed under exposed overhead lighting trusses, run-of-show / look sheets taped to the wall, and staging-tape floor marks with crew kept in the shot. The rig the runway hero-image crops out is here made the subject (credit: Dazed / backstage photographer).",
+          "image_refs": [
+            "https://images-prod.dazeddigital.com/2250/azure/dazed-prod/1420/3/1423723.jpg",
+            "https://images-prod.dazeddigital.com/2250/azure/dazed-prod/1420/3/1423727.jpg",
+            "https://images-prod.dazeddigital.com/2250/azure/dazed-prod/1420/3/1423730.jpg"
+          ]
         }
       ],
       "confidence": "medium",
@@ -456,6 +604,11 @@
           "run": "2026-07-03",
           "change": "evidence",
           "note": "Round-2 gap-fill: +3 distinct sources (LAmag — 2026 World Cup commercial/hospitality machinery; Pulitzer Center 'Seeing Political' — the press-bank / photo-op apparatus in B&W reportage; The Football Week — MetLife debranding signage). The Pulitzer set adds a fresh register to the code: the political-media apparatus (camera banks, mic scrums, secured rooms), not just sponsored spectacle. HELD-BUT-NOT-FORCED: the NPR / NPPA World Press Photo immigration-enforcement material was observed on the sheets but sits in a documentary-witness register (intimate frames of detention and family separation) rather than apparatus-visible spectacle, so it was deliberately NOT coded in — thin honest evidence over a forced fit. Status held dominant."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +2 distinct sources (magnumphotos.com — Gruyaert 'TV Shots' photographing the Olympic broadcast set itself, a fresh 'machine = broadcast' register; dazeddigital.com — 'Backstage at Burberry SS26' with lighting trusses, run-of-show sheets, staging marks) -> 9 distinct sources. showstudio.com was scraped but returned only tiny broken thumbnails (JS/proxy) — unreadable, not coded. Short of the 15-target. Status held dominant."
         }
       ]
     },
@@ -464,16 +617,34 @@
       "name": "The Icon Assembly Line",
       "status": "dominant",
       "short_def": "Fame and canon shown as manufacture: the same face or work replicated across formats (painting to lotería print to beer can to kids' cartoon), prize ceremonies and press conferences photographed as canon machinery, chart records annotated with the question of who profits. The multiplication itself is the exposé.",
-      "look": {"bg": "#2f7d4f", "text": "#f7ecdf"},
+      "look": {
+        "bg": "#2f7d4f",
+        "text": "#f7ecdf"
+      },
       "one_liner": "The fame machine exposed by lining up its output: one icon replicated across painting, print, merch, and cartoon.",
       "definition": "Institutions and critics now unmask canon-manufacture by exhibiting the production run. Tate's 'Frida: The Making of an Icon' shows the Muray Kodachrome, the Morimura appropriation, the lotería print, and — in the same scroll — the tie-in beer cans, set menus, and Tate Kids cartoon, so the article's own image set performs the assembly line it names. The literary version photographs the Nobel press conference and asks how prizes 'construct what we think of and buy as African literature'; the music version counts Stanley Okorie's thousands of Nollywood songs or annotates Drake's record-breaking with a torn-paper sticker asking why the song is No. 1. The recurring visual move is serial reproduction made visible: one image, many formats, value accruing somewhere off-frame.",
       "visual": {
         "palette": [
-          {"hex": "#2F7D4F", "name": "Kodachrome viridian"},
-          {"hex": "#E8608A", "name": "blossom pink"},
-          {"hex": "#E0A13A", "name": "marigold"},
-          {"hex": "#C9B896", "name": "archival sepia"},
-          {"hex": "#EDE8DF", "name": "museum-wall neutral"}
+          {
+            "hex": "#2F7D4F",
+            "name": "Kodachrome viridian"
+          },
+          {
+            "hex": "#E8608A",
+            "name": "blossom pink"
+          },
+          {
+            "hex": "#E0A13A",
+            "name": "marigold"
+          },
+          {
+            "hex": "#C9B896",
+            "name": "archival sepia"
+          },
+          {
+            "hex": "#EDE8DF",
+            "name": "museum-wall neutral"
+          }
         ],
         "materials_textures": [
           "saturated Kodachrome and folk-print surfaces beside mass-produced merch finishes",
@@ -495,8 +666,21 @@
         ]
       },
       "verbal": {
-        "lexicon": ["the making of", "icon", "canon", "records", "prize", "brand", "authenticity", "collective id"],
-        "metaphors": ["the assembly line of fame", "canon as procurement", "the gift shop at the end of the retrospective"],
+        "lexicon": [
+          "the making of",
+          "icon",
+          "canon",
+          "records",
+          "prize",
+          "brand",
+          "authenticity",
+          "collective id"
+        ],
+        "metaphors": [
+          "the assembly line of fame",
+          "canon as procurement",
+          "the gift shop at the end of the retrospective"
+        ],
         "register": "curatorial narration shading into complicity-aware critique",
         "sample_phrases": [
           {
@@ -616,6 +800,37 @@
           "image_refs": [
             "https://blooloop.com/media-library/monalisa-pix-brix.jpg?id=56477622&width=1245&height=700&quality=95&coordinates=0%2C53%2C0%2C54"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "highsnobiety.com",
+          "url": "https://www.highsnobiety.com/p/dillon-brooks-labubu-lebron-james-k-pop/",
+          "note": "2026-07-09 semiotic wave: the fame machine shown as a production run — a Pop Mart Labubu 'have a seat' blind-box set lining up the same character across a dozen costume variants, an NBA tunnel-fit lineup of identical star-styling fading into copies, and the courtside celebrity carrying the Labubu charm as brand vector. Serial reproduction of one icon across formats = the Icon Assembly Line (credit: Highsnobiety / Pop Mart).",
+          "image_refs": [
+            "https://www.highsnobiety.com/static-assets/dato/1747817490-20240710_102728_027308-the-monsters-have-a-seat-vinyl-plush-blind-box-blind-boxes-pop-mart-us-scene_1-1200x1200.jpg?fp-x=0.5&fp-y=0.5&fit=crop&auto=compress%2Cformat&cs=srgb&ar=1200%3A1200&w=1200",
+            "https://www.highsnobiety.com/static-assets/dato/1702462785-ed_feat_nba_tunnel_fits_3by2.png?fp-x=0.5&fp-y=0.5&fit=crop&auto=compress%2Cformat&cs=srgb&ar=3%3A2&w=958.5",
+            "https://www.highsnobiety.com/static-assets/dato/1747818680-ed_labubu_4x5.jpg?fp-x=0.5&fp-y=0.5&fit=crop&auto=compress%2Cformat&cs=srgb&ar=2250%3A2813&w=2250"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "hypebeast.com",
+          "url": "https://hypebeast.com/2025/12/labubu-product-of-2025-hypebeast100",
+          "note": "2026-07-09 semiotic wave: Kasing Lung's Labubu named product-of-the-year, the manufacture made visible — shelves of identical orange astronaut figures, a room walled floor-to-ceiling in massed plush, and the artist mirror-multiplied behind a bank of his own toys. The exhibition-and-gift-shop assembly line the code names, at billion-dollar scale (credit: Hypebeast / Pop Mart / Kasing Lung).",
+          "image_refs": [
+            "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2025%2F12%2F17%2FHypebeast100-Product-of-the-Year-Labubu-03-scaled-e1765951807596.jpg?w=1000&format=jpg&cbr=1&q=90&fit=max",
+            "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2026%2F05%2F27%2Fkasing-lung-pop-mart-labubu-THE-MONSTERS-10th-Anniversary-Exhibition-Tokyo-Info-0.jpg?fit=max&cbr=1&q=90&w=500&h=333",
+            "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2025%2F12%2F17%2FHypebeast100-Product-of-the-Year-Labubu-06-scaled.jpg?w=1000&format=jpg&cbr=1&q=90&fit=max"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "unthinking.photography",
+          "url": "https://unthinking.photography/articles/you-make-me-feel-mighty-typical",
+          "note": "2026-07-09 semiotic wave: a found broadcast screenshot of two IDENTICAL boxers in the ring, both captioned 'Addie Wagenknecht' — the figure fighting a replicated copy of herself, scoreboard chrome intact. The replicated-identical-figure as literal image of the fame/likeness machine (credit: Unthinking Photography / Addie Wagenknecht).",
+          "image_refs": [
+            "https://unthinking.photography/media/pages/articles/you-make-me-feel-mighty-typical/d27fc91a4c-1742222356/addie-wagenknecht-1498x.png"
+          ]
         }
       ],
       "confidence": "high",
@@ -635,6 +850,11 @@
           "run": "2026-07-03",
           "change": "status",
           "note": "Confidence raised medium -> high. The serial-reproduction signature is now grounded across many independent publications (Frieze, Time Out, Wallpaper*, Artnet, Blooloop) rather than the single Tate image set that limited round-1 confidence. Status stays dominant. FLAGGED, NOT ACTED: the self-implicating merch variant (institution monetizing the icon it canonizes) recurred strongly in round-2 (Artnet gift shop / V&A bar, Blooloop brick-Mona-Lisa, Time Out mannequin-on-plinth) and is now a strong candidate for a future EMERGENT SPLIT — but splitting a code is a structural change reserved for a human-supervised session per SEMIOTIC_CODEBOOK.md, and Michael scoped this round to enriching the existing four. Recorded for that session."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +3 distinct sources (highsnobiety.com — Labubu blind-box variant run + NBA tunnel-fit replication; hypebeast.com — Kasing Lung Labubu product-of-year, walls of massed identical figures; unthinking.photography — found broadcast screenshot of a figure boxing an identical replicated copy of herself) -> 13 distinct sources. ssense.com and i-d.co did not appear in the sheets (JS/fetch miss). Status held dominant; the previously-flagged self-implicating-merch emergent split remains reserved for a human-supervised session. Short of the 15-target."
         }
       ]
     }

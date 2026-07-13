@@ -6,6 +6,8 @@ Instructions for a Claude session running the semiotic-codes workflow for one ne
 
 **Analysis model decision (Michael, 2026-07-02):** Fable reads the contact sheets directly. Do not delegate the visual reading to smaller models.
 
+**Source scope (Michael, 2026-07-09):** the distinctiveness gate is a signal-tagging control and does NOT apply here — ALL content from ALL listed sources is fair game for imagery. Beyond the corpus's own article URLs, `sources.yaml` now carries a SEMIOTIC-ONLY section of image-rich fashion + photography publications flagged `semiotic_only: true` (Highsnobiety, Hypebeast, SSENSE, Sabukaru, Perfect, i-D, Interview, Document Journal, SHOWstudio, Foam, PHROOM, Aperture, Der Greif, Fisheye, BJP/1854, Unthinking Photography, PHmuseum). Draw round-1 and gap-fill candidates from those too. Fetchability + per-code URL counts live in `SEMIOTIC_ENRICHMENT_2026_07_09.md`; the staged `urls_*_semiotic_2026_07_09.txt` files feed the scraper directly.
+
 ## Round 1 — corpus imagery
 
 1. **Scrape.** `python run.py scrape --need "<Need>"` (from inside `image_scraper/`, venv active). Articles ordered core-tier → forward-looking → recent, matching the codebook's sampling bias. Defaults (2026-07-02): **max 15 images per article, collection target 250 images per code/run** — the scrape stops when the pool fills; if it ends short, raise `--limit` or widen `--days`. Check the log tail: how many articles fetched, how many images, which failed, whether the target was reached.
@@ -23,7 +25,7 @@ Instructions for a Claude session running the semiotic-codes workflow for one ne
 ## Close out
 
 9. **Verify hotlinks.** Spot-check a sample of `image_refs` URLs render (broken links self-hide in the preview panel, but dead-on-arrival links mean a bad URL was copied).
-10. **Clean.** `python run.py clean` — the cache and sheets are temporary analysis artifacts (copyright rule). Confirm `git status` shows no images staged.
+10. **Clean.** `python run.py clean` — deletes the raw image cache and **archives the contact sheets into `sheets_archive/` for 6 months** (180 days), auto-pruned on a later clean. This gives an internal look-back window to re-examine a code's evidence without re-scraping. The archive is gitignored and copyright-bound exactly like the cache: never committed, never shipped, never public. Use `--purge` to delete sheets outright instead of archiving. Confirm `git status` shows no images staged.
 11. **Preview + gate.** Build the preview panel from the codes JSON (see `codes_preview_template.html` at project root). The user reviews before anything scales or deploys.
 
 ## Known constraints

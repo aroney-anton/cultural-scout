@@ -1,13 +1,14 @@
 {
   "need": "Certified Human",
-  "updated": "2026-07-02",
+  "updated": "2026-07-09",
   "runs_covered": [
     "2026-04-29",
     "2026-06-01",
     "2026-06-11",
-    "2026-07-02"
+    "2026-07-02",
+    "2026-07-09-semiotic"
   ],
-  "images_observed": 248,
+  "images_observed": 715,
   "articles_viewed": 67,
   "method_note": "Pilot baseline coding per SEMIOTIC_CODEBOOK.md. Two visual passes (46 + 37 images, second pass run adversarially against first-pass candidates) + one verbal pass (14 texts). Palette hexes are observational approximations from article imagery, not brand-spec values.",
   "method_note_2026_07_02": "Round-1 contact-sheet pass via the image_scraper subsystem: 40 corpus articles scraped, 192 images composited into 16 numbered 12-up sheets with sidecar JSONs, ~165 real images after junk slips, read by Fable against the sidecars. 1granary's 853-photo CSM gallery was deliberately down-sampled to 15 images, treat it as under-sampled, not thin. All statuses held; no new code coined (the strongest candidate, process-documents-published-as-the-work, has only 2 clean independent visual sources so far, below the 4-source bar; flagged for round-2 targeted search).",
@@ -17,7 +18,10 @@
       "name": "The Provenance Ledger",
       "status": "dominant",
       "short_def": "Human-made value claimed not through imagery but through metadata performed as form: museum-grade captions, credit blocks set as typographic objects, supply-chain disclosure, and the ritualized consent line ('shared with permission') that extends provenance to the image's right to exist. Verbally it runs on forensic vocabulary.",
-      "look": {"bg": "#3a2113", "text": "#f6efe2"},
+      "look": {
+        "bg": "#3a2113",
+        "text": "#f6efe2"
+      },
       "one_liner": "Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying.",
       "definition": "The strongest pattern in the corpus. Human-made value is claimed not through imagery but through metadata performed as form: museum-grade captions (title, year, materials, dimensions), full credit blocks set as typographic objects, supply-chain disclosure, and the newly ritualized consent line ('All images courtesy of the artist, shared with permission'), which extends provenance from the object to the image's right to exist, a quiet anti-scraping ethic. Verbally it runs on forensic vocabulary: evidence, detection, audit, receipts, scare quotes around 'writers'.",
       "visual": {
@@ -214,6 +218,39 @@
             "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/06/Dataland3.jpg",
             "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/06/Dataland1.jpg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "aperture.org",
+          "url": "https://aperture.org/editorial/the-darkroom-artist-keeping-diane-arbuss-vision-alive/",
+          "note": "Diane Arbus 'Revelations' as certified object: the signed/numbered 'A box of ten photographs' edition sheet, the monograph cover, and the book opened to its 'In the Darkroom' provenance essay. Authenticity carried by edition, signature and darkroom lineage.",
+          "image_refs": [
+            "https://aperture.org/wp-content/uploads/2025/09/9781597114394-scaled.jpg",
+            "https://aperture.org/wp-content/uploads/2025/08/2_Arbus_cover-flat-spread-copy-1.jpg",
+            "https://aperture.org/wp-content/uploads/2025/07/9781597111751.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "phmuseum.com",
+          "url": "https://phmuseum.com/news/a-spring-guide-to-photobooks",
+          "note": "Spring photobook guide: the book as catalogued print object -- barcoded/ISBN'd covers ('3,350 gr.', 'Probable Cause'), a newspaper-print cover (LAMF), title-as-ledger typography.",
+          "image_refs": [
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvdmJtMTUwYi9uZXdzaXRlbXMvZTBSUDBWYi9ibG9ja3MvZTFrNDlaYiIsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjo2MDB9LCJyb3RhdGUiOm51bGx9fQ==",
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvdmJtMTUwYi9uZXdzaXRlbXMvZTBSUDBWYi9ibG9ja3MvZVo5eVBRZCIsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoyMDAwfSwicm90YXRlIjpudWxsfX0=",
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvdmJtMTUwYi9uZXdzaXRlbXMvZTBSUDBWYi9ibG9ja3MvYlc5dk1FZSIsImVkaXRzIjp7InJlc2l6ZSI6eyJmaXQiOiJjb3ZlciIsIndpZHRoIjoyMDAwfSwicm90YXRlIjpudWxsfX0="
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "dergreif.org",
+          "url": "https://dergreif.org/article/at-leipzig-photobook-festival/",
+          "note": "Leipzig Photobook Festival: the photobook circulated as physical artifact -- fair tables, Kunstbibliothek shelving, hands leafing printed volumes; provenance staged as institutional/market ritual.",
+          "image_refs": [
+            "https://cdn.sanity.io/images/0dpggqwn/production/b2fb67b29841c426a3f403c147704eebcb02cdfb-2000x1500.jpg?w=2000&auto=format",
+            "https://cdn.sanity.io/images/0dpggqwn/production/9b9ec6f84b080c5e5dbeec7e580106186ea4e076-1029x771.png?w=2000&auto=format",
+            "https://cdn.sanity.io/images/0dpggqwn/production/10d2a6e1a60fa8929c212d0f4b540625c356a094-1029x771.png?w=2000&auto=format"
+          ]
         }
       ],
       "confidence": "high",
@@ -228,6 +265,11 @@
           "run": "2026-07-02",
           "change": "evidence",
           "note": "contact-sheet round 1: grad-show provenance blocks confirmed at scale (dezeen x2), Matzeg consent-line grammar continues, Beaudry museum captions on machine-knit work; counterfeit escalated from products to institutions (Dataland wearing the ledger's forms). Status holds dominant."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +3 distinct sources (aperture, phmuseum, dergreif) -> 12 distinct sources. Photography-publication imagery consolidates the photobook/edition-as-provenance strand. Short of the 15 target: this wave's provenance-ledger URL set was small (4 URLs); status holds dominant."
         }
       ]
     },
@@ -236,7 +278,10 @@
       "name": "Countable Labor",
       "status": "dominant",
       "short_def": "Human labor certified by making its units countable. Visually: the macro detail where a single loop, stitch or fold is legible (the 'Detail of…' convention), and the wide shot of a vast field of small handmade units. Verbally: quantified duration and volume as watermark, '22 years', 'thousands of strips', 'hand-cut', shot in clinical verification light.",
-      "look": {"bg": "#5e5730", "text": "#f7f3e6"},
+      "look": {
+        "bg": "#5e5730",
+        "text": "#f7f3e6"
+      },
       "one_liner": "Authentication by enumeration: the stitch macro, the field of ten thousand units, the headline that counts the years.",
       "definition": "Human labor certified by making its units countable. Visually: the macro detail where the loop, stitch, silk strip, or fold-line is individually legible (institutionalized as the full-work-then-'Detail-of' layout convention), and the wide shot of a vast field of small handmade units (a 50-foot miniature city, thousands of silk tabs, clustered embroidery hoops). Verbally: quantified duration and volume as watermark, '22 years', 'thousands of strips', 'hand-cut'. Shot in clinical, shadowless verification light on gallery grounds, museum grammar applied to humble materials.",
       "visual": {
@@ -433,6 +478,17 @@
           "image_refs": [
             "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/06/DatalandQualia.jpg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "highsnobiety.com",
+          "url": "https://www.highsnobiety.com/p/knicks-bootleg-tshirts/",
+          "note": "Bootleg Knicks championship tees -- informal-economy handwork: DIY screenprint registration, hand tie-dye, street-vendor production; value read off visible making, not brand licensing.",
+          "image_refs": [
+            "https://www.highsnobiety.com/static-assets/dato/1781282364-knicks-bootleg-merch-2.jpg?fp-x=0.5&fp-y=0.5&fit=crop&auto=compress%2Cformat&cs=srgb&ar=2250%3A3000&w=2250",
+            "https://www.highsnobiety.com/static-assets/dato/1781282285-knicks-bootleg-merch-4.jpg?fp-x=0.5&fp-y=0.5&fit=crop&auto=compress%2Cformat&cs=srgb&ar=2250%3A3000&w=2250",
+            "https://www.highsnobiety.com/static-assets/dato/1781282284-knicks-bootleg-merch-10.jpg?fp-x=0.5&fp-y=0.5&fit=crop&auto=compress%2Cformat&cs=srgb&ar=2250%3A3000&w=2250"
+          ]
         }
       ],
       "confidence": "high",
@@ -447,6 +503,11 @@
           "run": "2026-07-02",
           "change": "evidence",
           "note": "contact-sheet round 1: compositional kit confirmed (unit fields, stitch macros, detail pairing). NOTABLE SHIFT: working/using hands reappear (~5 of 165 images vs 1 of 83 in pilot: incense-seal hands, hoop hands, hand-on-toaster-dial, hand-holding-recorder), the counting is migrating back onto the body. Counterexample logged: robot arm performing dailiness at Dataland. Status holds dominant."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +1 distinct source (highsnobiety) -> 7 distinct sources. SHORTFALL: only one URL (highsnobiety bootleg tees) fit this code in the wave. Well short of 15; needs a dedicated round-2 search on visible-handwork/labor-count imagery. Status holds dominant."
         }
       ]
     },
@@ -455,7 +516,10 @@
       "name": "The Unretouched Witness",
       "status": "dominant",
       "short_def": "A person, or the trace of one, does the certifying. Three carriers: the dead-frontal face marked by a life (tattoos, age, stage blood); casting older and realer than fashion default; and the snapshot vernacular, hard flash and clutter left in frame, where imperfection proves nothing was staged. Verbally it claims the unforgeable: flesh, mortality, the cultivated ear ('I can tell'), disgust at the synthetic as proof of humanity.",
-      "look": {"bg": "#8c1c20", "text": "#fbe9e2"},
+      "look": {
+        "bg": "#8c1c20",
+        "text": "#fbe9e2"
+      },
       "one_liner": "Imperfect human presence as the logo: life-marked faces, mature casting, hard flash, clutter left in frame.",
       "definition": "A person, or the unmistakable trace of one, does the certifying. Three carriers: the dead-frontal face bearing permanent marks of a life (tattoos, age, stage blood); casting that runs older and realer than fashion default; and the snapshot vernacular, hard on-camera flash, mirrors, fire extinguishers and garment bags left in frame, where photographic imperfection itself testifies that nothing was staged. Verbally it claims the unforgeable: flesh, mortality, appetite, the cultivated ear ('I can tell'), and visceral disgust at the synthetic as a bodily, pre-rational proof of humanity.",
       "visual": {
@@ -643,6 +707,113 @@
             "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/asset/file/d882b727-7cd5-4387-bfc1-7c9319a5a03c/image.png",
             "https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,quality=80,format=auto,onerror=redirect/uploads/asset/file/1d921375-e63b-4a8b-a04c-988b6b612adf/image.png"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "sabukaru.online",
+          "url": "https://sabukaru.online/articles/kyoichi-tsuzuki",
+          "note": "Kyoichi Tsuzuki's 'Tokyo Style' plus Tanase's youth portraits -- real cluttered living spaces and cold-register film portraits, ordinary lives recorded without styling.",
+          "image_refs": [
+            "https://images.squarespace-cdn.com/content/v1/57825361440243db4a4b7830/45c9a548-6892-44a0-8879-bd34d2725fd0/tokyo-style-kyoichi-tsuzuki.jpg?format=2500w",
+            "https://images.squarespace-cdn.com/content/v1/57825361440243db4a4b7830/8c279973-5e7c-4d98-aabb-de5760ceba81/kyoichi-tsuzuki-tokyo-style1.JPG?format=2500w",
+            "https://images.squarespace-cdn.com/content/v1/57825361440243db4a4b7830/29aba966-13ff-40e1-8e8d-48b2f86837fe/japans-youth-photographer-shooting-people-with-a-touch-of-coldness-tanase-7-sabukaru.jpg?format=2500w"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "theperfectmagazine.com",
+          "url": "https://www.theperfectmagazine.com/features/giorgio-armani-in-conversation-with-alex-bilmes-5sf8l",
+          "note": "Giorgio Armani's final interview -- the weathered, un-airbrushed legacy portrait (face, hands, round glasses); age and mortality left as witnessed.",
+          "image_refs": [
+            "https://images.squarespace-cdn.com/content/v1/605c6aa462ce2d326bb1cb7b/1757002504058-T5GPXROT5EI5AEDTTNKI/SnapInsta.to_542456950_18059396762382656_1325910443165673255_n.jpg",
+            "https://images.squarespace-cdn.com/content/v1/605c6aa462ce2d326bb1cb7b/1757002551218-C3SRPY0AX947YNA8M8B1/SnapInsta.to_539573751_18058466681382656_8559197443369350092_n.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "interviewmagazine.com",
+          "url": "https://www.interviewmagazine.com/fashion/inside-a-new-monograph-celebrating-the-legacy-of-david-armstrong",
+          "note": "David Armstrong monograph -- tender natural-light analog portraits of intimates (man with puppy, youth on a bed); the witnessed private life.",
+          "image_refs": [
+            "https://www.interviewmagazine.com/wp-content/uploads/2024/07/105_MATTE_David-Armstrong-scaled.jpg",
+            "https://www.interviewmagazine.com/wp-content/uploads/2024/07/039_MATTE_David-Armstrong-scaled.jpg",
+            "https://www.interviewmagazine.com/wp-content/uploads/2024/07/005_MATTE_David-Armstrong-scaled.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "foam.org",
+          "url": "https://www.foam.org/events/co-rentmeester",
+          "note": "Co Rentmeester retrospective -- documentary life-witness incl. the 1984 film-frame Jordan leap and a swimmer; the world recorded on film.",
+          "image_refs": [
+            "https://a.storyblok.com/f/113697/1440x1439/9415ecbbc5/michael-jordan-north-carolina-1984-c-co-rentmeester.jpg/m/400x0",
+            "https://a.storyblok.com/f/113697/3000x1800/8b8dde3337/strip-test-7-2012-c-adam-broomberg-_amp_-oliver-chanarin.jpg/m/400x0"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "aperture.org",
+          "url": "https://aperture.org/editorial/seydou-keitas-revelatory-portraits-of-malian-life/",
+          "note": "Seydou Keita's Malian studio portraits, Sakir Khader's Palestinian record, Heinkuhn Oh's social-type portraits -- dignified documentary witness across studio and street.",
+          "image_refs": [
+            "https://aperture.org/wp-content/uploads/2025/08/259MAG177_Keita_HR-scaled.jpg",
+            "https://aperture.org/wp-content/uploads/2025/04/SAKIR42-2693-scaled.jpg",
+            "https://aperture.org/wp-content/uploads/2025/08/260MAG040_HeinkuhnOh_HR-scaled.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "phroomplatform.com",
+          "url": "https://phroomplatform.com/carlos-idun-tawiah/",
+          "note": "Carlos Idun-Tawiah's Ghanaian memory/community portraiture -- warm staged-real domestic and communal scenes (men at a window table, a cinema audience, boys in blue windows).",
+          "image_refs": [
+            "https://phroomplatform.com/wp-content/uploads/2025/06/Broken-Bread.jpg",
+            "https://phroomplatform.com/wp-content/uploads/2025/06/Round-Of-Applause.jpg",
+            "https://phroomplatform.com/wp-content/uploads/2025/06/Blue.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "dergreif.org",
+          "url": "https://dergreif.org/artist-feature/julia-bohle/",
+          "note": "Julia Bohle 'Aftermath' -- raw night-flash witness: a wet-hair figure, flash-lit bare trees; the unstyled document of a place after the event.",
+          "image_refs": [
+            "https://cdn.sanity.io/images/0dpggqwn/production/9f3cc421b45ac7769d7b597eabd5029cb905e4be-1667x2500.jpg?w=2000&auto=format",
+            "https://cdn.sanity.io/images/0dpggqwn/production/5f1f7af44ac33fb50e34dc4803bb3fb073381875-1667x2500.jpg?w=2000&auto=format"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "fisheyemagazine.fr",
+          "url": "https://fisheyemagazine.fr/article/feng-li-faille-spatio-temporelle/",
+          "note": "Feng Li's flash-lit surreal China street work, Max Miechowski's tender British seaside, and a retired-women-friends series -- ordinary life caught unposed.",
+          "image_refs": [
+            "https://fisheyemagazine.fr/wp-content/uploads/2018/01/fengli-white-night-2-26-580x870.png",
+            "https://fisheyemagazine.fr/wp-content/uploads/2021/08/Max-Miechowski-fisheye-5-580x725.jpg",
+            "https://fisheyeimmersive.com/wp-content/uploads/2026/02/margaux-fournier-fisheye5-462x250.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "1854.photography",
+          "url": "https://www.1854.photography/2026/02/on-the-cusp-female-in-focus-winners-2025",
+          "note": "BJP Female in Focus + Kalpesh Lathigra -- documentary record: a sandbagged Ukraine street, a lake fisherwoman, community group portraits.",
+          "image_refs": [
+            "https://www.1854.photography/wp-content/uploads/2026/02/72335_3.jpg",
+            "https://www.1854.photography/wp-content/uploads/2026/02/Kinga_Wrona_Mariscadoras_FF2026Winner.jpg",
+            "https://www.1854.photography/wp-content/uploads/2026/02/Ana-Margarita_Flores_Je-te-connais-de-demain_FF2026Winner.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "phmuseum.com",
+          "url": "https://phmuseum.com/grants/2026-photography-grant",
+          "note": "PhMuseum grant portfolios/projects -- global documentary witness: an Afghan olive harvest, a homeless mother and son, a Kashmir dwelling.",
+          "image_refs": [
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvTXZibU9lWS9ncmFudC9BUGRScWJHL2FPa1FYcmEtMTMiLCJlZGl0cyI6eyJyZXNpemUiOnsiZml0IjoiY292ZXIiLCJ3aWR0aCI6MTIwMCwiaGVpZ2h0IjoxMjAwfSwicm90YXRlIjpudWxsfX0=",
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvMGROcEFLYS9wcm9qZWN0cy85YjY3NzdkL2RCbkJsWGQiLCJlZGl0cyI6eyJyZXNpemUiOnsiZml0IjoiY292ZXIiLCJ3aWR0aCI6MTIwMH0sInJvdGF0ZSI6bnVsbH19",
+            "https://img.phmuseum.com/eyJidWNrZXQiOiJpbWcucGhtdXNldW0uY29tIiwia2V5IjoidXNlcnMvb2VFTlk0YS9wcm9qZWN0cy9lcmtvRWthL2JrVzc3dmIiLCJlZGl0cyI6eyJyZXNpemUiOnsiZml0IjoiY292ZXIiLCJ3aWR0aCI6MTIwMH0sInJvdGF0ZSI6bnVsbH19"
+          ]
         }
       ],
       "confidence": "high",
@@ -657,6 +828,11 @@
           "run": "2026-07-02",
           "change": "evidence",
           "note": "strongest find of the run: the code crossed from niche editorial into mass vernacular, RADII documents Chinese-internet coinages 活人感 (the uncurated self) and 反精致 (anti-polished) as named authenticity standards; appended both to lexicon + two verbatim sample phrases. Visual: Shen Daojing found-human photo added to existing restofworld entry; culturedmag witness casting. Status holds dominant, and mass adoption suggests watching for exhaustion (when unpolish becomes the polish)."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +10 distinct photography sources (sabukaru, theperfectmagazine, interviewmagazine, foam, aperture, phroomplatform, dergreif, fisheyemagazine, 1854.photography, phmuseum) -> 20 distinct sources; target met. The documentary-portrait strand is now the best-evidenced code in the need."
         }
       ]
     },
@@ -665,7 +841,10 @@
       "name": "Slop, Repainted Slow",
       "status": "emergent",
       "short_def": "Cheap circulation re-made expensive: oil paintings of phone screenshots that keep the title bar, airbrushed memes, collagraphs printed from discarded cartons with the dielines as skeleton. The acid slop palette is quoted as subject matter while the slow medium does the certifying. Verbally, the 'slop' word-family at full inflection, and the corpus's sharpest fight: every authenticity move is gameable.",
-      "look": {"bg": "#a7e029", "text": "#161616"},
+      "look": {
+        "bg": "#a7e029",
+        "text": "#161616"
+      },
       "one_liner": "Disposable detritus, screenshots, memes, shipping cartons, lovingly re-rendered in slow media with its artifacts preserved.",
       "definition": "The emergent and most contested code: cheap circulation re-made expensive. Oil paintings of phone screenshots that keep the caps-lock title bar; airbrushed meme cats; collagraphs printed FROM discarded cartons with dielines and glue-tabs as the composition's skeleton; a Sufi saint's archival photo woodcut onto a to-go cup. The acid slop palette appears inside the work, quoted as subject matter, while the medium does the certifying. Verbally this is the 'slop' word-family at full inflection (slopified, tasteslop, corporate slop) and the corpus's sharpest internal fight: the awareness that every authenticity move is gameable.",
       "visual": {
@@ -834,6 +1013,110 @@
           "image_refs": [
             "https://fastly.restofworld.org/uploads/2026/04/screenshot_yijing2.png?width=1900&dpr=2"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "wallpaper.com",
+          "url": "https://www.wallpaper.com/art/exhibitions-shows/sam-mckinniss-the-present-tense-david-kordansky-gallery-los-angeles",
+          "note": "Sam McKinniss -- oil paintings that re-render viral/celebrity JPEGs by hand (Tiger Woods 'USA' cap, a black swan, a pool diver); the fast image slowed into paint.",
+          "image_refs": [
+            "https://cdn.mos.cms.futurecdn.net/qssndKUQ2ce2DF3f7yGHnY-1920-80.jpg.webp",
+            "https://cdn.mos.cms.futurecdn.net/tgiSJoPVczuYkKPrdFsfjY-1920-80.jpg.webp",
+            "https://cdn.mos.cms.futurecdn.net/UvhcbjGkudeJXLtvrRKKgY-1920-80.jpg.webp"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "alminerech.com",
+          "url": "https://www.alminerech.com/exhibitions/677-sam-mckinniss-neverland",
+          "note": "McKinniss 'Neverland' -- hand-painted from circulated photographs (Princess Diana, Terminator, a clown-faced singer); an install of viral images restaged as oil.",
+          "image_refs": [
+            "https://d1bc1xn3hygkq4.cloudfront.net/rimage/ftw_webp_3072/image/10495/c0c979743c8017a996b58e6e18abe919",
+            "https://d1bc1xn3hygkq4.cloudfront.net/rimage/ftw_webp_3072/image/10494/6c2d1c464620029f8dbf9a5498ab63ae",
+            "https://d1bc1xn3hygkq4.cloudfront.net/rimage/ftw_webp_3072/image/10498/d617143e3d3b32e51b4d28d027831e3d"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "4columns.org",
+          "url": "https://4columns.org/kotecha-shiv/sam-mckinniss",
+          "note": "McKinniss criticism -- painted from screen-life source images (a couple in a car, Serena Williams on red); the internet picture re-authored by the hand.",
+          "image_refs": [
+            "https://4columns.org/img/column/Kotecha_SamMcKinniss_4.jpg",
+            "https://4columns.org/img/column/Kotecha_SamMcKinniss_5.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "frieze.com",
+          "url": "https://www.frieze.com/article/erin-m-riley-life-looks-like-a-house-for-a-few-hours-2025-review",
+          "note": "Erin M. Riley -- hand-woven wool tapestries of digital images: a wrecked car with YouTube UI woven in, screenshot text over landscape; weeks of loom-time spent on a phone image.",
+          "image_refs": [
+            "https://static.frieze.com/files/inline-images/erin-riley-life-looks-like-a-house-for-a-few-hours-body.jpg?VersionId=vmb8hDhRsc4dFitf2yQZ1QF0cAxC32Xw",
+            "https://static.frieze.com/files/inline-images/erin-riley-life-looks-like-a-house-for-a-few-hours-body-2.jpg?VersionId=qD4Lz.d.RjXdgPv2bL8g5HlMbI1R1Xhk"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "ppowgallery.com",
+          "url": "https://www.ppowgallery.com/exhibitions/erin-m-riley3",
+          "note": "Riley at PPOW -- woven from screenshots and found print: a birthday-banner teddy-and-rose, classified-ad newsprint rendered thread-by-thread.",
+          "image_refs": [
+            "https://static-assets.artlogic.net/w_1800,h_1000,c_limit/exhibit-e/61945b4c94b78824b9217367/af69a909ed56d478bee3cbe4391b92f2.jpeg",
+            "https://static-assets.artlogic.net/w_1800,h_1000,c_limit/exhibit-e/61945b4c94b78824b9217367/b33dbe87fd0118fca58faaa83cc414e0.jpeg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "juxtapoz.com",
+          "url": "https://www.juxtapoz.com/news/textiles/preview-erin-m-riley-s-life-looks-like-a-house-for-a-few-hours-ppow-gallery-nyc/",
+          "note": "Riley preview -- tapestries remaking online/personal imagery (a car crash, a clapboard house) slowly in wool.",
+          "image_refs": [
+            "https://www.juxtapoz.com/media/k2/galleries/74054/3a22d440ab38366a9ef02b93803eb989.jpeg",
+            "https://www.juxtapoz.com/media/k2/galleries/74054/d895ad5dba49e429751fcbd0860a3621.jpeg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "galeriemagazine.com",
+          "url": "https://galeriemagazine.com/artist-to-watch-erin-m-riley/",
+          "note": "Riley studio -- the artist among her large woven remakes of digital source images.",
+          "image_refs": [
+            "https://cdn.galeriemagazine.com/wp-content/uploads/2025/07/L1210276-copy.jpg?strip=all&quality=92&webp=92&sharp=1"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "dazeddigital.com",
+          "url": "https://www.dazeddigital.com/art-photography/article/40163/1/artist-erin-m-riley-weaves-tapestries-complex-beautiful-tapestries-sex-trauma",
+          "note": "Riley -- woven screenshots of a trauma archive ('DOMESTIC VIOLENCE CASE' police form, an 'Inaudible Screaming' caption, a Faulkner cover); the ephemeral screen made durable textile.",
+          "image_refs": [
+            "https://images-prod.dazeddigital.com/640/0-44-999-666/azure/dazed-prod/1240/1/1241103.JPG",
+            "https://images-prod.dazeddigital.com/640/0-462-2730-1820/azure/dazed-prod/1240/1/1241107.jpg",
+            "https://images-prod.dazeddigital.com/640/0-604-2058-1372/azure/dazed-prod/1240/1/1241102.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "wmagazine.com",
+          "url": "https://www.wmagazine.com/story/erin-m-riley-tapestries-brilliant-champions-studio-visit",
+          "note": "Riley studio process -- the loom, dyed-wool spools, and the 'HANDWOVEN IN THE USA' maker's label; sexts/screenshots turned into slow tapestry.",
+          "image_refs": [
+            "https://imgix.bustle.com/wmag/2016/12/16/585377ea9c190ec57ac0840e_25.jpg?w=688&h=917&fit=crop&crop=faces&dpr=2",
+            "https://imgix.bustle.com/wmag/2016/12/16/585377ece3d613c03e1eb864_IMG_8993.jpg?w=688&h=917&fit=crop&crop=faces&dpr=2",
+            "https://imgix.bustle.com/wmag/2016/12/16/585377ff9c190ec57ac08410_IMG_9075.jpg?w=688&h=917&fit=crop&crop=faces&dpr=2"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "news.artnet.com",
+          "url": "https://news.artnet.com/art-world/contemporary-painting-trends-2025-2659653",
+          "note": "'4 trends in painting in an image-saturated age' -- hand-painting as counter to image glut (Miriam Cahn's blue figures, a skull-and-flowers, an uncanny painted portrait).",
+          "image_refs": [
+            "https://news.artnet.com/app/news-upload/2025/06/18.-Miriam-Cahn-Das-Scho%CC%88ne-Blau-2008-745x1024.jpg",
+            "https://news.artnet.com/app/news-upload/2025/06/MW.SKH_.082-d0-lw.jpg",
+            "https://news.artnet.com/app/news-upload/2026/07/6E7A6297_high_res_edit_a-600x480.jpg"
+          ]
         }
       ],
       "confidence": "medium",
@@ -848,6 +1131,11 @@
           "run": "2026-07-02",
           "change": "evidence",
           "note": "honest reading: no new independent expressions of the code itself this run (the Polyester works resurfaced, same source), while the counterfeit side scaled from CGI-wearing-craft-language to whole institutions (Dataland, YiXiang). Status stays emergent but unconfirmed by this intake; round 2 should target the code directly (meme-art shows, airbrush revival, riso culture) before the next status call."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +10 distinct sources -> 19 distinct sources; effectively at target. Two anchors: Sam McKinniss (oil paintings of viral JPEGs) and Erin M. Riley (hand-woven tapestries of screenshots). artnews was scraped but dropped (its usable image resolved to an unrelated press photo, not a McKinniss painting). Status holds emergent but is now strongly evidenced across painting AND textile."
         }
       ]
     },
@@ -856,7 +1144,10 @@
       "name": "The Analog Sanctuary",
       "status": "residual",
       "short_def": "The oldest code, tagged residual: inhabited spaces built around analog ritual, vinyl walls, turntable altars, film cameras in working hands, long tables of people journaling by window light. Lit warm and practical, never HDR. What clients reach for by default when briefed 'human', though its smartest advocates concede the memory is partly reinvented, not remembered.",
-      "look": {"bg": "#6b3f22", "text": "#f6e7d4"},
+      "look": {
+        "bg": "#6b3f22",
+        "text": "#f6e7d4"
+      },
       "one_liner": "Warm-lit rooms where slow media is practiced together: the listening bar, the record shop, the reading cafe, the archive as altar.",
       "definition": "The oldest and most familiar code, tagged honestly as residual: inhabited spaces organized around analog ritual, vinyl walls and turntable altars, film cameras in working hands, long tables of people journaling by window light, lived-in interiors of wood, plaster, and glass. Lit warm and practical (lamps, candles, low winter sun, film stock), never HDR. This is what clients reach for by default when briefed 'human', and it still works, but its smartest advocates concede its memory is partly synthetic: its young consumers 'aren't remembering it, they are reinventing it'.",
       "visual": {
@@ -998,6 +1289,48 @@
           "image_refs": [
             "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/06/Dataland14.jpg"
           ]
+        },
+        {
+          "signal_id": null,
+          "source": "sabukaru.online",
+          "url": "https://sabukaru.online/articles/tokyo-camera-style-through-the-eyes-of-john-sypal",
+          "note": "Tokyo Camera Style + Autoprefecture -- film cameras as devotional objects (Rolleiflex TLRs, a camera amid 35mm rolls) and the preserved print-archive of vintage Japanese car magazines.",
+          "image_refs": [
+            "https://images.squarespace-cdn.com/content/v1/57825361440243db4a4b7830/1643880015410-16C7SIP6X2WZS0BJZNVL/260198587_644964696946868_5747164799076149733_n.jpg?format=2500w",
+            "https://images.squarespace-cdn.com/content/v1/57825361440243db4a4b7830/1643875324646-NRGY5O1OX2FLPT5ONP9I/cameraR1074826.jpg",
+            "https://images.squarespace-cdn.com/content/v1/57825361440243db4a4b7830/1631178891973-WL5IMHKXOOVH3JJBPTAZ/240507069_269967087980659_6996614518730920325_n.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "interviewmagazine.com",
+          "url": "https://www.interviewmagazine.com/fashion/the-iphone-has-taken-over-arthur-elgort-on-the-fashion-and-photography-that-staked-his-legacy",
+          "note": "Arthur Elgort 'the iPhone has taken over' -- film-era craft: a signed 1975 contact sheet, a self-portrait with a large-format camera, the movement-snapshot on film.",
+          "image_refs": [
+            "https://www.interviewmagazine.com/wp-content/uploads/2025/04/Arthur-Elgort-behind-the-scenes-1975-scaled.jpg",
+            "https://www.interviewmagazine.com/wp-content/uploads/2025/04/Arthur-Elgort-selfie-1975-scaled.jpg",
+            "https://www.interviewmagazine.com/wp-content/uploads/2025/04/Kate-Moss-on-Fiat-scaled.jpeg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "phroomplatform.com",
+          "url": "https://phroomplatform.com/takashi-homma/",
+          "note": "Takashi Homma -- a committed analog photographer's process/typologies (the glass studio, specimen frames). Evidence is the analog-process framing more than subject; thin fit, noted.",
+          "image_refs": [
+            "https://phroomplatform.com/wp-content/uploads/2022/06/a3-2.jpg",
+            "https://phroomplatform.com/wp-content/uploads/2022/06/a2-1.jpg"
+          ]
+        },
+        {
+          "signal_id": null,
+          "source": "unthinking.photography",
+          "url": "https://unthinking.photography/articles/militant-chemistry-an-interview-with-alice-lovejoy",
+          "note": "'Militant Chemistry' -- the material substrate of analog film: the Kodak/Agfa chemical-industry sites that made film stock possible.",
+          "image_refs": [
+            "https://unthinking.photography/media/pages/articles/militant-chemistry-an-interview-with-alice-lovejoy/40d676689e-1776084021/w21-fifa-1929-chemiepark-1498x.jpg",
+            "https://unthinking.photography/media/pages/articles/militant-chemistry-an-interview-with-alice-lovejoy/d89f80461a-1776084477/1280px-overlooking-kingsport-tennessee-nara-280261-1498x.jpg"
+          ]
         }
       ],
       "confidence": "high",
@@ -1012,6 +1345,11 @@
           "run": "2026-07-02",
           "change": "evidence",
           "note": "contact-sheet round 1: radii reading-cafe imagery re-confirmed (same article as pilot evidence); NEW carrier: lived-with design (home-as-showroom, ruin-as-venue) via Sight Unseen Lisbon. Watch-item: retro-COMPUTING entering the register (Tamagotchis, retro consoles, retro-Mac illustration), the sanctuary absorbing early digital objects. Counterexample: Dataland's 'The Sanctuary' gallery. Status holds residual."
+        },
+        {
+          "run": "2026-07-09",
+          "change": "evidence",
+          "note": "2026-07-09 semiotic image wave: +4 distinct sources (sabukaru, interviewmagazine, phroomplatform, unthinking) -> 9 distinct sources. SHORTFALL: below the 15 target -- the film-camera/darkroom/print-refuge lane had few fitting URLs this wave (phroom/Homma is a thin fit, noted on the entry). Status holds residual."
         }
       ]
     }

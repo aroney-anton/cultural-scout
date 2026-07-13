@@ -1,0 +1,105 @@
+# Appetite — semiotic enrichment URLs (visual-source wave, 2026-07-09)
+# Feed to: python run.py scrape --urls urls_appetite_semiotic_2026_07_09.txt --need "Appetite"
+# Sources tagged [Playwright] are JS-rendered (SSENSE, SHOWstudio); [direct-only] = Document Journal (homepage hijacked, article URLs still serve).
+# [imgs lazy-load] = Sabukaru images lazy-load; Playwright fallback advisable for real <img> src.
+
+# --- prescription-pleasure (0 urls) ---
+#   (no URLs from this visual-source wave — see gap note)
+
+# --- the-defiant-feast (0 urls) ---
+#   (no URLs from this visual-source wave — see gap note)
+
+# --- the-aphrodisiac-table (0 urls) ---
+#   (no URLs from this visual-source wave — see gap note)
+
+# --- flesh-as-form (3 urls) ---
+#   Perfect — plus-size body as sculptural material
+https://www.theperfectmagazine.com/features/brazilian-born-designer-karoline-vitto-inclusive-and-diverse-designs-giving-women-full-control-over-their-bodies-through-dressing
+#   i-D — sculptural runway volumes
+https://i-d.co/article/ready-to-wear-spring-2026-editorial/
+#   Interview — fleshy self-portraits
+https://www.interviewmagazine.com/art/in-her-new-show-painter-amanda-wall-eroticizes-her-favorite-subject-herself
+
+# --- dark-cornucopia (2 urls) ---
+#   Aperture — improvised still-life tableaux
+https://aperture.org/editorial/a-photographers-scavenged-still-lifes/
+#   Document [direct-only] — otherworldly still-life images
+http://www.documentjournal.com/article/willa-nasatir
+
+# --- toy-hunger (7 urls) ---
+#   Highsnobiety — Labubu as collectible
+https://www.highsnobiety.com/p/dillon-brooks-labubu-lebron-james-k-pop/
+#   Highsnobiety — bespoke-dressed Labubu, auction
+https://www.highsnobiety.com/p/labubu-sacai-carhartt/
+#   Highsnobiety — Pop Mart Space Molly toys
+https://www.highsnobiety.com/p/vans-space-molly-pop-mart-shoes/
+#   Highsnobiety — bag-charm collectibles
+https://www.highsnobiety.com/p/luxury-bag-charms/
+#   Hypebeast — designer-toy exhibition install
+https://hypebeast.com/2026/3/kasing-lung-labubu-the-monsters-10th-anniversary-paris-exhibition
+#   Hypebeast — toy universe in design-week set
+https://hypebeast.com/2026/4/usm-modular-furniture-kasing-lung-wonderland-of-the-monsters-milan-design-week-exhibit-info
+#   Hypebeast — blind-box vinyl toys
+https://hypebeast.com/2026/3/pop-mart-sanrio-monsters-hello-kitty-and-friends-vinyl-plush-pendant-blind-box-series-collaboration-release-info
+
+# ========== ROUND-2 GAP-FILL (added 2026-07-09) — food-lane sources ==========
+
+# --- round-2 gap-fill: prescription-pleasure (9 urls) ---
+#   032c [Playwright] — Ozempic as aspirational aesthetic
+https://magazine.032c.com/magazine/skinny-legend-ozempic-body-politics-and-unwellness-as-aspiration
+#   Jessica DeFino — Ozempic as lifestyle/pharmacy beauty
+https://jessicadefino.substack.com/p/ozempic-new-botox
+#   Gastronomica — appetite medicalized as lifestyle
+https://online.ucpress.edu/gastronomica/article/25/3/59/212519/Food-Ease-in-the-Ozempic-Era
+#   SCMP [Playwright] — TCM prescription cocktails as nightlife
+https://www.scmp.com/news/people-culture/trending-china/article/3348517/china-youth-flock-tcm-bars-prescription-cocktails-amid-rise-punk-wellness-lifestyle
+#   Trend Hunter — TCM bar as luxury nightlife
+https://www.trendhunter.com/trends/niang-qing
+#   SCMP [Playwright] — TCM as Instagrammable lifestyle
+https://www.scmp.com/lifestyle/food-drink/article/3333545/traditional-chinese-medicine-gets-delicious-insta-worthy-makeover-food-and-drink
+#   Jessica DeFino — wellness-pharmacy visual culture
+https://jessicadefino.substack.com/p/microdosing-prejuvenation
+#   Insight Trends World — pharmacy-as-nightlife, white coats
+https://www.insighttrendsworld.com/post/prescription-cocktails-how-china-s-tcm-bars-just-made-wellness-the-wildest-night-out
+#   China Skinny — herbal tonic bars as lifestyle
+https://chinaskinny.com/blog/tcm-bars-china-trends-represent
+
+# --- round-2 gap-fill: the-defiant-feast (8 urls) ---
+#   Hyperallergic — eating/feasting as radical act
+https://hyperallergic.com/artists-serve-up-the-radical-power-of-eating/
+#   Hyperallergic — abundance/consumption as stance
+https://hyperallergic.com/an-artist-serves-up-food-for-thought-about-excessive-consumption/
+#   Hyperallergic — paintings of appetite/consumption
+https://hyperallergic.com/1008101/an-artists-alluring-paintings-about-consumption-and-waste
+#   Wallpaper — mouths exaggerated at portrait scale
+https://www.wallpaper.com/art/exhibitions-shows/yay-to-have-a-mouth-rose-easton-london-review
+#   Dandelion Chandelier — food into desire/power
+https://www.dandelionchandelier.com/art-lens-art-about-food/
+#   FAD — women artists making feast work
+https://fadmagazine.com/2021/12/08/a-feast-for-the-eyes-the-contemporary-woman-artists-making-work-about-food/
+#   Smithsonian — hyperreal woman-eating sculpture
+https://americanart.si.edu/blog/plastic-fantastic-duane-hansons-woman-eating
+#   Surface — food-as-medium, feast imagery
+https://www.surfacemag.com/articles/artists-using-food-in-art/
+
+# --- round-2 gap-fill: the-aphrodisiac-table (10 urls) ---
+#   GATA [Playwright] — food-as-foreplay photo editorial
+https://gatamagazine.com/articles/photography/food-play-a-gata-editorial
+#   Saveur — porcelain lust via culinary excess
+https://www.saveur.com/forbidden-fruit-porcelain-art-food-exhibit/
+#   MAD Museum — erotic banquet porcelain, desserts
+https://madmuseum.org/exhibition/chris-antemann
+#   Frick Pittsburgh — Baroque forbidden-fruit tableaux
+https://www.thefrickpittsburgh.org/Exhibition-Forbidden-Fruit-Chris-Antemann-at-MEISSEN
+#   Seattle Times — come-hither ceramic feast
+https://www.seattletimes.com/entertainment/visual-arts/prurient-porcelain-the-come-hither-ceramics-of-chris-antemann/
+#   Richard Saltoun [Playwright] — surrealist erotic banquet/still life
+https://www.richardsaltoun.com/exhibitions/149-unveiled-desires-fetish-the-erotic-in-surrealism-1880/
+#   Wallpaper — women reclaiming the sensual table
+https://www.wallpaper.com/art/exhibitions-shows/erotic-surrealism-richard-saltoun
+#   The Marginalian — Dali surrealist aphrodisiac cookbook
+https://www.themarginalian.org/2014/04/29/salvador-dali-les-diners-de-galacookbook/
+#   Hyperallergic — sensual bodies/still life register
+https://hyperallergic.com/1001811/the-violent-and-sensual-bodies-of-galli/
+#   Table Magazine — aphrodisiac spread as seduction
+https://www.tablemagazine.com/aphrodisiac-board-for-2/

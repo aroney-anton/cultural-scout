@@ -32,6 +32,9 @@ _semantic_range_*
 #     CODE (run.py, extractor.py, sheets.py, README, tests) IS tracked. ---
 image_scraper/.cache/
 image_scraper/sheets/
+# 6-month contact-sheet archive (retained for internal look-back, auto-pruned
+# at 180 days by `run.py clean`) — same imagery, same copyright rule, never commit
+image_scraper/sheets_archive/
 image_scraper/output/
 image_scraper/logs/
 image_scraper/seen_urls.json

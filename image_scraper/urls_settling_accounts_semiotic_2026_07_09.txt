@@ -1,0 +1,64 @@
+# Settling Accounts — semiotic enrichment URLs (visual-source wave, 2026-07-09)
+# Feed to: python run.py scrape --urls urls_settling_accounts_semiotic_2026_07_09.txt --need "Settling Accounts"
+# Sources tagged [Playwright] are JS-rendered (SSENSE, SHOWstudio); [direct-only] = Document Journal (homepage hijacked, article URLs still serve).
+# [imgs lazy-load] = Sabukaru images lazy-load; Playwright fallback advisable for real <img> src.
+
+# --- restaged-verdict (1 urls) ---
+#   BJP — overwriting colonial visual hierarchies
+https://www.1854.photography/2026/04/decolonial-photography-museum-rietberg-exhibition-2026/
+
+# --- canon-corrected (5 urls) ---
+#   Foam — overdue documentary retrospective
+https://www.foam.org/events/co-rentmeester
+#   Aperture — Malian portrait canon centered
+https://aperture.org/editorial/seydou-keitas-revelatory-portraits-of-malian-life/
+#   Aperture — vernacular/archival photobook canon
+https://aperture.org/editorial/25-photobooks-that-define-america/
+#   Der Greif — female artist-feature series
+https://dergreif.org/article/sisterhood-in-practice-exhibition-photography-in-context/
+#   Unthinking — colonial archive critique
+https://unthinking.photography/articles/nsfw-venus-from-colonial-archives-to-machine-learning-datasets
+
+# --- stitched-testimony (4 urls) ---
+#   Phroom — executed-women testimony tableaux
+https://phroomplatform.com/sheida-soleimani/
+#   Aperture — Palestinian grief/perseverance record
+https://aperture.org/editorial/sakir-khaders-portraits-of-palestinian-perseverance/
+#   Der Greif — 'Argania', missing family history
+https://dergreif.org/artist-feature/maryam-touzani/
+#   PHmuseum — East-German family-attic archive
+https://phmuseum.com/news/verdiana-albano-receives-the-1st-prize-of-the-phmuseum-2025-women-photographers-grant
+
+# --- inheritance-reactivated (7 urls) ---
+#   Foam — resurfaced WWII resistance photography
+https://www.foam.org/events/de-ondergedoken-camera
+#   Aperture — diaspora self-portraits, family album
+https://aperture.org/editorial/silvia-rosi-reimagines-the-family-album/
+#   Phroom — family-album restaging over time
+https://phroomplatform.com/annie-hsiao-ching-wang/
+#   Phroom — Filipino-American family archive
+https://phroomplatform.com/ryan-frigillana/
+#   Der Greif — family archives recombined
+https://dergreif.org/artist-feature/edward-gia/
+#   Fisheye — intimate family archive
+https://fisheyemagazine.fr/article/les-photos-de-famille-de-katrin-koenning/
+#   PHmuseum — soldiers' disposable-camera archive
+https://phmuseum.com/news/dispatches-from-the-front-sergey-melnitchenkos-collective-memory-project
+
+# --- round-2 gap-fill: restaged-verdict (8 urls, added 2026-07-09) ---
+#   Getty — Fosso/Morimura restaging history
+https://www.getty.edu/art/exhibitions/photo_reenactment/index.html
+#   Hyperallergic — Weems restaging iconic photographs
+https://hyperallergic.com/carrie-mae-weems-assesses-history-in-real-time/
+#   Aperture — resistance history restaged/contested
+https://aperture.org/editorial/is-a-british-exhibition-about-resistance-stuck-in-the-past/
+#   BJP — reconstructing a colonial obsession
+https://www.1854.photography/2025/12/hoda-afshar-the-fold-loose-joints-book-exhibition-paris-2025/
+#   Ocula [Playwright] — restaging colonial-era photographs
+https://ocula.com/magazine/spotlight/rethinking-colonial-era-photography/
+#   Aperture — Silvia Rosi restaged self-portraits
+https://aperture.org/editorial/11-exhibitions-to-see-this-fall-2025/
+#   Hyperallergic — Arles 2025 restaging photo history
+https://hyperallergic.com/france-rencontres-d-arles-2025-flips-the-history-of-photography-upside-down/
+#   Fraenkel [Playwright] — Weems restaging, 2025 show
+https://fraenkelgallery.com/exhibitions/carrie-mae-weems-2025

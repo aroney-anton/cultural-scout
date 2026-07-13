@@ -6,6 +6,13 @@
 # so it doesn't get silently dropped.
 # `recent_url_uncertain: true` means I (Claude) am not confident the URL
 # below actually surfaces recent content. Verify before relying on harvest.
+# `semiotic_only: true` (added 2026-07-09) means the source is a SEMIOTIC-CODING
+# image pool ONLY. It is NOT harvested in the monthly cultural harvest, NOT
+# signal-tagged, NOT merged into corpus.json, and NOT listed in provenance.json /
+# the Field Guide. It exists solely as a URL-fed image source for the semiotic /
+# codebook stage (image_scraper), where the distinctiveness gate does NOT apply
+# and ALL content from ALL listed sources is in scope. See the SEMIOTIC-ONLY
+# section at the bottom of this file and the 2026-07-09 CLAUDE.md header block.
 
 harvest:
   date_range_days: 90
@@ -26,6 +33,7 @@ categories:
   museum: "Major art institutions — editorial (magazine/essays/criticism) PLUS exhibition & programming, read as a leading indicator of what the art world is canonizing (institutional-validation signal). Each entry carries an extra exhibitions_url; harvest BOTH arms (see the museum-wave header in sources for the harvest rules)."
   sport: "Sport read as culture and interiority, not results — fandom, the body, scene-building, and the meaning we make of play. Added 2026-06-29; in-milieu (the cultural register of sport), NOT scores/analytics/betting."
   games: "Videogame criticism and games culture — long-form, cultural-context games writing and the scenes around it. Added 2026-06-29; the criticism/essay register, NOT reviews/news/industry analyst coverage."
+  photography: "Photography and image-culture publications. Added 2026-07-09 to label the semiotic-only visual pool (see the SEMIOTIC-ONLY section). These sources are semiotic_only:true — they carry ZERO corpus signals and never appear in the Field Guide; the category exists to describe the image pool, not to expand corpus intake."
 
 sources:
   # --- Contemporary art and visual culture ---
@@ -1030,3 +1038,137 @@ sources:
     base_url: https://contemporaryand.com
     recent_url: https://contemporaryand.com/en/c-and-magazine
     note: "ADDED 2026-07-07. 'C&' — platform for international contemporary art centered on Africa and the African diaspora; also runs a separate C& América Latina magazine track (contemporaryand.com/en/america-latina-magazine). Genuinely non-Western-centered, extends the diaspora/global lane the way the museum wave did. VERIFIED 2026-07-07 via domain-scoped WebSearch: dated 2026 texts (Venice Biennale pavilion coverage, artist features). CAVEAT: /en/c-and-magazine resolves (200) but is a JS-rendered shell — WebFetch returns nav only, same class as artreview.com/moussemagazine.it. HARVEST METHOD: domain-scoped WebSearch for article URLs (check both magazine tracks), then WebFetch each article directly."
+
+  # ==========================================================================
+  # SEMIOTIC-ONLY VISUAL POOL 2026-07-09 — 17 image-rich fashion + photography
+  # sources (Michael's ask). EVERY entry below carries `semiotic_only: true`.
+  #
+  # WHAT THIS MEANS (hard rule):
+  #  - These sources are for the SEMIOTIC / codebook image stage ONLY (image_scraper).
+  #  - They are NOT harvested in the monthly cultural harvest, NOT signal-tagged
+  #    (Layer 2), NOT merged into corpus.json, and NOT added to provenance.json /
+  #    the Field Guide. They carry zero corpus signals and never touch need-share
+  #    or the pulse.
+  #  - The DISTINCTIVENESS GATE does NOT apply to them. It stays in force for signal
+  #    tagging; but for semiotic coding, ALL articles/content from ALL listed sources
+  #    (these 17 AND the ordinary corpus sources above) are in scope. The coding job
+  #    wants evocative imagery, not below-radar editorial distinctiveness.
+  #  - Feed them to the scraper URL-first, never crawl: WebSearch the domain for
+  #    themed article URLs per code, then `python run.py scrape --urls <file> --need "<Need>"`.
+  #    The 2026-07-09 url_*_semiotic_*.txt files in image_scraper/ already do this.
+  #
+  # FETCHABILITY (verified 2026-07-09, per image_scraper/SEMIOTIC_ENRICHMENT_2026_07_09.md):
+  #  14 GREEN via plain WebFetch. THREE need the scraper's Playwright fallback:
+  #  SSENSE + SHOWstudio (JS-rendered), Document Journal (hijacked homepage — direct
+  #  article URLs ONLY, never crawl). Sabukaru text is clean but images lazy-load, so
+  #  Playwright helps there too. Run `playwright install chromium` before scraping.
+  # ==========================================================================
+
+  # --- semiotic-only: fashion / streetwear / style editorial ---
+  - name: highsnobiety.com
+    category: fashion
+    semiotic_only: true
+    base_url: https://www.highsnobiety.com
+    note: "SEMIOTIC-ONLY (2026-07-09). Streetwear/fashion/culture. GREEN via plain WebFetch. Article pattern /p/<slug>/. Some pieces are 'Sponsored' but carry real editorial photography — read for imagery, not editorial signal. Image pool only; not corpus-harvested."
+
+  - name: hypebeast.com
+    category: fashion
+    semiotic_only: true
+    base_url: https://hypebeast.com
+    note: "SEMIOTIC-ONLY (2026-07-09). Streetwear/fashion/culture. GREEN. Article pattern /YYYY/M/<slug>. Very image-rich and captioned. Image pool only; not corpus-harvested."
+
+  - name: ssense.com/en-us/editorial
+    category: fashion
+    semiotic_only: true
+    base_url: https://www.ssense.com
+    recent_url: https://www.ssense.com/en-us/editorial
+    note: "SEMIOTIC-ONLY (2026-07-09). SSENSE Editorial. YELLOW — JS-rendered, needs the scraper's Playwright fallback; article URLs were search-confirmed only, so verify each per-article at scrape time. Expect thinner yield. Image pool only; not corpus-harvested."
+
+  - name: sabukaru.online
+    category: fashion
+    semiotic_only: true
+    base_url: https://sabukaru.online
+    recent_url: https://sabukaru.online/articles
+    note: "SEMIOTIC-ONLY (2026-07-09). Sabukaru — Tokyo/Japanese subculture, streetwear, underground scenes. GREEN* — text fetches via plain WebFetch, but images LAZY-LOAD so Playwright is advisable for the visual pull. Article pattern /articles/<slug>. Image pool only; not corpus-harvested."
+
+  - name: theperfectmagazine.com
+    category: fashion
+    semiotic_only: true
+    base_url: https://theperfectmagazine.com
+    recent_url: https://theperfectmagazine.com/features
+    note: "SEMIOTIC-ONLY (2026-07-09). Perfect Magazine (Katie Grand). GREEN. Article pattern /features/<slug> (slugs carry random suffixes). NOTE: the domain is theperfectmagazine.com, NOT perfectnumber.com. Image pool only; not corpus-harvested."
+
+  - name: i-d.co
+    category: fashion
+    semiotic_only: true
+    base_url: https://i-d.co
+    recent_url: https://i-d.co/article
+    note: "SEMIOTIC-ONLY (2026-07-09). i-D. GREEN, cleanest CDN images (media.i-d.co). Article pattern /article/<slug>/. Image pool only; not corpus-harvested."
+
+  - name: interviewmagazine.com
+    category: fashion
+    semiotic_only: true
+    base_url: https://www.interviewmagazine.com
+    note: "SEMIOTIC-ONLY (2026-07-09). Interview Magazine — culture/celebrity/fashion portraiture. GREEN, full-res wp-content images. Article pattern /<category>/<slug>. Image pool only; not corpus-harvested."
+
+  - name: documentjournal.com (semiotic)
+    category: fashion
+    semiotic_only: true
+    base_url: https://www.documentjournal.com
+    note: "SEMIOTIC-ONLY (2026-07-09). Document Journal, used here for imagery via DIRECT ARTICLE URLS ONLY. YELLOW/hazardous: the homepage + listing pages are HIJACKED (darknet spam) — never crawl the site, feed known article URLs only; images load via a JS slideshow so use Playwright; fresh-URL discovery is degraded, re-verify health before leaning on it. NB: distinct from the corpus entry 'documentjournal.com' (category embodied, fetchable:false — stalled for signal harvest); this entry is the semiotic image-pull use only. Not corpus-harvested."
+
+  - name: showstudio.com
+    category: fashion
+    semiotic_only: true
+    base_url: https://www.showstudio.com
+    note: "SEMIOTIC-ONLY (2026-07-09). SHOWstudio (Nick Knight) — fashion film. YELLOW — JS-rendered, needs Playwright. Imagery is mostly fashion-film stills. Image pool only; not corpus-harvested."
+
+  # --- semiotic-only: photography / image-culture ---
+  - name: foam.org
+    category: photography
+    semiotic_only: true
+    base_url: https://www.foam.org
+    note: "SEMIOTIC-ONLY (2026-07-09). Foam Magazine / Foam Fotografiemuseum Amsterdam. GREEN. The image-rich surface is the exhibition pages /events/<slug> (announcement-exception applies for imagery). Image pool only; not corpus-harvested."
+
+  - name: phroomplatform.com
+    category: photography
+    semiotic_only: true
+    base_url: https://phroomplatform.com
+    note: "SEMIOTIC-ONLY (2026-07-09). PHROOM — contemporary photography platform. GREEN, clean full-res hotlink JPGs. Article pattern /<artist-slug>/. NOTE: domain is phroomplatform.com, NOT phroom.com. Archive skews 2018-21 — lean on the GETXO 2025 lane for recent imagery. Image pool only; not corpus-harvested."
+
+  - name: aperture.org
+    category: photography
+    semiotic_only: true
+    base_url: https://aperture.org
+    recent_url: https://aperture.org/editorial
+    note: "SEMIOTIC-ONLY (2026-07-09). Aperture — the richest tagged photo-essays on the list. GREEN. Article pattern /editorial/<slug>/. (Already used as a round-2 gap-fill source in the Self-Authorship pilot.) Image pool only; not corpus-harvested."
+
+  - name: dergreif.org
+    category: photography
+    semiotic_only: true
+    base_url: https://dergreif.org
+    note: "SEMIOTIC-ONLY (2026-07-09). Der Greif — photography platform. GREEN. Patterns /artist-feature/, /guest-room/, /article/; the Guest Room pages are 20-40 image grids (very high image density). Image pool only; not corpus-harvested."
+
+  - name: fisheyemagazine.fr
+    category: photography
+    semiotic_only: true
+    base_url: https://www.fisheyemagazine.fr
+    note: "SEMIOTIC-ONLY (2026-07-09). Fisheye Magazine (France). GREEN. Patterns /article/<slug>/ (+ /en/article/); images off the fisheyeimmersive.com CDN. Image pool only; not corpus-harvested."
+
+  - name: 1854.photography
+    category: photography
+    semiotic_only: true
+    base_url: https://www.1854.photography
+    note: "SEMIOTIC-ONLY (2026-07-09). British Journal of Photography (1854). GREEN, captioned hotlinks. Article pattern /YYYY/MM/<slug>/. Image pool only; not corpus-harvested."
+
+  - name: unthinking.photography
+    category: photography
+    semiotic_only: true
+    base_url: https://unthinking.photography
+    note: "SEMIOTIC-ONLY (2026-07-09). Unthinking Photography (The Photographers' Gallery) — the Naming-the-Machine specialist here (AI/algorithm/automated-image critique). GREEN. Article pattern /articles/<slug>. Image pool only; not corpus-harvested."
+
+  - name: phmuseum.com
+    category: photography
+    semiotic_only: true
+    base_url: https://phmuseum.com
+    note: "SEMIOTIC-ONLY (2026-07-09). PHmuseum — photography community/features. GREEN, images off img.phmuseum.com. Article pattern /news/<slug> for features. Image pool only; not corpus-harvested."

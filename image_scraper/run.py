@@ -21,9 +21,12 @@ Three subcommands:
       to read. Defaults to the newest file in output/.
 
   python run.py clean
-      Deletes .cache/ and sheets/ entirely. Run this when analysis is done
-      — downloaded imagery is a temporary analysis artifact and must never
-      linger, be committed, or be shipped (see CLAUDE.md copyright rule).
+      Deletes the raw .cache/ (full-res downloaded imagery), and ARCHIVES the
+      contact sheets into sheets_archive/ where they are retained for 6 months
+      (180 days), then auto-pruned. Run this when a coding pass is done. Both
+      layers stay local-only, gitignored, never committed or shipped (CLAUDE.md
+      copyright rule); the 6-month archive is the internal look-back window.
+      Use `--purge` to delete the sheets outright instead of archiving them.
 
 Everything is resolved relative to THIS file's folder, so the commands work
 no matter which directory you run them from.
@@ -48,6 +51,8 @@ from sheets import build_contact_sheets, download_images  # noqa: E402
 OUTPUT_DIR = HERE / "output"
 CACHE_DIR = HERE / ".cache"
 SHEETS_DIR = HERE / "sheets"
+SHEETS_ARCHIVE_DIR = HERE / "sheets_archive"   # contact sheets kept here after clean
+ARCHIVE_RETENTION_DAYS = 180                    # 6-month look-back, then auto-pruned
 LOGS_DIR = HERE / "logs"
 LEDGER_PATH = HERE / "seen_urls.json"     # remembers which URLs we've scraped
 DEFAULT_CORPUS = HERE.parent / "corpus.json"
@@ -343,24 +348,62 @@ def cmd_sheets(args):
     if written:
         log.info("DONE: %d contact sheet(s) in %s — read each PNG alongside "
                  "its sidecar JSON.", len(written), SHEETS_DIR)
-        log.info("REMINDER: cache + sheets are temporary analysis artifacts. "
-                 "Run `python run.py clean` when the coding pass is finished.")
+        log.info("REMINDER: raw cache is temporary; sheets are archived for "
+                 "6 months on clean. Run `python run.py clean` when the coding "
+                 "pass is finished.")
 
 
 # ---------------------------------------------------------------------------
 # Subcommand: clean
 # ---------------------------------------------------------------------------
 
-def cmd_clean(_args):
+def prune_archive():
+    """Delete archived sheet folders older than the 6-month retention window."""
+    if not SHEETS_ARCHIVE_DIR.exists():
+        return
+    cutoff = datetime.now() - timedelta(days=ARCHIVE_RETENTION_DAYS)
+    for entry in SHEETS_ARCHIVE_DIR.iterdir():
+        if not entry.is_dir():
+            continue
+        archived_at = datetime.fromtimestamp(entry.stat().st_mtime)
+        if archived_at < cutoff:
+            shutil.rmtree(entry)
+            log.info("Pruned archived sheets older than %d days: %s",
+                     ARCHIVE_RETENTION_DAYS, entry.name)
+
+
+def cmd_clean(args):
     setup_logging("clean")
-    for folder in (CACHE_DIR, SHEETS_DIR):
-        if folder.exists():
-            shutil.rmtree(folder)
-            log.info("Deleted %s", folder)
+
+    # Raw full-res cache is always deleted — heaviest layer, most copyright-
+    # sensitive, and never part of the look-back window.
+    if CACHE_DIR.exists():
+        shutil.rmtree(CACHE_DIR)
+        log.info("Deleted raw image cache %s", CACHE_DIR)
+    else:
+        log.info("Nothing to delete at %s", CACHE_DIR)
+
+    # Contact sheets: archive (default) or purge (--purge).
+    if SHEETS_DIR.exists() and any(SHEETS_DIR.iterdir()):
+        if getattr(args, "purge", False):
+            shutil.rmtree(SHEETS_DIR)
+            log.info("Purged contact sheets %s (--purge)", SHEETS_DIR)
         else:
-            log.info("Nothing to delete at %s", folder)
+            SHEETS_ARCHIVE_DIR.mkdir(exist_ok=True)
+            stamp = datetime.now().strftime("sheets_%Y-%m-%d_%H%M%S")
+            dest = SHEETS_ARCHIVE_DIR / stamp
+            shutil.move(str(SHEETS_DIR), str(dest))
+            log.info("Archived contact sheets -> %s (retained %d days / 6 months)",
+                     dest, ARCHIVE_RETENTION_DAYS)
+    else:
+        log.info("No contact sheets to archive at %s", SHEETS_DIR)
+
+    # Enforce the 6-month window every clean.
+    prune_archive()
+
     log.info("Clean. (output/ JSONs are kept — they contain no images, "
-             "only text and URLs.)")
+             "only text and URLs. Archived sheets live in %s, gitignored.)",
+             SHEETS_ARCHIVE_DIR.name)
 
 
 # ---------------------------------------------------------------------------
@@ -409,7 +452,10 @@ def main():
                           help="seconds between image downloads per domain (default 2)")
     p_sheets.set_defaults(func=cmd_sheets)
 
-    p_clean = sub.add_parser("clean", help="delete the image cache and contact sheets")
+    p_clean = sub.add_parser("clean", help="delete raw cache; archive sheets for 6 months")
+    p_clean.add_argument("--purge", action="store_true",
+                         help="delete the contact sheets outright instead of "
+                              "archiving them for 6 months")
     p_clean.set_defaults(func=cmd_clean)
 
     args = parser.parse_args()

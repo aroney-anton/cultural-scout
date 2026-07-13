@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Look &amp; Feel — Appetite (mockup)</title>
+<style>
+  :root { --ease: cubic-bezier(.22,.61,.36,1); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #141414;
+    background: #fafaf8;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  #bg { position: fixed; inset: 0; z-index: -2; background: #fafaf8; transition: background-color .15s linear; }
+  #grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .055;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .mockup-flag {
+    position: fixed; top: 14px; right: 16px; z-index: 50; font-size: 10px; letter-spacing: .18em;
+    text-transform: uppercase; padding: 5px 9px; border: 1px solid currentColor; border-radius: 3px;
+    opacity: .5; mix-blend-mode: difference; color: #fff;
+  }
+  .backbtn {
+    position: fixed; top: 14px; left: 16px; z-index: 50; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    background: rgba(0,0,0,.06); color: inherit; border: 1px solid rgba(0,0,0,.18); mix-blend-mode: difference;
+  }
+
+  /* ---------- INTRO ---------- */
+  #intro { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8vh 7vw; }
+  #intro .eyebrow { font-size: 12px; letter-spacing: .32em; text-transform: uppercase; opacity: .5; margin-bottom: 28px; }
+  #intro h1 { font-size: clamp(20px, 2.4vw, 30px); font-weight: 500; opacity: .55; margin-bottom: 6vh; max-width: 40ch; line-height: 1.45; }
+  .codelist { display: flex; flex-direction: column; gap: clamp(8px, 1.6vh, 20px); }
+  .codelist a {
+    text-decoration: none; color: #141414; font-size: clamp(30px, 6.2vw, 86px); font-weight: 650;
+    line-height: 1.02; letter-spacing: -.02em; display: flex; align-items: baseline; gap: 18px;
+    opacity: .92; transition: opacity .2s, transform .25s var(--ease);
+  }
+  .codelist a:hover { opacity: 1; transform: translateX(10px); }
+  .codelist .num { font-size: clamp(12px,1vw,15px); font-weight: 500; opacity: .4; letter-spacing: 0; }
+  .codelist .dot { width: .42em; height: .42em; border-radius: 50%; display: inline-block; align-self: center; }
+  .scrollhint { margin-top: 7vh; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; animation: bob 2.2s infinite ease-in-out; }
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+  /* ---------- CODE: HERO ---------- */
+  .code { position: relative; }
+  .hero { display: grid; grid-template-columns: 26% 74%; align-items: stretch; min-height: 100vh; }
+  .hero .text {
+    position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 6vh 2.2vw 6vh 7vw; z-index: 2;
+  }
+  .hero .num { font-size: 12px; letter-spacing: .26em; opacity: .6; margin-bottom: 18px; }
+  .hero .status {
+    display: inline-block; align-self: flex-start; font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+    padding: 4px 9px; border: 1px solid currentColor; border-radius: 999px; opacity: .7; margin-bottom: 22px;
+  }
+  .hero h2 { font-size: clamp(28px, 3.1vw, 52px); font-weight: 650; line-height: 1.04; letter-spacing: -.02em; margin-bottom: 22px; }
+  .hero .oneliner { font-size: clamp(14px, 1.15vw, 18px); line-height: 1.5; opacity: .82; max-width: 30ch; }
+  .hero .palette { display: flex; gap: 7px; margin-top: 30px; }
+  .hero .palette span { width: 26px; height: 26px; border-radius: 4px; box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset; }
+  .scrollon { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; opacity: .4; margin-top: 34px; }
+
+  .collage { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 11.5vw; gap: 10px; padding: 9vh 0 9vh 1.5vw; align-content: start; }
+  .collage figure { overflow: hidden; position: relative; border-radius: 3px; background: rgba(0,0,0,.12); }
+  .collage img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.02); }
+  .collage figure.tall { grid-row: span 2; }
+  .collage figure.wide { grid-column: span 2; }
+  .collage figure.big { grid-column: span 2; grid-row: span 2; }
+
+  /* ---------- CODE: ANALYSIS ---------- */
+  .analysis { padding: 4vh 7vw 12vh; max-width: 1200px; }
+  .analysis .def { font-size: clamp(17px, 1.5vw, 23px); line-height: 1.5; max-width: 56ch; opacity: .95; margin-bottom: 7vh; font-weight: 450; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5vh 6vw; }
+  .block { border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent); padding-top: 16px; }
+  .block.full { grid-column: 1 / -1; }
+  .label { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; opacity: .55; margin-bottom: 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 13px; padding: 5px 11px; border-radius: 999px; line-height: 1.2;
+    background: color-mix(in srgb, var(--tx) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tx) 26%, transparent);
+  }
+  .quotes { margin-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .quote { font-size: 15px; line-height: 1.45; }
+  .quote .q { font-style: italic; }
+  .quote a, .ev a, .def a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .quote .src { display: inline-block; font-size: 12px; opacity: .7; margin-top: 3px; }
+  .body { font-size: 15px; line-height: 1.55; opacity: .92; max-width: 54ch; }
+  .ev { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; }
+  .meta { grid-column: 1 / -1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+          margin-top: 5vh; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--tx) 24%, transparent);
+          font-size: 12px; opacity: .6; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero .text { position: relative; height: auto; min-height: 60vh; padding: 12vh 7vw 4vh; }
+    .collage { grid-template-columns: repeat(2,1fr); grid-auto-rows: 32vw; padding: 0 0 6vh; }
+    .codelist a { font-size: 40px; }
+    .grid2 { grid-template-columns: 1fr; }
+    .analysis { padding: 4vh 7vw 9vh; }
+  }
+</style>
+</head>
+<body>
+<div id="bg"></div>
+<div id="grain"></div>
+<div class="backbtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</div>
+
+<section id="intro">
+  <div class="eyebrow">Appetite · Look &amp; Feel</div>
+  <h1>Six visual-verbal codes the corpus uses to express appetite — managing it at the pharmacy and aestheticizing the management, eating back at diet culture in saturated defiance, setting the table as a flirtation, wearing the fed body as design material, painting abundance with its decay showing, and rerouting hunger onto toys entirely. Scroll to enter each one.</h1>
+  <nav class="codelist" id="codelist"></nav>
+  <div class="scrollhint">Scroll ↓</div>
+</section>
+
+<main id="codes"></main>
+
+<script>
+const IMG_NOTE = "Imagery embedded live from the publishers' servers — nothing stored.";
+const CODES = [
+ {
+  "id": "prescription-pleasure",
+  "name": "Prescription Pleasure",
+  "status": "emergent",
+  "oneliner": "The diagnosis is the aperitif: appetite managed, and the management aestheticized as pleasure.",
+  "bg": "#2b1f12",
+  "text": "#f2e9d8",
+  "palette": [
+   "#8a5a2b",
+   "#c98f3f",
+   "#d9c39a",
+   "#f2efe8",
+   "#e8641b"
+  ],
+  "def": "The register with the strongest cultural tailwind and the thinnest visual base. Its one fully photographed expression is Shanghai's Barmacy scene: backlit apothecary shelving, herb-specimen menus on kraft paper, a robed practitioner taking a masked customer's pulse in amber light, a handwritten diagnosis form held to camera, dry-ice cocktails served over lotus-pond dioramas — medicine administered as theatre. Western sources carry the same logic verbally (GLP-1s as financial strategy, peptides as men's optimization, Tom Brady's supplement innuendo) but render it as acid-toned collage illustration or stock photography, not reportage.",
+  "visual": [
+   "glass jars of infusions, dried-herb specimens glued to menus",
+   "warm wood drawers and shelving lit like a library",
+   "handwritten forms; dry-ice mist over ceramic and lacquer",
+   "the ritual object held to camera (form, cup, specimen)",
+   "service photographed mid-ceremony, practitioner and customer both in frame",
+   "Western dialect: flat editorial collage of pills, money, phones in acid hues",
+   "young customers in streetwear submitting to diagnosis; the bar-as-clinic, clinic-as-bar"
+  ],
+  "verbal": [
+   "food noise",
+   "GLP-1-friendly",
+   "protocol",
+   "dosage",
+   "diagnostics",
+   "optimization",
+   "punk wellness"
+  ],
+  "quotes": [
+   {
+    "q": "Instead of demanding cheaper food, some people are learning how to need less of it.",
+    "src": "Khaoula Ghanem, Mille World",
+    "url": "https://www.milleworld.com/why-some-people-are-choosing-ozempic-over-groceries/"
+   },
+   {
+    "q": "why not combine health diagnostics with alcohol?",
+    "src": "RADII",
+    "url": "https://radii.co/article/barmacy-punk-wellness-tcm-bars-china"
+   }
+  ],
+  "against": "Against wild, unmanaged appetite — and directly against the-defiant-feast, which is this code's announced enemy. Theme-gravity fence: the Barmacy imagery's craft surfaces (kraft, herbs, handwriting) are NOT a made-by-hand provenance claim — the center of gravity is dosing and diagnosis-as-entertainment; cite it there or it bleeds into Certified Human. Vittles' pet-food piece supplies this code's counter-argument (appetite wanted 'real' and animal while actually managed) but its provenance imagery belongs to Certified Human and is excluded.",
+  "execution": "For brands: the East-Asian expression shows the productizable form — diagnosis as hospitality, the dose served with ceremony and materials that feel like a bar, not a clinic. Misuse: bolting GLP-1 language onto indulgence products reads as the category's darkest irony (the same system selling the craving and its suppression); this audience has already named that cycle.",
+  "evidence": [{"s": "radii.co", "u": "https://radii.co/article/barmacy-punk-wellness-tcm-bars-china"}, {"s": "milleworld.com", "u": "https://www.milleworld.com/why-some-people-are-choosing-ozempic-over-groceries/"}, {"s": "thepointmag.com", "u": "https://thepointmag.com/examined-life/superhuman-fantasies/"}, {"s": "virginiasolesmith.substack.com", "u": "https://virginiasolesmith.substack.com/p/fine-we-talked-about-peptides"}, {"s": "snaxshot.com", "u": "https://www.snaxshot.com/p/tom-brady-wants-you-to-swallow-his"}, {"s": "vittlesmagazine.com", "u": "https://www.vittlesmagazine.com/p/sexless-little-carnivores"}, {"s": "magazine.032c.com", "u": "https://magazine.032c.com/magazine/skinny-legend-ozempic-body-politics-and-unwellness-as-aspiration"}, {"s": "scmp.com", "u": "https://www.scmp.com/news/people-culture/trending-china/article/3348517/china-youth-flock-tcm-bars-prescription-cocktails-amid-rise-punk-wellness-lifestyle"}, {"s": "chinaskinny.com", "u": "https://chinaskinny.com/blog/tcm-bars-china-trends-represent"}],
+  "imgs": ["https://radii.co/wp-content/uploads/2026/06/radii-barmacy-punk-wellness-tcm-bars-01.jpg", "https://radii.co/wp-content/uploads/2026/06/radii-barmacy-punk-wellness-tcm-bars-04.jpg", "https://radii.co/wp-content/uploads/2026/06/radii-barmacy-punk-wellness-tcm-bars-07.jpg", "https://www.milleworld.com/wp-content/uploads/2026/06/Let-Them-Take-Ozempic-How-GLP-1s-Are-Replacing-Groceries-.jpg", "https://thepointmag.com/wp-content/uploads/2026/01/Issue-36-Cover_web.jpg", "https://magazine.032c.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fwmq4hf8k%2Fproduction%2Fc9bc5ad99c401aed7049ad848a3b5c29f5025b2a-1024x1536.jpg&w=3840&q=90", "https://magazine.032c.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fwmq4hf8k%2Fproduction%2F30e188b14c3a22f57050180e198ccc82a513544f-1133x765.jpg&w=3840&q=90", "https://magazine.032c.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fwmq4hf8k%2Fproduction%2Fcdb13d2e77bf06702860068a65e4e0afa94908ed-3500x3500.jpg&w=3840&q=90", "https://cdn.i-scmp.com/sites/default/files/styles/1200x800/public/d8/images/canvas/2026/03/31/013be8dd-11d5-48d2-a155-248981f4e744_4a9fe871.jpg?itok=Gr15tdph&v=1774943789", "https://img.i-scmp.com/cdn-cgi/image/fit=contain,width=1024,format=auto/sites/default/files/d8/images/canvas/2026/03/31/35f67c46-db80-461f-a66e-26cb9dc2e4ff_e04d9215.jpg", "https://images.squarespace-cdn.com/content/v1/61072865e188440329002c4e/27184f5b-71bb-4f4e-a6c6-eba8ca947756/TCM-bars-China.jpg?format=2500w", "https://images.squarespace-cdn.com/content/v1/61072865e188440329002c4e/c00c3556-e5b5-468b-8de9-9f3892acf12a/Snow+White+Dong-EE-Jiao.png"],
+  "trajectory": "2026-07-08 coined · 2026-07-09 evidence"
+ },
+ {
+  "id": "the-defiant-feast",
+  "name": "The Defiant Feast",
+  "status": "emergent",
+  "oneliner": "Eat like it's an argument: saturated, messy, communal, unashamed — appetite painted back into the picture.",
+  "bg": "#3a1420",
+  "text": "#f8e7ee",
+  "palette": [
+   "#e84f8a",
+   "#e2591c",
+   "#e8c832",
+   "#c03a2b",
+   "#7ab648"
+  ],
+  "def": "The intake's most institutionally confirmed emergent code. Caroline Wong's mukbang-derived Hungry Women and her Saatchi solo Girls Who Devour render Asian women devouring in feverish oil-pastel pinks and oranges — close-up mouths, chopsticks mid-lift, feasts with cats — explicitly framed against GLP-1 collarbone culture. Polyester's Savoury Girls collages set b/w portraits against oversized vegetable stickers to reclaim savoury appetite from diet culture's dessert-coded 'girl food.' Kexin Hao performs Revolution is a Dinner Party as communal spectacle; Molly Crabapple argues pleasure as political friction from a cluttered bohemian atelier; Cake Zine orders six foie gras 'for research.' Register: saturation as defiance, mess as honesty, the group table as a political unit.",
+  "visual": [
+   "oil pastel and crayon scrawl, worked wet and dense",
+   "collage: photo + sticker + doodle layered like a teenage diary",
+   "picnic blankets, laden tables, fruit mid-spill",
+   "the mouth mid-bite at portrait scale, eyes closed",
+   "horizontal feast friezes — bodies reclining among plates, cats in frame",
+   "collage grids that crowd the frame past comfort",
+   "women (often Asian, often the artist's community) eating together; domestic and picnic settings, never restaurants"
+  ],
+  "verbal": [
+   "devour",
+   "hungry",
+   "savoury girls",
+   "girl dinner",
+   "food noise",
+   "indulgence",
+   "excess",
+   "riot"
+  ],
+  "quotes": [
+   {
+    "q": "The idea was just to transfer the pleasure of eating into making art",
+    "src": "Caroline Wong, Polyester",
+    "url": "https://www.polyesterzine.com/features/caroline-wong-on-girls-who-devour-women-eating-in-the-age-of-glp-1s-and-girlhood"
+   },
+   {
+    "q": "They want a frictionless world where everything is pure consumption",
+    "src": "Molly Crabapple, Elephant",
+    "url": "https://elephant.art/molly-crabapple/"
+   }
+  ],
+  "against": "Explicitly against prescription-pleasure — this code exists because that one does. Also against the composed, restrained femininity of classical food imagery. Watch item: Oliver Jeanes' 'pleasures of bad taste' camp-maximalism is conceptually adjacent (pleasure against taste hierarchies) but visually a fashion dialect; not folded in, one source.",
+  "execution": "For brands: saturation, mess, and the communal table are the executable grammar — the food shown mid-consumption by people visibly enjoying it, not styled at rest. Misuse: borrowing the aesthetic while casting compliant bodies re-creates the exact image this code is against; the defiance is the point, not the palette.",
+  "evidence": [{"s": "polyesterzine.com", "u": "https://www.polyesterzine.com/features/caroline-wong-on-girls-who-devour-women-eating-in-the-age-of-glp-1s-and-girlhood"}, {"s": "polyesterzine.com", "u": "https://www.polyesterzine.com/features/savoury-girls-versus-the-patriarchy"}, {"s": "saatchigallery.com", "u": "https://www.saatchigallery.com/exhibition/caroline-wong-girls-who-devour"}, {"s": "carolinewongart.com", "u": "https://www.carolinewongart.com/work/hungrywomen"}, {"s": "howkexin.com", "u": "https://howkexin.com/agenda.html"}, {"s": "elephant.art", "u": "https://elephant.art/molly-crabapple/"}, {"s": "cakezine.org", "u": "https://cakezine.substack.com/p/six-orders-of-foie-gras-for-research"}, {"s": "hyperallergic.com", "u": "https://hyperallergic.com/artists-serve-up-the-radical-power-of-eating/"}, {"s": "wallpaper.com", "u": "https://www.wallpaper.com/art/exhibitions-shows/yay-to-have-a-mouth-rose-easton-london-review"}, {"s": "fadmagazine.com", "u": "https://fadmagazine.com/2021/12/08/a-feast-for-the-eyes-the-contemporary-woman-artists-making-work-about-food/"}, {"s": "surfacemag.com", "u": "https://www.surfacemag.com/articles/artists-using-food-in-art/"}, {"s": "dandelionchandelier.com", "u": "https://www.dandelionchandelier.com/art-lens-art-about-food/"}, {"s": "americanart.si.edu", "u": "https://americanart.si.edu/blog/plastic-fantastic-duane-hansons-woman-eating"}],
+  "imgs": ["https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/adc66de2-27b5-4d6a-9476-d84166132db1/IMG_0528.JPG", "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/d9198076-532f-49f5-a94a-cff2c5efabf5/IMG_0519.JPG", "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/b0732f72-1974-44b2-a2fb-cdd3febb50ac/Untitled-4.png?format=2500w", "https://www.saatchigallery.com/wp-content/smush-webp/2026/02/B37B9BB9-718F-49D0-AD85-23D397CBE528-scaled.jpeg.webp", "https://www.saatchigallery.com/wp-content/smush-webp/2026/02/56BB165F-39D5-4F16-A0E6-27CD6796A9C2-scaled.jpeg.webp", "https://www.saatchigallery.com/wp-content/smush-webp/2026/02/C1C2D243-01AC-412C-A511-2F4D4B5E442A-scaled.jpeg.webp", "https://images.squarespace-cdn.com/content/v1/631be2f3d6972e6dc58bce79/e9aed842-46d9-4810-a03d-16e7a539a6a6/hungry+woman+89.jpg", "https://images.squarespace-cdn.com/content/v1/631be2f3d6972e6dc58bce79/e2d4f61d-a447-41d6-9d5f-68fb6e2449ea/CAW+23.002+-+Hungry+Woman+91_120%2C+2023.jpg", "https://howkexin.com/img-news/260622/Kexin%20Hao_Revolution%20is%20a%20dinner%20party_Oerol2026_GeertSnoeijer__8738%20kopie.jpg", "https://elephant.art/wp-content/uploads/2026/05/0-4.jpg", "https://elephant.art/wp-content/uploads/2026/05/0-1.jpg", "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2015/04/wam_feastinstallation.jpg", "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2015/04/wam_feastmingwei.jpg", "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2015/04/wam_feastmarioni_detail.jpg", "https://cdn.mos.cms.futurecdn.net/V8x76AUHRgFfBUgNfvCNHa-1600-80.jpg.webp", "https://cdn.mos.cms.futurecdn.net/opnRhjFVnTAzHL8nCdAvGa-1200-80.jpg.webp", "https://cdn.mos.cms.futurecdn.net/DULgb665zN8naH4F68fjKa-1600-80.jpg.webp", "https://fadmagazine.com/wp-content/uploads/Phoebe-Boddy-Eggy-Bread-2021-Acrylic-on-Canvas-160-x-170cm-1536x1536.jpg", "https://fadmagazine.com/wp-content/uploads/Phoebe-Boddy-Wake-Me-Up-2021-Acrylic-on-Canvas-122-x-122cm-1536x1536.jpg", "https://fadmagazine.com/wp-content/uploads/13.-Sarah-Lucas-Chicken-Knickers-1997.-Courtesy-the-artist-and-Sadie-Coles-HQ-London.jpeg", "https://images.surfacemag.com/app/uploads/2017/12/04131723/chloe-wise-lactose-tolerance.jpg", "https://images.surfacemag.com/app/uploads/2017/12/04135017/valery-jung-estabrook-food-porn-series.001-2000x1000.jpeg", "https://images.surfacemag.com/app/uploads/2017/12/04142303/zina-saro-wiwa-table-manners-felix-film-still-2000x1129.jpg", "https://www.dandelionchandelier.com/wp-content/uploads/2022/11/felix-gonzalez-torres-portrait-of-ross-candy-pile-dandelion-chandelier.jpg", "https://www.dandelionchandelier.com/wp-content/uploads/2022/11/wayne-thiebaud-bakery-case-dessert-display-dandelion-chandelier-819x1024.webp", "https://www.dandelionchandelier.com/wp-content/uploads/2022/11/bright-autumn-feast-candlelit-table-setting-dandelion-chandelier-scaled-e1764018050489.jpg", "https://d3ec1vt3scx7rr.cloudfront.net/files/styles/ui_large/s3/artwork/images/01bac591655a177e7abc8073c230dd8a.jpg?itok=onYh95CW"],
+  "trajectory": "2026-07-08 coined · 2026-07-09 evidence"
+ },
+ {
+  "id": "the-aphrodisiac-table",
+  "name": "The Aphrodisiac Table",
+  "status": "dominant",
+  "oneliner": "Set the table like a flirtation: food as sensual object, the meal as the seduction, the mess as the proof.",
+  "bg": "#41300f",
+  "text": "#f6efdc",
+  "palette": [
+   "#c9a227",
+   "#f3ead8",
+   "#faf6ee",
+   "#6e2b1e",
+   "#d98ba3"
+  ],
+  "def": "Two dialects of one code. The domestic dialect (Apartamento) is hand-drawn and bawdy-folk: the APHRODISIACS cookbook's durian-and-cherub cover, saffron torrijas overhead on a doily-edged plate, wine bottles and smeared dessert plates left as the record of the night. The staged dialect (Laila Gohar, now the default grammar of editorial and brand food styling) is surrealist-playful: a hot-dog tiered cake crowned with cherries, butter carved into facial fragments by the sea, potatoes tattooed with roses, banquet tables laid as sculpture gardens. Round 2 reshaped this code: what looked residual (the 70s aphrodisiac frame revived) is in fact the current mainstream expression of food-as-sensual-theatre — hired by Zara, Hermès, HAY, Moncler — and increasingly invisible as a choice.",
+  "visual": [
+   "meringue, butter, icing — food as carveable sculpture material",
+   "heirloom china, doilies, skirted tables",
+   "hand-drawn illustration: bawdy folk linework, riso-flat color",
+   "the single food object centered and monumentalized",
+   "overhead table maps; the banquet as landscape",
+   "the after-shot: bottles, crumbs, smears as the closing image",
+   "domestic interiors and staged banquets; the food is the protagonist, people appear as hands and appetites"
+  ],
+  "verbal": [
+   "aphrodisiac",
+   "feast",
+   "banquet",
+   "icebreaker",
+   "supper",
+   "indulgence",
+   "delight"
+  ],
+  "quotes": [
+   {
+    "q": "I use food as an icebreaker",
+    "src": "Laila Gohar, AnOther",
+    "url": "https://www.anothermag.com/art-photography/15567/laila-gohar-interview-jefferson-hack-moncler-an-invitation-to-dream"
+   }
+  ],
+  "against": "Against nutritional framing, restaurant-plated perfection, and clean-eating asceticism alike. Distinct from the-defiant-feast: there eating is the act and the politics; here the food is object and invitation. Sensuality note per theme-gravity discipline: this is Appetite's home register, not a Vitality-legacy borrow — but keep it anchored to the table; once the sensuality detaches from food it drifts toward Self-Authorship's persona-staging.",
+  "execution": "For brands: this is the safest and most legible of the six codes — which is the warning. Gohar's grammar is already the category default for premium food styling; using it signals taste but no longer differentiates. The domestic dialect (imperfect, hand-drawn, post-meal) is the fresher execution surface.",
+  "evidence": [{"s": "apartamentomagazine.com", "u": "https://www.apartamentomagazine.com/stories/helena-fraderas-saffron-torrijas/"}, {"s": "lailagohar.com", "u": "https://lailagohar.com/"}, {"s": "anothermag.com", "u": "https://www.anothermag.com/art-photography/15567/laila-gohar-interview-jefferson-hack-moncler-an-invitation-to-dream"}, {"s": "family.style", "u": "https://family.style/articles/kelly-wearstler-hm-milan-design-week-2026"}, {"s": "vittlesmagazine.com", "u": "https://www.vittlesmagazine.com/p/sexless-little-carnivores"}, {"s": "gatamagazine.com", "u": "https://gatamagazine.com/articles/photography/food-play-a-gata-editorial"}, {"s": "madmuseum.org", "u": "https://madmuseum.org/exhibition/chris-antemann"}, {"s": "saveur.com", "u": "https://www.saveur.com/forbidden-fruit-porcelain-art-food-exhibit/"}, {"s": "seattletimes.com", "u": "https://www.seattletimes.com/entertainment/visual-arts/prurient-porcelain-the-come-hither-ceramics-of-chris-antemann/"}, {"s": "themarginalian.org", "u": "https://www.themarginalian.org/2014/04/29/salvador-dali-les-diners-de-galacookbook/"}],
+  "imgs": ["https://www.apartamentomagazine.com/wp-content/uploads/2026/02/Helena-Fradera-Torrijas-1-scaled-e1770650149567.jpg", "https://www.apartamentomagazine.com/wp-content/uploads/2025/10/COOKBOOK-2025-GREY-FOR-WEB-600x847.jpg", "https://www.apartamentomagazine.com/wp-content/uploads/2026/02/Apartamento_cookbook_Helena-Fradera-scaled.png", "https://lailagohar.com/wp-content/uploads/2023/02/LG_POTATOES_01-915x1200.jpg", "https://lailagohar.com/wp-content/uploads/2023/02/2022_0824-New-Yorker-Laila-Day-1-Still-life14872-copy-35-960x1200.jpg", "https://lailagohar.com/wp-content/uploads/2023/01/LG_HAY-2022_01-805x1200.jpg", "https://images-prod.anothermag.com/1080/azure/another-prod/440/6/446358.jpg", "https://images.squarespace-cdn.com/content/v1/5c6bf5897788977a41bf366e/d5b8d6f8-2f93-45db-892f-0f7005d2bb25/8.jpg?format=2500w", "https://images.squarespace-cdn.com/content/v1/5c6bf5897788977a41bf366e/c36ffb80-3dd7-4053-b520-dc3f81a3c1d2/2.jpg?format=2500w", "https://images.squarespace-cdn.com/content/v1/5c6bf5897788977a41bf366e/811d9919-aa95-4287-87fa-c893df3c17d2/5.jpg?format=2500w", "https://madmuseum.org/sites/default/files/styles/slider/public/2016/07/Covet_2013.jpg", "https://madmuseum.org/sites/default/files/styles/slider/public/2016/07/Forbidden%20Fruit%20Dinner%20Party%20Detail%20copy%202.jpg", "https://madmuseum.org/sites/default/files/styles/slider/public/2016/07/Forbidden%20Fruit%20Installation_2013.jpg", "https://www.saveur.com/uploads/2019/03/18/J5DOCDJHAFVNSFFQF22DWVSM7I-1024x768.jpg?format=auto&optimize=high&width=1440", "https://www.saveur.com/uploads/2019/03/18/TV5XA7ORACZT6SAP3W2CJWLGPQ-1024x768.jpg?format=auto&optimize=high&width=1440", "https://www.saveur.com/uploads/2019/03/18/MV56AA4KJG764MR3AJMUQOGRXA.jpg?format=auto&optimize=high&width=3840", "https://images.seattletimes.com/wp-content/uploads/2016/03/d34ddaca-e1a7-11e5-9e8d-6ea6fa012436.jpg", "https://images.seattletimes.com/wp-content/uploads/2016/03/3109ab7c-efbc-11e5-9fdd-5c228fdf4668.jpg", "https://i0.wp.com/www.themarginalian.org/wp-content/uploads/2014/04/dali_lesdinersdegala.jpg?w=680&ssl=1", "https://i0.wp.com/www.themarginalian.org/wp-content/uploads/2014/04/dali_lesdinersdegala1.jpg?w=680&ssl=1", "https://i0.wp.com/www.themarginalian.org/wp-content/uploads/2014/04/dali_lesdinersdegala8.jpg?w=680&ssl=1"],
+  "trajectory": "2026-07-08 coined · 2026-07-09 evidence"
+ },
+ {
+  "id": "flesh-as-form",
+  "name": "Flesh as Form",
+  "status": "emergent",
+  "oneliner": "The body that ate is the design object: flesh draped, padded, exhibited — and at the far edge, made grotesque.",
+  "bg": "#241418",
+  "text": "#f3e6ea",
+  "palette": [
+   "#d9a98c",
+   "#e06fa4",
+   "#16161a",
+   "#cfcbc4",
+   "#8a4a34"
+  ],
+  "def": "Karoline Vitto and Sinéad O'Dwyer's Met Costume Art conversation anchors the code: varied-body mannequins in padded suits exhibited as form, plus-size models in sculptural black drape, O'Dwyer's motion-blurred hot-pink campaign bodies. Wong's fleshy feasting figures corroborate from painting. Mire Lee supplies the far edge, where the same attention turns abject: skin-like piles, crusted tools, wire viscera — desire as material process including its disgust. The code's work is refusing the reduced body as the default canvas.",
+  "visual": [
+   "draped jersey and padded prosthetic bodies",
+   "motion blur as a texture of desire",
+   "silicone, dried skins, welded wire at the abject edge",
+   "the body sculptural and central, garment following flesh not correcting it",
+   "museum vitrine framing: the padded body as exhibited artifact",
+   "close, unflinching material shots at the grotesque pole",
+   "plus-size and non-standard bodies cast as the design's subject; runway, vitrine, studio-workshop"
+  ],
+  "verbal": [
+   "the body",
+   "flesh",
+   "form",
+   "fit",
+   "grotesque",
+   "desire",
+   "vulnerability"
+  ],
+  "quotes": [
+   {
+    "q": "It's also so fascinating how porn always reflects reflect our socio-political context",
+    "src": "Mire Lee, Elephant (sic in original)",
+    "url": "https://elephant.art/pornography-human-excrement-and-vulnerability-mire-lee-isnt-afraid-of-the-grotesque/"
+   }
+  ],
+  "against": "Against the GLP-1-reduced body as fashion's returning default, and against euphemism about flesh. Theme-gravity fence (Self-Authorship): here the flesh is the material; the moment the image is about persona-staging — the self as authored character — it belongs to self-as-the-work, not this code. The Mire Lee abject edge may split into its own code if the next run adds sources.",
+  "execution": "For brands: cast the actual range of bodies and let the design respond to flesh (drape, padding, tension) instead of concealing it — the Met's institutional framing shows the register is now canonized, not risky. Misuse: body-positive casting with garments still cut for the reduced body reads as the euphemism this code exists against.",
+  "evidence": [{"s": "anothermag.com", "u": "https://www.anothermag.com/fashion-beauty/17194/sinead-odwyer-karoline-vitto-met-metropolitan-museum-of-art-costume-institute"}, {"s": "elephant.art", "u": "https://elephant.art/pornography-human-excrement-and-vulnerability-mire-lee-isnt-afraid-of-the-grotesque/"}, {"s": "polyesterzine.com", "u": "https://www.polyesterzine.com/features/caroline-wong-on-girls-who-devour-women-eating-in-the-age-of-glp-1s-and-girlhood"}, {"s": "saatchigallery.com", "u": "https://www.saatchigallery.com/exhibition/caroline-wong-girls-who-devour"}, {"s": "interviewmagazine.com", "u": "https://www.interviewmagazine.com/art/in-her-new-show-painter-amanda-wall-eroticizes-her-favorite-subject-herself"}],
+  "imgs": ["https://images-prod.anothermag.com/2391/azure/another-prod/470/3/473545.jpg", "https://images-prod.anothermag.com/1914/azure/another-prod/470/3/473558.JPG", "https://images-prod.anothermag.com/1131/azure/another-prod/470/3/473549.jpg", "https://elephant.art/wp-content/uploads/2025/11/2025-09-02-0001-1.jpg", "https://elephant.art/wp-content/uploads/2025/11/2025-09-02-0023-scaled.jpg", "https://elephant.art/wp-content/uploads/2025/11/2025-09-02-0032-scaled.jpg", "https://www.interviewmagazine.com/wp-content/uploads/2024/06/AMW0058_view01_EDIT3-scaled.jpg", "https://www.interviewmagazine.com/wp-content/uploads/2024/06/AMW0055_view01_EDIT3-scaled.jpg", "https://www.interviewmagazine.com/wp-content/uploads/2024/06/AMW0050_view01_EDIT3-scaled.jpg"],
+  "trajectory": "2026-07-08 coined · 2026-07-09 evidence"
+ },
+ {
+  "id": "dark-cornucopia",
+  "name": "Dark Cornucopia",
+  "status": "emergent",
+  "oneliner": "Paint the feast at midnight: abundance on black, decay jewelled, the bubble about to burst.",
+  "bg": "#101010",
+  "text": "#efe6d8",
+  "palette": [
+   "#101010",
+   "#d8798f",
+   "#7c8f56",
+   "#e6ded2",
+   "#c77f2e"
+  ],
+  "def": "Jake Messing's acrylics stack flowers, fruit, insects, and soap bubbles into Dutch-register maximalism on black. Kathleen Ryan's Bad Lemons rebuild rot from turquoise, quartz, and pearl — decay literally gemmed, gluttony's aftermath made luxurious. Family Style's Milan coverage carries the register into interiors (rooms of mirrors banked with dried flowers). The code prices pleasure inside the pleasure image: everything ripe is already turning, and the turning is the most beautiful part.",
+  "visual": [
+   "gemstones, pearls, beadwork standing in for mold and pith",
+   "hyperreal acrylic sheen; soap-bubble iridescence",
+   "dried botanicals massed past tastefulness",
+   "dense central bouquet/cluster on black ground",
+   "the monumentalized single fruit, rot facing camera",
+   "detail crops that read as landscape",
+   "no people — nature's appetite as the subject; gallery plinth and black-box staging"
+  ],
+  "verbal": [
+   "abundance",
+   "decay",
+   "vanitas",
+   "ripeness",
+   "rot",
+   "glitter",
+   "excess"
+  ],
+  "quotes": [
+   {
+    "q": "A Pop Art Vision of Glitter and Decay",
+    "src": "Hyperallergic (headline)",
+    "url": "https://hyperallergic.com/kathleen-ryan-pop-art-vision-of-glitter-and-decay/"
+   }
+  ],
+  "against": "Against clean-eating minimalism and sun-lit wellness photography; abundance with mortality left in. Theme-gravity fence (Certified Human): the craft in Ryan's beadwork and Messing's hyperrealism is NOT the point — cite the abundance-and-decay register; the moment the image's work becomes human-craft-versus-AI proof it belongs to Certified Human.",
+  "execution": "For brands: a premium register for indulgence categories that flatters the audience's intelligence — abundance shown with its cost visible reads honest where pure plenty reads naive. Misuse: the palette without the vanitas note is just moody product photography.",
+  "evidence": [{"s": "thisiscolossal.com", "u": "https://www.thisiscolossal.com/2026/05/jake-messing-hyperrealistic-acrylic-paintings-still-lifes-nature-flowers/"}, {"s": "hyperallergic.com", "u": "https://hyperallergic.com/kathleen-ryan-pop-art-vision-of-glitter-and-decay/"}, {"s": "icasf.org", "u": "https://www.icasf.org/exhibitions/19-spotlight-kathleen-ryan"}, {"s": "family.style", "u": "https://family.style/articles/kelly-wearstler-hm-milan-design-week-2026"}],
+  "imgs": ["https://www.thisiscolossal.com/wp-content/uploads/2026/05/messing-6.jpg", "https://www.thisiscolossal.com/wp-content/uploads/2026/05/messing-5.jpg", "https://www.thisiscolossal.com/wp-content/uploads/2026/05/messing-2.jpg", "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2025/01/icasf_october-2024_-222.jpg", "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2025/01/icasf_october-2024_-025.jpg", "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2025/01/icasf_october-2024_-195.jpg"],
+  "trajectory": "2026-07-08 coined · 2026-07-09 evidence"
+ },
+ {
+  "id": "toy-hunger",
+  "name": "Toy Hunger",
+  "status": "dominant",
+  "oneliner": "Give the appetite a toy: collection, game, and play-staged design as the permission structure for adult indulgence.",
+  "bg": "#1d2a44",
+  "text": "#e9eefb",
+  "palette": [
+   "#efe3d3",
+   "#d93a2f",
+   "#d8c8b2",
+   "#3e6bb0",
+   "#eec8d4"
+  ],
+  "def": "The intake's most mainstream code, visible across four categories. RADII documents Asian adults returning to play as self-care economics — Labubu shrines colonizing desks, Beyblade arenas ringed with office workers. Colossal's Unruly Play archive canonizes 169 participatory projects as a design lineage ('play is how we give permission'). The Architectural Association builds full-scale wooden play apparatus in the forest; Kelly Wearstler sells H&M furniture as bouclé building blocks staged in rococo rooms. The register is soft, rounded, collectible — appetite made cute enough to display at work.",
+  "visual": [
+   "plush, flock, and bouclé; the soft surface as invitation",
+   "moulded plastic collectibles in blind-box scale",
+   "raw timber play structures at architectural scale",
+   "the shrine shot: collections massed on desks and shelves",
+   "the arena: adults mid-game, audience ringed around",
+   "furniture staged as toys — blocks, stacks, modular rounds",
+   "adults, unembarrassed, mid-play; offices, fairs, forests, showrooms"
+  ],
+  "verbal": [
+   "kidult",
+   "blind box",
+   "collection",
+   "play",
+   "permission",
+   "joy",
+   "unruly"
+  ],
+  "quotes": [
+   {
+    "q": "Play is how we give permission",
+    "src": "Vitor Freire, Colossal",
+    "url": "https://www.thisiscolossal.com/2026/04/unruly-play-digital-archive/"
+   }
+  ],
+  "against": "Against productivity culture and 'childish' as an insult; also against food itself — this is appetite rerouted around the plate entirely, which is why it belongs to this need. Cross-reference: Gohar's castle cakes and tattooed potatoes show the aphrodisiac table borrowing toy-hunger's grammar. Watch: the kidult economy is heavily monetized (blind-box gacha mechanics); the code's warmth and its exploitation are the same surface.",
+  "execution": "For brands: dominant means safe and legible — the collectible drop, the plush surface, the play-staged showroom all execute reliably but no longer differentiate. The fresher edge is architectural/public scale (play apparatus, unruly interventions) rather than another desk collectible.",
+  "evidence": [{"s": "radii.co", "u": "https://radii.co/article/from-labubu-to-beyblade-asian-adults-are-playing-again"}, {"s": "thisiscolossal.com", "u": "https://www.thisiscolossal.com/2026/04/unruly-play-digital-archive/"}, {"s": "dezeen.com", "u": "https://www.dezeen.com/2026/04/30/wooden-play-apparatus-architectural-association-schoolshows/"}, {"s": "family.style", "u": "https://family.style/articles/kelly-wearstler-hm-milan-design-week-2026"}, {"s": "highsnobiety.com", "u": "https://www.highsnobiety.com/p/labubu-sacai-carhartt/"}, {"s": "hypebeast.com", "u": "https://hypebeast.com/2026/3/kasing-lung-labubu-the-monsters-10th-anniversary-paris-exhibition"}],
+  "imgs": ["https://radii.co/wp-content/uploads/2026/06/radii_kidult_01.png", "https://radii.co/wp-content/uploads/2026/06/radii_kidult_05.jpeg", "https://www.thisiscolossal.com/wp-content/uploads/2026/04/unruly.jpg", "https://static.dezeen.com/uploads/2026/04/architectural-association-dezeen-schoolshows_dezeen_2364_col_9-1704x1136.jpg", "https://static.dezeen.com/uploads/2026/04/architectural-association-dezeen-schoolshows_dezeen_2364_col_2-1704x1136.jpg", "https://cdn.family.style/Design/Kelly-Wearstler-H%26M-home-06.avif", "https://cdn.family.style/Design/Kelly-Wearstler-H%26M-home-2.avif", "https://www.highsnobiety.com/static-assets/dato/1749477809-joopiter-sacai-carhartt-labubu-seventeen-1-2.jpg?fp-x=0.5&fp-y=0.5&fit=crop&auto=compress%2Cformat&cs=srgb&ar=4002%3A6000&w=2880", "https://www.highsnobiety.com/static-assets/dato/1763478797-vans-space-molly-pop-mart-collection-15.avif?fp-x=0.5&fp-y=0.5&fit=crop&auto=compress%2Cformat&cs=srgb&ar=1080%3A1440&w=1080", "https://www.highsnobiety.com/static-assets/dato/1781809288-bag-charms-trend-2026-2.jpg?fp-x=0.5&fp-y=0.5&fit=crop&auto=compress%2Cformat&cs=srgb&ar=3000%3A2000&w=2880", "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2026%2F03%2F04%2Fkasing-lung-labubu-the-monsters-10th-anniversary-paris-exhibition-001.jpg?q=90&w=1400&cbr=1&fit=max", "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2026%2F03%2F04%2Fkasing-lung-labubu-the-monsters-10th-anniversary-paris-exhibition-008.jpg?q=90&w=1400&cbr=1&fit=max", "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2026%2F03%2F09%2Fpop-mart-sanrio-monsters-hello-kitty-and-friends-vinyl-plush-pendant-blind-box-series-collaboration-release-info-001.jpg?q=90&w=1400&cbr=1&fit=max"],
+  "trajectory": "2026-07-08 coined · 2026-07-09 evidence"
+ }
+];
+
+const INTRO_BG = [250,250,248];
+function hexRgb(h){ h=h.replace('#',''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
+function mix(a,b,t){ return `rgb(${Math.round(a[0]+(b[0]-a[0])*t)},${Math.round(a[1]+(b[1]-a[1])*t)},${Math.round(a[2]+(b[2]-a[2])*t)})`; }
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+// intro list
+const cl = document.getElementById('codelist');
+CODES.forEach((c,i)=>{
+  const a = document.createElement('a');
+  a.href = '#'+c.id;
+  a.innerHTML = `<span class="num">0${i+1}</span><span class="dot" style="background:${c.palette[c.palette.length-1]}"></span>${c.name}`;
+  cl.appendChild(a);
+});
+
+// code sections
+const main = document.getElementById('codes');
+const spanPattern = ['big','','tall','','wide','','tall','','','wide','','tall'];
+CODES.forEach((c,i)=>{
+  const sec = document.createElement('section');
+  sec.className = 'code';
+  sec.id = c.id;
+  sec.dataset.bg = c.bg;
+  sec.style.color = c.text;
+  sec.style.setProperty('--tx', c.text);
+
+  const tiles = c.imgs.map((src,j)=>{
+    const k = spanPattern[j % spanPattern.length];
+    return `<figure class="${k}"><img src="${src}" loading="lazy" referrerpolicy="no-referrer" alt="" onerror="this.closest('figure').remove()"></figure>`;
+  }).join('');
+  const sw = c.palette.map(p=>`<span style="background:${p}"></span>`).join('');
+  const visualChips = c.visual.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const verbalChips = c.verbal.map(v=>`<span class="chip">${esc(v)}</span>`).join('');
+  const quotes = c.quotes.map(q=>`<div class="quote"><span class="q">“${esc(q.q)}”</span> <a href="${q.url}" target="_blank" rel="noopener">${esc(q.src)} →</a></div>`).join('');
+  const ev = c.evidence.map(e=>`<a href="${e.u}" target="_blank" rel="noopener">${esc(e.s)} →</a>`).join('');
+
+  sec.innerHTML = `
+    <div class="hero">
+      <div class="text">
+        <div class="num">0${i+1} / 0${CODES.length}</div>
+        <span class="status">${c.status}</span>
+        <h2>${c.name}</h2>
+        <p class="oneliner">${c.oneliner}</p>
+        <div class="palette">${sw}</div>
+        <div class="scrollon">Scroll for the analysis ↓</div>
+      </div>
+      <div class="collage">${tiles}</div>
+    </div>
+    <div class="analysis">
+      <p class="def">${esc(c.def)}</p>
+      <div class="grid2">
+        <div class="block"><div class="label">Visual register</div><div class="chips">${visualChips}</div></div>
+        <div class="block"><div class="label">Verbal register</div><div class="chips">${verbalChips}</div><div class="quotes">${quotes}</div></div>
+        <div class="block"><div class="label">Against</div><div class="body">${esc(c.against)}</div></div>
+        <div class="block"><div class="label">Execution</div><div class="body">${esc(c.execution)}</div></div>
+        <div class="block full"><div class="label">Evidence</div><div class="ev">${ev}</div></div>
+        <div class="meta"><span>${esc(IMG_NOTE)}</span><span>Trajectory · ${esc(c.trajectory)}</span></div>
+      </div>
+    </div>`;
+  main.appendChild(sec);
+});
+
+// scroll color morph
+const bg = document.getElementById('bg');
+const stops = [...document.querySelectorAll('.code')].map(s=>({el:s, rgb:hexRgb(s.dataset.bg)}));
+function paint(){
+  const vh = window.innerHeight;
+  const mid = window.scrollY + vh*0.5;
+  const introH = document.getElementById('intro').offsetHeight;
+  if(mid < stops[0].el.offsetTop){
+    const t = Math.max(0, Math.min(1, (mid - introH*0.4) / (introH*0.6)));
+    bg.style.backgroundColor = mix(INTRO_BG, stops[0].rgb, t);
+    return;
+  }
+  let idx = 0;
+  for(let i=0;i<stops.length;i++){ if(mid >= stops[i].el.offsetTop) idx = i; }
+  const cur = stops[idx];
+  const next = stops[idx+1] || cur;
+  const start = cur.el.offsetTop;
+  const end = stops[idx+1] ? stops[idx+1].el.offsetTop : start + cur.el.offsetHeight;
+  const t = Math.max(0, Math.min(1, (mid - start) / (end - start)));
+  const tt = t < 0.7 ? 0 : (t - 0.7) / 0.3;
+  bg.style.backgroundColor = mix(cur.rgb, next.rgb, tt);
+}
+let ticking=false;
+window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(()=>{paint();ticking=false;}); ticking=true; } },{passive:true});
+window.addEventListener('resize',paint);
+paint();
+</script>
+</body>
+</html>

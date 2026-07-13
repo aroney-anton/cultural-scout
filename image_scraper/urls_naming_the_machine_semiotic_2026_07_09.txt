@@ -1,0 +1,60 @@
+# Naming the Machine — semiotic enrichment URLs (visual-source wave, 2026-07-09)
+# Feed to: python run.py scrape --urls urls_naming_the_machine_semiotic_2026_07_09.txt --need "Naming the Machine"
+# Sources tagged [Playwright] are JS-rendered (SSENSE, SHOWstudio); [direct-only] = Document Journal (homepage hijacked, article URLs still serve).
+# [imgs lazy-load] = Sabukaru images lazy-load; Playwright fallback advisable for real <img> src.
+
+# --- receipts-as-image (3 urls) ---
+#   Unthinking — photography capture/subjectification logics
+https://unthinking.photography/articles/an-interview-with-john-tagg
+#   Unthinking — facial-interpretation dataset grids
+https://unthinking.photography/articles/its-a-face-eat-face-world
+#   Unthinking — datacentre + modular asset infrastructure
+https://unthinking.photography/articles/technocapitalist-worldbuilding
+
+# --- seams-showing-dossier (4 urls) ---
+#   Phroom — staged collage tableaux
+https://phroomplatform.com/sheida-soleimani/
+#   Unthinking — colonial archive to ML-dataset critique
+https://unthinking.photography/articles/nsfw-venus-from-colonial-archives-to-machine-learning-datasets
+#   Der Greif — archival + personal recombined
+https://dergreif.org/artist-feature/alessandro-silverj/
+#   Foam — whole issue: photography through AI
+https://www.foam.org/products/foam-magazine-66-missing-mirror-photography-through-the-lens-of-ai
+
+# --- rigging-in-shot (2 urls) ---
+#   SHOWstudio [Playwright] — fashion-film production as subject
+https://www.showstudio.com/news/film-spotlight-showstudios-head-of-fashion-film-on-hum-weus
+#   SHOWstudio [Playwright] — behind-the-industry process access
+https://www.showstudio.com/projects/industry-access-showstudios-nick-knight-and-a-new-planes-tom-wandrag/industry-access-showstudios-nick-knight-and-a-new-planes-tom-wandrag
+
+# --- icon-assembly-line (5 urls) ---
+#   Highsnobiety — celebrity/Labubu replication
+https://www.highsnobiety.com/p/dillon-brooks-labubu-lebron-james-k-pop/
+#   Hypebeast — Labubu as product-of-year, replication
+https://hypebeast.com/2025/12/labubu-product-of-2025-hypebeast100
+#   SSENSE [Playwright] — runway/fashion-week spectacle
+https://www.ssense.com/en-us/editorial/fashion/runway-observations-ss-2026
+#   i-D — manufactured K-pop idols
+https://i-d.co/article/cortis-kpop-band-interview/
+#   Unthinking — replicated identical ML figures
+https://unthinking.photography/articles/you-make-me-feel-mighty-typical
+
+# --- round-2 gap-fill: rigging-in-shot (9 urls, added 2026-07-09) ---
+#   Magnum [Playwright] — conventions as image-making machines
+https://www.magnumphotos.com/newsroom/photography-trump-manipulation-politics-election-susan-meiselas-peter-agtmael/
+#   Magnum [Playwright] — media apparatus of the campaign
+https://www.magnumphotos.com/newsroom/considering-an-election/
+#   Magnum [Playwright] — Olympics via broadcast apparatus
+https://www.magnumphotos.com/arts-culture/sport-arts-culture/harry-gruyaert-tv-shots-the-olympics/
+#   Magnum [Playwright] — Super Bowl spectacle machinery
+https://www.magnumphotos.com/newsroom/sport/american-football-magnum-archive-super-bowl/
+#   Magnum [Playwright] — Parr, pageantry apparatus of sport
+https://www.magnumphotos.com/arts-culture/players/
+#   Dazed — behind-the-curtain fashion-week apparatus
+https://www.dazeddigital.com/fashion/article/68833/1/maxwell-vice-fashion-week-photo-diary-twinks-shrooms-studio54
+#   Dazed [Playwright] — backstage rigging, cables, staging
+https://www.dazeddigital.com/fashion/gallery/35965/24/backstage-at-burberry-ss26
+#   Dazed [Playwright] — behind-the-scenes production apparatus
+https://www.dazeddigital.com/fashion/gallery/37207/5/in-pictures-paris-fashion-week-after-dark-diary
+#   Dazed — inside a blockbuster show's machinery
+https://www.dazeddigital.com/fashion/article/69471/1/willy-chavarria-aw26-fw26-paris-fashion-week-mens-julia-fox-romeo-beckham

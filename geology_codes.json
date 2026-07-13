@@ -1,165 +1,216 @@
 {
-  "_note": "Curated semiotic-code blocks for the geology globe, keyed by need. These are HAND-CODED (Michael's monthly coding exercise) and persist between rebuilds — build_geology.py merges them into GEO as needs[].code. Data fields (counts, clusters) regenerate from corpus.json every build; THESE do not. The per-code `status` (residual/dominant/emergent) is what the Code Velocity card diffs month-over-month. Add a need key here when a theme gets coded. Copyright rule: img values are hotlinks to publishers' own servers, never stored locally.",
-  "Certified Human": {
+ "_note": "Curated semiotic-code blocks for the geology globe, keyed by need. These are HAND-CODED (Michael's monthly coding exercise) and persist between rebuilds — build_geology.py merges them into GEO as needs[].code. Data fields (counts, clusters) regenerate from corpus.json every build; THESE do not. The per-code `status` (residual/dominant/emergent) is what the Code Velocity card diffs month-over-month. Add a need key here when a theme gets coded. Copyright rule: img values are hotlinks to publishers' own servers, never stored locally.",
+ "Certified Human": {
+  "name": "The Provenance Ledger",
+  "bg": "#3a2113",
+  "img": "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg",
+  "one": "Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying.",
+  "page": "mockup_lookfeel_certified_human.html",
+  "all": [
+   {
     "name": "The Provenance Ledger",
     "bg": "#3a2113",
+    "status": "dominant",
     "img": "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg",
-    "one": "Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying.",
-    "page": "mockup_lookfeel_certified_human.html",
-    "all": [
-      {
-        "name": "The Provenance Ledger",
-        "bg": "#3a2113",
-        "status": "dominant",
-        "img": "https://www.thisiscolossal.com/wp-content/uploads/2026/04/nguyen-1.jpg",
-        "one": "Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying."
-      },
-      {
-        "name": "Countable Labor",
-        "bg": "#5e5730",
-        "status": "dominant",
-        "img": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/04/HeBuiltThisCity_byFilipWolak_0309_8683.jpg",
-        "one": "Authentication by enumeration: the stitch macro, the field of ten thousand units, the headline that counts the years."
-      },
-      {
-        "name": "The Unretouched Witness",
-        "bg": "#8c1c20",
-        "status": "dominant",
-        "img": "https://pattaclothing.us/cdn/shop/articles/Daniel_Patta_Magazine_3.jpg?v=1778617712&width=2560",
-        "one": "Imperfect human presence as the logo: life-marked faces, mature casting, hard flash, clutter left in frame."
-      },
-      {
-        "name": "Slop, Repainted Slow",
-        "bg": "#a7e029",
-        "status": "emergent",
-        "img": "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/650e7c3d-72ad-4e20-aec4-f3b1d3566d65/georgia.png",
-        "one": "Disposable detritus, screenshots, memes, shipping cartons, lovingly re-rendered in slow media with its artifacts preserved."
-      },
-      {
-        "name": "The Analog Sanctuary",
-        "bg": "#6b3f22",
-        "status": "residual",
-        "img": "https://radii.co/wp-content/uploads/2026/06/radii_analog_01.png",
-        "one": "Warm-lit rooms where slow media is practiced together: the listening bar, the record shop, the reading cafe, the archive as altar."
-      }
-    ]
-  },
-  "Naming the Machine": {
+    "one": "Documentation is the aesthetic: credits, captions, materials, dimensions, and consent lines do the certifying."
+   },
+   {
+    "name": "Countable Labor",
+    "bg": "#5e5730",
+    "status": "dominant",
+    "img": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/size/w1200/2026/04/HeBuiltThisCity_byFilipWolak_0309_8683.jpg",
+    "one": "Authentication by enumeration: the stitch macro, the field of ten thousand units, the headline that counts the years."
+   },
+   {
+    "name": "The Unretouched Witness",
+    "bg": "#8c1c20",
+    "status": "dominant",
+    "img": "https://pattaclothing.us/cdn/shop/articles/Daniel_Patta_Magazine_3.jpg?v=1778617712&width=2560",
+    "one": "Imperfect human presence as the logo: life-marked faces, mature casting, hard flash, clutter left in frame."
+   },
+   {
+    "name": "Slop, Repainted Slow",
+    "bg": "#a7e029",
+    "status": "emergent",
+    "img": "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/650e7c3d-72ad-4e20-aec4-f3b1d3566d65/georgia.png",
+    "one": "Disposable detritus, screenshots, memes, shipping cartons, lovingly re-rendered in slow media with its artifacts preserved."
+   },
+   {
+    "name": "The Analog Sanctuary",
+    "bg": "#6b3f22",
+    "status": "residual",
+    "img": "https://radii.co/wp-content/uploads/2026/06/radii_analog_01.png",
+    "one": "Warm-lit rooms where slow media is practiced together: the listening bar, the record shop, the reading cafe, the archive as altar."
+   }
+  ]
+ },
+ "Naming the Machine": {
+  "name": "The Receipt Dump",
+  "bg": "#16181d",
+  "img": "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/06/data-src-image-4d2554f2-4a45-4d53-9c0b-88fa2f16206c.png",
+  "one": "The machine indicted with its own paperwork: spreadsheets, margin tables, and redacted screenshots published as the picture.",
+  "page": "mockup_lookfeel_naming_the_machine.html",
+  "all": [
+   {
     "name": "The Receipt Dump",
     "bg": "#16181d",
+    "status": "dominant",
     "img": "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/06/data-src-image-4d2554f2-4a45-4d53-9c0b-88fa2f16206c.png",
-    "one": "The machine indicted with its own paperwork: spreadsheets, margin tables, and redacted screenshots published as the picture.",
-    "page": "mockup_lookfeel_naming_the_machine.html",
-    "all": [
-      {
-        "name": "The Receipt Dump",
-        "bg": "#16181d",
-        "status": "dominant",
-        "img": "https://storage.ghost.io/c/24/d8/24d8fcec-dfba-4f40-a467-823d2941ae46/content/images/2026/06/data-src-image-4d2554f2-4a45-4d53-9c0b-88fa2f16206c.png",
-        "one": "The machine indicted with its own paperwork: spreadsheets, margin tables, and redacted screenshots published as the picture."
-      },
-      {
-        "name": "The Cut-and-Paste Dossier",
-        "bg": "#7c6bd9",
-        "status": "residual",
-        "img": "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/ccf96b33-8b1d-48d4-b744-5cbb2697a169/girlboss1.png?format=2500w",
-        "one": "The case against the system assembled with visible tape, torn edges, halftone scraps, and duotone clip-art."
-      },
-      {
-        "name": "The Rigging in Shot",
-        "bg": "#1b2a55",
-        "status": "dominant",
-        "img": "https://media.africasacountry.com/images/2026/6/018426373922-card.jpg",
-        "one": "Shoot the spectacle so its rigging shows: sponsor boards, press banks, LED walls, and the stage on the state's lawn."
-      },
-      {
-        "name": "The Icon Assembly Line",
-        "bg": "#2f7d4f",
-        "status": "dominant",
-        "img": "https://media.tate.org.uk/aztate-prd-ew-dg-wgtail-st1-ctr-data/images/Nickolas_Muray_Frida_Kahlo_on_a_White_Bench_N_.width-840.jpg",
-        "one": "The fame machine exposed by lining up its output: one icon replicated across painting, print, merch, and cartoon."
-      }
-    ]
-  },
-  "Self-Authorship": {
+    "one": "The machine indicted with its own paperwork: spreadsheets, margin tables, and redacted screenshots published as the picture."
+   },
+   {
+    "name": "The Cut-and-Paste Dossier",
+    "bg": "#7c6bd9",
+    "status": "residual",
+    "img": "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/ccf96b33-8b1d-48d4-b744-5cbb2697a169/girlboss1.png?format=2500w",
+    "one": "The case against the system assembled with visible tape, torn edges, halftone scraps, and duotone clip-art."
+   },
+   {
+    "name": "The Rigging in Shot",
+    "bg": "#1b2a55",
+    "status": "dominant",
+    "img": "https://media.africasacountry.com/images/2026/6/018426373922-card.jpg",
+    "one": "Shoot the spectacle so its rigging shows: sponsor boards, press banks, LED walls, and the stage on the state's lawn."
+   },
+   {
+    "name": "The Icon Assembly Line",
+    "bg": "#2f7d4f",
+    "status": "dominant",
+    "img": "https://media.tate.org.uk/aztate-prd-ew-dg-wgtail-st1-ctr-data/images/Nickolas_Muray_Frida_Kahlo_on_a_White_Bench_N_.width-840.jpg",
+    "one": "The fame machine exposed by lining up its output: one icon replicated across painting, print, merch, and cartoon."
+   }
+  ]
+ },
+ "Self-Authorship": {
+  "name": "Author Among the Work",
+  "bg": "#2c2519",
+  "img": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/04/RAMA-18-3-1.jpg",
+  "one": "Show the maker inside the evidence of their making: studio, worktable, gallery wall, shelf of one's own output.",
+  "page": "mockup_lookfeel_self-authorship.html",
+  "all": [
+   {
     "name": "Author Among the Work",
     "bg": "#2c2519",
+    "status": "dominant",
     "img": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/04/RAMA-18-3-1.jpg",
-    "one": "Show the maker inside the evidence of their making: studio, worktable, gallery wall, shelf of one's own output.",
-    "page": "mockup_lookfeel_self-authorship.html",
-    "all": [
-      {
-        "name": "Author Among the Work",
-        "bg": "#2c2519",
-        "status": "dominant",
-        "img": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/2026/04/RAMA-18-3-1.jpg",
-        "one": "Show the maker inside the evidence of their making: studio, worktable, gallery wall, shelf of one's own output."
-      },
-      {
-        "name": "The Self Staged as the Work",
-        "bg": "#171012",
-        "status": "dominant",
-        "img": "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/06122139/MARTINE_LOTTERY_417.jpg",
-        "one": "Author, director, and subject collapse into one: the body performed for the camera as the artwork itself."
-      },
-      {
-        "name": "Heritage Re-Signed",
-        "bg": "#5b1a14",
-        "status": "emergent",
-        "img": "https://www.thisiscolossal.com/wp-content/uploads/2026/05/medhat-2.jpg",
-        "one": "Take the inherited form — weave, quipu, embroidery, the label you were handed — and re-sign it in your own hand."
-      },
-      {
-        "name": "The Remix Self",
-        "bg": "#c01a7a",
-        "status": "emergent",
-        "img": "https://cdn.sanity.io/images/wmq4hf8k/production/0c7e9ff8fff482da13805162db6f4f1c492e0cea-5631x3521.jpg",
-        "one": "Author the self out of the feed's own materials: glitter, filters, affirmations, screenshots, jelly-translucent pop shards."
-      },
-      {
-        "name": "Against the Algorithm",
-        "bg": "#5a5a5a",
-        "status": "emergent",
-        "img": "https://metropolitanreview.com/wp-content/uploads/2025/09/Megan-Gafford-2.jpg",
-        "one": "The unrepeatable hand and voice, asserted against a machine that can only average: authorship as the one thing that can't be generated."
-      }
-    ]
-  },
-  "Settling Accounts": {
+    "one": "Show the maker inside the evidence of their making: studio, worktable, gallery wall, shelf of one's own output."
+   },
+   {
+    "name": "The Self Staged as the Work",
+    "bg": "#171012",
+    "status": "dominant",
+    "img": "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/06122139/MARTINE_LOTTERY_417.jpg",
+    "one": "Author, director, and subject collapse into one: the body performed for the camera as the artwork itself."
+   },
+   {
+    "name": "Heritage Re-Signed",
+    "bg": "#5b1a14",
+    "status": "emergent",
+    "img": "https://www.thisiscolossal.com/wp-content/uploads/2026/05/medhat-2.jpg",
+    "one": "Take the inherited form — weave, quipu, embroidery, the label you were handed — and re-sign it in your own hand."
+   },
+   {
+    "name": "The Remix Self",
+    "bg": "#c01a7a",
+    "status": "emergent",
+    "img": "https://cdn.sanity.io/images/wmq4hf8k/production/0c7e9ff8fff482da13805162db6f4f1c492e0cea-5631x3521.jpg",
+    "one": "Author the self out of the feed's own materials: glitter, filters, affirmations, screenshots, jelly-translucent pop shards."
+   },
+   {
+    "name": "Against the Algorithm",
+    "bg": "#5a5a5a",
+    "status": "emergent",
+    "img": "https://metropolitanreview.com/wp-content/uploads/2025/09/Megan-Gafford-2.jpg",
+    "one": "The unrepeatable hand and voice, asserted against a machine that can only average: authorship as the one thing that can't be generated."
+   }
+  ]
+ },
+ "Settling Accounts": {
+  "name": "Restaged Verdict",
+  "bg": "#1d1712",
+  "img": "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/28184444/JAAFAR_MJ_2.jpg",
+  "one": "Re-enact the contested past beat for beat and let the fidelity read as the ruling.",
+  "page": "mockup_lookfeel_settling_accounts.html",
+  "all": [
+   {
     "name": "Restaged Verdict",
     "bg": "#1d1712",
+    "status": "dominant",
     "img": "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/28184444/JAAFAR_MJ_2.jpg",
-    "one": "Re-enact the contested past beat for beat and let the fidelity read as the ruling.",
-    "page": "mockup_lookfeel_settling_accounts.html",
-    "all": [
-      {
-        "name": "Restaged Verdict",
-        "bg": "#1d1712",
-        "status": "dominant",
-        "img": "https://culturedmag.nyc3.digitaloceanspaces.com/uploads/2026/04/28184444/JAAFAR_MJ_2.jpg",
-        "one": "Re-enact the contested past beat for beat and let the fidelity read as the ruling."
-      },
-      {
-        "name": "Canon Corrected",
-        "bg": "#14161a",
-        "status": "dominant",
-        "img": "https://news.artnet.com/app/news-upload/2025/10/monuments-brick-la-moca-install-hank-willis-thomas-2048x1365.jpg",
-        "one": "Photograph the institution admitting the exclusion: the rehang, the retrospective at 93, the toppled bronze laid out as evidence."
-      },
-      {
-        "name": "Stitched Testimony",
-        "bg": "#241a12",
-        "status": "emergent",
-        "img": "https://mymodernmet.com/wp/wp-content/uploads/2026/03/arleene-correa-valencia-codice-exhibition-1-scaled.jpg",
-        "one": "Sew the accusation into the cloth: humble materials carrying the record the archive refused to keep."
-      },
-      {
-        "name": "Inheritance Reactivated",
-        "bg": "#1c1420",
-        "status": "emergent",
-        "img": "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/451746cd-8506-4281-8144-208c662213f6/Farah+Al+Qasimi+_+United+Arab+Emirates++.jpg?format=2500w",
-        "one": "Hold the inheritance by using it: the family archive reprinted warm, the ancestral technique re-run on today's machines."
-      }
-    ]
-  }
+    "one": "Re-enact the contested past beat for beat and let the fidelity read as the ruling."
+   },
+   {
+    "name": "Canon Corrected",
+    "bg": "#14161a",
+    "status": "dominant",
+    "img": "https://news.artnet.com/app/news-upload/2025/10/monuments-brick-la-moca-install-hank-willis-thomas-2048x1365.jpg",
+    "one": "Photograph the institution admitting the exclusion: the rehang, the retrospective at 93, the toppled bronze laid out as evidence."
+   },
+   {
+    "name": "Stitched Testimony",
+    "bg": "#241a12",
+    "status": "emergent",
+    "img": "https://mymodernmet.com/wp/wp-content/uploads/2026/03/arleene-correa-valencia-codice-exhibition-1-scaled.jpg",
+    "one": "Sew the accusation into the cloth: humble materials carrying the record the archive refused to keep."
+   },
+   {
+    "name": "Inheritance Reactivated",
+    "bg": "#1c1420",
+    "status": "emergent",
+    "img": "https://images.squarespace-cdn.com/content/v1/63beb1552f2a41471a264ee4/451746cd-8506-4281-8144-208c662213f6/Farah+Al+Qasimi+_+United+Arab+Emirates++.jpg?format=2500w",
+    "one": "Hold the inheritance by using it: the family archive reprinted warm, the ancestral technique re-run on today's machines."
+   }
+  ]
+ },
+ "Appetite": {
+  "name": "The Defiant Feast",
+  "bg": "#3a1420",
+  "img": "https://www.saatchigallery.com/wp-content/smush-webp/2026/02/B37B9BB9-718F-49D0-AD85-23D397CBE528-scaled.jpeg.webp",
+  "one": "Eat like it's an argument: saturated, messy, communal, unashamed — appetite painted back into the picture.",
+  "page": "mockup_lookfeel_appetite.html",
+  "all": [
+   {
+    "name": "The Defiant Feast",
+    "bg": "#3a1420",
+    "status": "emergent",
+    "img": "https://www.saatchigallery.com/wp-content/smush-webp/2026/02/B37B9BB9-718F-49D0-AD85-23D397CBE528-scaled.jpeg.webp",
+    "one": "Eat like it's an argument: saturated, messy, communal, unashamed — appetite painted back into the picture."
+   },
+   {
+    "name": "Prescription Pleasure",
+    "bg": "#2b1f12",
+    "status": "emergent",
+    "img": "https://radii.co/wp-content/uploads/2026/06/radii-barmacy-punk-wellness-tcm-bars-01.jpg",
+    "one": "The diagnosis is the aperitif: appetite managed, and the management aestheticized as pleasure."
+   },
+   {
+    "name": "The Aphrodisiac Table",
+    "bg": "#41300f",
+    "status": "dominant",
+    "img": "https://lailagohar.com/wp-content/uploads/2023/02/LG_POTATOES_01-915x1200.jpg",
+    "one": "Set the table like a flirtation: food as sensual object, the meal as the seduction, the mess as the proof."
+   },
+   {
+    "name": "Flesh as Form",
+    "bg": "#241418",
+    "status": "emergent",
+    "img": "https://images-prod.anothermag.com/1914/azure/another-prod/470/3/473558.JPG",
+    "one": "The body that ate is the design object: flesh draped, padded, exhibited — and at the far edge, made grotesque."
+   },
+   {
+    "name": "Dark Cornucopia",
+    "bg": "#101010",
+    "status": "emergent",
+    "img": "https://storage.ghost.io/c/51/f8/51f871d8-b6be-4a73-b958-0ca4fff0110a/content/images/hyperallergic-newspack-s3-amazonaws-com/uploads/2025/01/icasf_october-2024_-025.jpg",
+    "one": "Paint the feast at midnight: abundance on black, decay jewelled, the bubble about to burst."
+   },
+   {
+    "name": "Toy Hunger",
+    "bg": "#1d2a44",
+    "status": "dominant",
+    "img": "https://radii.co/wp-content/uploads/2026/06/radii_kidult_05.jpeg",
+    "one": "Give the appetite a toy: collection, game, and play-staged design as the permission structure for adult indulgence."
+   }
+  ]
+ }
 }
