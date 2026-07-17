@@ -163,6 +163,8 @@ def main():
 
     # Also refresh the standalone website if its builder is present, so one
     # command keeps corpus.json and the shareable site/index.html in sync.
+    # (build_site.py itself chains build_geology.py, so this one call keeps
+    # the Explore globe in sync too — verified 2026-07-17.)
     site_builder = os.path.join(HERE, "build_site.py")
     if os.path.exists(site_builder):
         import subprocess

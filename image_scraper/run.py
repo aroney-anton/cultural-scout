@@ -22,10 +22,12 @@ Three subcommands:
 
   python run.py clean
       Deletes the raw .cache/ (full-res downloaded imagery), and ARCHIVES the
-      contact sheets into sheets_archive/ where they are retained for 6 months
-      (180 days), then auto-pruned. Run this when a coding pass is done. Both
-      layers stay local-only, gitignored, never committed or shipped (CLAUDE.md
-      copyright rule); the 6-month archive is the internal look-back window.
+      contact sheets into sheets_archive/ where they are KEPT INDEFINITELY
+      (Michael's call 2026-07-17: the longitudinal image record is valuable —
+      archives are never auto-deleted). Run this when a coding pass is done.
+      Both layers stay local-only, gitignored, never committed or shipped
+      (CLAUDE.md copyright rule); the archive is the internal look-back window.
+      Use `--prune` to delete archives older than 180 days (opt-in only).
       Use `--purge` to delete the sheets outright instead of archiving them.
 
 Everything is resolved relative to THIS file's folder, so the commands work
@@ -52,7 +54,9 @@ OUTPUT_DIR = HERE / "output"
 CACHE_DIR = HERE / ".cache"
 SHEETS_DIR = HERE / "sheets"
 SHEETS_ARCHIVE_DIR = HERE / "sheets_archive"   # contact sheets kept here after clean
-ARCHIVE_RETENTION_DAYS = 180                    # 6-month look-back, then auto-pruned
+ARCHIVE_RETENTION_DAYS = 180                    # used ONLY by opt-in `clean --prune`;
+                                                # archives are kept forever by default
+                                                # (longitudinal record, 2026-07-17)
 LOGS_DIR = HERE / "logs"
 LEDGER_PATH = HERE / "seen_urls.json"     # remembers which URLs we've scraped
 DEFAULT_CORPUS = HERE.parent / "corpus.json"
@@ -393,13 +397,16 @@ def cmd_clean(args):
             stamp = datetime.now().strftime("sheets_%Y-%m-%d_%H%M%S")
             dest = SHEETS_ARCHIVE_DIR / stamp
             shutil.move(str(SHEETS_DIR), str(dest))
-            log.info("Archived contact sheets -> %s (retained %d days / 6 months)",
+            log.info("Archived contact sheets -> %s (kept indefinitely; "
+                     "use `clean --prune` to trim archives older than %d days)",
                      dest, ARCHIVE_RETENTION_DAYS)
     else:
         log.info("No contact sheets to archive at %s", SHEETS_DIR)
 
-    # Enforce the 6-month window every clean.
-    prune_archive()
+    # Pruning is OPT-IN only (2026-07-17): the archive is a longitudinal
+    # record and is never auto-deleted.
+    if getattr(args, "prune", False):
+        prune_archive()
 
     log.info("Clean. (output/ JSONs are kept — they contain no images, "
              "only text and URLs. Archived sheets live in %s, gitignored.)",
@@ -452,10 +459,13 @@ def main():
                           help="seconds between image downloads per domain (default 2)")
     p_sheets.set_defaults(func=cmd_sheets)
 
-    p_clean = sub.add_parser("clean", help="delete raw cache; archive sheets for 6 months")
+    p_clean = sub.add_parser("clean", help="delete raw cache; archive sheets (kept indefinitely)")
     p_clean.add_argument("--purge", action="store_true",
                          help="delete the contact sheets outright instead of "
-                              "archiving them for 6 months")
+                              "archiving them")
+    p_clean.add_argument("--prune", action="store_true",
+                         help="also delete archived sheet folders older than "
+                              "180 days (opt-in; archives are otherwise kept forever)")
     p_clean.set_defaults(func=cmd_clean)
 
     args = parser.parse_args()

@@ -6,8 +6,8 @@ This is a cultural-discovery instrument. Its edge is surfacing below-radar cultu
 
 ## Start here
 
-- **`CLAUDE.md`** — the canonical project playbook: scope, run procedure, validation gates, and the full change log. Read this first.
-- **`HOW_TO_USE.md`** — usage guide for the pipeline and the site.
+- **`CLAUDE.md`** — the canonical project playbook: scope, run procedure, validation gates, standing rules. Read this first.
+- **`DECISIONS.md`** — the append-only dated decision record and change log (the full history).
 - **`NEED_TAXONOMY.md`** — the 7-need taxonomy definitions and tie-break rules.
 
 ## Pipeline at a glance
@@ -16,7 +16,7 @@ This is a cultural-discovery instrument. Its edge is surfacing below-radar cultu
 sources.yaml                     curated editorial source list (canonical — do not silently change)
    │  harvest (interactive WebSearch/WebFetch, or harvest.py when API credits exist)
    ▼
-signals_<date>.json              raw harvested signals (one file per run, archived)
+signals_<date>.json              raw harvested signals (one per run; archived to archive/harvest_runs/)
    │  tag against the need taxonomy
    ▼
 tagged_signals_<date>.json       per-signal need + metadata (one file per run)
@@ -34,7 +34,7 @@ site/discover-geology.html       the Explore globe (embedded as an iframe by ind
 
 ```bash
 # rebuild everything (corpus → index.html → globe) after a new tagged run
-python3 build_corpus.py            # also invokes build_site.py, which invokes build_geology.py
+python3 build_corpus.py            # chains build_site.py + build_geology.py
 
 # rebuild just the Explore globe from the current corpus
 python3 build_geology.py
@@ -48,7 +48,7 @@ python3 build_geology.py
 | Path | Role |
 |------|------|
 | `sources.yaml` | canonical editorial source list |
-| `signals*.json` | raw harvest output, per run |
+| `archive/harvest_runs/signals*.json` | raw harvest output, per run (longitudinal record — never deleted) |
 | `tagged_signals*.json` | tagged output, per run (carries `need` + metadata) |
 | `corpus.json` | merged/deduped corpus (build artifact) |
 | `build_corpus.py` / `build_site.py` / `build_geology.py` | build chain |
@@ -59,7 +59,8 @@ python3 build_geology.py
 | `geology_codes.json` | curated semiotic codes for the globe (persist across rebuilds) |
 | `vital_signs.json` / `provenance.json` / `receipts.json` | Vital Signs + provenance + methodology data |
 | `NEED_TAXONOMY*.md`, `SEMIOTIC_CODEBOOK.md` | taxonomy + coding discipline docs |
-| `brief_*.md` | Layer 3 generated thought-starter briefs |
+| `briefs/brief_*.md` | Layer 3 generated thought-starter briefs |
+| `archive/` | retired docs + raw harvest runs |
 
 ## Build artifacts vs. source
 
